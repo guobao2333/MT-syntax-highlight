@@ -19,8 +19,8 @@
 # Change Log | 更新日志
 ## 2024-5-2
 ### Fixed | 修复
-github_markdown - [1.0.2](https://github.com/guobao2333/MT-syntax-highlight/commit/f3f0913)
-  1. 修复了上个版本导致的标题渲染失效
+github_markdown - [1.0.3](https://github.com/guobao2333/MT-syntax-highlight/commit/76c1f9a)
+  1. 修复了上个版本导致的代码块渲染失效
 
 > 仅展示最新文件变更版本，更多版本细节请[查看完整变更日志](CHANGELOG.md)
 # Preview | 预览
