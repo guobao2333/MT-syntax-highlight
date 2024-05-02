@@ -24,7 +24,7 @@
 
 	// 不打算适配制表符（因为会有bug暂时没法修复/: ）
 	defines: [ // (?m) ^匹配每行开头
-		"prefix": /(?m)^ */
+		"prefix": /(?:^|\n *)/
 		"title": {match: include("prefix") + /#{1,6} .*/, 0: "title"}
 		"escape": {match: /\\./, 0: "escape"}
 
