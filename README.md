@@ -14,18 +14,16 @@
 ----------------
 
 所以我自己写了一些语法高亮给自己使用，同时也开源给大家用，希望大家也能够写出更多好用的mt语法高亮……
-> 但是有一点不要搞错了，虽然我知道VSCode是个很好用的代码编辑器，但那只限于电脑。
-> 因为我很喜欢随时随地写代码，而在移动端我更加偏向使用MT管理器，这就是我的理由。
+> 但是有一点不要搞错了，虽然我知道VSCode是个很好用的代码编辑器，但那只限于电脑。因为我很喜欢随时随地写代码，而在移动端我更加偏向使用MT管理器，这就是我的理由。
 
 # Change Log | 更新日志
 ## 2024-5-2
-### Added | 新增
-* 新增语法高亮：[github规范markdown高亮](mtsx/github_markdown.mtsx) - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/cf23fc0)
+### Fixed | 修复
+github_markdown - [1.0.2](https://github.com/guobao2333/MT-syntax-highlight/commit/f3f0913)
+  1. 修复了上个版本导致的标题渲染失效
 
 > 仅展示最新文件变更版本，更多版本细节请[查看完整变更日志](CHANGELOG.md)
 # Preview | 预览
-
-> 您可以在`./preview/`目录中查看所有语法的预览图
 
 <details>
 <summary>github markdown</summary>
@@ -36,6 +34,7 @@
 </details>
 
 # Usage | 使用
+
 ## List | 所有语法
 - [github规范markdown高亮](mtsx/github_markdown.mtsx) - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/cf23fc0)
 
