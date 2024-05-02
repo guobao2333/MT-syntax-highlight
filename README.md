@@ -29,17 +29,19 @@
 
 <details>
 <summary>github markdown</summary>
+
 ![light亮色模式](preview/github_markdown/light.jpg)
 
 ![dark暗色模式](preview/github_markdown/dark.jpg)
 </details>
+
 # Usage | 使用
 ## List | 所有语法
 - [github规范markdown高亮](mtsx/github_markdown.mtsx) - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/cf23fc0)
 
 ## Update Plan | 更新计划
 - [ ] 通用markdown语法
-- [ ] 优化原有语法
+- [ ] 优化MT原有自带语法
 - [ ] 更多的语法……
 
 ## Install | 安装
