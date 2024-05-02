@@ -1,0 +1,86 @@
+{
+	name: ["github_markdown", ".markdown", ".md"]
+	ignoreCase: false
+	colors: [
+		"title", #E06C75, #E06C75
+		"escape" > "strEscape"
+		"ordered_list" > "number"
+		"unordered_list" > "number"
+		"short_code" > "string"
+		"code_block", #7050E0, #835CBD
+		"syntax_name", #871094, #A64EAD
+		"code_content", #BABABA, #BABABA
+		"quote_text", #777, #858F9A
+		"quote_background", #DDD, #444
+		"感叹号", #E8BF6A, #E8BF6A
+		"url_text", #508090, #58908A
+		"url_title" > "string"
+		"url", #508090, #58908A
+		"括号", #999, #999
+		"split_line", #FFF000, #BBB529
+	]
+	// github可以使用html标签，注释后不渲染
+	comment: {startsWith: "<!--", endsWith: "-->"}
+
+	// 不打算适配制表符（因为会有bug暂时没法修复/: ）
+	defines: [ // (?m) ^匹配每行开头
+		"prefix": /(?:^|\n *)/
+		"title": {match: include("prefix") + /#{1,6} .*/, 0: "title"}
+		"escape": {match: /\\./, 0: "escape"}
+
+		// 实现了基本渲染，暂时搁置优化匹配
+		"link": {match: /(!)?(\[)(.*)(\])(\()(.*?)( ".*?")?(\))/, 1: "感叹号" 2: "括号" 3: "url_text" 4: "括号" 5: "括号" 6: "url" 7: "url_title" 8: "括号"}
+		"splitLine": {match: /(?m)^( {0,3}\*{3,}|-{3,}|_{3,}) {0,}$/, 0: "split_line"}
+	]
+
+	// 背景渲染有bug
+	lineBackground: {match: /(?:^|\n *)>.*/, color: "quote_background"}
+	
+	// 取消注释下行为分隔符添加背景
+	// lineBackground: {match: /^( {0,3}\*{3,}|-{3,}|_{3,})$/, color: "default"}
+
+	contains: [
+		{include: "title"}
+		{include: "link"}
+		{include: "escape"}
+		{include: "splitLine"}
+		{match: include("prefix") + /[1-9][0-9]*\. .*/, 0: "ordered_list"}
+		{match: include("prefix") + /[*+-] .*/, 0: "unordered_list"}
+		{match: /(?:^|\n *)>.*/, 0: "quote_text"}
+
+		// {
+			// start: {
+				// start: {match: /\[/}
+				// end: {match: /\]/}
+			// }
+			// end: {
+				// start: {match: /\(/}
+				// end: {match: /\)/}
+			// }
+			// color: "string"
+			// matchEndFirst: true //优先匹配结尾
+			// contains: [
+				
+			// ]
+		// }
+		{
+			start: {match: include("prefix") + /(?i)`{3}([ a-z]*)/, 0: "code_block" 1: "syntax_name"}
+			end: {match: include("prefix") + /`{3}|$/, 0: "code_block"}
+			color: "code_content"
+		}
+		{
+			start: {match: include("prefix") + /(?i)~{3}([ a-z]*)/, 0: "code_block" 1: "syntax_name"}
+			end: {match: include("prefix") + /~{3}|$/, 0: "code_block"}
+			color: "code_content"
+		}
+		{
+			start: {match: /`/}
+			end: {match: /`|$/}
+			color: "short_code"
+			contains: [
+				{include: "escape"}
+			]
+		}
+		{builtin: #ESCAPED_CHAR#}
+	]
+}
