@@ -24,17 +24,19 @@
 
 	// 不打算适配制表符（因为会有bug暂时没法修复/: ）
 	defines: [ // (?m) ^匹配每行开头
-		"prefix": /(?:^|\n *)/
+		"prefix": /^|\n */
 		"title": {match: include("prefix") + /#{1,6} .*/, 0: "title"}
 		"escape": {match: /\\./, 0: "escape"}
 
 		// 实现了基本渲染，暂时搁置优化匹配
 		"link": {match: /(!)?(\[)(.*)(\])(\()(.*?)( ".*?")?(\))/, 1: "感叹号" 2: "括号" 3: "url_text" 4: "括号" 5: "括号" 6: "url" 7: "url_title" 8: "括号"}
 		"splitLine": {match: /(?m)^( {0,3}\*{3,}|-{3,}|_{3,}) {0,}$/, 0: "split_line"}
+		// 有点bug暂时没法用
+		// "quoteBackground": include("prefix") + />.*/
 	]
 
-	// 背景渲染有bug
-	lineBackground: {match: /(?:^|\n *)>.*/, color: "quote_background"}
+	// lineBackground: {match: include("quoteBackground"), color: "quote_background"}
+	lineBackground: {match: /(?m)^ *>.*/, color: "quote_background"}
 	
 	// 取消注释下行为分隔符添加背景
 	// lineBackground: {match: /^( {0,3}\*{3,}|-{3,}|_{3,})$/, color: "default"}
@@ -46,7 +48,7 @@
 		{include: "splitLine"}
 		{match: include("prefix") + /[1-9][0-9]*\. .*/, 0: "ordered_list"}
 		{match: include("prefix") + /[*+-] .*/, 0: "unordered_list"}
-		{match: /(?:^|\n *)>.*/, 0: "quote_text"}
+		{match: /(?m)^ *>.*/, 0: "quote_text"}
 
 		// {
 			// start: {
