@@ -23,6 +23,12 @@ github_markdown - [1.0.3](https://github.com/guobao2333/MT-syntax-highlight/comm
   1. 修复了上个版本导致的代码块渲染失效
 
 > 仅展示最新文件变更版本，更多版本细节请[查看完整变更日志](CHANGELOG.md)
+
+## Update Plan | 更新计划
+- [ ] 通用markdown语法
+- [ ] 优化MT原有自带语法
+- [ ] 更多的语法……
+
 # Preview | 预览
 
 <details>
@@ -34,14 +40,8 @@ github_markdown - [1.0.3](https://github.com/guobao2333/MT-syntax-highlight/comm
 </details>
 
 # Usage | 使用
-
 ## List | 所有语法
-- [github规范markdown高亮](mtsx/github_markdown.mtsx) - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/cf23fc0)
-
-## Update Plan | 更新计划
-- [ ] 通用markdown语法
-- [ ] 优化MT原有自带语法
-- [ ] 更多的语法……
+- [github规范的markdown高亮](mtsx/github_markdown.mtsx)
 
 ## Install | 安装
 
