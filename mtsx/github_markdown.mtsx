@@ -10,6 +10,16 @@
 		"code_block", #7050E0, #835CBD
 		"syntax_name", #871094, #A64EAD
 		"code_content", #BABABA, #BABABA
+		"quote_note", #2F81F7, #2F81F7
+		"quote_note_text", #2F81F7, #2F81F7
+		"quote_tip", #238636, #238636
+		"quote_tip_text", #3FB950, #3FB950
+		"quote_important", #8957E5, #8957E5
+		"quote_important_text", #A371F7, #A371F7
+		"quote_warning", #9E6A03, #9E6A03
+		"quote_warning_text", #D29922, #D29922
+		"quote_caution", #DA3633, #DA3633
+		"quote_caution_text", #F85149, #F85149
 		"quote_text", #777, #858F9A
 		"quote_background", #DDD, #444
 		"感叹号", #E8BF6A, #E8BF6A
@@ -22,9 +32,11 @@
 	// github可以使用html标签，注释后不渲染
 	comment: {startsWith: "<!--", endsWith: "-->"}
 
-	// 不打算适配制表符（因为会有bug暂时没法修复/: ）
-	defines: [ // (?m) ^匹配每行开头
-		"prefix": /(?:^|\n *)/
+	// 暂时不打算适配制表符（因为会有bug/: ）
+	defines: [
+		// (?m) ^匹配每行开头
+		// 不使用是因为会导致代码块不渲染，优化暂时搁置
+		"prefix": /(?:^|\n) */
 		"title": {match: include("prefix") + /#{1,6} .*/, 0: "title"}
 		"escape": {match: /\\./, 0: "escape"}
 
@@ -34,7 +46,7 @@
 		"setextTitle": {match: /(?m)^.+(?<!^-+|=+)\n^(=+|-+)$/, 0: "title"}
 		// "setextTitle": {match: /(?m)^\s^(?:.+\n){1,}^( {0,3}|-{3,}|={3,}) {0,}$/, recordAllGroups: true, 0: "title"}
 
-		"splitLine": {match: /(?m)^\s|[-=]*^ {0,3}(\*{3,}|-{3,}|_{3,}) {0,}$/, 0: "split_line"}
+		"splitLine": {match: /(?m)^(\s*?$|[-=]*)^ {0,3}(\*{3,}|-{3,}|_{3,}) {0,}$/, 0: "split_line"}
 
 		// 有点bug暂时没法用
 		// "quoteBackground": include("prefix") + />.*/
@@ -43,7 +55,7 @@
 	// lineBackground: {match: include("quoteBackground"), color: "quote_background"}
 	lineBackground: {match: /(?m)^ *>.*/, color: "quote_background"}
 	
-	// 取消注释下行，为分隔符添加背景
+	// 取消注释下行，为分割线添加背景
 	// lineBackground: {match: /^( {0,3}\*{3,}|-{3,}|_{3,})$/, color: "default"}
 
 	contains: [
@@ -54,6 +66,7 @@
 		{include: "splitLine"}
 		{match: include("prefix") + /[1-9][0-9]*\. .*/, 0: "ordered_list"}
 		{match: include("prefix") + /[*+-] .*/, 0: "unordered_list"}
+		{match: /> *\[(!)(?:(NOTE)|(TIP)|(IMPORTANT)|(WARNING)|(CAUTION))\](?:\n>(.*))+/, recordAllGroups: true,0: "quote_text" 1: "感叹号" 2: "quote_note_text" 3: "quote_tip_text" 4: "quote_important_text" 5: "quote_warning_text" 6: "quote_caution_text" 7: "default"}
 		{match: /(?m)^ *>.*/, 0: "quote_text"}
 
 		// 已经把链接匹配的优化雏形放这了，等待我的后续更新吧~
