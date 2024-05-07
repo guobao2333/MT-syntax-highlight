@@ -17,10 +17,12 @@
 > 但是有一点不要搞错了，虽然我知道VSCode是个很好用的代码编辑器，但那只限于电脑。因为我很喜欢随时随地写代码，而在移动端我更加偏向使用MT管理器，这就是我的理由。
 
 # Change Log | 更新日志
-## 2024-5-2
-### Fixed | 修复
-github_markdown - [1.0.3](https://github.com/guobao2333/MT-syntax-highlight/commit/76c1f9a)
-  1. 修复了上个版本导致的代码块渲染失效
+## 2024-5-7
+### github_markdown - [1.0.5](https://github.com/guobao2333/MT-syntax-highlight/commit/ddf18a0)
+#### Fixed | 修复
+1. 修复因上个版本导致的列表前无空格则不渲染的问题
+#### Added | 新增
++ 添加了github的提示引用块渲染
 
 > 仅展示最新文件变更版本，更多版本细节请[查看完整变更日志](CHANGELOG.md)
 
@@ -34,6 +36,7 @@ github_markdown - [1.0.3](https://github.com/guobao2333/MT-syntax-highlight/comm
 <details>
 <summary>github markdown</summary>
 
+你可以在`preview/github_markdown/`目录下找到[预览文档](preview/github_markdown/preview.md)，在mt管理器中打开即可查看效果。
 ![light亮色模式](preview/github_markdown/light.jpg)
 
 ![dark暗色模式](preview/github_markdown/dark.jpg)
