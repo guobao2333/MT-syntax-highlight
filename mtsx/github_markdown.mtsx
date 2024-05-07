@@ -1,5 +1,5 @@
 {
-	name: ["github_markdown", ".markdown", ".md"]
+	name: ["github_markdown", ".markdown", ".md", ".mkd", ".mkdn", ".mdtxt", ".mdown"]
 	ignoreCase: false
 	colors: [
 		"title", #E06C75, #E06C75
@@ -30,7 +30,12 @@
 
 		// 实现了基本渲染，暂时搁置优化匹配
 		"link": {match: /(!)?(\[)(.*)(\])(\()(.*?)( ".*?")?(\))/, 1: "感叹号" 2: "括号" 3: "url_text" 4: "括号" 5: "括号" 6: "url" 7: "url_title" 8: "括号"}
-		"splitLine": {match: /(?m)^( {0,3}\*{3,}|-{3,}|_{3,}) {0,}$/, 0: "split_line"}
+
+		"setextTitle": {match: /(?m)^.+(?<!^-+|=+)\n^(=+|-+)$/, 0: "title"}
+		// "setextTitle": {match: /(?m)^\s^(?:.+\n){1,}^( {0,3}|-{3,}|={3,}) {0,}$/, recordAllGroups: true, 0: "title"}
+
+		"splitLine": {match: /(?m)^\s|[-=]*^ {0,3}(\*{3,}|-{3,}|_{3,}) {0,}$/, 0: "split_line"}
+
 		// 有点bug暂时没法用
 		// "quoteBackground": include("prefix") + />.*/
 	]
@@ -38,11 +43,12 @@
 	// lineBackground: {match: include("quoteBackground"), color: "quote_background"}
 	lineBackground: {match: /(?m)^ *>.*/, color: "quote_background"}
 	
-	// 取消注释下行为分隔符添加背景
+	// 取消注释下行，为分隔符添加背景
 	// lineBackground: {match: /^( {0,3}\*{3,}|-{3,}|_{3,})$/, color: "default"}
 
 	contains: [
 		{include: "title"}
+		{include: "setextTitle"}
 		{include: "link"}
 		{include: "escape"}
 		{include: "splitLine"}
@@ -50,6 +56,8 @@
 		{match: include("prefix") + /[*+-] .*/, 0: "unordered_list"}
 		{match: /(?m)^ *>.*/, 0: "quote_text"}
 
+		// 已经把链接匹配的优化雏形放这了，等待我的后续更新吧~
+		// 或者你也可以自行将下方代码补全
 		// {
 			// start: {
 				// start: {match: /\[/}
@@ -65,6 +73,7 @@
 				
 			// ]
 		// }
+
 		{
 			start: {match: include("prefix") + /(?i)`{3}([ a-z]*)/, 0: "code_block" 1: "syntax_name"}
 			end: {match: include("prefix") + /`{3}|$/, 0: "code_block"}
