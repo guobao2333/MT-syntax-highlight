@@ -7,18 +7,51 @@
 > 版本号前增加文件名作为标题： `文件名 - 版本号 - 日期`  
 > 如果某一天进行了多次更新，且为同一类型，则合并至同一个二/三级标题下，其下属标题顺延增加。
 
+## github_markdown - 2024-5-14
+### [2.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/792634d)
+**好消息！代码重构了！**
+
+#### Removed | 移除
+
+- 移除了引用的内置匹配器：`#ESCAPED_CHAR#`
+> 根据GFM的解释，`\`只会将ASCII字符转义为普通字符
+
+- 删除了不常见的文件后缀
+- 删除了短代码的转义规则
+
+#### Changed | 变化
+
+* 将语法列表中显示的名称从`github_markdown`改为`GitHub Flavored Markdown`
+* 将部分`match匹配器`移动至`defines`属性块中
+
+#### Refactored | 优化
+
+* 列表现在能够渲染其他语法(例如脚注)
+* 将有/无序列表统一合并为`list`
+* 将标题统一合并为`title`
+* 将警报提示块和引用块统一合并为`quote`
+* 调整了部分配色，观感大幅提升~
+* 优化代码结构，可读性提升~
+
+#### Added | 新增
+
++ 新增github的脚注渲染
++ 新增github的数学公式渲染
++ 新增`ASCII`字符转义渲染
+
+---
 ## github_markdown - 2024-5-7
 ### [1.0.5](https://github.com/guobao2333/MT-syntax-highlight/commit/ddf18a0)
 #### Fixed | 修复
 
-1. 修复因上个版本导致的列表前无空格则不渲染的问题
+1. 修复因上个版本导致的列表前无空格会不渲染
 
 #### Added | 新增
 
-+ 添加了github的提示引用块渲染
++ 新增github的提示引用块渲染
 
 ### [1.0.4](https://github.com/guobao2333/MT-syntax-highlight/commit/39a1506)
-#### Changed | 变更
+#### Changed | 变化
 
 * 如果分割线`<hr/>`上一行也是分割线，现在都将会渲染
 
@@ -26,6 +59,7 @@
 
 + 新增setext标题渲染
 
+---
 ## github_markdown - 2024-5-2
 ### [1.0.3](https://github.com/guobao2333/MT-syntax-highlight/commit/76c1f9a)
 #### Fixed | 修复
@@ -42,7 +76,7 @@
 
 1. 修复了引用块背景渲染与字体渲染不一致的错误
 
-#### Changed | 变更
+#### Changed | 变化
 
 * 将预览图调整至 `preview/` 目录下
 * 更新和优化了文档
