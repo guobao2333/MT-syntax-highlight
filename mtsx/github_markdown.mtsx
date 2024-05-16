@@ -1,15 +1,16 @@
 {
-	name: ["github_markdown", ".markdown", ".md", ".mkd", ".mkdn", ".mdtxt", ".mdown"]
+	name: ["GitHub Flavored Markdown", ".md"]
 	ignoreCase: false
 	colors: [
 		"title", #E06C75, #E06C75
 		"escape" > "strEscape"
-		"ordered_list" > "number"
-		"unordered_list" > "number"
-		"short_code" > "string"
-		"code_block", #7050E0, #835CBD
+		"list" > "number"
+		"footnote", #4493F8, #4493F8
+		"math_short" > "meta"
+		"code_short" > "string"
+		"code_block", #7050E0, #7050E0
 		"syntax_name", #871094, #A64EAD
-		"code_content", #BABABA, #BABABA
+		"code_content", #AA9AB8, #AA9AB8
 		"quote_note", #2F81F7, #2F81F7
 		"quote_note_text", #2F81F7, #2F81F7
 		"quote_tip", #238636, #238636
@@ -22,70 +23,95 @@
 		"quote_caution_text", #F85149, #F85149
 		"quote_text", #777, #858F9A
 		"quote_background", #DDD, #444
-		"感叹号", #E8BF6A, #E8BF6A
+		"exclamation_mark", #FF7000, #D2B72D
 		"url_text", #508090, #58908A
 		"url_title" > "string"
 		"url", #508090, #58908A
-		"括号", #999, #999
+		"bracket", #999, #999
 		"split_line", #FFF000, #BBB529
 	]
 	// github可以使用html标签，注释后不渲染
 	comment: {startsWith: "<!--", endsWith: "-->"}
 
-	// 暂时不打算适配制表符（因为会有bug/: ）
+	// 暂时不打算适配制表符（因为会有bug）
 	defines: [
 		// (?m) ^匹配每行开头
-		// 不使用是因为会导致代码块不渲染，优化暂时搁置
+		// 但这里使用会导致代码块不渲染
 		"prefix": /(?:^|\n) */
-		"title": {match: include("prefix") + /#{1,6} .*/, 0: "title"}
-		"escape": {match: /\\./, 0: "escape"}
+		
+		// lineBackground有点bug暂时没法用include
+		// "quoteBackground": /(?m)^ *>.*/
 
-		// 实现了基本渲染，暂时搁置优化匹配
-		"link": {match: /(!)?(\[)(.*)(\])(\()(.*?)( ".*?")?(\))/, 1: "感叹号" 2: "括号" 3: "url_text" 4: "括号" 5: "括号" 6: "url" 7: "url_title" 8: "括号"}
-
-		"setextTitle": {match: /(?m)^.+(?<!^-+|=+)\n^(=+|-+)$/, 0: "title"}
-		// "setextTitle": {match: /(?m)^\s^(?:.+\n){1,}^( {0,3}|-{3,}|={3,}) {0,}$/, recordAllGroups: true, 0: "title"}
+		"title": [
+			{match: /(?m)^ {0,3}#{1,6} .*/, 0: "title"}
+			// setext 标题
+			{match: /(?m)^.+(?<!^-+|=+)\n^(=+|-+)$/, 0: "title"}
+		]
 
 		"splitLine": {match: /(?m)^(\s*?$|[-=]*)^ {0,3}(\*{3,}|-{3,}|_{3,}) {0,}$/, 0: "split_line"}
+		"escape": {match: /\\[!"#$%&'()*+,-.\\\/:;<=>?@\[\]\^_`{|}~]/, 0: "escape"}
 
-		// 有点bug暂时没法用
-		// "quoteBackground": include("prefix") + />.*/
+		// 实现了基本渲染，暂时搁置优化
+		// 感觉已经没必要再改了……改复杂了不说，逻辑和效果也会变，暂时就这样
+		"link": {match: /(!)?(\[)(.*)(\])(\()(.*?)( ".*?")?(\))/, 1: "exclamation_mark" 2: "bracket" 3: "url_text" 4: "bracket" 5: "bracket" 6: "url" 7: "url_title" 8: "bracket"}
+
+		"all_list": [
+			{match: include("prefix") + /[1-9][0-9]*\. /}
+			{match: include("prefix") + /[*+-] /}
+		]
+
+		"list": [
+			{start: {include: "all_list"}
+			end: {match: /(?m)$/}
+			color: "list"
+			matchEndFirst: true
+			contains: [
+				{include: "escape"}
+				{include: "footnote"}
+				{include: "link"}
+			]}
+		]
+
+		// LaTeX
+		"math": [
+			{start: {match: /\$/, 0: "math_short"}
+			end: {match: /(?m)\$|$/, 0: "math_short"}
+			color: "string"
+			matchEndFirst: true
+			contains: {
+				{match: /\\\$/, 0: "escape"}
+			}}
+		]
+
+		"quote": [
+			{match: /(?m)^> *\[(!)(?:(NOTE)|(TIP)|(IMPORTANT)|(WARNING)|(CAUTION))\](?:\n>(.*))+/, recordAllGroups: true,0: "quote_text" 1: "exclamation_mark" 2: "quote_note_text" 3: "quote_tip_text" 4: "quote_important_text" 5: "quote_warning_text" 6: "quote_caution_text" 7: "default"}
+			{match: /(?m)^ *>.*/, 0: "quote_text"}
+		]
+
+		"footnote": [
+			{match: /(?m)^\[\^.+?\]: /, 0: "footnote"}
+			{match: /\[\^.+?\]/, 0: "footnote"}
+		]
 	]
+
+	// ##################################################################
+	// 取消注释下行，为分割线添加背景
+	// lineBackground: {match: /^( {0,3}\*{3,}|-{3,}|_{3,})$/, color: "default"}
+	// ##################################################################
 
 	// lineBackground: {match: include("quoteBackground"), color: "quote_background"}
 	lineBackground: {match: /(?m)^ *>.*/, color: "quote_background"}
-	
-	// 取消注释下行，为分割线添加背景
-	// lineBackground: {match: /^( {0,3}\*{3,}|-{3,}|_{3,})$/, color: "default"}
 
 	contains: [
+		// 这样写是为了后续方便调整顺序，以最佳顺序高亮语法，避免bug
 		{include: "title"}
-		{include: "setextTitle"}
 		{include: "link"}
 		{include: "escape"}
+		{include: "footnote"}
+		{include: "math"}
 		{include: "splitLine"}
-		{match: include("prefix") + /[1-9][0-9]*\. .*/, 0: "ordered_list"}
-		{match: include("prefix") + /[*+-] .*/, 0: "unordered_list"}
-		{match: /> *\[(!)(?:(NOTE)|(TIP)|(IMPORTANT)|(WARNING)|(CAUTION))\](?:\n>(.*))+/, recordAllGroups: true,0: "quote_text" 1: "感叹号" 2: "quote_note_text" 3: "quote_tip_text" 4: "quote_important_text" 5: "quote_warning_text" 6: "quote_caution_text" 7: "default"}
-		{match: /(?m)^ *>.*/, 0: "quote_text"}
-
-		// 已经把链接匹配的优化雏形放这了，等待我的后续更新吧~
-		// 或者你也可以自行将下方代码补全
-		// {
-			// start: {
-				// start: {match: /\[/}
-				// end: {match: /\]/}
-			// }
-			// end: {
-				// start: {match: /\(/}
-				// end: {match: /\)/}
-			// }
-			// color: "string"
-			// matchEndFirst: true //优先匹配结尾
-			// contains: [
-				
-			// ]
-		// }
+		{include: "list"}
+		{include: "quote"}
 
 		{
 			start: {match: include("prefix") + /(?i)`{3}([ a-z]*)/, 0: "code_block" 1: "syntax_name"}
@@ -99,12 +125,13 @@
 		}
 		{
 			start: {match: /`/}
-			end: {match: /`|$/}
-			color: "short_code"
-			contains: [
-				{include: "escape"}
-			]
+			end: {match: /(?m)`|$/}
+			color: "code_short"
+			// matchEndFirst: true
+			// contains: [
+				// 以我当前水平和mt的局限性，只能做到没有`闭合的后面所有字符不渲染，但这个`还是会渲染，有能力的大牛可以自己尝试一下(:  但这又会让后面所有内容全都不渲染……放弃了):
+				// {match: /(?m)(?<=`).*$/, 0: "default"}
+			// ]
 		}
-		{builtin: #ESCAPED_CHAR#}
 	]
 }
