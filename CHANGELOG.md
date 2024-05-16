@@ -7,7 +7,7 @@
 > 版本号前增加文件名作为标题： `文件名 - 版本号 - 日期`  
 > 如果某一天进行了多次更新，且为同一类型，则合并至同一个二/三级标题下，其下属标题顺延增加。
 
-## github_markdown - 2024-5-14
+## github_markdown - 2024-5-16
 ### [2.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/792634d)
 **好消息！代码重构了！**
 

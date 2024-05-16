@@ -17,7 +17,7 @@
 > 但是有一点不要搞错了，虽然我知道VSCode是个很好用的代码编辑器，但那只限于电脑。因为我很喜欢随时随地写代码，而在移动端我更加偏向使用MT管理器，这就是我的理由。
 
 # Change Log | 更新日志
-## 2024-5-14
+## 2024-5-16
 ### github_markdown - [2.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/792634d)
 **好消息！代码重构了！**
 #### Added | 新增
