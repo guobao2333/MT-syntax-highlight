@@ -1,16 +1,32 @@
+	// ################# LICENCE START ################
+	// Copyright (c) 2024 @shiguobaona
+	
+	// Licensed under the Apache License, Version 2.0 (the "License");
+	// you may not use this file except in compliance with the License.
+	// You may obtain a copy of the License at
+	
+	//		http://www.apache.org/licenses/LICENSE-2.0
+	
+	// Unless required by applicable law or agreed to in writing, software
+	// distributed under the License is distributed on an "AS IS" BASIS,
+	// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	// See the License for the specific language governing permissions and
+	// limitations under the License.
+	// ################# LICENCE END ##################
 {
 	name: ["GitHub Flavored Markdown", ".md"]
 	ignoreCase: false
 	colors: [
-		"title", #E06C75, #E06C75
-		"escape" > "strEscape"
+		"title", #E03030, #E06C75
+		"escape", #866BD3, #CC7832
 		"list" > "number"
 		"footnote", #4493F8, #4493F8
-		"math_short" > "meta"
-		"code_short" > "string"
+		"math" > "meta"
+		"code" > "string"
 		"code_block", #7050E0, #7050E0
-		"syntax_name", #871094, #A64EAD
 		"code_content", #AA9AB8, #AA9AB8
+		"code_block_background", #303030, #000
+		"code_syntax_name", #871094, #A64EAD
 		"quote_note", #2F81F7, #2F81F7
 		"quote_note_text", #2F81F7, #2F81F7
 		"quote_tip", #238636, #238636
@@ -22,22 +38,20 @@
 		"quote_caution", #DA3633, #DA3633
 		"quote_caution_text", #F85149, #F85149
 		"quote_text", #777, #858F9A
-		"quote_background", #DDD, #444
+		"quote_background", #DDD, #353535
 		"exclamation_mark", #FF7000, #D2B72D
 		"url_text", #508090, #58908A
 		"url_title" > "string"
 		"url", #508090, #58908A
 		"bracket", #999, #999
 		"split_line", #FFF000, #BBB529
+		"split_line_background", #C7C7E7, #30363D
 	]
 	// github可以使用html标签，注释后不渲染
 	comment: {startsWith: "<!--", endsWith: "-->"}
 
-	// 暂时不打算适配制表符（因为会有bug）
 	defines: [
-		// (?m) ^匹配每行开头
-		// 但这里使用会导致代码块不渲染
-		"prefix": /(?:^|\n) */
+		"prefix": /(?:^|\n)[\t ]*/
 		
 		// lineBackground有点bug暂时没法用include
 		// "quoteBackground": /(?m)^ *>.*/
@@ -51,22 +65,35 @@
 		"splitLine": {match: /(?m)^(\s*?$|[-=]*)^ {0,3}(\*{3,}|-{3,}|_{3,}) {0,}$/, 0: "split_line"}
 		"escape": {match: /\\[!"#$%&'()*+,-.\\\/:;<=>?@\[\]\^_`{|}~]/, 0: "escape"}
 
-		// 实现了基本渲染，暂时搁置优化
-		// 感觉已经没必要再改了……改复杂了不说，逻辑和效果也会变，暂时就这样
-		"link": {match: /(!)?(\[)(.*)(\])(\()(.*?)( ".*?")?(\))/, 1: "exclamation_mark" 2: "bracket" 3: "url_text" 4: "bracket" 5: "bracket" 6: "url" 7: "url_title" 8: "bracket"}
+		// 实现了基本渲染，就是性能差点
+		// 感觉已经没必要再改了……以现在的能够实现的效果来看，会越改越复杂了不说，逻辑和效果也会变，暂时就这样
+		"link": {match: /(!)?(\[)(.*?)(\])(\()(.*?)( ".*?")?(\))/, 1: "exclamation_mark" 2: "bracket" 3: "url_text" 4: "bracket" 5: "bracket" 6: "url" 7: "url_title" 8: "bracket"}
+
+		"shortCode": {match: /`.+?`/, 0: "code"}
+
+		"codeBlock": [
+			{match: /(?m)^( {4,}|\t{1,})(?!([-+*]|1.) ).*/, 0: "code_content"}
+
+			{start: {match: include("prefix") + /(?m)`{3}([ a-z]*)/, 0: "code_block" 1: "code_syntax_name"}
+			end: {match: include("prefix") + /`{3}|$/, 0: "code_block"}
+			color: "code_content"}
+
+			{start: {match: include("prefix") + /(?m)~{3}([ a-z]*)/, 0: "code_block" 1: "code_syntax_name"}
+			end: {match: include("prefix") + /~{3}|$/, 0: "code_block"}
+			color: "code_content"}
+		]
 
 		"all_list": [
 			{match: include("prefix") + /[1-9][0-9]*\. /}
 			{match: include("prefix") + /[*+-] /}
 		]
-
 		"list": [
 			{start: {include: "all_list"}
 			end: {match: /(?m)$/}
 			color: "list"
-			matchEndFirst: true
 			contains: [
 				{include: "escape"}
+				{include: "shortCode"}
 				{include: "footnote"}
 				{include: "link"}
 			]}
@@ -74,8 +101,8 @@
 
 		// LaTeX
 		"math": [
-			{start: {match: /\$/, 0: "math_short"}
-			end: {match: /(?m)\$|$/, 0: "math_short"}
+			{start: {match: /\$/, 0: "math"}
+			end: {match: /(?m)\$|$/, 0: "math"}
 			color: "string"
 			matchEndFirst: true
 			contains: {
@@ -94,9 +121,11 @@
 		]
 	]
 
+	lineBackground: {match: /(?m)^( {4,}|\t{1,})(?!([-+*]|1.) ).*/, color: "code_block_background"}
+
 	// ##################################################################
 	// 取消注释下行，为分割线添加背景
-	// lineBackground: {match: /^( {0,3}\*{3,}|-{3,}|_{3,})$/, color: "default"}
+	// lineBackground: {match: /(?m)^( {0,3}\*{3,}|-{3,}|_{3,})$/, color: "split_line_background"}
 	// ##################################################################
 
 	// lineBackground: {match: include("quoteBackground"), color: "quote_background"}
@@ -105,33 +134,14 @@
 	contains: [
 		// 这样写是为了后续方便调整顺序，以最佳顺序高亮语法，避免bug
 		{include: "title"}
-		{include: "link"}
-		{include: "escape"}
 		{include: "footnote"}
+		{include: "link"}
+		{include: "shortCode"}
+		{include: "escape"}
 		{include: "math"}
 		{include: "splitLine"}
 		{include: "list"}
 		{include: "quote"}
-
-		{
-			start: {match: include("prefix") + /(?i)`{3}([ a-z]*)/, 0: "code_block" 1: "syntax_name"}
-			end: {match: include("prefix") + /`{3}|$/, 0: "code_block"}
-			color: "code_content"
-		}
-		{
-			start: {match: include("prefix") + /(?i)~{3}([ a-z]*)/, 0: "code_block" 1: "syntax_name"}
-			end: {match: include("prefix") + /~{3}|$/, 0: "code_block"}
-			color: "code_content"
-		}
-		{
-			start: {match: /`/}
-			end: {match: /(?m)`|$/}
-			color: "code_short"
-			// matchEndFirst: true
-			// contains: [
-				// 以我当前水平和mt的局限性，只能做到没有`闭合的后面所有字符不渲染，但这个`还是会渲染，有能力的大牛可以自己尝试一下(:  但这又会让后面所有内容全都不渲染……放弃了):
-				// {match: /(?m)(?<=`).*$/, 0: "default"}
-			// ]
-		}
+		{include: "codeBlock"}
 	]
 }
