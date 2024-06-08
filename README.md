@@ -19,16 +19,17 @@
 # Change Log | 更新日志
 ## 2024-6-8
 ### github_markdown - [2.1.1](https://github.com/guobao2333/MT-syntax-highlight/commit/156ec0c)
+> [!IMPORTANT]
+> 此版本为提前更新！  
+> 仅适用于MT管理器 `2.16.0` 及以上版本！  
+> 如果您的版本为 `2.15.7` 请使用[此版本](https://github.com/guobao2333/MT-syntax-highlight/blob/main/CHANGELOG.md#github_markdown---210---2024-5-27)
 #### Changed | 变化
 
-_**改为使用推荐的属性名**_
-> [!IMPORTANT]
-> 本条为提前更新！
-> 仅适用于MT管理器 `2.16.0` 及以上版本！
-* `color(s)` -> `style(s)`
+* _**改为使用推荐的属性名**_
+`color(s)` -> `style(s)`
 
-_**调整语法名称**_
-* `GitHub Flavored Markdown` -> ` Markdown(GFM)`
+* _**调整语法名称**_
+`GitHub Flavored Markdown` -> ` Markdown(GFM)`
 
 > 仅展示最新版本的部分变化，更多版本细节请[查看完整变更日志](CHANGELOG.md)
 

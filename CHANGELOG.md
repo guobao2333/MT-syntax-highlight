@@ -8,15 +8,16 @@
 > 如果某一天进行了多次更新，且为同一类型，则合并至同一个二/三级标题下，其下属标题顺延增加。
 
 ## github_markdown - [2.1.1](https://github.com/guobao2333/MT-syntax-highlight/commit/156ec0c) - 2024-6-8
+> [!IMPORTANT]
+> 此版本为提前更新！  
+> 仅适用于MT管理器 `2.16.0` 及以上版本！
 ### Changed | 变化
 
-_**改为使用推荐的属性名**_
-> [!IMPORTANT]
-> 仅适用于MT管理器 `2.16.0` 及以上版本！
-* `color(s)` -> `style(s)`
+* _**改为使用推荐的属性名**_
+`color(s)` -> `style(s)`
 
-_**调整语法名称**_
-* `GitHub Flavored Markdown` -> ` Markdown(GFM)`
+* _**调整语法名称**_
+`GitHub Flavored Markdown` -> ` Markdown(GFM)`
 
 ---
 ## github_markdown - [2.1.0](https://github.com/guobao2333/MT-syntax-highlight/commit/73d9f05) - 2024-5-27
