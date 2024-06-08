@@ -14,9 +14,9 @@
 	// limitations under the License.
 	// ################# LICENCE END ##################
 {
-	name: ["GitHub Flavored Markdown", ".md"]
+	name: ["Markdown(GFM)", ".md"]
 	ignoreCase: false
-	colors: [
+	styles: [
 		"title", #E03030, #E06C75
 		"escape", #866BD3, #CC7832
 		"list" > "number"
@@ -62,12 +62,22 @@
 			{match: /(?m)^.+(?<!^-+|=+)\n^(=+|-+)$/, 0: "title"}
 		]
 
-		"splitLine": {match: /(?m)^(\s*?$|[-=]*)^ {0,3}(\*{3,}|-{3,}|_{3,}) {0,}$/, 0: "split_line"}
+		"splitLine": {match: /(?m)^(\s*$|[-=]*)^ {0,3}(\*{3,}|-{3,}|_{3,}) {0,}$/, 0: "split_line"}
 		"escape": {match: /\\[!"#$%&'()*+,-.\\\/:;<=>?@\[\]\^_`{|}~]/, 0: "escape"}
 
 		// 实现了基本渲染，就是性能差点
 		// 感觉已经没必要再改了……以现在的能够实现的效果来看，会越改越复杂了不说，逻辑和效果也会变，暂时就这样
-		"link": {match: /(!)?(\[)(.*?)(\])(\()(.*?)( ".*?")?(\))/, 1: "exclamation_mark" 2: "bracket" 3: "url_text" 4: "bracket" 5: "bracket" 6: "url" 7: "url_title" 8: "bracket"}
+		"link": {
+			match: /(!)?(\[)(.*?)(\])(\()(.*?)( ".*?")?(\))/
+			1: "exclamation_mark"
+			2: "bracket"
+			3: "url_text"
+			4: "bracket"
+			5: "bracket"
+			6: "url"
+			7: "url_title"
+			8: "bracket"
+		}
 
 		"shortCode": {match: /`.+?`/, 0: "code"}
 
@@ -76,11 +86,11 @@
 
 			{start: {match: include("prefix") + /(?m)`{3}([ a-z]*)/, 0: "code_block" 1: "code_syntax_name"}
 			end: {match: include("prefix") + /`{3}|$/, 0: "code_block"}
-			color: "code_content"}
+			style: "code_content"}
 
 			{start: {match: include("prefix") + /(?m)~{3}([ a-z]*)/, 0: "code_block" 1: "code_syntax_name"}
 			end: {match: include("prefix") + /~{3}|$/, 0: "code_block"}
-			color: "code_content"}
+			style: "code_content"}
 		]
 
 		"all_list": [
@@ -90,7 +100,7 @@
 		"list": [
 			{start: {include: "all_list"}
 			end: {match: /(?m)$/}
-			color: "list"
+			style: "list"
 			contains: [
 				{include: "escape"}
 				{include: "shortCode"}
@@ -103,7 +113,7 @@
 		"math": [
 			{start: {match: /\$/, 0: "math"}
 			end: {match: /(?m)\$|$/, 0: "math"}
-			color: "string"
+			style: "string"
 			matchEndFirst: true
 			contains: {
 				{match: /\\\$/, 0: "escape"}
@@ -111,7 +121,18 @@
 		]
 
 		"quote": [
-			{match: /(?m)^> *\[(!)(?:(NOTE)|(TIP)|(IMPORTANT)|(WARNING)|(CAUTION))\](?:\n>(.*))+/, recordAllGroups: true,0: "quote_text" 1: "exclamation_mark" 2: "quote_note_text" 3: "quote_tip_text" 4: "quote_important_text" 5: "quote_warning_text" 6: "quote_caution_text" 7: "default"}
+			{
+				match: /(?m)^> *\[(!)(?:(NOTE)|(TIP)|(IMPORTANT)|(WARNING)|(CAUTION))\](?:\n>(.*))+/
+				recordAllGroups: true
+				0: "quote_text"
+				1: "exclamation_mark"
+				2: "quote_note_text"
+				3: "quote_tip_text"
+				4: "quote_important_text"
+				5: "quote_warning_text"
+				6: "quote_caution_text"
+				7: "default"
+			}
 			{match: /(?m)^ *>.*/, 0: "quote_text"}
 		]
 
@@ -121,15 +142,15 @@
 		]
 	]
 
-	lineBackground: {match: /(?m)^( {4,}|\t{1,})(?!([-+*]|1.) ).*/, color: "code_block_background"}
+	lineBackground: {match: /(?m)^( {4,}|\t{1,})(?!([-+*]|1.) ).*/, style: "code_block_background"}
 
 	// ##################################################################
 	// 取消注释下行，为分割线添加背景
-	// lineBackground: {match: /(?m)^( {0,3}\*{3,}|-{3,}|_{3,})$/, color: "split_line_background"}
+	// lineBackground: {match: /(?m)^( {0,3}\*{3,}|-{3,}|_{3,})$/, style: "split_line_background"}
 	// ##################################################################
 
-	// lineBackground: {match: include("quoteBackground"), color: "quote_background"}
-	lineBackground: {match: /(?m)^ *>.*/, color: "quote_background"}
+	// lineBackground: {match: include("quoteBackground"), style: "quote_background"}
+	lineBackground: {match: /(?m)^ *>.*/, style: "quote_background"}
 
 	contains: [
 		// 这样写是为了后续方便调整顺序，以最佳顺序高亮语法，避免bug
