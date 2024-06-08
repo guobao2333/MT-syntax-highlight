@@ -17,17 +17,18 @@
 > 但是有一点不要搞错了，虽然我知道VSCode是个很好用的代码编辑器，但那只限于电脑。虽然vsc也能在浏览器使用，不过体验差强人意……
 
 # Change Log | 更新日志
-## 2024-5-27
-### github_markdown - [2.1.0](https://github.com/guobao2333/MT-syntax-highlight/commit/73d9f05)
-#### Added | 新增
-
-+ 新增缩进代码块渲染
-
+## 2024-6-8
+### github_markdown - [2.1.1](https://github.com/guobao2333/MT-syntax-highlight/commit/156ec0c)
 #### Changed | 变化
 
-_**调整了历史版本号，使其遵守版本控制规范**_
-1. `1.0.5` -> `1.2.0`
-2. `1.0.4` -> `1.1.0`
+_**改为使用推荐的属性名**_
+> [!IMPORTANT]
+> 本条为提前更新！
+> 仅适用于MT管理器 `2.16.0` 及以上版本！
+* `color(s)` -> `style(s)`
+
+_**调整语法名称**_
+* `GitHub Flavored Markdown` -> ` Markdown(GFM)`
 
 > 仅展示最新版本的部分变化，更多版本细节请[查看完整变更日志](CHANGELOG.md)
 
@@ -81,4 +82,4 @@ _**调整了历史版本号，使其遵守版本控制规范**_
 2. [GitHub Flavored Markdown Spec](https://github.github.com/gfm)
 
 [^GFM]: [GitHub Flavored Markdown](https://github.github.com/gfm)（通常缩写为 GFM）是 Markdown 的方言。该正式规范基于 [CommonMark](https://commonmark.org) 规范，定义了该方言的语法和语义。
-[^CMD]: 通用标记降低(**C**ommon **M**rak**D**own) 机翻一般把markdown译为`降价`，而我的这个缩写可能会与命令行混淆，特此说明。
+[^CMD]: 通用标记降低(**C**ommon **M**rak**D**own) 机翻一般把markdown译为`降价`……而我的这个缩写可能会与命令行混淆，由于这是我的个人称呼喜好，所以特此说明。
