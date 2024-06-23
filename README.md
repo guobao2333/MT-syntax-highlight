@@ -17,19 +17,11 @@
 > 但是有一点不要搞错了，虽然我知道VSCode是个很好用的代码编辑器，但那只限于电脑。虽然vsc也能在浏览器使用，不过体验差强人意……
 
 # Change Log | 更新日志
-## 2024-6-8
-### github_markdown - [2.1.1](https://github.com/guobao2333/MT-syntax-highlight/commit/156ec0c)
-> [!IMPORTANT]
-> 此版本为提前更新！  
-> 仅适用于MT管理器 `2.16.0` 及以上版本！  
-> 如果您的版本为 `2.15.7` 请使用[此版本](https://github.com/guobao2333/MT-syntax-highlight/blob/main/CHANGELOG.md#github_markdown---210---2024-5-27)
-#### Changed | 变化
+## Added | 新增
+### gitignore - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/6299c9a)
 
-* _**改为使用推荐的属性名**_
-`color(s)` -> `style(s)`
-
-* _**调整语法名称**_
-`GitHub Flavored Markdown` -> ` Markdown(GFM)`
++ 新增语法高亮：[git排除文件](mtsx/gitignore.mtsx)
+  有关gitignore的文档请看这里：[Git - gitignore Documentation](https://git-scm.com/docs/gitignore)
 
 > 仅展示最新版本的部分变化，更多版本细节请[查看完整变更日志](CHANGELOG.md)
 

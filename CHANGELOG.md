@@ -7,9 +7,17 @@
 > 版本号前增加文件名作为标题： `文件名 - 版本号 - 日期`  
 > 如果某一天进行了多次更新，且为同一类型，则合并至同一个二/三级标题下，其下属标题顺延增加。
 
+## 2024-6-24
+### Added | 新增
+#### gitignore - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/6299c9a)
+
++ 新增语法高亮：[git排除文件](mtsx/gitignore.mtsx)
+  有关gitignore的文档请看这里：[Git - gitignore Documentation](https://git-scm.com/docs/gitignore)
+  > 由于gitignore的语法较少，则可能首发即为最终版本。
+
+---
 ## github_markdown - [2.1.1](https://github.com/guobao2333/MT-syntax-highlight/commit/156ec0c) - 2024-6-8
 > [!IMPORTANT]
-> 此版本为提前更新！  
 > 仅适用于MT管理器 `2.16.0` 及以上版本！
 ### Changed | 变化
 
