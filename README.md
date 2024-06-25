@@ -17,7 +17,13 @@
 > 但是有一点不要搞错了，虽然我知道VSCode是个很好用的代码编辑器，但那只限于电脑。虽然vsc也能在浏览器使用，不过体验差强人意……
 
 # Change Log | 更新日志
-## gitignore - [1.1.0](https://github.com/guobao2333/MT-syntax-highlight/commit/ca80ab9) - 2024-6-25
+## 2024-6-25
+## gitignore - [1.1.1](https://github.com/guobao2333/MT-syntax-highlight/commit/ca80ab9)
+### Changed | 变化
+
+* 调整 `包含` 语法的背景色，让其不会影响文字清晰度。
+
+## gitignore - [1.1.0](https://github.com/guobao2333/MT-syntax-highlight/commit/ca80ab9)
 ### Fixed | 修复
 
 1. 通配符 `*` 在多于两个时，现在不会渲染。
@@ -33,13 +39,15 @@
 
 ---
 ## Update Plan | 更新计划
-- [ ] 通用Markdown语法
+- [x] Markdown(GFM)
+- [ ] 通用Markdown
 > 由于GFM[^GFM]与CMD[^CMD]之间存在较多差异，我计划在GFM常用语法更新完后，再分离出来
 
-- [ ] TypeScript语法
+- [ ] TypeScript
 - [ ] 优化MT原有自带语法
-  - [ ] HTML<sub>+JS+CSS</sub> (但bin说有性能问题……)
-  - [ ] JavaScript语法
+  - [ ] HTML <sub>+JS+CSS</sub> (但bin说有性能问题……)
+  - [ ] JavaScript
+  - [ ] Markdown
 - [ ] 更多的语法……
 
 # Preview | 预览
@@ -82,4 +90,4 @@
 3. [Git - gitignore Documentation](https://git-scm.com/docs/gitignore)
 
 [^GFM]: [GitHub Flavored Markdown](https://github.github.com/gfm)（通常缩写为 GFM）是 Markdown 的方言。该正式规范基于 [CommonMark](https://commonmark.org) 规范，定义了该方言的语法和语义。
-[^CMD]: 通用标记降低(**C**ommon **M**rak**D**own) 机翻一般把markdown译为`降价`……而我的这个缩写可能会与命令行混淆，由于这是我的个人称呼喜好，所以特此说明。
+[^CMD]: 通用标记降低(**C**ommon **M**rak**D**own) 机翻一般把markdown译为`降价`……而加了通用后的这个缩写可能会与命令行混淆，由于这是我的个人称呼喜好，所以特此说明。
