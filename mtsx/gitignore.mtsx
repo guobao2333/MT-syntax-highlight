@@ -19,7 +19,7 @@
 		"comment" #8C8C8C, #808080, //@I
 		// 取消上行注释将注释变为斜体
 		"escape" #866BD3, #866BD3, @B
-		"include" #43A047$B3F3D3, #43A047$4E7763, @B
+		"include" #43A047$C1FBC4, #43A047$2D4522, @B
 		"dot" #871094, #D2A8FF, @B
 		"character" #303CC3, #CC7832
 		"asterisk" #E4BC56, #B4B03C
