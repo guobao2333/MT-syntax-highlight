@@ -18,24 +18,23 @@
 	styles: [
 		"comment" #8C8C8C, #808080, //@I
 		// 取消上行注释将注释变为斜体
-		"inc", @I
 		"escape" #866BD3, #866BD3, @B
-		"include" #43A047, #43A047, @B
+		"include" #43A047$B3F3D3, #43A047$4E7763, @B
 		"dot" #871094, #D2A8FF, @B
-		"character" #0037A6, #CC7832
+		"character" #303CC3, #CC7832
 		"asterisk" #E4BC56, #B4B03C
-		"Iasterisk" > "asterisk", @BI
+		"Iasterisk" > "asterisk", @B
 		"ask" #55B7C4, #55B7C4
 	]
 
 	contains: [
-		{match: /(?m)^#.*/, 0: "comment"}
+		{match: /(?m)^(?:#.*)/, 0: "comment"}
 		{match: /(?m)^((?:\/)?([^ \/\n]+)(?:\/)?)+/, recordAllGroups: true,
-		  0: {match: /\\[*?]/, 0: "escape"}
-		  0: {match: /^(!).*/, 0: "inc" 1: "include"}
-		  1: {match: /^\\[#*!]/, 0: "escape"}
-		  2: {match: /(?<!\\)(\*)\*/, 0: "Iasterisk"}
-		  2: {match: /(?<!\\)(?:(\*)|(\?))/, 1: "asterisk" 2: "ask"}
+		  0: {match: /(?:\\[*?])/, 0: "escape"}
+		  0: {match: /^!/, 0: "include"}
+		  1: {match: /^(?:\\[#*!])/, 0: "escape"}
+		  2: {match: /(?<!\*)(?:(?<!\\)(\*)\*)/, 0: "Iasterisk"}
+		  2: {match: /(?<!\\|\*)(?:(\*)|(\?))/, 1: "asterisk" 2: "ask"}
 		  2: {match: /(?i)(\.)(?:[a-z]+)(?!\/)/, recordAllGroups: false, 1: "dot"}
 		  2: "character"}
 	]
