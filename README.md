@@ -17,11 +17,17 @@
 > 但是有一点不要搞错了，虽然我知道VSCode是个很好用的代码编辑器，但那只限于电脑。虽然vsc也能在浏览器使用，不过体验差强人意……
 
 # Change Log | 更新日志
-## Added | 新增
-### gitignore - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/6299c9a)
+## gitignore - [1.1.0](https://github.com/guobao2333/MT-syntax-highlight/commit/ca80ab9) - 2024-6-25
+### Fixed | 修复
 
-+ 新增语法高亮：[git排除文件](mtsx/gitignore.mtsx)
-  有关gitignore的文档请看这里：[Git - gitignore Documentation](https://git-scm.com/docs/gitignore)
+1. 通配符 `*` 在多于两个时，现在不会渲染。
+
+### Changed | 变化
+
+- 移除 `包含` 语法的斜体。
+  不过作为交换，为其添加了背景色。
+
+* 调整配色，观感提升~
 
 > 仅展示最新版本的部分变化，更多版本细节请[查看完整变更日志](CHANGELOG.md)
 
@@ -50,8 +56,7 @@
 </details>
 
 # Usage | 使用
-## List | 所有语法
-- [markdown(GFM)](mtsx/github_markdown.mtsx)[^GFM]
+请先前往[此处](mtsx/)查看所有语法，选择您需要的语法并下载。
 
 ## Install | 安装
 
@@ -73,6 +78,7 @@
 # References | 参考
 1. [mt语法高亮开发](https://mt2.cn/guide/file/mt-syntax.html)
 2. [GitHub Flavored Markdown Spec](https://github.github.com/gfm)
+3. [Git - gitignore Documentation](https://git-scm.com/docs/gitignore)
 
 [^GFM]: [GitHub Flavored Markdown](https://github.github.com/gfm)（通常缩写为 GFM）是 Markdown 的方言。该正式规范基于 [CommonMark](https://commonmark.org) 规范，定义了该方言的语法和语义。
 [^CMD]: 通用标记降低(**C**ommon **M**rak**D**own) 机翻一般把markdown译为`降价`……而我的这个缩写可能会与命令行混淆，由于这是我的个人称呼喜好，所以特此说明。

@@ -7,13 +7,25 @@
 > 版本号前增加文件名作为标题： `文件名 - 版本号 - 日期`  
 > 如果某一天进行了多次更新，且为同一类型，则合并至同一个二/三级标题下，其下属标题顺延增加。
 
+## gitignore - [1.1.0](https://github.com/guobao2333/MT-syntax-highlight/commit/ca80ab9) - 2024-6-25
+### Fixed | 修复
+
+1. 通配符 `*` 在多于两个时，现在不会渲染。
+
+### Changed | 变化
+
+- 移除 `包含` 语法的斜体。
+  不过作为交换，为其添加了背景色。
+
+* 调整配色，观感提升~
+
+---
 ## 2024-6-24
 ### Added | 新增
 #### gitignore - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/6299c9a)
 
 + 新增语法高亮：[git排除文件](mtsx/gitignore.mtsx)
   有关gitignore的文档请看这里：[Git - gitignore Documentation](https://git-scm.com/docs/gitignore)
-  > 由于gitignore的语法较少，则可能首发即为最终版本。
 
 ---
 ## github_markdown - [2.1.1](https://github.com/guobao2333/MT-syntax-highlight/commit/156ec0c) - 2024-6-8
@@ -77,7 +89,7 @@ _**调整了历史版本号，使其遵守版本控制规范**_
 * 将有/无序列表统一合并为`list`
 * 将标题统一合并为`title`
 * 将警报提示块和引用块统一合并为`quote`
-* 调整了部分配色，观感大幅提升~
+* 调整部分配色，观感大幅提升~
 * 优化代码结构，可读性提升~
 
 ### Added | 新增
