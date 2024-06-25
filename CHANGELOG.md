@@ -24,7 +24,7 @@
 ### Added | 新增
 #### gitignore - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/6299c9a)
 
-+ 新增语法高亮：[git排除文件](mtsx/gitignore.mtsx)
++ 新增语法高亮：[git排除文件](mtsx/gitignore.mtsx)  
   有关gitignore的文档请看这里：[Git - gitignore Documentation](https://git-scm.com/docs/gitignore)
 
 ---
