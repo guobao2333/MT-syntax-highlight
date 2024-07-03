@@ -19,6 +19,7 @@
 > 虽然我知道VSCode是个很好用的代码编辑器，但那仅限于电脑。虽然vsc也能在浏览器使用，不过用起来嘛……
 
 # Change Log | 更新日志
+> 仅展示最新版本的部分变化，更多版本细节请[查看完整更新日志](CHANGELOG.md)
 ## gitignore - [1.2.0](https://github.com/guobao2333/MT-syntax-highlight/commit/d7ff1ec) - 2024-7-3
 ### Fixed | 修复
 
@@ -33,9 +34,6 @@
 ### Added | 新增
 
 + 新增文件后缀渲染
-
-
-> 仅展示最新版本的部分变化，更多版本细节请[查看完整变更日志](CHANGELOG.md)
 
 ---
 ## Update Plan | 更新计划
@@ -52,18 +50,8 @@
 
 # Preview | 预览
 由于更新较为频繁，所以此处预览图**可能**会过时，最新的版本应以语法高亮文件为准，安装后在mt管理器中打开 `preview.[相应语法后缀]` 即可查看_完整效果_。  
-在`preview/`目录下可以找到所有预览文件。
-
-<details>
-<summary>GitHub Flavored Markdown</summary>
-
-你可以在`preview/github_markdown/`目录下找到[预览文档](preview/github_markdown/preview.md)，在mt管理器中打开即可查看_完整效果_。
-
----
-![light亮色模式](preview/github_markdown/light.webp)
-
-![dark暗色模式](preview/github_markdown/dark.webp)
-</details>
+在`preview/`目录下可以找到所有预览文件。  
+点击[此处](preview/)查看预览索引。
 
 # Usage | 使用
 你可以在[此处](mtsx/)查看所有语法，下载你需要的语法。
