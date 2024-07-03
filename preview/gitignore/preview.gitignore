@@ -3,5 +3,5 @@
 *.md
 /*/
 /**/
-xx/xx/?.md
-xx/xx/*.md
+!xx/xx/?.md
+xx/xx/\*.md
