@@ -4,21 +4,21 @@
 <details>
 <summary>GitHub Flavored Markdown</summary>
 
-该语法在`preview/github_markdown/`目录下。
+该语法在`github_markdown/`目录下。
 
 ---
-![light亮色模式](preview/github_markdown/light.webp)
+![light亮色模式](github_markdown/light.webp)
 
-![dark暗色模式](preview/github_markdown/dark.webp)
+![dark暗色模式](github_markdown/dark.webp)
 </details>
 
 <details>
 <summary>gitignore</summary>
 
-该语法在`preview/gitignore/`目录下。
+该语法在`gitignore/`目录下。
 
 ---
-![light亮色模式](preview/gitignore/light.webp)
+![light亮色模式](gitignore/light.webp)
 
-![dark暗色模式](preview/gitignore/dark.webp)
+![dark暗色模式](gitignore/dark.webp)
 </details>
