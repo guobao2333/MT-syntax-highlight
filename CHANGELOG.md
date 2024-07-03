@@ -3,17 +3,47 @@
 这里是本项目文件的变更日志，不过由于本项目仓库并不是仅发布某个单独的发行版项目，所以与[通用变更日志](https://common-changelog.org)的规范会有所不同。
 
 > [!IMPORTANT]
-> 特殊规范：  
-> 版本号前增加文件名作为标题： `文件名 - 版本号 - 日期`  
-> 如果某一天进行了多次更新，且为同一类型，则合并至同一个二/三级标题下，其下属标题顺延增加。
+> **变更日志特殊规范**
+> 版本号前增加文件名作为标题： `文件名 - 版本号 - 更新日`  
+> <details>
+> <summary>点击查看更多…</summary>
+>
+> 如果某一天进行了多次更新，且为同一类型，则合并至同一个标题下。其下属标题根据情况可能产生以下变化：
+>
+> 仅更新一个语法时：  
+> `## 语法 - 日期`  
+> `### 版本1`
+> `### 版本2`  
+> …
+>
+> 更新多个语法时：  
+> `## 日期`  
+> `### 语法 - 版本`  
+> …</details>
 
-## 2024-6-25
-## gitignore - [1.1.1](https://github.com/guobao2333/MT-syntax-highlight/commit/ca80ab9)
+## gitignore - [1.2.0](https://github.com/guobao2333/MT-syntax-highlight/commit/d7ff1ec) - 2024-7-3
+### Fixed | 修复
+
+1. 修复 `?` 前面如果是 `*` 则不会渲染的问题
+
+### Changed | 变化
+
+* 将`包含`语法的 _行_ 背景改为 _文本_ 背景
+* 优化配色，观感提升~
+* 优化逻辑，性能提升~
+
+### Added | 新增
+
++ 新增文件后缀渲染
+
+---
+## gitignore - 2024-6-25
+## [1.1.1](https://github.com/guobao2333/MT-syntax-highlight/commit/ca80ab9)
 ### Changed | 变化
 
 * 调整 `包含` 语法的背景色，让其不会影响文字清晰度。
 
-## gitignore - [1.1.0](https://github.com/guobao2333/MT-syntax-highlight/commit/ca80ab9)
+## [1.1.0](https://github.com/guobao2333/MT-syntax-highlight/commit/ca80ab9)
 ### Fixed | 修复
 
 1. 通配符 `*` 在多于两个时，现在不会渲染。
@@ -26,7 +56,7 @@
 * 调整配色，观感提升~
 
 ---
-## 2024-6-24
+## gitignore - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/6299c9a) - 2024-6-24
 ### New | 新语法
 
 + 新增语法高亮：[git排除文件](mtsx/gitignore.mtsx) - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/6299c9a)  
@@ -53,7 +83,8 @@
 ### Fixed | 修复
 
 1. 修改短代码逻辑，间接修复了它的所有bug……
-> 现在感觉之前自己想的太复杂了，所以说接下来会吸取教训，先实现功能，而不是先想着优化，这是不对滴🤣
+  > 现在感觉之前自己想的太复杂了，所以说接下来会吸取教训，先实现功能，而不是先想着优化，这是不对滴🤣
+
 2. 修复了链接先于脚注渲染时，导致的渲染错误
 
 ### Changed | 变化
@@ -73,12 +104,12 @@ _**调整了历史版本号，使其遵守版本控制规范**_
 
 ---
 ## github_markdown - [2.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/792634d) - 2024-5-16
-**好消息！代码重构了！**
+**此版本进行了代码重构。**
 
 ### Removed | 移除
 
 - 移除了引用的内置匹配器：`#ESCAPED_CHAR#`
-> 根据GFM的解释，`\`只会将ASCII字符转义为普通字符
+  > 根据GFM的解释，`\`只会将ASCII字符转义为普通字符
 
 - 删除了不常见的文件后缀
 - 删除了短代码的转义规则
@@ -87,8 +118,6 @@ _**调整了历史版本号，使其遵守版本控制规范**_
 
 * 将语法列表中显示的名称从`github_markdown`改为`GitHub Flavored Markdown`
 * 将部分`match匹配器`移动至`defines`属性块中
-
-### Refactored | 优化
 
 * 列表现在能够渲染其他语法(例如脚注)
 * 将有/无序列表统一合并为`list`

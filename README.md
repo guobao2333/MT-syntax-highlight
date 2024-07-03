@@ -6,34 +6,34 @@
 [![Common Changelog](https://common-changelog.org/badge.svg)](https://common-changelog.org)
 ### Introduce | 简介
 作为一个酷爱使用手机作为生产力的苦逼程序员，偶然发现了一个名叫“MT管理器”的软件。  
-起初只是当做一个，个人认为的“市面上最好用”的文件管理器和逆向工具来使用，后来发现是个写代码的好工具。
+起初只是当做一个，我认为“市面上最好用”的文件管理器和逆向工具来使用，后来发现是个写代码的好工具。
 
-**因为它支持语法高亮！！** 同时还支持了 **自定义** 语法高亮文件。  
+**因为它不仅支持语法高亮！！** 同时还支持了 **自定义** 语法高亮文件。  
 其核心使用了JAVA驱动的 _**正则表达式**_
+
+其在`2.16.0`版本还增加了更多高亮语法和文本样式，这使得我们可以在今后写出性能更好、复杂性更高、样式更好看的语法高亮了！
 
 ----------------
 
-所以我写了一些语法高亮给自己使用，同时也开源给大家用，希望大家也能够写出更多好用的mt语法高亮……
-> 但是有一点不要搞错了，虽然我知道VSCode是个很好用的代码编辑器，但那只限于电脑。虽然vsc也能在浏览器使用，不过体验差强人意……
+所以我写了一些语法高亮给自己使用，同时也开源给大家用，希望大家也能够写出更多好用的mt语法高亮！
+> 虽然我知道VSCode是个很好用的代码编辑器，但那仅限于电脑。虽然vsc也能在浏览器使用，不过用起来嘛……
 
 # Change Log | 更新日志
-## 2024-6-25
-## gitignore - [1.1.1](https://github.com/guobao2333/MT-syntax-highlight/commit/ca80ab9)
-### Changed | 变化
-
-* 调整 `包含` 语法的背景色，让其不会影响文字清晰度。
-
-## gitignore - [1.1.0](https://github.com/guobao2333/MT-syntax-highlight/commit/ca80ab9)
+## gitignore - [1.2.0](https://github.com/guobao2333/MT-syntax-highlight/commit/d7ff1ec) - 2024-7-3
 ### Fixed | 修复
 
-1. 通配符 `*` 在多于两个时，现在不会渲染。
+1. 修复 `?` 前面如果是 `*` 则不会渲染的问题
 
 ### Changed | 变化
 
-- 移除 `包含` 语法的斜体。  
-  不过作为交换，为其添加了背景色。
+* 将`包含`语法的 _行_ 背景改为 _文本_ 背景
+* 优化配色，观感提升~
+* 优化逻辑，性能提升~
 
-* 调整配色，观感提升~
+### Added | 新增
+
++ 新增文件后缀渲染
+
 
 > 仅展示最新版本的部分变化，更多版本细节请[查看完整变更日志](CHANGELOG.md)
 
@@ -41,7 +41,7 @@
 ## Update Plan | 更新计划
 - [x] Markdown(GFM)
 - [ ] 通用Markdown
-> 由于GFM[^GFM]与CMD[^CMD]之间存在较多差异，我计划在GFM常用语法更新完后，再分离出来
+  > 由于GFM[^GFM]与CMD[^CMD]之间存在较多差异，我计划在GFM常用语法更新完后，再分离出来
 
 - [ ] TypeScript
 - [ ] 优化MT原有自带语法
@@ -75,11 +75,15 @@
 现在您可以打开对应语法的文件，例如markdown(preview.md)查看效果。
 
 # Contribute | 贡献
+<details>
+<summary>点击展开</summary>
+
 1. 点击上方`fork`仓库后，修改或添加你的代码
 2. 点击`Pull requests`创建新的拉取请求后做你应该做的事。
 3. 接下来请等待代码审查，如果审查结束将会合并代码。
 
 如果合并完成，恭喜你🎉您完成了对本项目的贡献！我们由衷的感谢为每个开源项目做出贡献的人，无论贡献多少。
+</details>
 
 # License | 许可证
 [Apache-2.0 license](./LICENSE)
@@ -90,4 +94,4 @@
 3. [Git - gitignore Documentation](https://git-scm.com/docs/gitignore)
 
 [^GFM]: [GitHub Flavored Markdown](https://github.github.com/gfm)（通常缩写为 GFM）是 Markdown 的方言。该正式规范基于 [CommonMark](https://commonmark.org) 规范，定义了该方言的语法和语义。
-[^CMD]: 通用标记降低(**C**ommon **M**rak**D**own) 机翻一般把markdown译为`降价`……而加了通用后的这个缩写可能会与命令行混淆，由于这是我的个人称呼喜好，所以特此说明。
+[^CMD]: 通用标记降低(**C**ommon **M**rak**D**own) 其等价于`CommonMrak`，机翻一般把markdown译为`降价`……而加了通用(common)后的这个缩写可能会与命令行混淆，由于这是我的个人称呼喜好，所以特此说明。
