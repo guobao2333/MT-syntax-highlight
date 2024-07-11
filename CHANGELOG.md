@@ -21,6 +21,13 @@
 > `### 语法 - 版本`  
 > …</details>
 
+## github_markdown - [2.1.2](https://github.com/guobao2333/MT-syntax-highlight/commit/8477c47) - 2024-7-11
+### Changed | 变化
+
+* 将`title`重命名为`heading`以遵守英文规范
+  > 明明都叫标题，title代表整个页面的标题，而heading代表某个部分的标题……我英语不好，在学了在学了😣
+
+***
 ## gitignore - [1.2.0](https://github.com/guobao2333/MT-syntax-highlight/commit/d7ff1ec) - 2024-7-3
 ### Fixed | 修复
 
