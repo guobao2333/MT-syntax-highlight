@@ -22,3 +22,14 @@
 
 ![dark暗色模式](gitignore/dark.webp)
 </details>
+
+<details>
+<summary>vimscript</summary>
+
+该语法在`vimscript/`目录下。
+
+---
+![light亮色模式](gitignore/light.webp)
+
+![dark暗色模式](gitignore/dark.webp)
+</details>
