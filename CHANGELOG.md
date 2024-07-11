@@ -12,7 +12,7 @@
 >
 > 仅更新一个语法时：  
 > `## 语法 - 日期`  
-> `### 版本1`
+> `### 版本1`  
 > `### 版本2`  
 > …
 >
@@ -22,17 +22,19 @@
 > …</details>
 
 
-## github_markdown - [2.1.2](https://github.com/guobao2333/MT-syntax-highlight/commit/8477c47) - 2024-7-11
-### Changed | 变化
+## 2024-7-11
+### github_markdown - [2.1.2](https://github.com/guobao2333/MT-syntax-highlight/commit/8477c47)
+#### Changed | 变化
 
 * 将`title`重命名为`heading`以遵守英文规范
   > 明明都叫标题，title代表整个页面的标题，而heading代表某个部分的标题……我英语不好，在学了在学了😣
 
----
-## vimscript - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/b6c0af2) - 2024-7-11
-### New | 新语法
+### vimscript - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/b6c0af2)
+#### New | 新语法
 
-+ 新增语法高亮：[vimscript脚本](mtsx/vim.mtsx) - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/b6c0af2)  
+感谢该语法的贡献者：** @danicaStarR **
+
++ 新增语法高亮：[vim脚本](mtsx/vim.mtsx) - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/b6c0af2)  
   有关vimscript的文档请看这里：[VimScript - VimDoc](https://vimdoc.sourceforge.net/htmldoc/usr_41.html)
 
 ---
@@ -53,17 +55,17 @@
 
 ---
 ## gitignore - 2024-6-25
-## [1.1.1](https://github.com/guobao2333/MT-syntax-highlight/commit/ca80ab9)
-### Changed | 变化
+### [1.1.1](https://github.com/guobao2333/MT-syntax-highlight/commit/ca80ab9)
+#### Changed | 变化
 
 * 调整 `包含` 语法的背景色，让其不会影响文字清晰度。
 
-## [1.1.0](https://github.com/guobao2333/MT-syntax-highlight/commit/ca80ab9)
-### Fixed | 修复
+### [1.1.0](https://github.com/guobao2333/MT-syntax-highlight/commit/ca80ab9)
+#### Fixed | 修复
 
 1. 通配符 `*` 在多于两个时，现在不会渲染。
 
-### Changed | 变化
+#### Changed | 变化
 
 - 移除 `包含` 语法的斜体。  
   不过作为交换，为其添加了背景色。
@@ -74,7 +76,7 @@
 ## gitignore - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/6299c9a) - 2024-6-24
 ### New | 新语法
 
-+ 新增语法高亮：[git排除文件](mtsx/gitignore.mtsx) - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/6299c9a)  
++ 新增语法高亮：[git 提交忽略](mtsx/gitignore.mtsx) - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/6299c9a)  
   有关gitignore的文档请看这里：[Git - gitignore Documentation](https://git-scm.com/docs/gitignore)
 
 ---
@@ -195,7 +197,7 @@ _**调整了历史版本号，使其遵守版本控制规范**_
 
 #### New | 新语法
 
-+ 新增语法高亮：[github规范markdown高亮](mtsx/github_markdown.mtsx)
++ 新增语法高亮：[github 风格和规范的 markdown](mtsx/github_markdown.mtsx)
   有关GFM的文档请看这里：[GitHub Flavored Markdown Spec](https://github.github.com/gfm)
 
 + 新增许可证
