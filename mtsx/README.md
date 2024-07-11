@@ -1,6 +1,7 @@
 # List | 所有语法
 - [markdown(GFM)](github_markdown.mtsx)[^GFM] (已停更，续更待定)
 - [gitignore](gitignore.mtsx)
+- [vimscript](vim.mtsx)
 
 <!-- ## Builtin | 内置语法
 > [!NOTE]
