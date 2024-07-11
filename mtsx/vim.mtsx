@@ -1,0 +1,58 @@
+	// ################# LICENCE START ################
+	// Copyright (c) 2024 danicastar
+	
+	// Licensed under the Apache License, Version 2.0 (the "License");
+	// you may not use this file except in compliance with the License.
+	// You may obtain a copy of the License at
+	
+	//		http://www.apache.org/licenses/LICENSE-2.0
+	
+	// Unless required by applicable law or agreed to in writing, software
+	// distributed under the License is distributed on an "AS IS" BASIS,
+	// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	// See the License for the specific language governing permissions and
+	// limitations under the License.
+	// ################# LICENCE END ##################
+  // Hint：Vim 9 Add "#" as comment
+  // Not recomd Vim Script , choose Lua Script for Neovim
+{
+    name: [ "Vim 9", ".vim", ".vimrc" ]
+    comment: { startsWith: "\"", addToContains: false }
+    comment: { startsWith: "#", addToContains: false }
+    styles: [
+        "funcHeader", #FFEDED, #443034
+        "special_key" > "meta", @I
+    ]
+    lineBackground: { match: /[\t ]*function! .*/ ,style: "funcHeader" }
+    contains: [
+        {
+            match: /" [^"\n]+/
+            0: "comment"
+        }
+        {
+            match: /# [^\n]+/
+            0: "comment"
+        }
+        {
+            match: /(?m)<\w+?>/
+            0: "special_key"
+        }
+        {
+            match: keywordsToRegex(
+                "let if else endif function endfunction return endfor for while endwhile call execute autocmd command set map unmap syntax highlight hi colorscheme source finish scriptencoding try catch finally endtry silent redir endredir nmap imap inoremap nnoremap augroup def end require lua" // "lua" 为Neovim专有
+            )
+            0: "keyword"
+        }
+
+        {
+            match: /\b[0-9]+\b/
+            0: "number"
+        }
+        {
+            match: /:[^ \t\n(<\[{]+/ // 冒号命令
+            0: "operator"
+        }
+        
+        {builtin: #JAVA_QUOTED_STRING#}
+    ]
+}
