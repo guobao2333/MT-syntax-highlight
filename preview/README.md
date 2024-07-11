@@ -29,7 +29,7 @@
 该语法在`vimscript/`目录下。
 
 ---
-![light亮色模式](gitignore/light.webp)
+![light亮色模式](vimscript/light.webp)
 
-![dark暗色模式](gitignore/dark.webp)
+![dark暗色模式](vimscript/dark.webp)
 </details>
