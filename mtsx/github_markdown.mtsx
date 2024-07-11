@@ -17,7 +17,7 @@
 	name: ["Markdown(GFM)", ".md"]
 	ignoreCase: false
 	styles: [
-		"title", #E03030, #E06C75
+		"heading", #E03030, #E06C75
 		"escape", #866BD3, #CC7832
 		"list" > "number"
 		"footnote", #4493F8, #4493F8
@@ -56,10 +56,10 @@
 		// lineBackground有点bug暂时没法用include
 		// "quoteBackground": /(?m)^ *>.*/
 
-		"title": [
-			{match: /(?m)^ {0,3}#{1,6} .*/, 0: "title"}
+		"heading": [
+			{match: /(?m)^ {0,3}#{1,6} .*/, 0: "heading"}
 			// setext 标题
-			{match: /(?m)^.+(?<!^-+|=+)\n^(=+|-+)$/, 0: "title"}
+			{match: /(?m)^.+(?<!^-+|=+)\n^(=+|-+)$/, 0: "heading"}
 		]
 
 		"splitLine": {match: /(?m)^(\s*$|[-=]*)^ {0,3}(\*{3,}|-{3,}|_{3,}) {0,}$/, 0: "split_line"}
@@ -154,7 +154,7 @@
 
 	contains: [
 		// 这样写是为了后续方便调整顺序，以最佳顺序高亮语法，避免bug
-		{include: "title"}
+		{include: "heading"}
 		{include: "footnote"}
 		{include: "link"}
 		{include: "shortCode"}
