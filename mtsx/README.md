@@ -1,5 +1,5 @@
 # List | 所有语法
-- [markdown(GFM)](github_markdown.mtsx)[^GFM] (已停更，续更待定)
+- [markdown(GFM)](github_markdown.mtsx)[^GFM]
 - [gitignore](gitignore.mtsx)
 - [vimscript](vim.mtsx)
 
