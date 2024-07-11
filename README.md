@@ -20,20 +20,13 @@
 
 # Change Log | 更新日志
 > 仅展示最新版本的部分变化，更多版本细节请[查看完整更新日志](CHANGELOG.md)
-## gitignore - [1.2.0](https://github.com/guobao2333/MT-syntax-highlight/commit/d7ff1ec) - 2024-7-3
-### Fixed | 修复
+## vimscript - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/b6c0af2) - 2024-7-11
+### New | 新语法
 
-1. 修复 `?` 前面如果是 `*` 则不会渲染的问题
+感谢该语法的贡献者：** @danicaStarR **
 
-### Changed | 变化
-
-* 将`包含`语法的 _行_ 背景改为 _文本_ 背景
-* 优化配色，观感提升~
-* 优化逻辑，性能提升~
-
-### Added | 新增
-
-+ 新增文件后缀渲染
++ 新增语法高亮：[vim脚本](mtsx/vim.mtsx) - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/b6c0af2)  
+  有关vimscript的文档请看这里：[VimScript - VimDoc](https://vimdoc.sourceforge.net/htmldoc/usr_41.html)
 
 ---
 ## Update Plan | 更新计划
