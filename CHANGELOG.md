@@ -21,11 +21,24 @@
 > `### 语法 - 版本`  
 > …</details>
 
+<<<<<<< HEAD
 ## vimscript - [1.0.1](https://github.com/guobao2333/MT-syntax-highlight/commit/ef4551a) - 2024-7-12
 ### Fixed | 修复
 
 1. 修复冒号命令的渲染错误
 
+=======
+## vimscript - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/b6c0af2) - 2024-7-11
+### New | 新语法
+
+感谢该语法的贡献者：** @danicaStarR **
+
++ 新增语法高亮：[vim脚本](mtsx/vim.mtsx) - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/b6c0af2)  
+  有关vimscript的文档请看这里：[VimScript - VimDoc](https://vimdoc.sourceforge.net/htmldoc/usr_41.html)
+
+---
+## github_markdown - [2.1.2](https://github.com/guobao2333/MT-syntax-highlight/commit/8477c47) - 2024-7-11
+>>>>>>> 2569e5d93c8f8e83a2be888bc09580f44caf17c5
 ### Changed | 变化
 
 * 文件更名：`vim.mtsx` -> `vimscript.mtsx`
@@ -38,6 +51,7 @@
 * 将`title`重命名为`heading`以遵守英文规范
   > 明明都叫标题，title代表整个页面的标题，而heading代表某个部分的标题……我英语不好，在学了在学了😣
 
+<<<<<<< HEAD
 ### vimscript - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/b6c0af2)
 #### New | 新语法
 
@@ -46,6 +60,8 @@
 + 新增语法高亮：[vim脚本](mtsx/vim.mtsx) - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/b6c0af2)  
   有关vimscript的文档请看这里：[VimScript - VimDoc](https://vimdoc.sourceforge.net/htmldoc/usr_41.html)
 
+=======
+>>>>>>> 2569e5d93c8f8e83a2be888bc09580f44caf17c5
 ---
 ## gitignore - [1.2.0](https://github.com/guobao2333/MT-syntax-highlight/commit/d7ff1ec) - 2024-7-3
 ### Fixed | 修复
