@@ -20,10 +20,19 @@
 
 # Change Log | 更新日志
 > 仅展示最新版本的部分变化，更多版本细节请[查看完整更新日志](CHANGELOG.md)
+## vimscript - [1.0.1](https://github.com/guobao2333/MT-syntax-highlight/commit/ef4551a) - 2024-7-12
+### Fixed | 修复
+
+1. 修复冒号命令的渲染错误
+
+### Changed | 变化
+
+* 文件更名：`vim.mtsx` -> `vimscript.mtsx`
+
 ## vimscript - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/b6c0af2) - 2024-7-11
 ### New | 新语法
 
-感谢该语法的贡献者：** @danicaStarR **
+感谢该语法的贡献者：**@danicaStarR**
 
 + 新增语法高亮：[vim脚本](mtsx/vim.mtsx) - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/b6c0af2)  
   有关vimscript的文档请看这里：[VimScript - VimDoc](https://vimdoc.sourceforge.net/htmldoc/usr_41.html)
@@ -49,7 +58,7 @@
 # Usage | 使用
 你可以在[此处](mtsx/)查看所有语法。
 
-## Install | 安装
+## Installation | 安装
 1. 下载你需要的语法配置后，在你的设备中打开`MT管理器`
 2. 找到并点击以`.mtsx`为后缀的文件，然后在弹出的窗口中点击`安装`
 > 下载后的文件可能会多一个 `.txt` 后缀，这是github的安全策略所导致，去掉即可
@@ -73,7 +82,9 @@
 # References | 参考
 1. [mt语法高亮开发](https://mt2.cn/guide/file/mt-syntax.html)
 2. [GitHub Flavored Markdown Spec](https://github.github.com/gfm)
-3. [Git - gitignore Documentation](https://git-scm.com/docs/gitignore)
+3. [Markdown - Wikipedia](https://wikipedia.org/wiki/Markdown)
+4. [Git - gitignore Documentation](https://git-scm.com/docs/gitignore)
+5. [VimScript - VimDoc](https://vimdoc.sourceforge.net/htmldoc/usr_41.html)
 
 [^GFM]: [GitHub Flavored Markdown](https://github.github.com/gfm)（通常缩写为 GFM）是 Markdown 的方言。该正式规范基于 [CommonMark](https://commonmark.org) 规范，定义了该方言的语法和语义。
 [^CMD]: 通用标记降低(**C**ommon **M**rak**D**own) 其等价于`CommonMrak`，机翻一般把markdown译为`降价`……而加了通用(common)后的这个缩写可能会与命令行混淆，由于这是我的个人称呼喜好，所以特此说明。
