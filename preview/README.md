@@ -14,10 +14,6 @@
 
 <details>
 <summary>gitignore</summary>
-
-该语法在`gitignore/`目录下。
-
----
 ![light亮色模式](gitignore/light.webp)
 
 ![dark暗色模式](gitignore/dark.webp)
@@ -25,10 +21,6 @@
 
 <details>
 <summary>vimscript</summary>
-
-该语法在`vimscript/`目录下。
-
----
 ![light亮色模式](vimscript/light.webp)
 
 ![dark暗色模式](vimscript/dark.webp)
