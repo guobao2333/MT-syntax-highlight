@@ -20,22 +20,25 @@
 
 # Change Log | 更新日志
 > 仅展示最新版本的部分变化，更多版本细节请[查看完整更新日志](CHANGELOG.md)
-## vimscript - [1.0.1](https://github.com/guobao2333/MT-syntax-highlight/commit/ef4551a) - 2024-7-12
+## github_markdown - [3.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/0ae9664) - 2024-7-19
+**使用`2.16.0`版本新增语法重构了代码！！**
 ### Fixed | 修复
 
-1. 修复冒号命令的渲染错误
+1. 修复链接中如果嵌套图片，会导致提前结束渲染的问题
+2. 修复引用块无法渲染其他语法的问题
+3. 修复setext标题的渲染错误
+4. 修复代码块背景色的一些渲染错误
 
 ### Changed | 变化
 
-* 文件更名：`vim.mtsx` -> `vimscript.mtsx`
+* **重构了链接的匹配规则代码**
 
-## vimscript - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/b6c0af2) - 2024-7-11
-### New | 新语法
+* 优化部分配色，使整体更加统一，观感提升~
 
-感谢该语法的贡献者：**@danicaStarR**
+### Added | 新增
 
-+ 新增语法高亮：[vim脚本](mtsx/vim.mtsx) - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/b6c0af2)  
-  有关vimscript的文档请看这里：[VimScript - VimDoc](https://vimdoc.sourceforge.net/htmldoc/usr_41.html)
++ 添加了新的字体样式，包括粗体、斜体、下划线等
++ 为部分语法添加了非整行背景颜色
 
 ---
 ## Update Plan | 更新计划
