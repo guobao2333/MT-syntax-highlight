@@ -1,5 +1,5 @@
 	// ################# LICENCE START ################
-	// Copyright (c) 2024 @shiguobaona
+	// Copyright (c) 2024 shiguobaona(https://github.com/guobao2333)
 	
 	// Licensed under the Apache License, Version 2.0 (the "License");
 	// you may not use this file except in compliance with the License.
@@ -17,15 +17,16 @@
 	name: ["Markdown(GFM)", ".md"]
 	ignoreCase: false
 	styles: [
-		"heading", #E03030, #E06C75
+		"heading", #E03030, #E06C75, @B
 		"escape", #866BD3, #CC7832
 		"list" > "number"
-		"footnote", #4493F8, #4493F8
+		"list_heading", #4663CC, #5A6DE4, @B
+		"footnote", #4493F8, #4493F8, @B
 		"math" > "meta"
-		"code" > "string"
+		"code", #EEE#8B949E, #A9B7C6#343942
 		"code_block", #7050E0, #7050E0
-		"code_content", #AA9AB8, #AA9AB8
-		"code_block_background", #303030, #000
+		"code_content", #CC9ABB, #B0B9B8
+		"code_block_background", #555, #160F11
 		"code_syntax_name", #871094, #A64EAD
 		"quote_note", #2F81F7, #2F81F7
 		"quote_note_text", #2F81F7, #2F81F7
@@ -39,63 +40,73 @@
 		"quote_caution_text", #F85149, #F85149
 		"quote_text", #777, #858F9A
 		"quote_background", #DDD, #353535
-		"exclamation_mark", #FF7000, #D2B72D
-		"url_text", #508090, #58908A
+		"exclamation_mark", #FF7000, #D2B72D, @B
+		"url_text", #009688, #639274
 		"url_title" > "string"
-		"url", #508090, #58908A
+		"url", #508090, #508090, @UI
 		"bracket", #999, #999
-		"split_line", #FFF000, #BBB529
+		"split_line", #30363D$777, #858F9A$30363D, @B
 		"split_line_background", #C7C7E7, #30363D
+		"B", @B
+		"I", @I
+		"S", @S
 	]
-	// github可以使用html标签，注释后不渲染
+	// html注释
 	comment: {startsWith: "<!--", endsWith: "-->"}
+	// 括号对高亮
+	bracketPairs: ["()", "[]", "{}", "<>"]
 
 	defines: [
-		"prefix": /(?:^|\n)[\t ]*/
-		
-		// lineBackground有点bug暂时没法用include
-		// "quoteBackground": /(?m)^ *>.*/
+		"prefix": /(?:(?:^|\n)[\t ]*)/
+		"url": /(?:\[(.*?)\]\((.*?)( ".*?")?\))/
+		"img": /\[(!)/ + include("url") + /\]\((.*?)( ".*?")?\)/
 
 		"heading": [
-			{match: /(?m)^ {0,3}#{1,6} .*/, 0: "heading"}
+			{match: /(?m)(?:^ {0,3}#{1,6} .*)/, 0: "heading"}
 			// setext 标题
-			{match: /(?m)^.+(?<!^-+|=+)\n^(=+|-+)$/, 0: "heading"}
+			{match: /(?m)(?:^(?! *>).+(?<!^-+|=+|\*+|_+)\n^ {0,3}(?:=+|-+)$)/, 0: "heading"}
 		]
 
+		// Thematic breaks(分割线)
 		"splitLine": {match: /(?m)^(\s*$|[-=]*)^ {0,3}(\*{3,}|-{3,}|_{3,}) {0,}$/, 0: "split_line"}
 		"escape": {match: /\\[!"#$%&'()*+,-.\\\/:;<=>?@\[\]\^_`{|}~]/, 0: "escape"}
 
-		// 实现了基本渲染，就是性能差点
-		// 感觉已经没必要再改了……以现在的能够实现的效果来看，会越改越复杂了不说，逻辑和效果也会变，暂时就这样
-		"link": {
-			match: /(!)?(\[)(.*?)(\])(\()(.*?)( ".*?")?(\))/
+		"link": [
+			// 嵌套
+			{match: /(?:/ + include("img") + /)/
+			0: "bracket"
 			1: "exclamation_mark"
-			2: "bracket"
-			3: "url_text"
-			4: "bracket"
-			5: "bracket"
-			6: "url"
-			7: "url_title"
-			8: "bracket"
-		}
+			2: "url_text"
+			3: "url"
+			4: "url_title"
+			5: "url"
+			6: "url_title"}
+			// 链接
+			{match: /(!)?/ + include("url")
+			0: "bracket"
+			1: "exclamation_mark"
+			2: "url_text"
+			3: "url"
+			4: "url_title"}
+		]
 
 		"shortCode": {match: /`.+?`/, 0: "code"}
 
 		"codeBlock": [
-			{match: /(?m)^( {4,}|\t{1,})(?!([-+*]|1.) ).*/, 0: "code_content"}
+			{match: /(?m)^(?: {4,}|\t{1,})(?!(?:[-+*]|1.) ).*/, 0: "code_content"}
 
 			{start: {match: include("prefix") + /(?m)`{3}([ a-z]*)/, 0: "code_block" 1: "code_syntax_name"}
 			end: {match: include("prefix") + /`{3}|$/, 0: "code_block"}
 			style: "code_content"}
 
-			{start: {match: include("prefix") + /(?m)~{3}([ a-z]*)/, 0: "code_block" 1: "code_syntax_name"}
+			{start: {match: include("prefix") + /(?m)(?:~{3}([ a-z]*))/, 0: "code_block" 1: "code_syntax_name"}
 			end: {match: include("prefix") + /~{3}|$/, 0: "code_block"}
 			style: "code_content"}
 		]
 
 		"all_list": [
-			{match: include("prefix") + /[1-9][0-9]*\. /}
-			{match: include("prefix") + /[*+-] /}
+			{match: include("prefix") + /([1-9][0-9]*\.) /, 1: "list_heading"}
+			{match: include("prefix") + /([*+-]) /, 1: "list_heading"}
 		]
 		"list": [
 			{start: {include: "all_list"}
@@ -122,18 +133,32 @@
 
 		"quote": [
 			{
-				match: /(?m)^> *\[(!)(?:(NOTE)|(TIP)|(IMPORTANT)|(WARNING)|(CAUTION))\](?:\n>(.*))+/
+				match: /(?m)(?:^( *>)+ *)\[(!)(?:(NOTE)|(TIP)|(IMPORTANT)|(WARNING)|(CAUTION))\](?:/ + include("prefix") + /(>)(.*))+/
 				recordAllGroups: true
 				0: "quote_text"
-				1: "exclamation_mark"
-				2: "quote_note_text"
-				3: "quote_tip_text"
-				4: "quote_important_text"
-				5: "quote_warning_text"
-				6: "quote_caution_text"
-				7: "default"
+				1: "B"
+				2: "exclamation_mark"
+				3: "quote_note_text"
+				4: "quote_tip_text"
+				5: "quote_important_text"
+				6: "quote_warning_text"
+				7: "quote_caution_text"
+				8: "B"
+				9: {include: "escape"}
+				9: {include: "shortCode"}
+				9: {include: "footnote"}
+				9: {include: "link"}
+				9: "default"
 			}
-			{match: /(?m)^ *>.*/, 0: "quote_text"}
+			{
+				match: /(?m)(?:^( *>)+(.*))/
+				0: "quote_text"
+				1: "B"
+				2: {include: "escape"}
+				2: {include: "shortCode"}
+				2: {include: "footnote"}
+				2: {include: "link"}
+			}
 		]
 
 		"footnote": [
@@ -142,14 +167,8 @@
 		]
 	]
 
-	lineBackground: {match: /(?m)^( {4,}|\t{1,})(?!([-+*]|1.) ).*/, style: "code_block_background"}
+	lineBackground: {match: /(?m)(?:^( {4,}|\t{1,})(?![\t ]*([-+*]|[1-9][0-9]*\.) ).*)/, style: "code_block_background"}
 
-	// ##################################################################
-	// 取消注释下行，为分割线添加背景
-	// lineBackground: {match: /(?m)^( {0,3}\*{3,}|-{3,}|_{3,})$/, style: "split_line_background"}
-	// ##################################################################
-
-	// lineBackground: {match: include("quoteBackground"), style: "quote_background"}
 	lineBackground: {match: /(?m)^ *>.*/, style: "quote_background"}
 
 	contains: [
