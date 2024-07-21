@@ -21,6 +21,24 @@
 > `### 语法 - 版本`  
 > …</details>
 
+## github_markdown - [3.1.0](https://github.com/guobao2333/MT-syntax-highlight/commit/212151f) - 2024-7-22
+### Fixed | 修复
+
+1. 修复缩进代码块可能出现的一个错误
+
+### Changed | 变化
+
+* 优化了数学公式的渲染性能
+* 分割线现在可以包含若干空格了
+* 调整了代码块和引用块背景色的渲染机制
+* 优化了部分配色
+
+### Removed | 移除
+
+- 移除了所有`lineBackground`属性  
+  改为使用性能更好的新语法代替原有实现
+
+---
 ## github_markdown - [3.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/0ae9664) - 2024-7-19
 **使用`2.16.0`版本新增语法重构了代码！！**
 ### Fixed | 修复
@@ -33,13 +51,13 @@
 ### Changed | 变化
 
 * **重构了链接的匹配规则代码**
-
 * 优化部分配色，使整体更加统一，观感提升~
 
 ### Added | 新增
 
 + 添加了新的字体样式，包括粗体、斜体、下划线等
 + 为部分语法添加了非整行背景颜色
++ 添加了光标旁的括号对高亮
 
 ---
 ## vimscript - [1.0.1](https://github.com/guobao2333/MT-syntax-highlight/commit/ef4551a) - 2024-7-12

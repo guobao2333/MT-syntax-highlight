@@ -20,31 +20,28 @@
 
 # Change Log | 更新日志
 > 仅展示最新版本的部分变化，更多版本细节请[查看完整更新日志](CHANGELOG.md)
-## github_markdown - [3.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/0ae9664) - 2024-7-19
-**使用`2.16.0`版本新增语法重构了代码！！**
+## github_markdown - [3.1.0](https://github.com/guobao2333/MT-syntax-highlight/commit/212151f) - 2024-7-22
 ### Fixed | 修复
 
-1. 修复链接中如果嵌套图片，会导致提前结束渲染的问题
-2. 修复引用块无法渲染其他语法的问题
-3. 修复setext标题的渲染错误
-4. 修复代码块背景色的一些渲染错误
+1. 修复缩进代码块可能出现的一个错误
 
 ### Changed | 变化
 
-* **重构了链接的匹配规则代码**
+* 优化了数学公式的渲染性能
+* 分割线现在可以包含若干空格了
+* 调整了代码块和引用块背景色的渲染机制
+* 优化了部分配色
 
-* 优化部分配色，使整体更加统一，观感提升~
+### Removed | 移除
 
-### Added | 新增
-
-+ 添加了新的字体样式，包括粗体、斜体、下划线等
-+ 为部分语法添加了非整行背景颜色
+- 移除了所有`lineBackground`属性  
+  改为使用性能更好的新语法代替原有实现
 
 ---
 ## Update Plan | 更新计划
 - [x] Markdown(GFM)
 - [ ] 通用Markdown
-  > 由于GFM[^GFM]与CMD[^CMD]之间存在较多差异，我计划在GFM常用语法更新完后，再分离出来
+  > ~~由于GFM[^GFM]与CMD[^CMD]之间存在较多差异，我计划在GFM常用语法更新完后，再分离出来~~ GFM已经让我精疲力尽，如果我有心情或者我闲了，估计会补上的吧……不过大概率是不会了
 - [x] gitignore
 - [x] VimScript
 - [ ] TypeScript
