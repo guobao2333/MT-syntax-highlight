@@ -23,10 +23,11 @@
 		"list_heading", #4663CC, #5A6DE4, @B
 		"footnote", #4493F8, #4493F8, @B
 		"math" > "meta"
-		"code", #EEE#8B949E, #A9B7C6#343942
+		// 这里有两个亮色的短代码配色版本，可以根据喜爱调整
+		"code", #1F2328#EFF1F3, #A9B7C6#343942
+		// "code", #EEE#ABB1BA, #A9B7C6#343942
 		"code_block", #7050E0, #7050E0
-		"code_content", #CC9ABB, #B0B9B8
-		"code_block_background", #555, #160F11
+		"code_content", #CC9ABB$555, #C7C7E7$181818
 		"code_syntax_name", #871094, #A64EAD
 		"quote_note", #2F81F7, #2F81F7
 		"quote_note_text", #2F81F7, #2F81F7
@@ -38,15 +39,13 @@
 		"quote_warning_text", #D29922, #D29922
 		"quote_caution", #DA3633, #DA3633
 		"quote_caution_text", #F85149, #F85149
-		"quote_text", #777, #858F9A
-		"quote_background", #DDD, #353535
+		"quote_text", #777$DDD, #858F9A$353535
 		"exclamation_mark", #FF7000, #D2B72D, @B
 		"url_text", #009688, #639274
 		"url_title" > "string"
 		"url", #508090, #508090, @UI
 		"bracket", #999, #999
-		"split_line", #30363D$777, #858F9A$30363D, @B
-		"split_line_background", #C7C7E7, #30363D
+		"split_line", #30363D$D0D7DE, #B59911$30363D, @B
 		"B", @B
 		"I", @I
 		"S", @S
@@ -57,9 +56,9 @@
 	bracketPairs: ["()", "[]", "{}", "<>"]
 
 	defines: [
-		"prefix": /(?:(?:^|\n)[\t ]*)/
-		"url": /(?:\[(.*?)\]\((.*?)( ".*?")?\))/
-		"img": /\[(!)/ + include("url") + /\]\((.*?)( ".*?")?\)/
+		"prefix": /(?:(?m)(?:^|\n)[\t ]*)/
+		"url": /(?:\[(.*?)\]\((.+?)( ".*?")?\))/
+		"img": /\[(!)/ + include("url") + /\]\((.+?)( ".*?")?\)/
 
 		"heading": [
 			{match: /(?m)(?:^ {0,3}#{1,6} .*)/, 0: "heading"}
@@ -68,8 +67,8 @@
 		]
 
 		// Thematic breaks(分割线)
-		"splitLine": {match: /(?m)^(\s*$|[-=]*)^ {0,3}(\*{3,}|-{3,}|_{3,}) {0,}$/, 0: "split_line"}
-		"escape": {match: /\\[!"#$%&'()*+,-.\\\/:;<=>?@\[\]\^_`{|}~]/, 0: "escape"}
+		"splitLine": {match: /(?m)^(\s*$|[-=]*)^ {0,3}(\* *|- *|_ *){3,} {0,}$/, 0: "split_line"}
+		"escape": {match: /(?:\\[!"#$%&'()*+,-.\\\/:;<=>?@\[\]\^_`{|}~])/, 0: "escape"}
 
 		"link": [
 			// 嵌套
@@ -93,13 +92,14 @@
 		"shortCode": {match: /`.+?`/, 0: "code"}
 
 		"codeBlock": [
-			{match: /(?m)^(?: {4,}|\t{1,})(?!(?:[-+*]|1.) ).*/, 0: "code_content"}
+			// 缩进代码块
+			{match: /(?m)^(?: {4,}|\t{1,}).*/, 0: "code_content"}
 
-			{start: {match: include("prefix") + /(?m)`{3}([ a-z]*)/, 0: "code_block" 1: "code_syntax_name"}
+			{start: {match: include("prefix") + /(?m)`{3}([- \w]*)/, 0: "code_block" 1: "code_syntax_name"}
 			end: {match: include("prefix") + /`{3}|$/, 0: "code_block"}
 			style: "code_content"}
 
-			{start: {match: include("prefix") + /(?m)(?:~{3}([ a-z]*))/, 0: "code_block" 1: "code_syntax_name"}
+			{start: {match: include("prefix") + /(?m)~{3}([- \w]*)/, 0: "code_block" 1: "code_syntax_name"}
 			end: {match: include("prefix") + /~{3}|$/, 0: "code_block"}
 			style: "code_content"}
 		]
@@ -122,13 +122,12 @@
 
 		// LaTeX
 		"math": [
-			{start: {match: /\$/, 0: "math"}
-			end: {match: /(?m)\$|$/, 0: "math"}
-			style: "string"
-			matchEndFirst: true
-			contains: {
-				{match: /\\\$/, 0: "escape"}
-			}}
+			{
+				match: /\$(.*?)\$/
+				0: "math"
+				1: {include: "escape"}
+				1: "string"
+			}
 		]
 
 		"quote": [
@@ -166,10 +165,6 @@
 			{match: /\[\^.+?\]/, 0: "footnote"}
 		]
 	]
-
-	lineBackground: {match: /(?m)(?:^( {4,}|\t{1,})(?![\t ]*([-+*]|[1-9][0-9]*\.) ).*)/, style: "code_block_background"}
-
-	lineBackground: {match: /(?m)^ *>.*/, style: "quote_background"}
 
 	contains: [
 		// 这样写是为了后续方便调整顺序，以最佳顺序高亮语法，避免bug
