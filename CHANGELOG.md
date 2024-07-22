@@ -21,19 +21,25 @@
 > `### 语法 - 版本`  
 > …</details>
 
-## github_markdown - [3.1.0](https://github.com/guobao2333/MT-syntax-highlight/commit/212151f) - 2024-7-22
-### Fixed | 修复
+## 2024-7-22
+### gitignore - [1.2.1](https://github.com/guobao2333/MT-syntax-highlight/commit/c432cd3)
+#### Fixed | 修复
+
+1. 现在只会高亮文件夹和最后一个文件的后缀
+
+### github_markdown - [3.1.0](https://github.com/guobao2333/MT-syntax-highlight/commit/212151f)
+#### Fixed | 修复
 
 1. 修复缩进代码块可能出现的一个错误
 
-### Changed | 变化
+#### Changed | 变化
 
 * 优化了数学公式的渲染性能
 * 分割线现在可以包含若干空格了
 * 调整了代码块和引用块背景色的渲染机制
 * 优化了部分配色
 
-### Removed | 移除
+#### Removed | 移除
 
 - 移除了所有`lineBackground`属性  
   改为使用性能更好的新语法代替原有实现
