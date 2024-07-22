@@ -36,10 +36,11 @@
 		{match: /(?m)^(\/?([^ \/\n]+)\/?)+/, recordAllGroups: true,
 		  0: {match: /(?:\\[*?])/, 0: "escape"}
 		  0: {match: /(?m)^(?:(!).*)/, 0: "inc" 1: "include"}
-		  0: {match: /(?m)(?:^|.*|\/)(\.)(\w)+/, recordAllGroups: true, 1: "dot" 2: "suffix"}
 		  1: {match: /(?m)^(?:\\[#!])/, 0: "escape"}
 		  2: {match: /(?<!\*)(?:(?<!\\)(\*)\*)/, 0: "Baste"}
 		  2: {match: /(?<!\\)(?:(?<!\*)(\*)|(\?))/, 1: "asterisk" 2: "ask"}
+		  2: {match: /(?m)(\.)(\w)+(?!\/)/, recordAllGroups: true, 1: "dot" 2: "suffix"}
+
 		  2: "character"}
 	]
 }
