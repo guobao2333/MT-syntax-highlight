@@ -22,7 +22,7 @@
 > …</details>
 
 ## 2024-7-22
-### gitignore - [1.2.2](https://github.com/guobao2333/MT-syntax-highlight/commit/)
+### gitignore - [1.2.2](https://github.com/guobao2333/MT-syntax-highlight/commit/5f7ec22)
 #### Fixed | 修复
 
 1. 修复上个版本导致的一些后缀不渲染问题  
