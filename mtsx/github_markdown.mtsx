@@ -17,18 +17,23 @@
 	name: ["Markdown(GFM)", ".md"]
 	ignoreCase: false
 	styles: [
+		"comment" #8C8C8C, #808080, //@I
+		// 取消上行注释将注释变为斜体
 		"heading", #E03030, #E06C75, @B
 		"escape", #866BD3, #CC7832
 		"list" > "number"
 		"list_heading", #4663CC, #5A6DE4, @B
 		"footnote", #4493F8, #4493F8, @B
 		"math" > "meta"
-		// 这里有两个亮色的短代码配色版本，可以根据喜爱调整
-		"code", #1F2328#EFF1F3, #A9B7C6#343942
-		// "code", #EEE#ABB1BA, #A9B7C6#343942
+
+		// 这里有两个短代码的配色版本，可以根据喜爱调整
+		"code", #1F2328#EFF1F3, #929DA0#394050
+		 // "code", #EEE#ABB1BA, #A9B7C6#343942
+
 		"code_block", #7050E0, #7050E0
 		"code_content", #CC9ABB$555, #C7C7E7$181818
 		"code_syntax_name", #871094, #A64EAD
+		"quote_serif", #NULL#D0D7DE, #NULL#444, @B
 		"quote_note", #2F81F7, #2F81F7
 		"quote_note_text", #2F81F7, #2F81F7
 		"quote_tip", #238636, #238636
@@ -39,7 +44,7 @@
 		"quote_warning_text", #D29922, #D29922
 		"quote_caution", #DA3633, #DA3633
 		"quote_caution_text", #F85149, #F85149
-		"quote_text", #777$DDD, #858F9A$353535
+		"quote_text", #777, #858F99
 		"exclamation_mark", #FF7000, #D2B72D, @B
 		"url_text", #009688, #639274
 		"url_title" > "string"
@@ -50,8 +55,6 @@
 		"I", @I
 		"S", @S
 	]
-	// html注释
-	comment: {startsWith: "<!--", endsWith: "-->"}
 	// 括号对高亮
 	bracketPairs: ["()", "[]", "{}", "<>"]
 
@@ -123,19 +126,20 @@
 		// LaTeX
 		"math": [
 			{
-				match: /\$(.*?)\$/
+				match: /\$(.+?)\$/
 				0: "math"
 				1: {include: "escape"}
+				1: {include: "shortCode"}
 				1: "string"
 			}
 		]
 
 		"quote": [
 			{
-				match: /(?m)(?:^( *>)+ *)\[(!)(?:(NOTE)|(TIP)|(IMPORTANT)|(WARNING)|(CAUTION))\](?:/ + include("prefix") + /(>)(.*))+/
+				match: /(?m)(?:^(?: *(>))+ *)\[(!)(?:(NOTE)|(TIP)|(IMPORTANT)|(WARNING)|(CAUTION))\](?:/ + include("prefix") + /(>)(.*))+/
 				recordAllGroups: true
 				0: "quote_text"
-				1: "B"
+				1: "quote_serif"
 				2: "exclamation_mark"
 				3: "quote_note_text"
 				4: "quote_tip_text"
@@ -150,9 +154,9 @@
 				9: "default"
 			}
 			{
-				match: /(?m)(?:^( *>)+(.*))/
+				match: /(?m)(?:^(?: *(>))+(.*))/
 				0: "quote_text"
-				1: "B"
+				1: "quote_serif"
 				2: {include: "escape"}
 				2: {include: "shortCode"}
 				2: {include: "footnote"}
@@ -164,11 +168,68 @@
 			{match: /(?m)^\[\^.+?\]: /, 0: "footnote"}
 			{match: /\[\^.+?\]/, 0: "footnote"}
 		]
-	]
+
+  	"colors": [
+			{match: /(?i)#([a-f0-9]{3,6})\b/, 0: "parseColor(auto,1,HEX)"}
+			{match: /(?i)\bRGB *\(/ + / *(\d+ *, *\d+ *, *\d+) */ + /\)/, 0: "parseColor(auto,1,RGB)"}
+			{match: /(?i)\bRGBA *\(/ + / *(\d+ *, *\d+ *, *\d+ *, *\d+(?:\.\d+)?) */ + /\)/, 0: "parseColor(auto,1,RGBA)"}
+			{match: /(?i)\bHSL *\(/ + / *(\d+ *, *\d+% *, *\d+%) */ + /\)/, 0: "parseColor(auto,1,HSL)"}
+			{match: /(?i)\bHSLA *\(/ + / *(\d+ *, *\d+% *, *\d+% *, *\d+(?:\.\d+)?) */ + /\)/, 0: "parseColor(auto,1,HSLA)"}
+		]
+  	"startTagContains": [
+			{match: /(?:([^='"<\/>\s]+)(:))?([^='"<\/>\s]+)/, 1: "namespace", 2: "attrName", 3: "attrName"}
+			{
+				group: link
+				contains: [
+					{match: /=\s*/, 0: "string"}
+					{match: /(?s)(["']).*?\1/, 0: "string"}
+				]
+			}
+		]
+  	"htmlMatchers": [
+  		{match: /(?sm)^ {0,3}<!--.*?-->/, 0: "comment"}
+  		{
+  			start: {
+  				start: {match: /<\s*(script)\b/, 1: "tagName"}
+  				end: {match: ">|$"}
+  				contains: [ {include: "startTagContains"} ]
+  			}
+  			end: {match: "</\\s*(script)\\s*>", 1: "tagName"}
+  		}
+  		{
+  			start: {
+  				start: {match: /<\s*(style)\b/, 1: "tagName"}
+  				end: {match: ">|$"}
+  				contains: [ {include: "startTagContains"} ]
+  			}
+  			end: {match: "</\\s*(style)\\s*>", 1: "tagName"}
+  			contains: [
+  				{include: "colors"}
+  			]
+  		}
+  		{
+  			start: {
+  				start: {match: /<\s*(pre)\b/, 1: "tagName"}
+  				end: {match: ">|$"}
+  				contains: [ {include: "startTagContains"} ]
+  			}
+  			end: {match: "</\\s*(pre)\\s*>", 1: "tagName"}
+  		}
+  		{
+  			start: {match: "<\\??([^/>\\s]+)", 1: "tagName"}
+  			end: {match: "[?/]?>|$"}
+  			contains: [ {include: "startTagContains"} ]
+  		}
+  		{
+  			match: "</\\s*([^>\\s]+)\\s*>", 1: "tagName"
+  		}
+  	]
+  ]
 
 	contains: [
 		// 这样写是为了后续方便调整顺序，以最佳顺序高亮语法，避免bug
 		{include: "heading"}
+		{include: "htmlMatchers"}
 		{include: "footnote"}
 		{include: "link"}
 		{include: "shortCode"}
