@@ -1,0 +1,61 @@
+//	################# LICENCE START ################
+//	Copyright (c) 2024 shiguobaona
+	
+//	Licensed under the Apache License, Version 2.0 (the "License");
+//	you may not use this file except in compliance with the License.
+//	You may obtain a copy of the License at
+	
+//			http://www.apache.org/licenses/LICENSE-2.0
+	
+//	Unless required by applicable law or agreed to in writing, software
+//	distributed under the License is distributed on an "AS IS" BASIS,
+//	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//	See the License for the specific language governing permissions and
+//	limitations under the License.
+//	################# LICENCE END ##################
+{
+	name: ["dotenv", ".env"]
+	styles: [
+		"comment" #8C8C8C, #808080, //@I
+		// 取消上行注释将注释变为斜体
+		"escape" #A371F7, #866BD3, @B
+		"equal" #CC7832, #CC7832, //@B
+		"key" #4663CC, #D7BA7D
+		"value" #0077FF, #5DB0EE
+		"str" #639274, #7FADB6
+		"line_break" #871094, #C2C342, @B
+		"line_break2" #CC9ABB, #FBBAAA
+	]
+
+	defines: [
+		"comment": {match: /(?:#.*)/, 0: "comment"}
+		"escape": {match: /(?:(?:\\[#\\=])|(\\n))/, 0: "escape" 1: "line_break2"}
+
+		"rowVar": {
+			match: /(?m)^([^ ]+?) *?(=) *?(.*)/,
+			1: "key"
+			2: "equal"
+			3: "value"
+			3: {match: /(?:'.*?')|(?:".*?")/, 0: "str"}
+			0: {include: "contains"}
+		}
+		"lineBreak1": {match: /(?m)\\ *$/, 0: "line_break"}
+		"lineBreak": {
+			match: /(?m)(?:(?<=\\ ?$\n).*)*/,
+			0: "value"
+			0: {include: "contains"}
+		}
+
+		"contains": [
+			{include: "comment"}
+			{include: "escape"}
+			{include: "lineBreak1"}
+		]
+	]
+
+	contains: [
+		{include: "rowVar"}
+		{include: "escape"}
+		{include: "lineBreak"}
+	]
+}

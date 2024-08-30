@@ -1,5 +1,14 @@
 # Preview | 效果预览
-此处预览图**可能**会过时，最新的版本应安装语法高亮文件后查看 `preview.[相应语法后缀]` 为准。
+> [!IMPORTANT]
+> 此处预览图**可能**会过时，最新的版本应安装语法高亮文件后查看 `preview.[相应语法后缀]` 为准。
+> 由于部分文件后缀会污染存储库语言，故增加 `.txt` 后缀，预览时请手动切换或去除。
+
+<details>
+<summary>Environment Variable</summary>
+![light亮色模式](dotenv/light.webp)
+
+![dark暗色模式](dotenv/dark.webp)
+</details>
 
 <details>
 <summary>GitHub Flavored Markdown</summary>
