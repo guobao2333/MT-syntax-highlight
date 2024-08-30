@@ -30,12 +30,11 @@
 
 # Change Log | 更新日志
 > 仅展示最新版本的**部分变化**，更多版本细节请[查看完整更新日志](CHANGELOG.md)
-## github_markdown - [3.2.0](https://github.com/guobao2333/MT-syntax-highlight/commit/1888619) - 2024-8-22
-### Added | 新增
+## dotenv - 1.0.0 - 2024-8-31
+### New | 新语法
 
-+ 为引用块单独添加背景，以匹配github样式
-+ 新增html标签高亮(从bin写的内置语法扒出来的🤣)  
-...
++ 新增语法高亮：[环境变量配置](mtsx/dotenv.mtsx) - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/b6cdf7b)
+  > 5个语法，写了3天😂
 
 # Update Plan | 更新计划
 - [x] Markdown(GFM)[^GFM]
@@ -65,7 +64,7 @@
 
 # Contribute | 贡献
 > [!IMPORTANT]
-> 由于github检测文件后缀来判断使用的语言，为了避免混乱，所以在贡献新语法时，请在预览使用的文件后方添加`.txt`，例如：`preview.js.txt`
+> 由于github检测文件后缀来判断项目使用的语言，为了避免混乱，所以在贡献新语法时，请在预览使用的文件后方添加`.txt`，例如：`preview.js.txt`
 
 1. 点击上方`fork`仓库后，修改或添加你的代码
 2. 点击`Pull requests`创建新的拉取请求后做你应该做的事。

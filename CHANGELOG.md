@@ -21,6 +21,13 @@
 > `### 语法 - 版本`  
 > …</details>
 
+## dotenv - 1.0.0 - 2024-8-31
+### New | 新语法
+
++ 新增语法高亮：[环境变量配置](mtsx/dotenv.mtsx) - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/b6cdf7b)
+  > 5个语法，写了3天😂
+
+---
 ## github_markdown - [3.2.0](https://github.com/guobao2333/MT-syntax-highlight/commit/1888619) - 2024-8-22
 ### Added | 新增
 
