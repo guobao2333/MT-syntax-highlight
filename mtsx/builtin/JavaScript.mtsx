@@ -1,0 +1,84 @@
+// 此文件为内置语法，仅对配色进行调整
+// 当语法更新时，我会同步跟进
+// 有bug请找bin修，我只负责调整和优化
+{
+    name: ["JavaScript++", ".js", ".es", ".mjs"]
+    comment: {startsWith: "//"}
+    comment: {startsWith: "/*", endsWith: "*/"}
+    defines: [
+        "single-quoted-string": {
+            style: "string"
+            start: {match: /'/}
+            end: {match: /(?m)'|$/}
+            contains: [
+                {match: /\\\n/, 0: "strEscape"}
+                {builtin: #JAVA_ESCAPED_CHAR#}
+            ]
+        }
+        "double-quoted-string": {
+            style: "string"
+            start: {match: /"/}
+            end: {match: /(?m)"|$/}
+            contains: [
+                {match: /\\\n/, 0: "strEscape"}
+                {builtin: #JAVA_ESCAPED_CHAR#}
+            ]
+        }
+        "backtick-string": {
+            style: "string"
+            start: {match: /`/}
+            end: {match: /`/}
+            contains: [
+                {match: /\\`/, 0: "strEscape"}
+                {builtin: #JAVA_ESCAPED_CHAR#}
+                {include: "dollarExp"}
+            ]
+        }
+        "regex": {
+            start: {match: /(?<=(?:[=,(&|!:;]|^|\breturn)\s{0,20})/ + "/"}
+            end: {match: "/" + /([img]*)/, 1: "operator"}
+            style: "meta"
+            contains: [
+                {match: /\\./, 0: "strEscape"}
+                {
+                    start: {match: /\[/}
+                    end: {match: /\]/}
+                    contains: [
+                        {match: /\\./, 0: "strEscape"}
+                    ]
+                }
+            ]
+        }
+        "dollarExp": {
+            start: {match: /\$\{/}
+            end: {match: /\}/}
+            style: "strEscape"
+            contains: [
+                {include: "single-quoted-string"}
+                {include: "double-quoted-string"}
+                {include: "regex"}
+                {include: "backtick-string"}
+                {include: "dollarExp"}
+            ]
+        }
+    ]
+    contains: [
+        {include: "single-quoted-string"}
+        {include: "double-quoted-string"}
+        {include: "regex"}
+        {include: "backtick-string"}
+        {builtin: #JAVA_NUMBER#}
+        {match: /\basync(?=\s+function\b)/, 0: "keyword"}
+        {match: keywordsToRegex(
+                "break case catch class const continue debugger default delete do else enum export async await"
+                "extends false finally for function if implements import instanceof interface let"
+                "new null package private protected public return static super switch this with"
+                "throw true try typeof var void while yield function of import in from as"
+            ), 0: "keyword"
+        }
+        {match: keywordsToRegex("Date Function Array String Math BigInt Set Object console globalThis"),0:"namespace"}
+        {match: keywordsToRegex("prototype Infinity NaN undefined"),0:"variable"}
+        {match: keywordsToRegex("Error AggregateError EvalError RangeError ReferenceError SynatxError TypeError URIError InternalError"),0:"error"}
+    ]
+    codeFormatter: #BUILT_IN_JS_FORMATTER#
+}
