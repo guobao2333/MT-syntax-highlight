@@ -2,7 +2,7 @@
 // 当语法更新时，我会同步跟进
 // 有bug请找bin修，我只负责调整和优化
 {
-    name: ["JavaScript++", ".js", ".es", ".mjs"]
+    name: ["JavaScript EX", ".js", ".es", ".mjs"]
     comment: {startsWith: "//"}
     comment: {startsWith: "/*", endsWith: "*/"}
     defines: [
@@ -78,7 +78,7 @@
         }
         {match: keywordsToRegex("Date Function Array String Math BigInt Set Object console globalThis"),0:"namespace"}
         {match: keywordsToRegex("prototype Infinity NaN undefined"),0:"variable"}
-        {match: keywordsToRegex("Error AggregateError EvalError RangeError ReferenceError SynatxError TypeError URIError InternalError"),0:"error"}
+        {match: keywordsToRegex("Error AggregateError EvalError RangeError ReferenceError SyntaxError TypeError URIError InternalError"),0:"error"}
     ]
     codeFormatter: #BUILT_IN_JS_FORMATTER#
 }
