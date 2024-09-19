@@ -21,6 +21,29 @@
 > `### 语法 - 版本`  
 > …</details>
 
+## 2024-9-19
+### dotenv - [1.0.1](https://github.com/guobao2333/MT-syntax-highlight/commit/commits/2f99ad9)
+#### Added | 新增
+
++ 新增指定语法支持的最低MT版本
++ 新增支持快捷注释
+
+### gitignore - [1.2.3](https://github.com/guobao2333/MT-syntax-highlight/commit/commits/ecdac20)
+#### Added | 新增
+
++ 新增指定语法支持的最低MT版本
++ 新增支持快捷注释
+
+### JavaScript (内置) - [1.0.1](https://github.com/guobao2333/MT-syntax-highlight/commit/commits/...b6b220c%20cbf4404)
+#### Fixed | 修复
+
+1. 修复因MDN文档导致高亮的语法错误的~~语法错误~~拼写错误：`SynatxError` -> `SyntaxError`
+
+### Added | 新增
+
++ 为语法添加了预览图
+
+___
 ## JavaScript (内置) - 1.0.0 - 2024-9-2
 ### New | 新语法
 
@@ -30,14 +53,14 @@
 1. 为error类型添加高亮
 2. 为部分全局属性添加高亮
 
----
+___
 ## dotenv - 1.0.0 - 2024-8-31
 ### New | 新语法
 
 + 新增语法高亮：[环境变量配置](mtsx/dotenv.mtsx) - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/b6cdf7b)
   > 5个语法，写了3天😂
 
----
+___
 ## github_markdown - [3.2.0](https://github.com/guobao2333/MT-syntax-highlight/commit/1888619) - 2024-8-22
 ### Added | 新增
 
@@ -51,7 +74,7 @@
 * 调整了数学公式
 - 去掉了引用块的背景渲染
 
----
+___
 ## 2024-7-22
 ### gitignore - [1.2.2](https://github.com/guobao2333/MT-syntax-highlight/commit/5f7ec22)
 #### Fixed | 修复
@@ -81,7 +104,7 @@
 - 移除了所有`lineBackground`属性  
   改为使用性能更好的新语法代替原有实现
 
----
+___
 ## github_markdown - [3.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/0ae9664) - 2024-7-19
 **使用`2.16.0`版本新增语法重构了代码！！**
 ### Fixed | 修复
@@ -102,7 +125,7 @@
 + 为部分语法添加了非整行背景颜色
 + 添加了光标旁的括号对高亮
 
----
+___
 ## vimscript - [1.0.1](https://github.com/guobao2333/MT-syntax-highlight/commit/ef4551a) - 2024-7-12
 ### Fixed | 修复
 
@@ -112,7 +135,7 @@
 
 * 文件更名：`vim.mtsx` -> `vimscript.mtsx`
 
----
+___
 ## 2024-7-11
 ### vimscript - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/b6c0af2)
 #### New | 新语法
@@ -128,7 +151,7 @@
 * 将`title`重命名为`heading`以遵守英文规范
   > 明明都叫标题，title代表整个页面的标题，而heading代表某个部分的标题……我英语不好，在学了在学了😣
 
----
+___
 ## gitignore - [1.2.0](https://github.com/guobao2333/MT-syntax-highlight/commit/d7ff1ec) - 2024-7-3
 ### Fixed | 修复
 
@@ -144,7 +167,7 @@
 
 + 新增文件后缀渲染
 
----
+___
 ## gitignore - 2024-6-25
 ### [1.1.1](https://github.com/guobao2333/MT-syntax-highlight/commit/ca80ab9)
 #### Changed | 变化
@@ -163,14 +186,14 @@
 
 * 调整配色，观感提升~
 
----
+___
 ## gitignore - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/6299c9a) - 2024-6-24
 ### New | 新语法
 
 + 新增语法高亮：[git 提交忽略](mtsx/gitignore.mtsx) - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/6299c9a)  
   有关gitignore的文档请看这里：[Git - gitignore Documentation](https://git-scm.com/docs/gitignore)
 
----
+___
 ## github_markdown - [2.1.1](https://github.com/guobao2333/MT-syntax-highlight/commit/156ec0c) - 2024-6-8
 > [!IMPORTANT]
 > 仅适用于MT管理器 `2.16.0` 及以上版本！
@@ -182,7 +205,7 @@
 * _**调整语法名称**_
 `GitHub Flavored Markdown` -> ` Markdown(GFM)`
 
----
+___
 ## github_markdown - [2.1.0](https://github.com/guobao2333/MT-syntax-highlight/commit/73d9f05) - 2024-5-27
 ### Added | 新增
 
@@ -210,7 +233,7 @@ _**调整了历史版本号，使其遵守版本控制规范**_
 * 调整了部分配色，观感提升~
 * 清除了部分无用冗(rǒng)余代码
 
----
+___
 ## github_markdown - [2.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/792634d) - 2024-5-16
 **此版本进行了代码重构。**
 
@@ -240,7 +263,7 @@ _**调整了历史版本号，使其遵守版本控制规范**_
 + 新增github的数学公式渲染
 + 新增`ASCII`字符转义渲染
 
----
+___
 ## github_markdown - 2024-5-7
 ### [1.2.0](https://github.com/guobao2333/MT-syntax-highlight/commit/ddf18a0)
 #### Fixed | 修复
@@ -260,7 +283,7 @@ _**调整了历史版本号，使其遵守版本控制规范**_
 
 + 新增setext标题渲染
 
----
+___
 ## github_markdown - 2024-5-2
 ### [1.0.3](https://github.com/guobao2333/MT-syntax-highlight/commit/76c1f9a)
 #### Fixed | 修复
