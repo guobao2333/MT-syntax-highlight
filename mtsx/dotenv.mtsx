@@ -1,3 +1,4 @@
+// require MT >= 2.16.0
 //	################# LICENCE START ################
 //	Copyright (c) 2024 shiguobaona
 	
@@ -14,7 +15,8 @@
 //	limitations under the License.
 //	################# LICENCE END ##################
 {
-	name: ["dotenv", ".env"]
+	name: ["DotEnv", ".env"]
+	comment: {startsWith: "#", addToContains: false}
 	styles: [
 		"comment" #8C8C8C, #808080, //@I
 		// 取消上行注释将注释变为斜体
