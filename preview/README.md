@@ -5,35 +5,35 @@
 
 <details>
 <summary>Environment Variable</summary>
-![light亮色模式](dotenv/light.webp)
 
+![light亮色模式](dotenv/light.webp)
 ![dark暗色模式](dotenv/dark.webp)
 </details>
 
 <details>
 <summary>GitHub Flavored Markdown</summary>
-![light亮色模式](github_markdown/light.webp)
 
+![light亮色模式](github_markdown/light.webp)
 ![dark暗色模式](github_markdown/dark.webp)
 </details>
 
 <details>
 <summary>gitignore</summary>
-![light亮色模式](gitignore/light.webp)
 
+![light亮色模式](gitignore/light.webp)
 ![dark暗色模式](gitignore/dark.webp)
 </details>
 
 <details>
 <summary>JavaScript EX(内置)</summary>
-![light亮色模式](builtin/javascript/light.webp)
 
-![dark暗色模式](builtin/javascript//dark.webp)
+![light亮色模式](builtin/javascript/light.webp)
+![dark暗色模式](builtin/javascript/dark.webp)
 </details>
 
 <details>
 <summary>vimscript</summary>
-![light亮色模式](vimscript/light.webp)
 
+![light亮色模式](vimscript/light.webp)
 ![dark暗色模式](vimscript/dark.webp)
 </details>
