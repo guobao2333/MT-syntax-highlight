@@ -25,6 +25,13 @@
 </details>
 
 <details>
+<summary>JavaScript EX(内置)</summary>
+![light亮色模式](builtin/javascript/light.webp)
+
+![dark暗色模式](builtin/javascript//dark.webp)
+</details>
+
+<details>
 <summary>vimscript</summary>
 ![light亮色模式](vimscript/light.webp)
 
