@@ -31,13 +31,7 @@
 # Change Log | 更新日志
 > 仅展示最新版本的**部分变化**，更多版本细节请[查看完整更新日志](CHANGELOG.md)
 ## 2024-9-19
-### dotenv - [1.0.1](https://github.com/guobao2333/MT-syntax-highlight/commit/commits/2f99ad9)
-#### Added | 新增
-
-+ 新增指定语法支持的最低MT版本
-+ 新增支持快捷注释
-
-### gitignore - [1.2.3](https://github.com/guobao2333/MT-syntax-highlight/commit/commits/ecdac20)
+### gitignore - [1.2.3](https://github.com/guobao2333/MT-syntax-highlight/commit/commits/ecdac20) && dotenv - [1.0.1](https://github.com/guobao2333/MT-syntax-highlight/commit/commits/2f99ad9)
 #### Added | 新增
 
 + 新增指定语法支持的最低MT版本

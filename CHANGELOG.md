@@ -22,13 +22,7 @@
 > …</details>
 
 ## 2024-9-19
-### dotenv - [1.0.1](https://github.com/guobao2333/MT-syntax-highlight/commit/commits/2f99ad9)
-#### Added | 新增
-
-+ 新增指定语法支持的最低MT版本
-+ 新增支持快捷注释
-
-### gitignore - [1.2.3](https://github.com/guobao2333/MT-syntax-highlight/commit/commits/ecdac20)
+### gitignore - [1.2.3](https://github.com/guobao2333/MT-syntax-highlight/commit/commits/ecdac20) && dotenv - [1.0.1](https://github.com/guobao2333/MT-syntax-highlight/commit/commits/2f99ad9)
 #### Added | 新增
 
 + 新增指定语法支持的最低MT版本
