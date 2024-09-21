@@ -14,12 +14,12 @@
 >
 > 感谢你能看完这些废话，如果感兴趣的话，可以看看更新日志和提交记录，你多少可以管中窥豹，知道我为什么会厌恶天才。因为我不是天才！而且天才们总是一副高高在上不可比拟的姿态，让我恶心至极！
 
-### Introduce | 简介
+### Description | 简介
 作为一个酷爱使用手机作为生产力的苦逼程序员，偶然发现了一个名叫“MT管理器”的软件。  
-起初只是当做一个，我认为“市面上最好用”的文件管理器和逆向工具来使用，后来发现是个写代码的好工具。
+起初只是当做一个我认为“市面上最好用”的文件管理器和逆向工具来使用，后来发现还是个写代码的好工具。
 
-因为它不仅支持语法高亮，同时还支持了**自定义**语法高亮文件。  
-其核心使用了JAVA驱动的***正则表达式***
+因为它不仅支持语法高亮，性能不错的同时，还支持了**自定义**语法高亮。  
+其核心使用了JAVA语法的***正则表达式***
 
 在`2.16.0`版本还增加了更多高亮语法和文本样式，这使得我们可以在今后写出性能更好、复杂性更高、样式更好看的语法高亮了！
 
@@ -28,25 +28,15 @@
 所以我写了一些语法高亮给自己使用，同时也开源给大家用，希望大家也能够写出更多好用的mt语法高亮！
 > 虽然我知道VSCode是个很好用的代码编辑器，但那仅限于大屏。虽然vsc也能在手机浏览器使用，不过用起来嘛……
 
+希望大家能够贡献更多的语法高亮。
 # Change Log | 更新日志
 > 仅展示最新版本的**部分变化**，更多版本细节请[查看完整更新日志](CHANGELOG.md)
-## 2024-9-19
-### gitignore - [1.2.3](https://github.com/guobao2333/MT-syntax-highlight/commit/commits/ecdac20) && dotenv - [1.0.1](https://github.com/guobao2333/MT-syntax-highlight/commit/commits/2f99ad9)
-#### Added | 新增
-
-+ 新增指定语法支持的最低MT版本
-+ 新增支持快捷注释
-
-### JavaScript (内置) - [1.0.1](https://github.com/guobao2333/MT-syntax-highlight/commit/commits/...b6b220c%20cbf4404)
-#### Fixed | 修复
-
-1. 修复因MDN文档导致高亮的语法错误的~~语法错误~~拼写错误：`SynatxError` -> `SyntaxError`
-
+## JavaScript (内置) - [1.1.0](https://github.com/guobao2333/MT-syntax-highlight/commit/39b8409) - 2024-9-21
 ### Added | 新增
 
-+ 为语法添加了预览图
++ 为部分符号/关键字/方法增加高亮
+  > 但是由于存在一些bug，所以仅添加小部分高亮
 
-___
 # Update Plan | 更新计划
 - [x] Envionment Variable
 - [x] Markdown(GFM)[^GFM]
@@ -56,7 +46,7 @@ ___
 - [ ] **优化MT原有自带语法**
   - [ ] HTML <sub>+JS+CSS</sub> (但bin说有性能问题……)
   - [ ] Markdown
-  - [ ] JavaScript
+  - [x] JavaScript
     - [ ] TypeScript
 - [ ] 更多的语法……
 

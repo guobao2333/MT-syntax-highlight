@@ -21,14 +21,21 @@
 > `### 语法 - 版本`  
 > …</details>
 
+## JavaScript (内置) - [1.1.0](https://github.com/guobao2333/MT-syntax-highlight/commit/39b8409) - 2024-9-21
+### Added | 新增
+
++ 为部分符号/关键字/方法增加高亮
+  > 但是由于存在一些bug，所以仅添加小部分高亮
+
+___
 ## 2024-9-19
-### gitignore - [1.2.3](https://github.com/guobao2333/MT-syntax-highlight/commit/commits/ecdac20) && dotenv - [1.0.1](https://github.com/guobao2333/MT-syntax-highlight/commit/commits/2f99ad9)
+### gitignore - [1.2.3](https://github.com/guobao2333/MT-syntax-highlight/commit/ecdac20) & dotenv - [1.0.1](https://github.com/guobao2333/MT-syntax-highlight/commit/2f99ad9)
 #### Added | 新增
 
 + 新增指定语法支持的最低MT版本
 + 新增支持快捷注释
 
-### JavaScript (内置) - [1.0.1](https://github.com/guobao2333/MT-syntax-highlight/commit/commits/...b6b220c%20cbf4404)
+### JavaScript (内置) - [1.0.1](https://github.com/guobao2333/MT-syntax-highlight/compare/40d8dea...cbf4404)
 #### Fixed | 修复
 
 1. 修复因MDN文档导致高亮的语法错误的~~语法错误~~拼写错误：`SynatxError` -> `SyntaxError`
