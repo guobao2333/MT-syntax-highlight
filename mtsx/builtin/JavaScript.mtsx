@@ -71,13 +71,14 @@
         {match: /\basync(?=\s+function\b)/, 0: "keyword"}
         {match: keywordsToRegex(
                 "break case catch class const continue debugger default delete do else enum export async await"
-                "extends false finally for function if implements import instanceof interface let"
+                "extends false finally for function if implements import instanceof interface let debugger"
                 "new null package private protected public return static super switch this with"
                 "throw true try typeof var void while yield function of import in from as"
             ), 0: "keyword"
         }
-        {match: keywordsToRegex("Date Function Array String Math BigInt Set Object console globalThis"),0:"namespace"}
-        {match: keywordsToRegex("prototype Infinity NaN undefined"),0:"variable"}
+        {match: keywordsToRegex("JSON Date Function Symbol RegExp Array String Number Boolean Math BigInt Map Set Object WeakMap WeakSet console globalThis"),0:"namespace"}
+        {match: keywordsToRegex("prototype Infinity NaN undefined"),0:"operator"}
+        {match: keywordsToRegex("=> === !== ..."),0:"label"}
         {match: keywordsToRegex("Error AggregateError EvalError RangeError ReferenceError SyntaxError TypeError URIError InternalError"),0:"error"}
     ]
     codeFormatter: #BUILT_IN_JS_FORMATTER#
