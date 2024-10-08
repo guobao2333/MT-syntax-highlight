@@ -1,22 +1,24 @@
-# MT Syntax HighLight
-- 适用于[MT管理器](https://mt2.cn)的语法高亮([.mtsx](https://mt2.cn/guide/file/mt-syntax.html))
+<h1 align="center"><b>MT Syntax HighLight</b></h1>
+<p align="center">
+  适用于<a href="https://mt2.cn">MT管理器</a>的语法高亮(<a href="https://mt2.cn/guide/file/mt-syntax.html">.mtsx</a>)
+</p><br>
 
-[![Repo Link](https://img.shields.io/badge/Github-Repo-brightgreen?style=flat&logo=github)](https://github.com/guobao2333/MT-syntax-highlight)
-[![Repo License](https://img.shields.io/github/license/guobao2333/MT-syntax-highlight?logo=data:image/svg%2bxml;base64,PHN2ZyBhcmlhLWhpZGRlbj0idHJ1ZSIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDE2IDE2IiB2ZXJzaW9uPSIxLjEiIHdpZHRoPSIxNiIgZGF0YS12aWV3LWNvbXBvbmVudD0idHJ1ZSIgY2xhc3M9Im9jdGljb24gb2N0aWNvbi1sYXcgbXItMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBzdHlsZT0idXNlci1zZWxlY3Q6IGF1dG87Ij4KPHBhdGggZmlsbD0iI2Y1ZjVmNSIgZD0iTTguNzUuNzVWMmguOTg1Yy4zMDQgMCAuNjAzLjA4Ljg2Ny4yMzFsMS4yOS43MzZjLjAzOC4wMjIuMDguMDMzLjEyNC4wMzNoMi4yMzRhLjc1Ljc1IDAgMCAxIDAgMS41aC0uNDI3bDIuMTExIDQuNjkyYS43NS43NSAwIDAgMS0uMTU0LjgzOGwtLjUzLS41My41MjkuNTMxLS4wMDEuMDAyLS4wMDIuMDAyLS4wMDYuMDA2LS4wMDYuMDA1LS4wMS4wMS0uMDQ1LjA0Yy0uMjEuMTc2LS40NDEuMzI3LS42ODYuNDVDMTQuNTU2IDEwLjc4IDEzLjg4IDExIDEzIDExYTQuNDk4IDQuNDk4IDAgMCAxLTIuMDIzLS40NTQgMy41NDQgMy41NDQgMCAwIDEtLjY4Ni0uNDVsLS4wNDUtLjA0LS4wMTYtLjAxNS0uMDA2LS4wMDYtLjAwNC0uMDA0di0uMDAxYS43NS43NSAwIDAgMS0uMTU0LS44MzhMMTIuMTc4IDQuNWgtLjE2MmMtLjMwNSAwLS42MDQtLjA3OS0uODY4LS4yMzFsLTEuMjktLjczNmEuMjQ1LjI0NSAwIDAgMC0uMTI0LS4wMzNIOC43NVYxM2gyLjVhLjc1Ljc1IDAgMCAxIDAgMS41aC02LjVhLjc1Ljc1IDAgMCAxIDAtMS41aDIuNVYzLjVoLS45ODRhLjI0NS4yNDUgMCAwIDAtLjEyNC4wMzNsLTEuMjg5LjczN2MtLjI2NS4xNS0uNTY0LjIzLS44NjkuMjNoLS4xNjJsMi4xMTIgNC42OTJhLjc1Ljc1IDAgMCAxLS4xNTQuODM4bC0uNTMtLjUzLjUyOS41MzEtLjAwMS4wMDItLjAwMi4wMDItLjAwNi4wMDYtLjAxNi4wMTUtLjA0NS4wNGMtLjIxLjE3Ni0uNDQxLjMyNy0uNjg2LjQ1QzQuNTU2IDEwLjc4IDMuODggMTEgMyAxMWE0LjQ5OCA0LjQ5OCAwIDAgMS0yLjAyMy0uNDU0IDMuNTQ0IDMuNTQ0IDAgMCAxLS42ODYtLjQ1bC0uMDQ1LS4wNC0uMDE2LS4wMTUtLjAwNi0uMDA2LS4wMDQtLjAwNHYtLjAwMWEuNzUuNzUgMCAwIDEtLjE1NC0uODM4TDIuMTc4IDQuNUgxLjc1YS43NS43NSAwIDAgMSAwLTEuNWgyLjIzNGEuMjQ5LjI0OSAwIDAgMCAuMTI1LS4wMzNsMS4yODgtLjczN2MuMjY1LS4xNS41NjQtLjIzLjg2OS0uMjNoLjk4NFYuNzVhLjc1Ljc1IDAgMCAxIDEuNSAwWm0yLjk0NSA4LjQ3N2MuMjg1LjEzNS43MTguMjczIDEuMzA1LjI3M3MxLjAyLS4xMzggMS4zMDUtLjI3M0wxMyA2LjMyN1ptLTEwIDBjLjI4NS4xMzUuNzE4LjI3MyAxLjMwNS4yNzNzMS4wMi0uMTM4IDEuMzA1LS4yNzNMMyA2LjMyN1oiIHN0eWxlPSJ1c2VyLXNlbGVjdDogYXV0bzsiPjwvcGF0aD4KPC9zdmc%2B&style=flat&label=Licence)](https://github.com/guobao2333/MT-syntax-highlight/LICENSE)
-[![Common Changelog](https://common-changelog.org/badge.svg)](https://common-changelog.org)
+<p align="center">
+<a href="https://github.com/guobao2333/MT-syntax-highlight"><img alt="Repo Link" src="https://img.shields.io/badge/Github-Repo-brightgreen?style=flat&amp;logo=github"/></a>
+<a href="https://github.com/guobao2333/MT-syntax-highlight/LICENSE"><img alt="Repo License" src="https://img.shields.io/github/license/guobao2333/MT-syntax-highlight?logo=data:image/svg%2bxml;base64,PHN2ZyBhcmlhLWhpZGRlbj0idHJ1ZSIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDE2IDE2IiB2ZXJzaW9uPSIxLjEiIHdpZHRoPSIxNiIgZGF0YS12aWV3LWNvbXBvbmVudD0idHJ1ZSIgY2xhc3M9Im9jdGljb24gb2N0aWNvbi1sYXcgbXItMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBzdHlsZT0idXNlci1zZWxlY3Q6IGF1dG87Ij4KPHBhdGggZmlsbD0iI2Y1ZjVmNSIgZD0iTTguNzUuNzVWMmguOTg1Yy4zMDQgMCAuNjAzLjA4Ljg2Ny4yMzFsMS4yOS43MzZjLjAzOC4wMjIuMDguMDMzLjEyNC4wMzNoMi4yMzRhLjc1Ljc1IDAgMCAxIDAgMS41aC0uNDI3bDIuMTExIDQuNjkyYS43NS43NSAwIDAgMS0uMTU0LjgzOGwtLjUzLS41My41MjkuNTMxLS4wMDEuMDAyLS4wMDIuMDAyLS4wMDYuMDA2LS4wMDYuMDA1LS4wMS4wMS0uMDQ1LjA0Yy0uMjEuMTc2LS40NDEuMzI3LS42ODYuNDVDMTQuNTU2IDEwLjc4IDEzLjg4IDExIDEzIDExYTQuNDk4IDQuNDk4IDAgMCAxLTIuMDIzLS40NTQgMy41NDQgMy41NDQgMCAwIDEtLjY4Ni0uNDVsLS4wNDUtLjA0LS4wMTYtLjAxNS0uMDA2LS4wMDYtLjAwNC0uMDA0di0uMDAxYS43NS43NSAwIDAgMS0uMTU0LS44MzhMMTIuMTc4IDQuNWgtLjE2MmMtLjMwNSAwLS42MDQtLjA3OS0uODY4LS4yMzFsLTEuMjktLjczNmEuMjQ1LjI0NSAwIDAgMC0uMTI0LS4wMzNIOC43NVYxM2gyLjVhLjc1Ljc1IDAgMCAxIDAgMS41aC02LjVhLjc1Ljc1IDAgMCAxIDAtMS41aDIuNVYzLjVoLS45ODRhLjI0NS4yNDUgMCAwIDAtLjEyNC4wMzNsLTEuMjg5LjczN2MtLjI2NS4xNS0uNTY0LjIzLS44NjkuMjNoLS4xNjJsMi4xMTIgNC42OTJhLjc1Ljc1IDAgMCAxLS4xNTQuODM4bC0uNTMtLjUzLjUyOS41MzEtLjAwMS4wMDItLjAwMi4wMDItLjAwNi4wMDYtLjAxNi4wMTUtLjA0NS4wNGMtLjIxLjE3Ni0uNDQxLjMyNy0uNjg2LjQ1QzQuNTU2IDEwLjc4IDMuODggMTEgMyAxMWE0LjQ5OCA0LjQ5OCAwIDAgMS0yLjAyMy0uNDU0IDMuNTQ0IDMuNTQ0IDAgMCAxLS42ODYtLjQ1bC0uMDQ1LS4wNC0uMDE2LS4wMTUtLjAwNi0uMDA2LS4wMDQtLjAwNHYtLjAwMWEuNzUuNzUgMCAwIDEtLjE1NC0uODM4TDIuMTc4IDQuNUgxLjc1YS43NS43NSAwIDAgMSAwLTEuNWgyLjIzNGEuMjQ5LjI0OSAwIDAgMCAuMTI1LS4wMzNsMS4yODgtLjczN2MuMjY1LS4xNS41NjQtLjIzLjg2OS0uMjNoLjk4NFYuNzVhLjc1Ljc1IDAgMCAxIDEuNSAwWm0yLjk0NSA4LjQ3N2MuMjg1LjEzNS43MTguMjczIDEuMzA1LjI3M3MxLjAyLS4xMzggMS4zMDUtLjI3M0wxMyA2LjMyN1ptLTEwIDBjLjI4NS4xMzUuNzE4LjI3MyAxLjMwNS4yNzNzMS4wMi0uMTM4IDEuMzA1LS4yNzNMMyA2LjMyN1oiIHN0eWxlPSJ1c2VyLXNlbGVjdDogYXV0bzsiPjwvcGF0aD4KPC9zdmc%2B&amp;style=flat&amp;label=Licence"/></a>
+<a href="https://common-changelog.org"><img alt="Common Changelog" src="https://common-changelog.org/badge.svg"/></a>
+</p>
 
 > [!IMPORTANT]
-> **项目即将停止更新！！**
->
-> 由于我在感受到了人与人之间的巨大差异后，心灵受到了打击，所以决定为那些我感兴趣并且做的人很少，或没有人做过的东西付出我的精力。因而可能会导致本项目的无限期停更，当然如果你愿意的话，可以通过赞助打赏来让我保持更新频率，我会尽可能优化性能。因为bin写出的语法高亮效率就是会高出我的1~3倍，所以我认为你应该去向bin请求新语法高亮，而我能做的可能只是换个配色吧……所以这是在我通过更新其他项目时，冷静抉择后的决定。
->
-> 虽然我知道我写的不行，但我自己依旧在使用自己编写的语法高亮，因为我为自己创造出的内容所感到骄傲。我可能会在后续进行少量更新，但更新频率将会无限趋近于停更。我的精力并不足以让我维护这些项目，因为我可能需要花费比别人多10倍的时间去做到，甚至还做不到别人能做到的。所以我并不相信“努力就一定会成功”这种放狗屁的鸡汤，我相信的只有天赋和努力，而不是只有努力，因为没有天赋一切都是白费力气。
->
-> 感谢你能看完这些废话，如果感兴趣的话，可以看看更新日志和提交记录，你多少可以管中窥豹，知道我为什么会厌恶天才。因为我不是天才！而且天才们总是一副高高在上不可比拟的姿态，让我恶心至极！
+> <details>
+> <summary><b>项目即将停止更新！！</b></summary>
+> <br><p>由于我在感受到了人与人之间的巨大差异后，心灵受到了打击，所以决定为那些我感兴趣并且做的人很少，或没有人做过的东西付出我的精力。因而可能会导致本项目的无限期停更，当然如果你愿意的话，可以通过赞助打赏来让我保持更新频率，我会尽可能优化性能。因为bin写出的语法高亮效率就是会高出我的1~3倍，所以我认为你应该去向bin请求新语法高亮，而我能做的可能只是换个配色吧……所以这是在我通过更新其他项目时，冷静抉择后的决定。</p>
+> <p>虽然我知道我写的不行，但我自己依旧在使用自己编写的语法高亮，因为我为自己创造出的内容所感到骄傲。我可能会在后续进行少量更新，但更新频率将会无限趋近于停更。我的精力并不足以让我维护这些项目，因为我可能需要花费比别人多10倍的时间去做到，甚至还做不到同等程度。所以我并不相信“努力就一定会成功”这种狗屁鸡汤，我相信的只有天赋和努力，而不是只有努力，因为没有天赋一切都是白费力气。</p>
+> 我为什么会讨厌天才？因为我不是天才！而且天才们总是一副高高在上不可比拟的样子，真让我恶心！</details>
 
-### Description | 简介
+# Introduction | 简介
 作为一个酷爱使用手机作为生产力的苦逼程序员，偶然发现了一个名叫“MT管理器”的软件。  
-起初只是当做一个我认为“市面上最好用”的文件管理器和逆向工具来使用，后来发现还是个写代码的好工具。
+起初只是当做一个我认为“市面上最好用”的文件管理器和逆向工具来使用，后来发现还是个查看代码的好工具。
 
 因为它不仅支持语法高亮，性能不错的同时，还支持了**自定义**语法高亮。  
 其核心使用了JAVA语法的***正则表达式***
@@ -39,12 +41,13 @@
 
 # Update Plan | 更新计划
 - [x] Envionment Variable
-- [x] Markdown(GFM)[^GFM]
+- [x] Markdown(GFM)
 - [x] gitignore
 - [x] VimScript
 
 - [ ] **优化MT原有自带语法**
   - [ ] HTML <sub>+JS+CSS</sub> (但bin说有性能问题……)
+  - [ ] Java
   - [ ] Markdown
   - [x] JavaScript
     - [ ] TypeScript
@@ -97,5 +100,3 @@
 3. [Markdown - Wikipedia](https://wikipedia.org/wiki/Markdown)
 4. [Git - gitignore Documentation](https://git-scm.com/docs/gitignore)
 5. [VimScript - VimDoc](https://vimdoc.sourceforge.net/htmldoc/usr_41.html)
-
-[^GFM]: [GitHub Flavored Markdown](https://github.github.com/gfm)（通常缩写为 GFM）是 Markdown 的方言。该正式规范基于 [CommonMark](https://commonmark.org) 规范，定义了该方言的语法和语义。
