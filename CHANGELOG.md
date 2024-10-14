@@ -21,11 +21,21 @@
 > `### 语法 - 版本`  
 > …</details>
 
+## gitignore - [1.2.4](https://github.com/guobao2333/MT-syntax-highlight/commit/9ab909d) - 2024-10-15
+### Fixed | 修复
+
+1. 使后缀只会在匹配为文件时高亮
+
+### Added | 新增
+
++ 为 `.dockerignore` 文件提供高亮
+
+___
 ## JavaScript (内置) - [1.1.0](https://github.com/guobao2333/MT-syntax-highlight/commit/39b8409) - 2024-9-21
 ### Added | 新增
 
 + 为部分符号/关键字/方法增加高亮
-  > 但是由于存在一些bug，所以仅添加小部分高亮
+  但是由于存在一些bug，所以仅添加小部分高亮
 
 ___
 ## 2024-9-19
@@ -117,7 +127,7 @@ ___
 
 ### Changed | 变化
 
-* **重构了链接的匹配规则代码**
+* **重构了链接的匹配规则**
 * 优化部分配色，使整体更加统一，观感提升~
 
 ### Added | 新增
@@ -141,7 +151,7 @@ ___
 ### vimscript - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/b6c0af2)
 #### New | 新语法
 
-感谢该语法的贡献者：**@danicaStarR**
+感谢该语法的贡献者：**[@danicaStarR](https://github.com/danicaStarR)**
 
 + 新增语法高亮：[vim脚本](mtsx/vim.mtsx) - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/b6c0af2)  
   有关vimscript的文档请看这里：[VimScript - VimDoc](https://vimdoc.sourceforge.net/htmldoc/usr_41.html)

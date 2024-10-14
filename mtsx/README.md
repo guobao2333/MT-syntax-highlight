@@ -6,10 +6,10 @@
 
 ## Builtin | 内置语法
 > [!NOTE]
-> 内置语法是原本在MT管理器中的已有语法。  
-> 而我只是为其添加了一些额外语法/配色，后续可能会对语法进行某些调整，目前待定。
+> 内置语法是原本在MT管理器中已有语法的增强版。  
+> 在增强版中添加/修改了一些额外语法/配色。
 <!--
-- [Markdown](builtin/Markdown.mtsx)
+- [Markdown EX](builtin/Markdown.mtsx)
 -->
 - [JavaScript EX](builtin/JavaScript.mtsx)
 
