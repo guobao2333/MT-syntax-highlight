@@ -1,5 +1,5 @@
 // require MT >= 2.16.0
-//		################# LICENCE START ################
+//	################# LICENCE START ################
 //	Copyright (c) 2024 shiguobaona
 	
 //	Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,7 +15,7 @@
 //	limitations under the License.
 //	################# LICENCE END ##################
 {
-	name: ["gitignore", ".gitignore"]
+	name: ["gitignore", ".gitignore", ".dockerignore"]
 	comment: {startsWith: "#", addToContains: false}
 	styles: [
 		"comment" #8C8C8C, #808080, //@I
@@ -38,11 +38,10 @@
 		{match: /(?m)^(\/?([^ \/\n]+)\/?)+/, recordAllGroups: true,
 			0: {match: /(?:\\[*?])/, 0: "escape"}
 			0: {match: /(?m)^(?:(!).*)/, 0: "inc" 1: "include"}
+			1: {match: /(?m)(\.)(\w)+[*?]*?(?!\/)$/, recordAllGroups: true, 1: "dot" 2: "suffix"}
 			1: {match: /(?m)^(?:\\[#!])/, 0: "escape"}
 			2: {match: /(?<!\*)(?:(?<!\\)(\*)\*)/, 0: "Baste"}
 			2: {match: /(?<!\\)(?:(?<!\*)(\*)|(\?))/, 1: "asterisk" 2: "ask"}
-			2: {match: /(?m)(\.)(\w)+(?!\/)/, recordAllGroups: true, 1: "dot" 2: "suffix"}
-
 			2: "character"}
 	]
 }
