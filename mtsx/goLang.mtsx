@@ -1,0 +1,50 @@
+// Made by Love-Kogasa
+// My blog: love-kogasa.github.io/Love-Kogasa
+{
+  name: ["GoLang", ".go"]
+  comment: {startsWith: "//"}
+  comment: {startsWith: "/*", endsWith: "*/"}
+  styles: [
+    "default" > "variable"
+    "func" > "attrName", @B
+    "keyword" > "keyword", @BI
+    "type" > "namespace", @I
+  ]
+  defines: [
+    "func": {match: /[\w_]+\s*(?=\()/, 0: "func"}
+    "struct": {match: /[\w_]+\s*(?=\.)/, 0: "label"}
+    "type": {match: /(\b[\w_]+\ +)([\w_\[\]]+)/, 2: "type"}
+    "functype": {match: /(\)\s*)([\w_\[\]]+)/, 2: "type"}
+    "obj": {match: /[\w_\[\]]+(?=\{)/, 0: "type"}
+    "import" : {match: /\b[\w_]+(?=\ *\")/, 0: "label"}
+    "temp": {
+      start: {match: /\`/}
+      end: {match: /\`/}
+      style: "string"
+      contains: [
+        {match: /\\./, 0: "strEscape"}
+      ]
+    }
+    "symbols": {match: keywordsToRegex(
+      "{ } [ ] = ( ) $ > < >= <= ! != == === + - * / % ? | & , ; :"
+    ), 0: "propKey" }
+    "keywords": {match: keywordsToRegex(
+      "break default func interface select case defer go map struct"
+      "chan else goto package switch const fallthrough if range type"
+      "continue for import return var"
+    ), 0: "keyword"}
+  ]
+  contains: [
+    {include: "keywords"}
+    {include: "symbols"}
+    {include: "import"}
+    {include: "func"}
+    {include: "struct"}
+    {include: "obj"}
+    {include: "type"}
+    {include: "functype"}
+    {include: "temp"}
+    {builtin: #C_QUOTED_STRING#}
+    {builtin: #JAVA_NUMBER#}
+  ]
+}
