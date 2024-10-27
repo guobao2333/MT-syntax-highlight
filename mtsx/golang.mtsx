@@ -2,7 +2,6 @@
 // My blog: love-kogasa.github.io/Love-Kogasa
 {
   name: ["GoLang - Ice", ".go"]
-  // 如果这样不妥的话你可以改成别的，我比较笨
   comment: {startsWith: "//"}
   comment: {startsWith: "/*", endsWith: "*/"}
   styles: [
