@@ -1,19 +1,33 @@
-// Made by Love-Kogasa
-// My blog: love-kogasa.github.io/Love-Kogasa
+// Get update at https://github.com/guobao2333/MT-syntax-highlight
+//	################# LICENCE START ################
+//	Copyright (c) 2024 Love-Kogasa (https://love-kogasa.github.io/Love-Kogasa)
+	
+//	Licensed under the Apache License, Version 2.0 (the "License");
+//	you may not use this file except in compliance with the License.
+//	You may obtain a copy of the License at
+	
+//			http://www.apache.org/licenses/LICENSE-2.0
+	
+//	Unless required by applicable law or agreed to in writing, software
+//	distributed under the License is distributed on an "AS IS" BASIS,
+//	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//	See the License for the specific language governing permissions and
+//	limitations under the License.
+//	################# LICENCE END ##################
 {
   name: ["GoLang Ice", ".go"]
   comment: {startsWith: "//"}
   comment: {startsWith: "/*", endsWith: "*/"}
   styles: [
-    "default", #1750EB, #58908A
+    "default", #1750EB, #768BDD
     "struct", #7050E0, #6080B0
-    "func", #174AD4, #BABABA, @B
-    "keyword", #0033B3, #CC7832, @BI
+    "func", #174AD4, #4E79EC, @B
+    "keyword", #0033B3, #4C65BA, @BI
     "type", #871094, #9876AA, @I
     "import", #7050E0, #6080B0
     "temp", #067D17, #6A8759
-    "temp1", #0037A6, #CC7832
-    "symbols", #083080, #CC7832
+    "temp1", #0037A6, #6286E6
+    "symbols", #083080, #838AAE
   ]
   defines: [
     "func": {match: /[\w_]+\s*(?=\()/, 0: "func"}
