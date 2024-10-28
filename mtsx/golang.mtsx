@@ -1,33 +1,38 @@
 // Made by Love-Kogasa
 // My blog: love-kogasa.github.io/Love-Kogasa
 {
-  name: ["GoLang - Ice", ".go"]
+  name: ["GoLang Ice", ".go"]
   comment: {startsWith: "//"}
   comment: {startsWith: "/*", endsWith: "*/"}
   styles: [
-    "default" > "variable"
-    "func" > "attrName", @B
-    "keyword" > "keyword", @BI
-    "type" > "namespace", @I
+    "default", #1750EB, #58908A
+    "struct", #7050E0, #6080B0
+    "func", #174AD4, #BABABA, @B
+    "keyword", #0033B3, #CC7832, @BI
+    "type", #871094, #9876AA, @I
+    "import", #7050E0, #6080B0
+    "temp", #067D17, #6A8759
+    "temp1", #0037A6, #CC7832
+    "symbols", #083080, #CC7832
   ]
   defines: [
     "func": {match: /[\w_]+\s*(?=\()/, 0: "func"}
-    "struct": {match: /[\w_]+\s*(?=\.)/, 0: "label"}
+    "struct": {match: /[\w_]+\s*(?=\.)/, 0: "struct"}
     "type": {match: /(\b[\w_]+\ +)([\w_\[\]]+)/, 2: "type"}
     "functype": {match: /(\)\s*)([\w_\[\]]+)/, 2: "type"}
     "obj": {match: /[\w_\[\]]+(?=\{)/, 0: "type"}
-    "import" : {match: /\b[\w_]+(?=\ *\")/, 0: "label"}
+    "import" : {match: /\b[\w_]+(?=\ *\")/, 0: "import"}
     "temp": {
       start: {match: /\`/}
       end: {match: /\`/}
-      style: "string"
+      style: "temp"
       contains: [
-        {match: /\\./, 0: "strEscape"}
+        {match: /\\./, 0: "temp1"}
       ]
     }
     "symbols": {match: keywordsToRegex(
       "{ } [ ] = ( ) $ > < >= <= ! != == === + - * / % ? | & , ; :"
-    ), 0: "propKey" }
+    ), 0: "symbols" }
     "keywords": {match: keywordsToRegex(
       "break default func interface select case defer go map struct"
       "chan else goto package switch const fallthrough if range type"
