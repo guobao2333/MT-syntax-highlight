@@ -1,0 +1,69 @@
+// Get update at https://github.com/guobao2333/MT-syntax-highlight
+//	################# LICENCE START ################
+//	Copyright (c) 2024 Love-Kogasa (https://love-kogasa.github.io/Love-Kogasa)
+	
+//	Licensed under the Apache License, Version 2.0 (the "License");
+//	you may not use this file except in compliance with the License.
+//	You may obtain a copy of the License at
+	
+//			http://www.apache.org/licenses/LICENSE-2.0
+	
+//	Unless required by applicable law or agreed to in writing, software
+//	distributed under the License is distributed on an "AS IS" BASIS,
+//	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//	See the License for the specific language governing permissions and
+//	limitations under the License.
+//	################# LICENCE END ##################
+{
+  name: ["GoLang Ice", ".go"]
+  comment: {startsWith: "//"}
+  comment: {startsWith: "/*", endsWith: "*/"}
+  styles: [
+    "default", #1750EB, #768BDD
+    "struct", #7050E0, #6080B0
+    "func", #174AD4, #4E79EC, @B
+    "keyword", #0033B3, #4C65BA, @BI
+    "type", #871094, #9876AA, @I
+    "import", #7050E0, #6080B0
+    "temp", #067D17, #6A8759
+    "temp1", #0037A6, #6286E6
+    "symbols", #083080, #838AAE
+  ]
+  defines: [
+    "func": {match: /[\w_]+\s*(?=\()/, 0: "func"}
+    "struct": {match: /[\w_]+\s*(?=\.)/, 0: "struct"}
+    "type": {match: /(\b[\w_]+\ +)([\w_\[\]]+)/, 2: "type"}
+    "functype": {match: /(\)\s*)([\w_\[\]]+)/, 2: "type"}
+    "obj": {match: /[\w_\[\]]+(?=\{)/, 0: "type"}
+    "import" : {match: /\b[\w_]+(?=\ *\")/, 0: "import"}
+    "temp": {
+      start: {match: /\`/}
+      end: {match: /\`/}
+      style: "temp"
+      contains: [
+        {match: /\\./, 0: "temp1"}
+      ]
+    }
+    "symbols": {match: keywordsToRegex(
+      "{ } [ ] = ( ) $ > < >= <= ! != == === + - * / % ? | & , ; :"
+    ), 0: "symbols" }
+    "keywords": {match: keywordsToRegex(
+      "break default func interface select case defer go map struct"
+      "chan else goto package switch const fallthrough if range type"
+      "continue for import return var"
+    ), 0: "keyword"}
+  ]
+  contains: [
+    {include: "keywords"}
+    {include: "symbols"}
+    {include: "import"}
+    {include: "func"}
+    {include: "struct"}
+    {include: "obj"}
+    {include: "type"}
+    {include: "functype"}
+    {include: "temp"}
+    {builtin: #C_QUOTED_STRING#}
+    {builtin: #JAVA_NUMBER#}
+  ]
+}

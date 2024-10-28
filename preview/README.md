@@ -37,3 +37,10 @@
 ![light亮色模式](vimscript/light.webp)
 ![dark暗色模式](vimscript/dark.webp)
 </details>
+
+<details>
+<summary>GoLang Ice</summary>
+
+![light亮色模式](golang/light.webp)
+![dark暗色模式](golang/dark.webp)
+</details>

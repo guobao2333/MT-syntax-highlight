@@ -1,0 +1,14 @@
+package main
+import (
+  stdio "fmt"
+)
+func main() int {
+  var strings []string = []string{ "hello", "world" }
+  for _, value := range strings {
+    stdio.Println( value )
+  }
+  /* Let me show u an golang code in MT with my syntax hightlight */
+  // Just Return It As success run
+  return 0
+}
+
