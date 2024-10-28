@@ -42,5 +42,5 @@
 <summary>GoLang Ice</summary>
 
 ![light亮色模式](golang/light.webp)
-<!-- ![dark暗色模式](golang/dark.webp) -->
+![dark暗色模式](golang/dark.webp)
 </details>
