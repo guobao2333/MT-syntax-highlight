@@ -18,7 +18,7 @@
 </details>
 
 <details>
-<summary>gitignore</summary>
+<summary>GitIgnore</summary>
 
 ![light亮色模式](gitignore/light.webp)
 ![dark暗色模式](gitignore/dark.webp)
@@ -32,7 +32,7 @@
 </details>
 
 <details>
-<summary>vimscript</summary>
+<summary>VimScript</summary>
 
 ![light亮色模式](vimscript/light.webp)
 ![dark暗色模式](vimscript/dark.webp)

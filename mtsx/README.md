@@ -1,8 +1,8 @@
 # List | 所有语法
-- [env](dotenv.mtsx)
-- [markdown(GFM)](github_markdown.mtsx)[^GFM]
-- [gitignore](gitignore.mtsx)
-- [vimscript](vim.mtsx)
+- [Environment Variable](dotenv.mtsx)
+- [Markdown(GFM)](github_markdown.mtsx)[^GFM]
+- [GitIgnore](gitignore.mtsx)
+- [VimScript](vim.mtsx)
 
 ## Builtin | 内置语法
 > [!NOTE]
