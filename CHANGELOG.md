@@ -27,12 +27,12 @@
 
 1. 修复了未正确高亮的注释
 
-### GoLang Ice - 1.0.0
+### GoLang Ice - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/fcfbc92)
 #### New | 新语法
 
 感谢该语法的贡献者：**[@Love-Kogasa](https://github.com/Love-Kogasa)**
 
-+ 新增语法高亮：[GoLang(冷色调)](mtsx/golang.mtsx) - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/fcfbc92)
++ 新增语法高亮：[GoLang(冷色调)](mtsx/golang.mtsx)
 
 虽然已有内置golang语法，但此语法高亮作者写了一个冷色调的配色以及匹配模式，不过只有亮色，而我为此语法补充了暗色的风格。
 
@@ -71,20 +71,20 @@ ___
 + 为语法添加了预览图
 
 ___
-## JavaScript (内置) - 1.0.0 - 2024-9-2
+## JavaScript (内置) - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/f177cd7) - 2024-9-2
 ### New | 新语法
 
-+ 新增内置语法高亮：[JavaScript](mtsx/builtin/JavaScript.mtsx) - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/f177cd7)
++ 新增内置语法高亮：[JavaScript](mtsx/builtin/JavaScript.mtsx)
 
 **优化内容：**
 1. 为error类型添加高亮
 2. 为部分全局属性添加高亮
 
 ___
-## dotenv - 1.0.0 - 2024-8-31
+## dotenv - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/b6cdf7b) - 2024-8-31
 ### New | 新语法
 
-+ 新增语法高亮：[环境变量配置](mtsx/dotenv.mtsx) - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/b6cdf7b)
++ 新增语法高亮：[环境变量配置](mtsx/dotenv.mtsx)
   > 5个语法，写了3天😂
 
 ___
@@ -169,7 +169,7 @@ ___
 
 感谢该语法的贡献者：**[@danicaStarR](https://github.com/danicaStarR)**
 
-+ 新增语法高亮：[vim脚本](mtsx/vim.mtsx) - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/b6c0af2)  
++ 新增语法高亮：[vim脚本](mtsx/vim.mtsx)  
   有关vimscript的文档请看这里：[VimScript - VimDoc](https://vimdoc.sourceforge.net/htmldoc/usr_41.html)
 
 ### github_markdown - [2.1.2](https://github.com/guobao2333/MT-syntax-highlight/commit/8477c47)
@@ -217,7 +217,7 @@ ___
 ## gitignore - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/6299c9a) - 2024-6-24
 ### New | 新语法
 
-+ 新增语法高亮：[git 提交忽略](mtsx/gitignore.mtsx) - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/6299c9a)  
++ 新增语法高亮：[git提交忽略](mtsx/gitignore.mtsx)  
   有关gitignore的文档请看这里：[Git - gitignore Documentation](https://git-scm.com/docs/gitignore)
 
 ___
