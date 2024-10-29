@@ -3,6 +3,7 @@
 - [Markdown(GFM)](github_markdown.mtsx)[^GFM]
 - [GitIgnore](gitignore.mtsx)
 - [VimScript](vim.mtsx)
+- [GoLang](golang.mtsx)
 
 ## Builtin | 内置语法
 > [!NOTE]
