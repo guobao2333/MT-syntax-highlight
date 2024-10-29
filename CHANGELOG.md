@@ -21,6 +21,22 @@
 > `### 语法 - 版本`  
 > …</details>
 
+## 2024-10-28
+### dotenv - [1.0.1](https://github.com/guobao2333/MT-syntax-highlight/commit/30140d2)
+#### Fixed | 修复
+
+1. 修复了未正确高亮的注释
+
+### GoLang Ice - 1.0.0
+#### New | 新语法
+
+感谢该语法的贡献者：**[@Love-Kogasa](https://github.com/Love-Kogasa)**
+
++ 新增语法高亮：[GoLang(冷色调)](mtsx/golang.mtsx) - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/fcfbc92)
+
+虽然已有内置golang语法，但此语法高亮作者写了一个冷色调的配色以及匹配模式，不过只有亮色，而我为此语法补充了暗色的风格。
+
+___
 ## gitignore - [1.2.4](https://github.com/guobao2333/MT-syntax-highlight/commit/9ab909d) - 2024-10-15
 ### Fixed | 修复
 

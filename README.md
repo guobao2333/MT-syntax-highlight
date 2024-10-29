@@ -33,14 +33,20 @@
 希望大家能够贡献更多的语法高亮。
 # Change Log | 更新日志
 > 仅展示最新版本的**部分变化**，更多版本细节请[查看完整更新日志](CHANGELOG.md)
-## gitignore - [1.2.4](https://github.com/guobao2333/MT-syntax-highlight/commit/9ab909d) - 2024-10-15
-### Fixed | 修复
+## 2024-10-28
+### dotenv - [1.0.1](https://github.com/guobao2333/MT-syntax-highlight/commit/30140d2)
+#### Fixed | 修复
 
-1. 使后缀只会在匹配为文件时高亮
+1. 修复了未正确高亮的注释
 
-### Added | 新增
+### GoLang Ice - 1.0.0
+#### New | 新语法
 
-+ 为 `.dockerignore` 文件提供高亮
+感谢该语法的贡献者：**[@Love-Kogasa](https://github.com/Love-Kogasa)**
+
++ 新增语法高亮：[GoLang(冷色调)](mtsx/golang.mtsx) - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/fcfbc92)
+
+虽然已有内置golang语法，但此语法高亮作者写了一个冷色调的配色以及匹配模式，不过只有亮色，而我为此语法补充了暗色的风格。
 
 # Update Plan | 更新计划
 - [x] Envionment Variable
@@ -81,9 +87,9 @@
 如果合并完成，恭喜你🎉您完成了对本项目的贡献！我们由衷的感谢为每个开源项目做出贡献的人，无论贡献多少。
 
 # License | 许可证
-本项目遵循[Apache-2.0](./LICENSE)许可证发布。
+本项目遵循[Apache-2.0](./LICENSE)的协议发布。
 
-    Copyright 2024 @shiguobaona
+    Copyright 2024 shiguobaona
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
