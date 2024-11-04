@@ -1,0 +1,63 @@
+//	################# LICENCE START ################
+//	Copyright (c) 2024 ZQBCWG
+	
+//	Licensed under the Apache License, Version 2.0 (the "License");
+//	you may not use this file except in compliance with the License.
+//	You may obtain a copy of the License at
+	
+//			http://www.apache.org/licenses/LICENSE-2.0
+	
+//	Unless required by applicable law or agreed to in writing, software
+//	distributed under the License is distributed on an "AS IS" BASIS,
+//	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//	See the License for the specific language governing permissions and
+//	limitations under the License.
+//	################# LICENCE END ##################
+
+{
+  name: ["Haskell", ".hs"]
+  comment: {startsWith: "--"}
+  comment: {startsWith: "{-", endsWith: "-}"}
+  styles: [
+    "default", #1E1E1E, #D4D4D4           // 背景深灰，默认文本浅灰
+    "module", #282C34, #61AFEF             // 背景深蓝，模块名称亮蓝
+    "function", #2C313C, #98C379, @B       // 背景深灰蓝，函数名称绿色加粗
+    "keyword", #2D2D30, #C678DD, @BI       // 背景黑，关键字粉紫色加粗斜体
+    "type", #282C34, #E5C07B, @I           // 背景深蓝，类型名称浅棕色斜体
+    "import", #3B4048, #56B6C2             // 背景灰蓝，导入模块名称青绿色
+    "temp", #353A45, #61AFEF               // 背景深灰蓝，模板文本亮蓝
+    "temp1", #353A45, #D19A66              // 背景深灰蓝，模板内转义字符浅橙色
+    "symbols", #2D2D30, #FFD700            // 背景黑，符号金色
+  ]
+  defines: [
+    "function": {match: /\b[\w_]+\s*::/, 0: "function"}
+    "module": {match: /\bmodule\b\s+[\w.]+/, 0: "module"}
+    "type": {match: /\bdata\b\s+[\w]+|type\s+[\w]+/, 0: "type"}
+    "import" : {match: /\bimport\b\s+[\w.]+/, 0: "import"}
+    "temp": {
+      start: {match: /`/}
+      end: {match: /`/}
+      style: "temp"
+      contains: [
+        {match: /\\./, 0: "temp1"}
+      ]
+    }
+    "symbols": {match: keywordsToRegex(
+      "= -> <- \\ | -> <- => ++ -- . .. : :: \\\" '"
+    ), 0: "symbols" }
+    "keywords": {match: keywordsToRegex(
+      "case of let in where do if then else data type newtype deriving"
+      "class instance module import as hiding qualified"
+    ), 0: "keyword"}
+  ]
+  contains: [
+    {include: "keywords"}
+    {include: "symbols"}
+    {include: "import"}
+    {include: "function"}
+    {include: "module"}
+    {include: "type"}
+    {builtin: #C_QUOTED_STRING#}
+    {builtin: #JAVA_NUMBER#}
+  ]
+}
