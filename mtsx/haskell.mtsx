@@ -15,19 +15,19 @@
 //	################# LICENCE END ##################
 
 {
-  name: ["Haskell", ".hs"]
+  name: ["Haskell Contrast", ".hs"]
   comment: {startsWith: "--"}
   comment: {startsWith: "{-", endsWith: "-}"}
   styles: [
-    "default", #1E1E1E, #D4D4D4           // 背景深灰，默认文本浅灰
-    "module", #282C34, #61AFEF             // 背景深蓝，模块名称亮蓝
-    "function", #2C313C, #98C379, @B       // 背景深灰蓝，函数名称绿色加粗
-    "keyword", #2D2D30, #C678DD, @BI       // 背景黑，关键字粉紫色加粗斜体
-    "type", #282C34, #E5C07B, @I           // 背景深蓝，类型名称浅棕色斜体
-    "import", #3B4048, #56B6C2             // 背景灰蓝，导入模块名称青绿色
-    "temp", #353A45, #61AFEF               // 背景深灰蓝，模板文本亮蓝
-    "temp1", #353A45, #D19A66              // 背景深灰蓝，模板内转义字符浅橙色
-    "symbols", #2D2D30, #FFD700            // 背景黑，符号金色
+    "default", #1E1E1E, #D4D4D4
+    "module", #61AFEF, #61AFEF
+    "function", #0000FF, #98C379,
+    "keyword", #C678DD, #C678DD,
+    "type", #E5C07B, #E5C07B,
+    "import", #56B6C2, #56B6C2
+    "temp", #61AFEF, #61AFEF
+    "temp1", #D19A66, #D19A66
+    "symbols", #EA703F, #FFD700
   ]
   defines: [
     "function": {match: /\b[\w_]+\s*::/, 0: "function"}
