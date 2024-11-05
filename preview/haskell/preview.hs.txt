@@ -1,0 +1,27 @@
+import Data.List (elemIndices, sort)
+import Data.Set (fromList, toList)
+import System.Console.Haskeline (InputT, runInputT, defaultSettings, getInputLine, outputStr, outputStrLn)
+-- 一些注释
+rows :: Int
+rows = 9
+board :: Board
+board = blank
+type Board = [[Piece]]
+type Position = (Int, Int)
+data Piece = B | B' | O | O' | X | X' | AO | AO' | AX | AX'
+             deriving (Eq, Show)
+
+data m = PushO | PushX | PushA | Push'
+            deriving (Eq, Show)
+data Tree a = Node a [Tree a]
+              deriving Show
+a :: m -> m
+a PushO = PushX
+a PushX = PushO
+minimax :: ((Int, Position), (Board, Int, Int)) -> Int -> Move -> Bool -> (Label, Label) -> Tree ((Label, Int, Position), (Board, Int, Int))
+minimax ((h, p), (b, hO, hX)) n m f (alpha, beta) | win (b, hO, hX) /= "" || n == 0 || (n == 1 && not (ascending b)) = Node (((hO, hX), h, p), (b, hO, hX)) []
+                                                  | otherwise = Node ((bestLabel (map (\(Node ((l, _, _), _) _) -> l) lts) m, h, p), (b, hO, hX)) lts
+                                                    where lts = alphabeta hpxs n m f (alpha, beta)
+                                                          hpxs = map (\(h', p', Just b') -> ((h', p'), (if ascending b then settleAscend else id) (initiateAscend b' p', hO, hX))) $ filter (\(_, _, mb) -> mb /= Nothing) $ take breadth [(h', p', move b m p') | (h', p') <- heuristic (b, hO, hX) m f]
+
+alphabeta :: [((Int, Position), (Board, Int, Int))] -> Int -> Move -> Bool -> (Label, Label) -> [Tree ((Label, Int, Position), (Board, Int, Int))]
