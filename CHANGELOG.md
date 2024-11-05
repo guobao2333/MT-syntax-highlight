@@ -20,7 +20,12 @@
 > `## 日期`  
 > `### 语法 - 版本`  
 > …</details>
+## 2024-11-5
+### Haskell - 1.0.0
+#### New | 新语法
 
++ 新增语法高亮：[GoLang(冷色调)](mtsx/haskell.mtsx)
+___
 ## 2024-10-28
 ### dotenv - [1.0.1](https://github.com/guobao2333/MT-syntax-highlight/commit/30140d2)
 #### Fixed | 修复
