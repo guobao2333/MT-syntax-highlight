@@ -13,51 +13,30 @@
 //	See the License for the specific language governing permissions and
 //	limitations under the License.
 //	################# LICENCE END ##################
-
 {
-  name: ["Haskell Contrast", ".hs"]
-  comment: {startsWith: "--"}
-  comment: {startsWith: "{-", endsWith: "-}"}
-  styles: [
-    "default", #1E1E1E, #D4D4D4
-    "module", #61AFEF, #61AFEF
-    "function", #0000FF, #98C379,
-    "keyword", #C678DD, #C678DD,
-    "type", #E5C07B, #E5C07B,
-    "import", #56B6C2, #56B6C2
-    "temp", #61AFEF, #61AFEF
-    "temp1", #D19A66, #D19A66
-    "symbols", #EA703F, #FFD700
-  ]
-  defines: [
-    "function": {match: /\b[\w_]+\s*::/, 0: "function"}
-    "module": {match: /\bmodule\b\s+[\w.]+/, 0: "module"}
-    "type": {match: /\bdata\b\s+[\w]+|type\s+[\w]+/, 0: "type"}
-    "import" : {match: /\bimport\b\s+[\w.]+/, 0: "import"}
-    "temp": {
-      start: {match: /`/}
-      end: {match: /`/}
-      style: "temp"
-      contains: [
-        {match: /\\./, 0: "temp1"}
-      ]
-    }
-    "symbols": {match: keywordsToRegex(
-      "= -> <- \\ | -> <- => ++ -- . .. : :: \\\" '"
-    ), 0: "symbols" }
-    "keywords": {match: keywordsToRegex(
-      "case of let in where do if then else data type newtype deriving"
-      "class instance module import as hiding qualified"
-    ), 0: "keyword"}
-  ]
-  contains: [
-    {include: "keywords"}
-    {include: "symbols"}
-    {include: "import"}
-    {include: "function"}
-    {include: "module"}
-    {include: "type"}
-    {builtin: #C_QUOTED_STRING#}
-    {builtin: #JAVA_NUMBER#}
-  ]
+    name: ["Haskell", ".hs"]
+    styles: [
+        "keyword" > "keyword"
+        "type" > "type"
+        "functionName" > "tagName"
+        "operator" > "operator"
+        "comment" > "comment"
+        "string" > "string"
+        "number" > "number"
+    ]
+    comment: {startsWith: "--"}
+    comment: {startsWith: "{-", endsWith: "-}"}
+    defines: [
+        "identifier": /\b[a-zA-Z_][a-zA-Z0-9_']*\b/
+    ]
+    contains: [
+        {match: /\b(?:[0-9]+|0[xX][0-9a-fA-F]+)\b/, 0: "number"}
+        {match: /--.*/, 0: "comment"}
+        {match: /\{-[^}]*-\}/, 0: "comment"}
+        {match: keywordsToRegex("let in where case of data type newtype deriving instance class do if then else import module as"), 0: "keyword"}
+        {match: /\b([A-Z][a-zA-Z0-9']*)\b/, 0: "type"}
+        {match: include("identifier") + /(?=\s*::)/, 0: "functionName"}
+        {match: /(::|->|<-|=>|=|\+|-|\*|\/|==|\/=|<=|>=|&&|\|\|)/, 0: "operator"}
+        {match: /".*?"/, 0: "string"}
+    ]
 }
