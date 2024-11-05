@@ -47,7 +47,10 @@
 + 新增语法高亮：[GoLang(冷色调)](mtsx/golang.mtsx)
 
 虽然已有内置golang语法，但此语法高亮作者写了一个冷色调的配色以及匹配模式，不过只有亮色，而我为此语法补充了暗色的风格。
+### Haskell - [1.0.0]
+#### New | 新语法
 
++ 新增语法高亮：[Haskell](mtsx/haskell.mtsx)
 # Update Plan | 更新计划
 - [x] Envionment Variable
 - [x] Markdown(GFM)
