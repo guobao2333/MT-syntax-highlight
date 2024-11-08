@@ -21,8 +21,10 @@
 > `### 语法 - 版本`  
 > …</details>
 ## 2024-11-8
-### haskell - 1.0.0
+### haskell - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/f30f73a)
 #### New | 新语法
+
+感谢该语法的贡献者：**[@ZQBCWG](https://github.com/ZQBCWG)**
 
 + 新增语法高亮：[Haskell](mtsx/haskell.mtsx)
 
@@ -33,7 +35,7 @@ ___
 
 1. 修复了未正确高亮的注释
 
-### GoLang Ice - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/fcfbc92)
+### golang_ice - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/fcfbc92)
 #### New | 新语法
 
 感谢该语法的贡献者：**[@Love-Kogasa](https://github.com/Love-Kogasa)**
