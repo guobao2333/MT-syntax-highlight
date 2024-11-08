@@ -1,0 +1,42 @@
+//	################# LICENCE START ################
+//	Copyright (c) 2024 ZQBCWG
+	
+//	Licensed under the Apache License, Version 2.0 (the "License");
+//	you may not use this file except in compliance with the License.
+//	You may obtain a copy of the License at
+	
+//			http://www.apache.org/licenses/LICENSE-2.0
+	
+//	Unless required by applicable law or agreed to in writing, software
+//	distributed under the License is distributed on an "AS IS" BASIS,
+//	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//	See the License for the specific language governing permissions and
+//	limitations under the License.
+//	################# LICENCE END ##################
+{
+    name: ["Haskell", ".hs"]
+    styles: [
+        "keyword" > "keyword"
+        "type" > "type"
+        "functionName" > "tagName"
+        "operator" > "operator"
+        "comment" > "comment"
+        "string" > "string"
+        "number" > "number"
+    ]
+    comment: {startsWith: "--"}
+    comment: {startsWith: "{-", endsWith: "-}"}
+    defines: [
+        "identifier": /\b[a-zA-Z_][a-zA-Z0-9_']*\b/
+    ]
+    contains: [
+        {match: /\b(?:[0-9]+|0[xX][0-9a-fA-F]+)\b/, 0: "number"}
+        {match: /--.*/, 0: "comment"}
+        {match: /\{-[^}]*-\}/, 0: "comment"}
+        {match: keywordsToRegex("let in where case of data type newtype deriving instance class do if then else import module as"), 0: "keyword"}
+        {match: /\b([A-Z][a-zA-Z0-9']*)\b/, 0: "type"}
+        {match: include("identifier") + /(?=\s*::)/, 0: "functionName"}
+        {match: /(::|->|<-|=>|=|\+|-|\*|\/|==|\/=|<=|>=|&&|\|\|)/, 0: "operator"}
+        {match: /".*?"/, 0: "string"}
+    ]
+}

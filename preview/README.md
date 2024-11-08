@@ -44,3 +44,9 @@
 ![light亮色模式](golang/light.webp)
 ![dark暗色模式](golang/dark.webp)
 </details>
+<details>
+<summary>Haskell</summary>
+
+![light亮色模式](haskell/light.webp)
+![dark暗色模式](haskell/dark.webp)
+</details>
