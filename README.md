@@ -4,7 +4,7 @@
 </p><br>
 
 <p align="center">
-<a href="https://github.com/guobao2333/MT-syntax-highlight"><img alt="Repo Link" src="https://img.shields.io/badge/Github-Repo-brightgreen?style=flat&amp;logo=github"/></a>
+<a href="https://github.com/guobao2333/MT-syntax-highlight"><img alt="Repository" src="https://img.shields.io/badge/Github-%230A0A0A.svg?&style=flat-square&logo=Github&logoColor=white"/></a>
 <a href="https://github.com/guobao2333/MT-syntax-highlight/LICENSE"><img alt="Repo License" src="https://img.shields.io/github/license/guobao2333/MT-syntax-highlight?logo=data:image/svg%2bxml;base64,PHN2ZyBhcmlhLWhpZGRlbj0idHJ1ZSIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDE2IDE2IiB2ZXJzaW9uPSIxLjEiIHdpZHRoPSIxNiIgZGF0YS12aWV3LWNvbXBvbmVudD0idHJ1ZSIgY2xhc3M9Im9jdGljb24gb2N0aWNvbi1sYXcgbXItMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBzdHlsZT0idXNlci1zZWxlY3Q6IGF1dG87Ij4KPHBhdGggZmlsbD0iI2Y1ZjVmNSIgZD0iTTguNzUuNzVWMmguOTg1Yy4zMDQgMCAuNjAzLjA4Ljg2Ny4yMzFsMS4yOS43MzZjLjAzOC4wMjIuMDguMDMzLjEyNC4wMzNoMi4yMzRhLjc1Ljc1IDAgMCAxIDAgMS41aC0uNDI3bDIuMTExIDQuNjkyYS43NS43NSAwIDAgMS0uMTU0LjgzOGwtLjUzLS41My41MjkuNTMxLS4wMDEuMDAyLS4wMDIuMDAyLS4wMDYuMDA2LS4wMDYuMDA1LS4wMS4wMS0uMDQ1LjA0Yy0uMjEuMTc2LS40NDEuMzI3LS42ODYuNDVDMTQuNTU2IDEwLjc4IDEzLjg4IDExIDEzIDExYTQuNDk4IDQuNDk4IDAgMCAxLTIuMDIzLS40NTQgMy41NDQgMy41NDQgMCAwIDEtLjY4Ni0uNDVsLS4wNDUtLjA0LS4wMTYtLjAxNS0uMDA2LS4wMDYtLjAwNC0uMDA0di0uMDAxYS43NS43NSAwIDAgMS0uMTU0LS44MzhMMTIuMTc4IDQuNWgtLjE2MmMtLjMwNSAwLS42MDQtLjA3OS0uODY4LS4yMzFsLTEuMjktLjczNmEuMjQ1LjI0NSAwIDAgMC0uMTI0LS4wMzNIOC43NVYxM2gyLjVhLjc1Ljc1IDAgMCAxIDAgMS41aC02LjVhLjc1Ljc1IDAgMCAxIDAtMS41aDIuNVYzLjVoLS45ODRhLjI0NS4yNDUgMCAwIDAtLjEyNC4wMzNsLTEuMjg5LjczN2MtLjI2NS4xNS0uNTY0LjIzLS44NjkuMjNoLS4xNjJsMi4xMTIgNC42OTJhLjc1Ljc1IDAgMCAxLS4xNTQuODM4bC0uNTMtLjUzLjUyOS41MzEtLjAwMS4wMDItLjAwMi4wMDItLjAwNi4wMDYtLjAxNi4wMTUtLjA0NS4wNGMtLjIxLjE3Ni0uNDQxLjMyNy0uNjg2LjQ1QzQuNTU2IDEwLjc4IDMuODggMTEgMyAxMWE0LjQ5OCA0LjQ5OCAwIDAgMS0yLjAyMy0uNDU0IDMuNTQ0IDMuNTQ0IDAgMCAxLS42ODYtLjQ1bC0uMDQ1LS4wNC0uMDE2LS4wMTUtLjAwNi0uMDA2LS4wMDQtLjAwNHYtLjAwMWEuNzUuNzUgMCAwIDEtLjE1NC0uODM4TDIuMTc4IDQuNUgxLjc1YS43NS43NSAwIDAgMSAwLTEuNWgyLjIzNGEuMjQ5LjI0OSAwIDAgMCAuMTI1LS4wMzNsMS4yODgtLjczN2MuMjY1LS4xNS41NjQtLjIzLjg2OS0uMjNoLjk4NFYuNzVhLjc1Ljc1IDAgMCAxIDEuNSAwWm0yLjk0NSA4LjQ3N2MuMjg1LjEzNS43MTguMjczIDEuMzA1LjI3M3MxLjAyLS4xMzggMS4zMDUtLjI3M0wxMyA2LjMyN1ptLTEwIDBjLjI4NS4xMzUuNzE4LjI3MyAxLjMwNS4yNzNzMS4wMi0uMTM4IDEuMzA1LS4yNzNMMyA2LjMyN1oiIHN0eWxlPSJ1c2VyLXNlbGVjdDogYXV0bzsiPjwvcGF0aD4KPC9zdmc%2B&amp;style=flat&amp;label=Licence"/></a>
 <a href="https://common-changelog.org"><img alt="Common Changelog" src="https://common-changelog.org/badge.svg"/></a>
 </p>
@@ -17,18 +17,12 @@
 > 我为什么会讨厌天才？因为天才们总是一副高高在上不可比拟的样子，真让我恶心！而且我不是天才！</details>
 
 # Introduction | 简介
-作为一个酷爱使用手机作为生产力的苦逼程序员，偶然发现了一个名叫“MT管理器”的软件。  
-起初只是当做一个我认为“市面上最好用”的文件管理器和逆向工具来使用，后来发现还是个查看代码的好工具。
+[MT Syntax HighLight](https://github.com/guobao2333/MT-syntax-highlight)是适用于[MT管理器](https://mt2.cn)的第三方扩展语法高亮，最初因官方内置的语法高亮非常少，所以我写了一些语法高亮给自己使用，同时也开源给大家用，希望大家也能够写出更多好用的mt语法高亮！
 
-因为它不仅支持语法高亮，性能不错的同时，还支持了**自定义**语法高亮。  
-其核心使用了JAVA语法的***正则表达式***
+MT管理器的语法高亮核心使用了JAVA语法的***正则表达式***来实现。
 
-在`2.16.0`版本还增加了更多高亮语法和文本样式，这使得我们可以在今后写出性能更好、复杂性更高、样式更好看的语法高亮了！
+`2.16.0`版本增加了更多高级语法和文本样式，这使得我们可以在今后写出性能更好、复杂性更高、样式更好看的语法高亮了！
 
-----------------
-
-所以我写了一些语法高亮给自己使用，同时也开源给大家用，希望大家也能够写出更多好用的mt语法高亮！
-> 虽然我知道VSCode是个很好用的代码编辑器，但那仅限于大屏。虽然vsc也能在手机浏览器使用，不过用起来嘛……
 
 希望大家能够贡献更多的语法高亮。
 # Change Log | 更新日志
@@ -55,7 +49,7 @@ ___
 
 + 新增语法高亮：[GoLang(冷色调)](mtsx/golang.mtsx)
 
-虽然已有内置golang语法，但此语法高亮作者写了一个冷色调的配色以及匹配模式，不过只有亮色，而我为此语法补充了暗色的风格。
+虽然已有内置golang语法，但此语法高亮作者写了一个冷色调的配色以及匹配模式，不过只有亮色，我为该语法补充了暗色风格。
 # Update Plan | 更新计划
 - [x] Envionment Variable
 - [x] GitIgnore
