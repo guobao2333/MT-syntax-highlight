@@ -1,8 +1,8 @@
-// 此文件为内置语法，仅对配色进行调整
-// 当语法更新时，我会同步跟进
-// 有bug请找bin修，我只负责调整和优化
+// 此文件为同名内置语法的增强版本
+// 内置语法更新时，仓库会同步更新
+// https://github.com/guobao2333/MT-syntax-highlight
 {
-    name: ["JavaScript EX", ".js", ".es", ".mjs"]
+    name: ["JavaScript EX", ".js", ".es", ".mjs", ".cjs"]
     comment: {startsWith: "//"}
     comment: {startsWith: "/*", endsWith: "*/"}
     defines: [
@@ -68,18 +68,22 @@
         {include: "regex"}
         {include: "backtick-string"}
         {builtin: #JAVA_NUMBER#}
-        {match: /\basync(?=\s+function\b)/, 0: "keyword"}
+        {match: /\basync(?=\s+(?:function\b|\S*\s*\())/, 0: "keyword"}
+        {match: /\bget(?=:?\s+(?:function\b|\S+\s*\())/, 0: "keyword"}
         {match: keywordsToRegex(
-                "break case catch class const continue debugger default delete do else enum export async await"
+                "break case catch class const continue debugger default delete do else enum export await"
                 "extends false finally for function if implements import instanceof interface let debugger"
                 "new null package private protected public return static super switch this with"
-                "throw true try typeof var void while yield function of import in from as"
-            ), 0: "keyword"
-        }
-        {match: keywordsToRegex("JSON Date Function Symbol RegExp Array String Number Boolean Math BigInt Map Set Object WeakMap WeakSet console globalThis"),0:"namespace"}
-        {match: keywordsToRegex("prototype Infinity NaN undefined"),0:"operator"}
-        {match: keywordsToRegex("=> === !== ..."),0:"label"}
-        {match: keywordsToRegex("Error AggregateError EvalError RangeError ReferenceError SyntaxError TypeError URIError InternalError"),0:"error"}
+                "throw true try typeof var void while yield function of import in from as require"
+        ), 0: "keyword"}
+        {match: keywordsToRegex(
+            "JSON Date Function Symbol RegExp Array String Number Boolean Math BigInt Map Set Object WeakMap WeakSet console globalThis Set"
+        ), 0: "namespace"}
+        {match: keywordsToRegex(
+            "Error AggregateError EvalError RangeError ReferenceError SyntaxError TypeError URIError InternalError"
+        ), 0: "error"}
+        {match: keywordsToRegex("prototype Infinity NaN undefined"), 0: "operator"}
+        {match: keywordsToRegex("=> === !== ~ ^ ..."), 0: "label"}
     ]
     codeFormatter: #BUILT_IN_JS_FORMATTER#
 }
