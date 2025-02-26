@@ -27,6 +27,16 @@ MT管理器的语法高亮核心使用了JAVA语法的***正则表达式***来�
 希望大家能够贡献更多的语法高亮。
 # Change Log | 更新日志
 > 仅展示最新版本的**部分变化**，更多版本细节请[查看完整更新日志](CHANGELOG.md)
+## 2025-2-26
+- 移除所有语法中的多余协议声明
+  由于甚至会比语法高亮本身都长，故仅保留作者版权信息
+### JavaScript (内置) - [1.2.0](https://github.com/guobao2333/MT-syntax-highlight/commit/)
+#### Added | 新增
+
++ 再次为部分符号添加高亮
+  由于使用连字符的字体会导致无法正确高亮，故大部分符号暂不高亮
+
+___
 ## 2024-11-8
 ### haskell - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/f30f73a)
 #### New | 新语法
@@ -92,7 +102,7 @@ ___
 如果合并完成，恭喜你🎉您完成了对本项目的贡献！我们由衷的感谢为每个开源项目做出贡献的人，无论贡献多少。
 
 # License | 许可证
-本项目遵循[Apache-2.0](./LICENSE)的协议发布。
+所有语法高亮无特殊说明时，均采用[Apache-2.0](./LICENSE)协议发布。
 
     Copyright 2024 shiguobaona
 
