@@ -13,8 +13,8 @@
 <details>
 <summary>GitHub Flavored Markdown</summary>
 
-![light亮色模式](github_markdown/light.webp)
-![dark暗色模式](github_markdown/dark.webp)
+![light亮色模式](markdown_github/light.webp)
+![dark暗色模式](markdown_github/dark.webp)
 </details>
 
 <details>
@@ -41,8 +41,8 @@
 <details>
 <summary>GoLang Ice</summary>
 
-![light亮色模式](golang/light.webp)
-![dark暗色模式](golang/dark.webp)
+![light亮色模式](golang_ice/light.webp)
+![dark暗色模式](golang_ice/dark.webp)
 </details>
 <details>
 <summary>Haskell</summary>
