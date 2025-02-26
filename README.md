@@ -52,17 +52,18 @@ ___
 虽然已有内置golang语法，但此语法高亮作者写了一个冷色调的配色以及匹配模式，不过只有亮色，我为该语法补充了暗色风格。
 # Update Plan | 更新计划
 - [x] Envionment Variable
-- [x] GitIgnore
+- [x] Git Ignore
 - [x] GoLang Ice(冷色调)
 - [x] Markdown(GFM)
+- [ ] Minecraft Localized Language (WIP……)
 - [x] VimScript
 
 - [ ] **优化MT原有自带语法**
-  - [ ] HTML <sub>+JS+CSS</sub> (但bin说有性能问题……)
+  - [ ] HTML <sub>+JS+CSS</sub> (但bin说有性能问题……搁置了)
   - [ ] Java
   - [x] JavaScript
     - [ ] TypeScript
-  - [ ] Markdown
+  - [ ] Markdown (WIP……)
 
 - [ ] 更多的语法……
 

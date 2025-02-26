@@ -1,7 +1,7 @@
 # List | 所有语法
 - [Environment Variable](dotenv.mtsx)
 - [Markdown(GFM)](github_markdown.mtsx)[^GFM]
-- [GitIgnore](gitignore.mtsx)
+- [Git Ignore](gitignore.mtsx)
 - [VimScript](vim.mtsx)
 - [GoLang](golang.mtsx)
 
