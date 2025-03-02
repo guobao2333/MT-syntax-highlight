@@ -21,12 +21,12 @@
 > `### 语法 - 版本`  
 > …</details>
 ## 2025-2-26
-- 移除所有语法中的多余协议声明
+- 移除所有语法中的多余协议声明  
   由于甚至会比语法高亮本身都长，故仅保留作者版权信息
-### JavaScript (内置) - [1.2.0](https://github.com/guobao2333/MT-syntax-highlight/commit/)
+### JavaScript (内置) - [1.2.0](https://github.com/guobao2333/MT-syntax-highlight/commit/6d0375b)
 #### Added | 新增
 
-+ 再次为部分符号添加高亮
++ 再次为部分符号添加高亮  
   由于使用连字符的字体会导致无法正确高亮，故大部分符号暂不高亮
 
 ___
