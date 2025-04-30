@@ -67,6 +67,22 @@
         {include: "double-quoted-string"}
         {include: "regex"}
         {include: "backtick-string"}
+        // 正则表达式
+        {
+            start: {match: /(?<=[=,(&|!:]\s{0,20})/ + "/"}
+            end: {match: "/" + /([img]*)/, 1: "operator"}
+            color: "meta"
+            contains: [
+                {match: /\\./, 0: "strEscape"}
+                {
+                    start: {match: /\[/}
+                    end: {match: /\]/}
+                    contains: [
+                        {match: /\\./, 0: "strEscape"}
+                    ]
+                }
+            ]
+        }
         {builtin: #JAVA_NUMBER#}
         {match: /\basync(?=\s+(?:function\b|\S*\s*\())/, 0: "keyword"}
         {match: /\bget(?=:?\s+(?:function\b|\S+\s*\())/, 0: "keyword"}
