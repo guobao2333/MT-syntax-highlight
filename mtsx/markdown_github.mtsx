@@ -1,21 +1,10 @@
-	// ################# LICENCE START ################
-	// Copyright (c) 2024 shiguobaona(https://github.com/guobao2333)
-	
-	// Licensed under the Apache License, Version 2.0 (the "License");
-	// you may not use this file except in compliance with the License.
-	// You may obtain a copy of the License at
-	
-	//		http://www.apache.org/licenses/LICENSE-2.0
-	
-	// Unless required by applicable law or agreed to in writing, software
-	// distributed under the License is distributed on an "AS IS" BASIS,
-	// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-	// See the License for the specific language governing permissions and
-	// limitations under the License.
-	// ################# LICENCE END ##################
+// require MT >= 2.16.0
+// Get update at https://github.com/guobao2333/MT-syntax-highlight
+// Copyright (c) 2025 shiguobaona
 {
 	name: ["Markdown(GFM)", ".md"]
 	ignoreCase: false
+	comment: {startsWith: "<!--", endsWith: "-->", addToContains: false}
 	styles: [
 		"comment" #8C8C8C, #808080, //@I
 		// 取消上行注释将注释变为斜体
@@ -24,16 +13,16 @@
 		"list" > "number"
 		"list_heading", #4663CC, #5A6DE4, @B
 		"footnote", #4493F8, #4493F8, @B
-		"math" > "meta"
+		"mathjax" > "meta"
 
-		// 这里有两个短代码的配色版本，可以根据喜爱调整
+		// 这里有两个短代码的配色版本，可以根据喜好调整
 		"code", #1F2328#EFF1F3, #929DA0#394050
 		 // "code", #EEE#ABB1BA, #A9B7C6#343942
 
 		"code_block", #7050E0, #7050E0
-		"code_content", #CC9ABB$555, #C7C7E7$181818
+		"code_content", #CC9ABB$555, #C7C7C7$1E1E1E
 		"code_syntax_name", #871094, #A64EAD
-		"quote_serif", #NULL#D0D7DE, #NULL#444, @B
+		"quote_serif", #NULL#D0D7DE, #555#444, @B
 		"quote_note", #2F81F7, #2F81F7
 		"quote_note_text", #2F81F7, #2F81F7
 		"quote_tip", #238636, #238636
@@ -62,6 +51,13 @@
 		"prefix": /(?:(?m)(?:^|\n)[\t ]*)/
 		"url": /(?:\[(.*?)\]\((.+?)( ".*?")?\))/
 		"img": /\[(!)/ + include("url") + /\]\((.+?)( ".*?")?\)/
+		"submatcher": [
+			{include: "escape"}
+			{include: "shortCode"}
+			{include: "footnote"}
+			{include: "link"}
+			{include: "htmlMatchers"}
+		]
 
 		"heading": [
 			{match: /(?m)(?:^ {0,3}#{1,6} .*)/, 0: "heading"}
@@ -70,7 +66,8 @@
 		]
 
 		// Thematic breaks(分割线)
-		"splitLine": {match: /(?m)^(\s*$|[-=]*)^ {0,3}(\* *|- *|_ *){3,} {0,}$/, 0: "split_line"}
+		"splitLine": {match: /(?m)^ {0,3}([_*\-])(?: *\1){2,} *$/, 0: "split_line"}
+		// 转义
 		"escape": {match: /(?:\\[!"#$%&'()*+,-.\\\/:;<=>?@\[\]\^_`{|}~])/, 0: "escape"}
 
 		"link": [
@@ -92,49 +89,42 @@
 			4: "url_title"}
 		]
 
-		"shortCode": {match: /`.+?`/, 0: "code"}
+		"shortCode": {match: /`(?:\\`|[^`\n])+`/, 0: "code"}
 
 		"codeBlock": [
 			// 缩进代码块
-			{match: /(?m)^(?: {4,}|\t{1,}).*/, 0: "code_content"}
+			{match: /(?im)^(?<=\n) (?> {3,}|\t)(?:.*(?=\n|$))/, 0: "code_content"}
 
-			{start: {match: include("prefix") + /(?m)`{3}([- \w]*)/, 0: "code_block" 1: "code_syntax_name"}
-			end: {match: include("prefix") + /`{3}|$/, 0: "code_block"}
-			style: "code_content"}
-
-			{start: {match: include("prefix") + /(?m)~{3}([- \w]*)/, 0: "code_block" 1: "code_syntax_name"}
-			end: {match: include("prefix") + /~{3}|$/, 0: "code_block"}
-			style: "code_content"}
+			{match: /(?m)(?:^ {0,3})(`{3})([- a-z]*?)(?:\n.*?)*(?:^ {0,3})(\1)/, 0: "code_content" 1: "code_block" 2: "code_syntax_name" 3: "code_block"}
+			{match: /(?m)(?:^ {0,3})(~{3})([- a-z]*?)(?:\n.*?)*(?:^ {0,3})(\1)/, 0: "code_content" 1: "code_block" 2: "code_syntax_name" 3: "code_block"}
 		]
 
-		"all_list": [
-			{match: include("prefix") + /([1-9][0-9]*\.) /, 1: "list_heading"}
-			{match: include("prefix") + /([*+-]) /, 1: "list_heading"}
-		]
 		"list": [
-			{start: {include: "all_list"}
-			end: {match: /(?m)$/}
-			style: "list"
-			contains: [
-				{include: "escape"}
-				{include: "shortCode"}
-				{include: "footnote"}
-				{include: "link"}
-			]}
+			{match: include("prefix") + /([1-9][0-9]*\.) (.*)/
+				1: "list_heading"
+				2: "list"
+				2: {include: "submatcher"}
+			}
+			{match: include("prefix") + /([*+-]) (.*)/
+				1: "list_heading"
+				2: "list"
+				2: {include: "submatcher"}
+			}
 		]
 
 		// LaTeX
-		"math": [
+		"mathjax": [
 			{
 				match: /\$(.+?)\$/
-				0: "math"
+				0: "mathjax"
+				1: "string"
 				1: {include: "escape"}
 				1: {include: "shortCode"}
-				1: "string"
 			}
 		]
 
 		"quote": [
+			// {match: /(?m)(?:^(?: *(>)))/, 1: "quote_serif"}
 			{
 				match: /(?m)(?:^(?: *(>))+ *)\[(!)(?:(NOTE)|(TIP)|(IMPORTANT)|(WARNING)|(CAUTION))\](?:/ + include("prefix") + /(>)(.*))+/
 				recordAllGroups: true
@@ -146,21 +136,15 @@
 				5: "quote_important_text"
 				6: "quote_warning_text"
 				7: "quote_caution_text"
-				8: "B"
-				9: {include: "escape"}
-				9: {include: "shortCode"}
-				9: {include: "footnote"}
-				9: {include: "link"}
+				8: "quote_serif"
 				9: "default"
+				9: {include: "submatcher"}
 			}
 			{
 				match: /(?m)(?:^(?: *(>))+(.*))/
 				0: "quote_text"
 				1: "quote_serif"
-				2: {include: "escape"}
-				2: {include: "shortCode"}
-				2: {include: "footnote"}
-				2: {include: "link"}
+				2: {include: "submatcher"}
 			}
 		]
 
@@ -169,14 +153,14 @@
 			{match: /\[\^.+?\]/, 0: "footnote"}
 		]
 
-  	"colors": [
+		"colors": [
 			{match: /(?i)#([a-f0-9]{3,6})\b/, 0: "parseColor(auto,1,HEX)"}
 			{match: /(?i)\bRGB *\(/ + / *(\d+ *, *\d+ *, *\d+) */ + /\)/, 0: "parseColor(auto,1,RGB)"}
 			{match: /(?i)\bRGBA *\(/ + / *(\d+ *, *\d+ *, *\d+ *, *\d+(?:\.\d+)?) */ + /\)/, 0: "parseColor(auto,1,RGBA)"}
 			{match: /(?i)\bHSL *\(/ + / *(\d+ *, *\d+% *, *\d+%) */ + /\)/, 0: "parseColor(auto,1,HSL)"}
 			{match: /(?i)\bHSLA *\(/ + / *(\d+ *, *\d+% *, *\d+% *, *\d+(?:\.\d+)?) */ + /\)/, 0: "parseColor(auto,1,HSLA)"}
 		]
-  	"startTagContains": [
+		"startTagContains": [
 			{match: /(?:([^='"<\/>\s]+)(:))?([^='"<\/>\s]+)/, 1: "namespace", 2: "attrName", 3: "attrName"}
 			{
 				group: link
@@ -186,58 +170,57 @@
 				]
 			}
 		]
-  	"htmlMatchers": [
-  		{match: /(?sm)^ {0,3}<!--.*?-->/, 0: "comment"}
-  		{
-  			start: {
-  				start: {match: /<\s*(script)\b/, 1: "tagName"}
-  				end: {match: ">|$"}
-  				contains: [ {include: "startTagContains"} ]
-  			}
-  			end: {match: "</\\s*(script)\\s*>", 1: "tagName"}
-  		}
-  		{
-  			start: {
-  				start: {match: /<\s*(style)\b/, 1: "tagName"}
-  				end: {match: ">|$"}
-  				contains: [ {include: "startTagContains"} ]
-  			}
-  			end: {match: "</\\s*(style)\\s*>", 1: "tagName"}
-  			contains: [
-  				{include: "colors"}
-  			]
-  		}
-  		{
-  			start: {
-  				start: {match: /<\s*(pre)\b/, 1: "tagName"}
-  				end: {match: ">|$"}
-  				contains: [ {include: "startTagContains"} ]
-  			}
-  			end: {match: "</\\s*(pre)\\s*>", 1: "tagName"}
-  		}
-  		{
-  			start: {match: "<\\??([^/>\\s]+)", 1: "tagName"}
-  			end: {match: "[?/]?>|$"}
-  			contains: [ {include: "startTagContains"} ]
-  		}
-  		{
-  			match: "</\\s*([^>\\s]+)\\s*>", 1: "tagName"
-  		}
-  	]
-  ]
+		"htmlMatchers": [
+			{match: /(?s)<!--.*?-->/, 0: "comment"}
+			{
+				start: {
+					start: {match: /<\s*(script)\b/, 1: "tagName"}
+					end: {match: ">|$"}
+					contains: [ {include: "startTagContains"} ]
+				}
+				end: {match: "</\\s*(script)\\s*>", 1: "tagName"}
+			}
+			{
+				start: {
+					start: {match: /<\s*(style)\b/, 1: "tagName"}
+					end: {match: ">|$"}
+					contains: [ {include: "startTagContains"} ]
+				}
+				end: {match: "</\\s*(style)\\s*>", 1: "tagName"}
+				contains: [
+					{include: "colors"}
+				]
+			}
+			{
+				start: {
+					start: {match: /<\s*(pre)\b/, 1: "tagName"}
+					end: {match: ">|$"}
+					contains: [ {include: "startTagContains"} ]
+				}
+				end: {match: "</\\s*(pre)\\s*>", 1: "tagName"}
+			}
+			{
+				start: {match: "<\\??([^/>\\s]+)", 1: "tagName"}
+				end: {match: "[?/]?>|$"}
+				contains: [ {include: "startTagContains"} ]
+			}
+			{match: "</\\s*([^>\\s]+)\\s*>", 1: "tagName"}
+		]
+	]
 
 	contains: [
-		// 这样写是为了后续方便调整顺序，以最佳顺序高亮语法，避免bug
+		// 这样写是为了后续方便调整顺序，以最佳顺序高亮语法，避免bug。
+		// 优先级：top to bottom
 		{include: "heading"}
 		{include: "htmlMatchers"}
 		{include: "footnote"}
 		{include: "link"}
-		{include: "shortCode"}
 		{include: "escape"}
-		{include: "math"}
+		{include: "mathjax"}
 		{include: "splitLine"}
 		{include: "list"}
 		{include: "quote"}
 		{include: "codeBlock"}
+		{include: "shortCode"}
 	]
 }
