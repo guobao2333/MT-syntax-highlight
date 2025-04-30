@@ -1,6 +1,9 @@
 # List | 所有语法
+> [!NOTE]
+> 预览效果请在[此处](../preview)查看。
+
 - [Environment Variable](dotenv.mtsx)
-- [Markdown(GFM)](github_markdown.mtsx)[^GFM]
+- [Markdown(GFM)](markdown_github.mtsx)[^GFM]
 - [Git Ignore](gitignore.mtsx)
 - [VimScript](vim.mtsx)
 - [GoLang](golang.mtsx)
