@@ -5,7 +5,7 @@
 
 <p align="center">
 <a href="https://github.com/guobao2333/MT-syntax-highlight"><img alt="Repository" src="https://img.shields.io/badge/Github-%230A0A0A.svg?&style=flat-square&logo=Github&logoColor=white"/></a>
-<a href="https://github.com/guobao2333/MT-syntax-highlight/LICENSE"><img alt="License" src="https://img.shields.io/github/license/guobao2333/MT-syntax-highlight?logo=apache&style=flat&label=Licence"/></a>
+<a href="https://github.com/guobao2333/MT-syntax-highlight/LICENSE"><img alt="License" src="https://img.shields.io/github/license/guobao2333/MT-syntax-highlight?style=flat&logo=apache&label=Licence&color=blue"></a>
 <a href="https://common-changelog.org"><img alt="Common Changelog" src="https://common-changelog.org/badge.svg"/></a>
 </p>
 
@@ -27,6 +27,25 @@ MT管理器的语法高亮核心使用了JAVA语法的***正则表达式***来�
 希望大家能够贡献更多的语法高亮。
 # Change Log | 更新日志
 > 仅展示最新版本的**部分变化**，更多版本细节请[查看完整更新日志](CHANGELOG.md)
+## 2025-4-30
+### JavaScript (内置) - [1.2.1](https://github.com/guobao2333/MT-syntax-highlight/commit/31cd6d9)
+#### Changed | 变化
+
+* 同步上游更新
+
+### markdown_github - [3.3.0](https://github.com/guobao2333/MT-syntax-highlight/commit/62e201e)
+#### Fixed | 修复
+
+1. 短代码无法转义
+2. 警告块渲染错误
+3. 代码块背景渲染错误
+
+#### Changed | 变化
+
+* 调整了代码块的配色
+* 优化了部分匹配逻辑，渲染速度提升
+
+___
 ## 2025-2-26
 - 移除所有语法中的多余协议声明  
   由于甚至会比语法高亮本身都长，故仅保留作者版权信息
@@ -34,7 +53,7 @@ MT管理器的语法高亮核心使用了JAVA语法的***正则表达式***来�
 #### Added | 新增
 
 + 再次为部分符号添加高亮  
-  由于使用连字符的字体会导致无法正确高亮，故大部分符号暂不高亮
+  由于高亮会使得连字符字体不再相连，故仅高亮部分符号
 
 ___
 ## 2024-11-8
@@ -46,37 +65,6 @@ ___
 + 新增语法高亮：[Haskell](mtsx/haskell.mtsx)
 
 ___
-## 2024-10-28
-### dotenv - [1.0.1](https://github.com/guobao2333/MT-syntax-highlight/commit/30140d2)
-#### Fixed | 修复
-
-1. 修复了未正确高亮的注释
-
-### golang_ice - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/fcfbc92)
-#### New | 新语法
-
-感谢该语法的贡献者：**[@Love-Kogasa](https://github.com/Love-Kogasa)**
-
-+ 新增语法高亮：[GoLang(冷色调)](mtsx/golang.mtsx)
-
-虽然已有内置golang语法，但此语法高亮作者写了一个冷色调的配色以及匹配模式，不过只有亮色，我为该语法补充了暗色风格。
-# Update Plan | 更新计划
-- [x] Envionment Variable
-- [x] Git Ignore
-- [x] GoLang Ice(冷色调)
-- [x] Markdown(GFM)
-- [ ] Minecraft Localized Language (WIP……)
-- [x] VimScript
-
-- [ ] **优化MT原有自带语法**
-  - [ ] HTML <sub>+JS+CSS</sub> (但bin说有性能问题……搁置了)
-  - [ ] Java
-  - [x] JavaScript
-    - [ ] TypeScript
-  - [ ] Markdown (WIP……)
-
-- [ ] 更多的语法……
-
 # Preview | 预览
 由于更新较为频繁，所以此处预览图**可能**会过时，最新的版本应以语法高亮文件为准，安装后在mt管理器中打开 `preview.[相应语法后缀]` 即可查看*完整效果*。  
 - 你可以在[此处](preview/)查看预览索引。
@@ -91,6 +79,23 @@ ___
 
 现在您可以打开对应语法的文件，例如markdown(preview.md)查看效果。
 
+# Update Plan | 更新计划
+- [x] Envionment Variable
+- [x] Git Ignore
+- [x] GoLang Ice(冷色调)
+- [x] Markdown(GFM) (WIP……)
+- [ ] Minecraft Localized Language (WIP……)
+- [x] VimScript
+
+- [ ] **优化MT原有自带语法**
+  - [ ] HTML <sub>+JS+CSS</sub> (但bin说有性能问题……搁置了)
+  - [ ] Java
+  - [x] JavaScript
+    - [ ] TypeScript
+  - [ ] Markdown (WIP……)
+
+- [ ] 更多的语法……
+
 # Contribute | 贡献
 > [!IMPORTANT]
 > 由于github检测文件后缀来判断项目使用的语言，为了避免混乱，所以在贡献新语法时，请在预览使用的文件后方添加`.txt`，例如：`preview.js.txt`
@@ -102,9 +107,9 @@ ___
 如果合并完成，恭喜你🎉您完成了对本项目的贡献！我们由衷的感谢为每个开源项目做出贡献的人，无论贡献多少。
 
 # License | 许可证
-所有语法高亮无特殊说明时，均采用[Apache-2.0](./LICENSE)协议发布。
+所有语法无特殊说明时，均采用[Apache-2.0](http://www.apache.org/licenses/LICENSE-2.0)协议发布，详细内容可查看[LICENSE](./LICENSE)
 
-    Copyright 2024 shiguobaona
+    Copyright (c) 2024 shiguobaona
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
