@@ -1,4 +1,5 @@
 // require MT >= 2.16.0
+// Version: 1.0.2
 // Get update at https://github.com/guobao2333/MT-syntax-highlight
 // Copyright (c) 2025 shiguobaona
 {
@@ -18,7 +19,7 @@
 
 	defines: [
 		"comment": {match: /(?:#.*)/, 0: "comment"}
-		"escape": {match: /(?:(?:\\[#\\=])|(\\n))/, 0: "escape" 1: "line_break2"}
+		"escape": {match: /(?:(?:\\[#\\$])|(\\n))/, 0: "escape" 1: "line_break2"}
 
 		"rowVar": {
 			match: /(?m)^([^ ]+?) *?(=) *?(.*)/,
