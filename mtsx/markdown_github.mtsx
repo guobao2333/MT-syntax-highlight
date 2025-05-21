@@ -1,4 +1,5 @@
 // require MT >= 2.16.0
+// Version: 3.4.0
 // Get update at https://github.com/guobao2333/MT-syntax-highlight
 // Copyright (c) 2025 shiguobaona
 {
@@ -49,8 +50,8 @@
 
 	defines: [
 		"prefix": /(?:(?m)(?:^|\n)[\t ]*)/
-		"url": /(?:\[(.*?)\]\((.+?)( ".*?")?\))/
-		"img": /\[(!)/ + include("url") + /\]\((.+?)( ".*?")?\)/
+		"url": /(?:\[(.*?)\]\((.+?)( "[^"]*")?\))/
+		"img": /\[(!)/ + include("url") + /\]\((.+?)( "[^"]*")?\)/
 		"submatcher": [
 			{include: "escape"}
 			{include: "shortCode"}
@@ -60,13 +61,17 @@
 		]
 
 		"heading": [
-			{match: /(?m)(?:^ {0,3}#{1,6} .*)/, 0: "heading"}
+			// atx 标题
+			{match: /(?m)(?:^ {0,3}#{1,6} [^\n]*)/, 0: "heading"}
+		]
+
+		"heading_setext": [
 			// setext 标题
-			{match: /(?m)(?:^(?! *>).+(?<!^-+|=+|\*+|_+)\n^ {0,3}(?:=+|-+)$)/, 0: "heading"}
+			{match: /(?m)(?:^(?! *>).+(?<!^-+|=+|\*+|_+)\n^ {0,3}(?:[= ]{3,}|[- ]{3,}) *$)/, 0: "heading"}
 		]
 
 		// Thematic breaks(分割线)
-		"splitLine": {match: /(?m)^ {0,3}([_*\-])(?: *\1){2,} *$/, 0: "split_line"}
+		"splitLine": {match: /(?m)^ {0,3}([_*-](?: *)){3,}$/, 0: "split_line"}
 		// 转义
 		"escape": {match: /(?:\\[!"#$%&'()*+,-.\\\/:;<=>?@\[\]\^_`{|}~])/, 0: "escape"}
 
@@ -95,20 +100,21 @@
 			// 缩进代码块
 			{match: /(?im)^(?<=\n) (?> {3,}|\t)(?:.*(?=\n|$))/, 0: "code_content"}
 
-			{match: /(?m)(?:^ {0,3})(`{3})([- a-z]*?)(?:\n.*?)*(?:^ {0,3})(\1)/, 0: "code_content" 1: "code_block" 2: "code_syntax_name" 3: "code_block"}
-			{match: /(?m)(?:^ {0,3})(~{3})([- a-z]*?)(?:\n.*?)*(?:^ {0,3})(\1)/, 0: "code_content" 1: "code_block" 2: "code_syntax_name" 3: "code_block"}
+			{match: /(?m)(?:^ {0,3})(`{3,}|~{3,})([- a-z]*?)(?:\n[\s\S]*?)*(?:^ {0,3})(\1)/, 0: "code_content" 1: "code_block" 2: "code_syntax_name" 3: "code_block"}
 		]
 
 		"list": [
-			{match: include("prefix") + /([1-9][0-9]*\.) (.*)/
+			{
+				// 这里不能用 \N 捕获组，非相同字符将会导致匹配失败
+				match: /(?m)^ {0,3}([*+-]|[1-9]\d*\.) (.*)/
+				+ /(?:\n^[\t ]*([*+-]|[1-9]\d*\.) (.*))*/
+				recordAllGroups: true
 				1: "list_heading"
 				2: "list"
 				2: {include: "submatcher"}
-			}
-			{match: include("prefix") + /([*+-]) (.*)/
-				1: "list_heading"
-				2: "list"
-				2: {include: "submatcher"}
+				3: "list_heading"
+				4: "list"
+				4: {include: "submatcher"}
 			}
 		]
 
@@ -116,6 +122,7 @@
 		"mathjax": [
 			{
 				match: /\$(.+?)\$/
+				// 相同捕获组靠后的优先(覆盖靠前的)
 				0: "mathjax"
 				1: "string"
 				1: {include: "escape"}
@@ -149,8 +156,16 @@
 		]
 
 		"footnote": [
-			{match: /(?m)^\[\^.+?\]: /, 0: "footnote"}
-			{match: /\[\^.+?\]/, 0: "footnote"}
+			{
+				match: /(?m)^\[\^(?:\\]|[^\]\n])+\]: /
+				0: "footnote"
+				0: {match: /\\]/, 0: "escape"}
+			}
+			{
+				match: /\[\^(?:\\]|[^\]\n])+\]/
+				0: "footnote"
+				0: {match: /\\]/, 0: "escape"}
+			}
 		]
 
 		"colors": [
@@ -220,6 +235,7 @@
 		{include: "splitLine"}
 		{include: "list"}
 		{include: "quote"}
+		{include: "heading_setext"}
 		{include: "codeBlock"}
 		{include: "shortCode"}
 	]
