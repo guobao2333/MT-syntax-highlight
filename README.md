@@ -27,6 +27,26 @@ MT管理器的语法高亮核心使用了JAVA语法的***正则表达式***来�
 希望大家能够贡献更多的语法高亮。
 # Change Log | 更新日志
 > 仅展示最新版本的**部分变化**，更多版本细节请[查看完整更新日志](CHANGELOG.md)
+## 2025-5-21
+### dotenv - [1.0.2](https://github.com/guobao2333/MT-syntax-highlight/commit/8877c73)
+#### Fixed | 修复
+
+1. 纠正写错的转义符号
+
+### markdown_github - [3.4.0](https://github.com/guobao2333/MT-syntax-highlight/commit/046c31e)
+#### Fixed | 修复
+
+1. 修复setext标题优先级过高导致列表渲染错误
+2. 修复分割线某些情况下的渲染错误
+3. 修复围栏代码块只支持固定符号数量的错误
+4. 修复脚注不支持转义的错误
+
+#### Changed | 变化
+
+* 列表现在支持多行了！
+* 优化匹配逻辑，渲染速度大幅提升！
+
+___
 ## 2025-4-30
 ### JavaScript (内置) - [1.2.1](https://github.com/guobao2333/MT-syntax-highlight/commit/31cd6d9)
 #### Changed | 变化
@@ -36,33 +56,14 @@ MT管理器的语法高亮核心使用了JAVA语法的***正则表达式***来�
 ### markdown_github - [3.3.0](https://github.com/guobao2333/MT-syntax-highlight/commit/62e201e)
 #### Fixed | 修复
 
-1. 短代码无法转义
-2. 警告块渲染错误
-3. 代码块背景渲染错误
+1. 短代码内无法转义的问题
+2. 引用块的警告块渲染错误
+3. 代码块上一行被错误渲染
 
 #### Changed | 变化
 
 * 调整了代码块的配色
 * 优化了部分匹配逻辑，渲染速度提升
-
-___
-## 2025-2-26
-- 移除所有语法中的多余协议声明  
-  由于甚至会比语法高亮本身都长，故仅保留作者版权信息
-### JavaScript (内置) - [1.2.0](https://github.com/guobao2333/MT-syntax-highlight/commit/6d0375b)
-#### Added | 新增
-
-+ 再次为部分符号添加高亮  
-  由于高亮会使得连字符字体不再相连，故仅高亮部分符号
-
-___
-## 2024-11-8
-### haskell - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/f30f73a)
-#### New | 新语法
-
-感谢该语法的贡献者：**[@ZQBCWG](https://github.com/ZQBCWG)**
-
-+ 新增语法高亮：[Haskell](mtsx/haskell.mtsx)
 
 ___
 # Preview | 预览
