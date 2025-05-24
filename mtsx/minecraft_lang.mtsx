@@ -1,0 +1,110 @@
+// require MT >= 2.16.0
+// Version: 1.0.0
+// Get update at https://github.com/guobao2333/MT-syntax-highlight
+// Copyright (c) 2025 shiguobaona
+{
+  name: ["MinecraftBELang", ".lang"]
+  comment: {startsWith: "##", addToContains: false}
+  styles: [
+    "escape" #BBA2FD #D58F7D
+    "emoji" #E64ABB #CE7DD5
+    "comment" #908caa #8F8D9B @I
+    "tab" #NULL#DDD #NULL#404040
+    "namespace" #75BB8F #59919A
+    "meta" #C985B2 #A88CCA
+    "key" #4484CC #7889C1
+    "=" #666 #CCC
+
+    // https://zh.minecraft.wiki/w/%E6%A0%BC%E5%BC%8F%E5%8C%96%E4%BB%A3%E7%A0%81
+    "§0" #000#FFF #000#BBB
+    "§1" #00A#FFF #00A#BBB
+    "§2" #0A0#FFF #0A0#2B2B2B
+    "§3" #0AA#FFF #0AA#2B2B2B
+    "§4" #A00#FFF #A00#2B2B2B
+    "§5" #A0A#FFF #A0A#2B2B2B
+    "§6" #FA0#FFF #FA0#2B2B2B
+    "§7" #AAA#FFF #AAA#2B2B2B
+    "§8" #555#FFF #555#BBB
+    "§9" #55F#FFF #55F#2B2B2B
+    "§a" #5F5#888 #5F5#888
+    "§b" #5FF#888 #5FF#888
+    "§c" #F55#FFF #F55#2B2B2B
+    "§d" #F5F#FFF #F5F#2B2B2B
+    "§e" #FF5#888 #FF5#888
+    "§f" #FFF#888 #FFF#888
+    "§g" #DDD605#666 #DDD605#2B2B2B
+    "§h" #E3D4D1#666 #E3D4D1#2B2B2B
+    "§i" #CECACA#666 #CECACA#2B2B2B
+    "§j" #443A3B#FFF #443A3B#BBB
+    "§k" @U //> "escape"
+    "§l" @B
+    "§m" #971607#FFF #971607#BBB
+    "§n" #B4684D#FFF #B4684D#BBB
+    "§o" @I
+    "§p" #DEB12D#FFF #DEB12D#2B2B2B
+    "§q" #47A036#FFF #47A036#2B2B2B
+    // "§r" #000 #A9B7C6
+    "§s" #2CBAA8#FFF #2CBAA8#2B2B2B
+    "§t" #21497B#FFF #21497B#BBB
+    "§u" #9A5CC6#FFF #9A5CC6#2B2B2B
+    "§v" #EB7114#FFF #EB7114#2B2B2B
+  ]
+  defines: [
+    "end": /(?m)(?=\§\s|\t#|\n|$)/
+    "escape": {match: /%(?:\d|s)(?:\$(?:s|d|f))?/, 0: "escape"}
+    "emoji": {match: /:[\w-]+:/, 0: "emoji"}
+
+    // 灵感来自 语法高亮MCGH(.mcfunction)
+    "styles": [
+      {include:"escape"}
+      {include:"emoji"}
+      {start:{match:/§0/}end:{match:include("end")}style:"§0"contains:[{include:"styles"}]}
+      {start:{match:/§1/}end:{match:include("end")}style:"§1"contains:[{include:"styles"}]}
+      {start:{match:/§2/}end:{match:include("end")}style:"§2"contains:[{include:"styles"}]}
+      {start:{match:/§3/}end:{match:include("end")}style:"§3"contains:[{include:"styles"}]}
+      {start:{match:/§4/}end:{match:include("end")}style:"§4"contains:[{include:"styles"}]}
+      {start:{match:/§5/}end:{match:include("end")}style:"§5"contains:[{include:"styles"}]}
+      {start:{match:/§6/}end:{match:include("end")}style:"§6"contains:[{include:"styles"}]}
+      {start:{match:/§7/}end:{match:include("end")}style:"§7"contains:[{include:"styles"}]}
+      {start:{match:/§8/}end:{match:include("end")}style:"§8"contains:[{include:"styles"}]}
+      {start:{match:/§9/}end:{match:include("end")}style:"§9"contains:[{include:"styles"}]}
+      {start:{match:/§a/}end:{match:include("end")}style:"§a"contains:[{include:"styles"}]}
+      {start:{match:/§b/}end:{match:include("end")}style:"§b"contains:[{include:"styles"}]}
+      {start:{match:/§c/}end:{match:include("end")}style:"§c"contains:[{include:"styles"}]}
+      {start:{match:/§d/}end:{match:include("end")}style:"§d"contains:[{include:"styles"}]}
+      {start:{match:/§e/}end:{match:include("end")}style:"§e"contains:[{include:"styles"}]}
+      {start:{match:/§f/}end:{match:include("end")}style:"§f"contains:[{include:"styles"}]}
+      {start:{match:/§g/}end:{match:include("end")}style:"§g"contains:[{include:"styles"}]}
+      {start:{match:/§h/}end:{match:include("end")}style:"§h"contains:[{include:"styles"}]}
+      {start:{match:/§i/}end:{match:include("end")}style:"§i"contains:[{include:"styles"}]}
+      {start:{match:/§j/}end:{match:include("end")}style:"§j"contains:[{include:"styles"}]}
+      {start:{match:/§k/}end:{match:include("end")}style:"§k"contains:[{include:"styles"}]}
+      {start:{match:/§l/}end:{match:include("end")}style:"§l"contains:[{include:"styles"}]}
+      {start:{match:/§m/}end:{match:include("end")}style:"§m"contains:[{include:"styles"}]}
+      {start:{match:/§n/}end:{match:include("end")}style:"§n"contains:[{include:"styles"}]}
+      {start:{match:/§o/}end:{match:include("end")}style:"§o"contains:[{include:"styles"}]}
+      {start:{match:/§p/}end:{match:include("end")}style:"§p"contains:[{include:"styles"}]}
+      {start:{match:/§q/}end:{match:include("end")}style:"§q"contains:[{include:"styles"}]}
+      {start:{match:/§r/}end:{match:include("end")}style:"!!§r"contains:[{include:"styles"}]}
+      {start:{match:/§s/}end:{match:include("end")}style:"§s"contains:[{include:"styles"}]}
+      {start:{match:/§t/}end:{match:include("end")}style:"§t"contains:[{include:"styles"}]}
+      {start:{match:/§u/}end:{match:include("end")}style:"§u"contains:[{include:"styles"}]}
+      {start:{match:/§v/}end:{match:include("end")}style:"§v"contains:[{include:"styles"}]}
+    ]
+  ]
+  contains: [
+    {match: /##[^\n]*/, 0: "comment"}
+    {match: /(?m)^#[^\n]*/, 0: "error"}
+    {include:"styles"}
+    {match: /(?m)([\w$-]+)(?=\.)((?:\.[\w$-]+(?=\.))*\.)([\w$-]+)(=)/
+      recordAllGroups: true
+      1: "namespace"
+      2: "meta"
+      3: "key"
+      4: "="
+    }
+    {match: /(\t)#.*/, 0: "comment" 1: "tab"}
+    // {include:"escape"}
+    // {match: /:[\w-]+:/, 0: "emoji"}
+  ]
+}

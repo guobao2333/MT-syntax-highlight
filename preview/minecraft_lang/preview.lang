@@ -1,0 +1,10 @@
+﻿## Comments can be added anywhere on a valid line by starting with '##'
+##
+## Note, trailing spaces will NOT be trimmed. If you want room between the end of the string and the start of a
+## comment on the same line, use TABs.
+
+item.bow.name=弓	#
+item.bowl.name=碗	#
+death.attack.player.item=%1$s 被 %2$s 用 %3$s 杀死了	#
+item.itemLock.popupNotice.cantMove=:solid_star: 无法移动物品不能：丢弃、移除、用于合成	#
+terms_and_conditions.viewTermsAndConditions=要查看条款和条件，请在任意网络浏览器中访问 https://minecraft.net/terms。	#
