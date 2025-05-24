@@ -1,5 +1,5 @@
 // require MT >= 2.16.0
-// Version: 3.4.0
+// Version: 3.4.1
 // Get update at https://github.com/guobao2333/MT-syntax-highlight
 // Copyright (c) 2025 shiguobaona
 {
@@ -21,8 +21,8 @@
 		 // "code", #EEE#ABB1BA, #A9B7C6#343942
 
 		"code_block", #7050E0, #7050E0
-		"code_content", #CC9ABB$555, #C7C7C7$1E1E1E
-		"code_syntax_name", #871094, #A64EAD
+		"code_content", #586368$D8D8D8, #C7C7C7$1E1E1E
+		"code_syntax_name", #FF51E2, #A64EAD
 		"quote_serif", #NULL#D0D7DE, #555#444, @B
 		"quote_note", #2F81F7, #2F81F7
 		"quote_note_text", #2F81F7, #2F81F7
