@@ -1,5 +1,5 @@
 // require MT >= 2.16.0
-// Version: 1.0.2
+// Version: 1.0.3
 // Get update at https://github.com/guobao2333/MT-syntax-highlight
 // Copyright (c) 2025 shiguobaona
 {
@@ -26,7 +26,7 @@
 			1: "key"
 			2: "equal"
 			3: "value"
-			3: {match: /(?:'.*?')|(?:".*?")/, 0: "str"}
+			3: {match: /(?:'[^']*?')|(?:"[^"]*?")/, 0: "str"}
 			0: {include: "contains"}
 		}
 		"lineBreak1": {match: /(?m)\\ *$/, 0: "line_break"}
