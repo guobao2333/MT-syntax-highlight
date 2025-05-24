@@ -25,6 +25,20 @@
 </details>
 
 <details>
+<summary>GoLang Ice</summary>
+
+![light亮色模式](golang_ice/light.webp)
+![dark暗色模式](golang_ice/dark.webp)
+</details>
+
+<details>
+<summary>Haskell</summary>
+
+![light亮色模式](haskell/light.webp)
+![dark暗色模式](haskell/dark.webp)
+</details>
+
+<details>
 <summary>JavaScript EX(内置)</summary>
 
 ![light亮色模式](builtin/javascript/light.webp)
@@ -32,21 +46,15 @@
 </details>
 
 <details>
+<summary>Minecraft Bedrock Localized Language</summary>
+
+![light亮色模式](minecraft_lang/light.webp)
+![dark暗色模式](minecraft_lang/dark.webp)
+</details>
+
+<details>
 <summary>VimScript</summary>
 
 ![light亮色模式](vimscript/light.webp)
 ![dark暗色模式](vimscript/dark.webp)
-</details>
-
-<details>
-<summary>GoLang Ice</summary>
-
-![light亮色模式](golang_ice/light.webp)
-![dark暗色模式](golang_ice/dark.webp)
-</details>
-<details>
-<summary>Haskell</summary>
-
-![light亮色模式](haskell/light.webp)
-![dark暗色模式](haskell/dark.webp)
 </details>

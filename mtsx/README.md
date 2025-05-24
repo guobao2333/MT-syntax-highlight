@@ -3,10 +3,11 @@
 > 预览效果请在[此处](../preview)查看。
 
 - [Environment Variable](dotenv.mtsx)
-- [Markdown(GFM)](markdown_github.mtsx)[^GFM]
 - [Git Ignore](gitignore.mtsx)
-- [VimScript](vim.mtsx)
 - [GoLang](golang.mtsx)
+- [Markdown(GFM)](markdown_github.mtsx)[^GFM]
+- [Minecraft Bedrock Localized Language](minecraft_lang.mtsx)
+- [VimScript](vim.mtsx)
 
 ## Builtin | 内置语法
 > [!NOTE]

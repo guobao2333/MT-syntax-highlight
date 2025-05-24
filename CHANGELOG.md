@@ -22,6 +22,21 @@
 > `### 语法 - 版本2`  
 > …</details>
 
+## 2025-5-24
+### minecraft_lang
+
++ 新增语法高亮：[Minecraft基岩版本地化语言](mtsx/minecraft_lang.mtsx) - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/3afdf29)
+
+### markdown_github - [3.4.1](https://github.com/guobao2333/MT-syntax-highlight/commit/6266358)
+
+* 调整亮色模式代码块的配色避免看不清
+
+### dotenv - [1.0.3](https://github.com/guobao2333/MT-syntax-highlight/commit/7e41807)
+#### Changed | 变化
+
+* 优化匹配逻辑
+
+___
 ## 2025-5-21
 ### dotenv - [1.0.2](https://github.com/guobao2333/MT-syntax-highlight/commit/8877c73)
 #### Fixed | 修复
@@ -72,28 +87,24 @@ ___
 
 ___
 ## 2024-11-8
-### haskell - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/f30f73a)
-#### New | 新语法
+### haskell
 
++ 新增语法高亮：[Haskell](mtsx/haskell.mtsx) - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/f30f73a)
 感谢该语法的贡献者：**[@ZQBCWG](https://github.com/ZQBCWG)**
-
-+ 新增语法高亮：[Haskell](mtsx/haskell.mtsx)
 
 ___
 ## 2024-10-28
+### golang_ice
+
++ 新增语法高亮：[GoLang(冷色调)](mtsx/golang.mtsx) - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/fcfbc92)
+感谢该语法的贡献者：**[@Love-Kogasa](https://github.com/Love-Kogasa)**
+
+虽然已有内置golang语法，但此语法高亮作者写了一个冷色调的配色以及匹配模式，暗色由果宝补充。
+
 ### dotenv - [1.0.1](https://github.com/guobao2333/MT-syntax-highlight/commit/30140d2)
 #### Fixed | 修复
 
 1. 修复了未正确高亮的注释
-
-### golang_ice - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/fcfbc92)
-#### New | 新语法
-
-感谢该语法的贡献者：**[@Love-Kogasa](https://github.com/Love-Kogasa)**
-
-+ 新增语法高亮：[GoLang(冷色调)](mtsx/golang.mtsx)
-
-虽然已有内置golang语法，但此语法高亮作者写了一个冷色调的配色以及匹配模式，不过只有亮色，我为该语法补充了暗色风格。
 
 ___
 ## gitignore - [1.2.4](https://github.com/guobao2333/MT-syntax-highlight/commit/9ab909d) - 2024-10-15
@@ -130,20 +141,18 @@ ___
 + 为语法添加了预览图
 
 ___
-## JavaScript (内置) - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/f177cd7) - 2024-9-2
-### New | 新语法
+## JavaScript (内置) - 2024-9-2
 
-+ 新增内置语法高亮：[JavaScript](mtsx/builtin/JavaScript.mtsx)
++ 新增内置语法高亮：[JavaScript](mtsx/builtin/JavaScript.mtsx) - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/f177cd7)
 
 **优化内容：**
 1. 为error类型添加高亮
 2. 为部分全局属性添加高亮
 
 ___
-## dotenv - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/b6cdf7b) - 2024-8-31
-### New | 新语法
+## dotenv - 2024-8-31
 
-+ 新增语法高亮：[环境变量配置](mtsx/dotenv.mtsx)
++ 新增语法高亮：[环境变量配置](mtsx/dotenv.mtsx) - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/b6cdf7b)
   > 5个语法，写了3天😂
 
 ___
@@ -223,13 +232,12 @@ ___
 
 ___
 ## 2024-7-11
-### vimscript - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/b6c0af2)
-#### New | 新语法
+### vimscript
+
++ 新增语法高亮：[vim脚本](mtsx/vim.mtsx) - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/b6c0af2)  
+  有关vimscript的文档请看这里：[VimScript - VimDoc](https://vimdoc.sourceforge.net/htmldoc/usr_41.html)
 
 感谢该语法的贡献者：**[@danicaStarR](https://github.com/danicaStarR)**
-
-+ 新增语法高亮：[vim脚本](mtsx/vim.mtsx)  
-  有关vimscript的文档请看这里：[VimScript - VimDoc](https://vimdoc.sourceforge.net/htmldoc/usr_41.html)
 
 ### markdown_github - [2.1.2](https://github.com/guobao2333/MT-syntax-highlight/commit/8477c47)
 #### Changed | 变化
@@ -273,10 +281,10 @@ ___
 * 调整配色，观感提升~
 
 ___
-## gitignore - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/6299c9a) - 2024-6-24
+## gitignore - 2024-6-24
 ### New | 新语法
 
-+ 新增语法高亮：[git提交忽略](mtsx/gitignore.mtsx)  
++ 新增语法高亮：[git提交忽略](mtsx/gitignore.mtsx) - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/6299c9a)  
   有关gitignore的文档请看这里：[Git - gitignore Documentation](https://git-scm.com/docs/gitignore)
 
 ___
@@ -392,7 +400,6 @@ ___
 * 更新和优化了文档
 
 ### [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/cf23fc0)
-#### New | 新语法
 
 + 新增语法高亮：[github 风格和规范的 markdown](mtsx/markdown_github.mtsx)
   有关GFM的文档请看这里：[GitHub Flavored Markdown Spec](https://github.github.com/gfm)
