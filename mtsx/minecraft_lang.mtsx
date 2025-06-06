@@ -1,5 +1,5 @@
 // require MT >= 2.16.0
-// Version: 1.0.0
+// Version: 1.1.0
 // Get update at https://github.com/guobao2333/MT-syntax-highlight
 // Copyright (c) 2025 shiguobaona
 {
@@ -16,8 +16,8 @@
     "=" #666 #CCC
 
     // https://zh.minecraft.wiki/w/%E6%A0%BC%E5%BC%8F%E5%8C%96%E4%BB%A3%E7%A0%81
-    "§0" #000#FFF #000#BBB
-    "§1" #00A#FFF #00A#BBB
+    "§0" #000#FFF #000#999
+    "§1" #00A#FFF #00A#999
     "§2" #0A0#FFF #0A0#2B2B2B
     "§3" #0AA#FFF #0AA#2B2B2B
     "§4" #A00#FFF #A00#2B2B2B
@@ -26,15 +26,15 @@
     "§7" #AAA#FFF #AAA#2B2B2B
     "§8" #555#FFF #555#BBB
     "§9" #55F#FFF #55F#2B2B2B
-    "§a" #5F5#888 #5F5#888
-    "§b" #5FF#888 #5FF#888
+    "§a" #5F5#BBB #5F5#888
+    "§b" #5FF#BBB #5FF#888
     "§c" #F55#FFF #F55#2B2B2B
     "§d" #F5F#FFF #F5F#2B2B2B
-    "§e" #FF5#888 #FF5#888
-    "§f" #FFF#888 #FFF#888
-    "§g" #DDD605#666 #DDD605#2B2B2B
-    "§h" #E3D4D1#666 #E3D4D1#2B2B2B
-    "§i" #CECACA#666 #CECACA#2B2B2B
+    "§e" #FF5#BBB #FF5#888
+    "§f" #FFF#BBB #FFF#888
+    "§g" #DDD605#555 #DDD605#2B2B2B
+    "§h" #E3D4D1#555 #E3D4D1#2B2B2B
+    "§i" #CECACA#555 #CECACA#2B2B2B
     "§j" #443A3B#FFF #443A3B#BBB
     "§k" @U //> "escape"
     "§l" @B
@@ -51,7 +51,15 @@
   ]
   defines: [
     "end": /(?m)(?=\§\s|\t#|\n|$)/
-    "escape": {match: /%(?:\d|s)(?:\$(?:s|d|f))?/, 0: "escape"}
+    "escape": [
+      // param
+      {match: /%(?:\d|s)(?:\$(?:s|d|f))?/, 0: "escape"}
+      // nonprint
+      {match: /\\[ntr]/, 0: "escape"}
+      // unicode
+      {match: /\\(?:x[a-fA-F0-9]{2}|u[a-fA-F0-9]{4}|U[A-F0-9]{8})/, 0: "escape"}
+    ]
+    
     "emoji": {match: /:[\w-]+:/, 0: "emoji"}
 
     // 灵感来自 语法高亮MCGH(.mcfunction)
@@ -96,7 +104,7 @@
     {match: /##[^\n]*/, 0: "comment"}
     {match: /(?m)^#[^\n]*/, 0: "error"}
     {include:"styles"}
-    {match: /(?m)([\w$-]+)(?=\.)((?:\.[\w$-]+(?=\.))*\.)([\w$-]+)(=)/
+    {match: /(?m)([\w$-]+)(?=\.)((?:\..*(?=\.))*\.)([^=]+)(=)/
       recordAllGroups: true
       1: "namespace"
       2: "meta"
@@ -104,7 +112,5 @@
       4: "="
     }
     {match: /(\t)#.*/, 0: "comment" 1: "tab"}
-    // {include:"escape"}
-    // {match: /:[\w-]+:/, 0: "emoji"}
   ]
 }
