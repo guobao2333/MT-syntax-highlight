@@ -22,10 +22,20 @@
 > `### 语法 - 版本2`  
 > …</details>
 
+## minecraft_lang - [1.1.0](https://github.com/guobao2333/MT-syntax-highlight/commit/08cfa05) - 2025-6-6
+### Fixed | 修复
+
+1. 修复某些情况下`键`不高亮的问题
+
+### Added | 新增
+
++ 高亮更多转义字符
+
+___
 ## 2025-5-24
 ### minecraft_lang
 
-+ 新增语法高亮：[Minecraft基岩版本地化语言](mtsx/minecraft_lang.mtsx) - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/3afdf29)
++ 新增语法高亮：[Minecraft基岩版本地化语言](mtsx/minecraft_lang.mtsx)
 
 ### markdown_github - [3.4.1](https://github.com/guobao2333/MT-syntax-highlight/commit/6266358)
 
@@ -83,20 +93,22 @@ ___
 #### Added | 新增
 
 + 再次为部分符号添加高亮  
-  由于高亮会使得连字符字体不再相连，故仅高亮部分符号
+  由于高亮会使得连字符字体不再相连，故仅高亮部分极常用符号
 
 ___
 ## 2024-11-8
 ### haskell
 
-+ 新增语法高亮：[Haskell](mtsx/haskell.mtsx) - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/f30f73a)
++ 新增语法高亮：[Haskell](mtsx/haskell.mtsx)
+
 感谢该语法的贡献者：**[@ZQBCWG](https://github.com/ZQBCWG)**
 
 ___
 ## 2024-10-28
 ### golang_ice
 
-+ 新增语法高亮：[GoLang(冷色调)](mtsx/golang.mtsx) - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/fcfbc92)
++ 新增语法高亮：[GoLang(冷色调)](mtsx/golang.mtsx)
+
 感谢该语法的贡献者：**[@Love-Kogasa](https://github.com/Love-Kogasa)**
 
 虽然已有内置golang语法，但此语法高亮作者写了一个冷色调的配色以及匹配模式，暗色由果宝补充。
@@ -143,7 +155,7 @@ ___
 ___
 ## JavaScript (内置) - 2024-9-2
 
-+ 新增内置语法高亮：[JavaScript](mtsx/builtin/JavaScript.mtsx) - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/f177cd7)
++ 新增内置语法高亮：[JavaScript](mtsx/builtin/JavaScript.mtsx)
 
 **优化内容：**
 1. 为error类型添加高亮
@@ -234,8 +246,8 @@ ___
 ## 2024-7-11
 ### vimscript
 
-+ 新增语法高亮：[vim脚本](mtsx/vim.mtsx) - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/b6c0af2)  
-  有关vimscript的文档请看这里：[VimScript - VimDoc](https://vimdoc.sourceforge.net/htmldoc/usr_41.html)
++ 新增语法高亮：[vim脚本](mtsx/vim.mtsx)  
+有关vimscript的文档请看这里：[VimScript - VimDoc](https://vimdoc.sourceforge.net/htmldoc/usr_41.html)
 
 感谢该语法的贡献者：**[@danicaStarR](https://github.com/danicaStarR)**
 
@@ -275,8 +287,7 @@ ___
 
 #### Changed | 变化
 
-- 移除 `包含` 语法的斜体。  
-  不过作为交换，为其添加了背景色。
+- 移除 `包含` 语法的斜体，并为其添加了背景色。
 
 * 调整配色，观感提升~
 
@@ -284,13 +295,13 @@ ___
 ## gitignore - 2024-6-24
 ### New | 新语法
 
-+ 新增语法高亮：[git提交忽略](mtsx/gitignore.mtsx) - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/6299c9a)  
++ 新增语法高亮：[git提交忽略](mtsx/gitignore.mtsx)  
   有关gitignore的文档请看这里：[Git - gitignore Documentation](https://git-scm.com/docs/gitignore)
 
 ___
 ## markdown_github - [2.1.1](https://github.com/guobao2333/MT-syntax-highlight/commit/156ec0c) - 2024-6-8
 > [!IMPORTANT]
-> 仅适用于MT管理器 `2.16.0` 及以上版本！
+> 从此版本开始仅适用于MT管理器 `2.16.0` 及以上版本！
 ### Changed | 变化
 
 * _**改为使用推荐的属性名**_
