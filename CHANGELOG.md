@@ -22,12 +22,19 @@
 > `### 语法 - 版本2`  
 > …</details>
 
-## minecraft_lang - [1.1.0](https://github.com/guobao2333/MT-syntax-highlight/commit/08cfa05) - 2025-6-6
-### Fixed | 修复
+## minecraft_lang
+### [1.2.0](https://github.com/guobao2333/MT-syntax-highlight/commit/1bc67f7) - 2025-6-12
+应该算是目前除性能之外最完美的版本了
+#### Fixed | 修复
 
-1. 修复某些情况下`键`不高亮的问题
+1. 重写主要逻辑以修复某些情况下`.`导致的高亮错误
 
-### Added | 新增
+### [1.1.0](https://github.com/guobao2333/MT-syntax-highlight/commit/08cfa05) - 2025-6-6
+#### Fixed | 修复
+
+1. 修复某些情况下`key`不高亮的问题
+
+#### Added | 新增
 
 + 高亮更多转义字符
 
@@ -36,6 +43,8 @@ ___
 ### minecraft_lang
 
 + 新增语法高亮：[Minecraft基岩版本地化语言](mtsx/minecraft_lang.mtsx)
+
+感谢 [**@Love-Kogasa**](https://github.com/Love-Kogasa) 提供的语法原型 https://github.com/guobao2333/MT-syntax-highlight/pull/4#issuecomment-2439806367
 
 ### markdown_github - [3.4.1](https://github.com/guobao2333/MT-syntax-highlight/commit/6266358)
 
@@ -101,7 +110,7 @@ ___
 
 + 新增语法高亮：[Haskell](mtsx/haskell.mtsx)
 
-感谢该语法的贡献者：**[@ZQBCWG](https://github.com/ZQBCWG)**
+感谢该语法的贡献者：[**@ZQBCWG**](https://github.com/ZQBCWG)
 
 ___
 ## 2024-10-28
@@ -109,7 +118,7 @@ ___
 
 + 新增语法高亮：[GoLang(冷色调)](mtsx/golang.mtsx)
 
-感谢该语法的贡献者：**[@Love-Kogasa](https://github.com/Love-Kogasa)**
+感谢该语法的贡献者：[**@Love-Kogasa**](https://github.com/Love-Kogasa)
 
 虽然已有内置golang语法，但此语法高亮作者写了一个冷色调的配色以及匹配模式，暗色由果宝补充。
 
@@ -249,7 +258,7 @@ ___
 + 新增语法高亮：[vim脚本](mtsx/vim.mtsx)  
 有关vimscript的文档请看这里：[VimScript - VimDoc](https://vimdoc.sourceforge.net/htmldoc/usr_41.html)
 
-感谢该语法的贡献者：**[@danicaStarR](https://github.com/danicaStarR)**
+感谢该语法的贡献者：[**@danicaStarR**](https://github.com/danicaStarR)
 
 ### markdown_github - [2.1.2](https://github.com/guobao2333/MT-syntax-highlight/commit/8477c47)
 #### Changed | 变化

@@ -27,12 +27,19 @@ MT管理器的语法高亮核心使用了JAVA语法的***正则表达式***来�
 希望大家能够贡献更多的语法高亮。
 # Change Log | 更新日志
 > 仅展示最新版本的**部分变化**，更多版本细节请[查看完整更新日志](CHANGELOG.md)
-## minecraft_lang - [1.1.0](https://github.com/guobao2333/MT-syntax-highlight/commit/08cfa05) - 2025-6-6
-### Fixed | 修复
+## minecraft_lang
+### [1.2.0](https://github.com/guobao2333/MT-syntax-highlight/commit/1bc67f7) - 2025-6-12
+应该算是目前除性能之外最完美的版本了
+#### Fixed | 修复
 
-1. 修复某些情况下`键`不高亮的问题
+1. 重写主要逻辑以修复某些情况下`.`导致的高亮错误
 
-### Added | 新增
+### [1.1.0](https://github.com/guobao2333/MT-syntax-highlight/commit/08cfa05) - 2025-6-6
+#### Fixed | 修复
+
+1. 修复某些情况下`key`不高亮的问题
+
+#### Added | 新增
 
 + 高亮更多转义字符
 
@@ -40,7 +47,9 @@ ___
 ## 2025-5-24
 ### minecraft_lang
 
-+ 新增语法高亮：[Minecraft基岩版本地化语言](mtsx/minecraft_lang.mtsx) - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/3afdf29)
++ 新增语法高亮：[Minecraft基岩版本地化语言](mtsx/minecraft_lang.mtsx)
+
+感谢 [**@Love-Kogasa**](https://github.com/Love-Kogasa) 提供的语法原型 https://github.com/guobao2333/MT-syntax-highlight/pull/4#issuecomment-2439806367
 
 ### markdown_github - [3.4.1](https://github.com/guobao2333/MT-syntax-highlight/commit/6266358)
 
