@@ -22,6 +22,16 @@
 > `### 语法 - 版本2`  
 > …</details>
 
+## 2025-6-23
+### MT Syntax EX (内置)
+
++ 新增语法高亮：[MT语法高亮配置](mtsx/builtin/MT-Syntax.mtsx)
+
+**优化内容：**
+1. 为正则表达式添加高亮
+2. 使用更少的正则代替部分穷举 (实验) (ps: 可能会降低性能)
+
+___
 ## minecraft_lang
 ### [1.2.0](https://github.com/guobao2333/MT-syntax-highlight/commit/1bc67f7) - 2025-6-12
 应该算是目前除性能之外最完美的版本了
@@ -32,7 +42,7 @@
 ### [1.1.0](https://github.com/guobao2333/MT-syntax-highlight/commit/08cfa05) - 2025-6-6
 #### Fixed | 修复
 
-1. 修复某些情况下`key`不高亮的问题
+1. 修复某些情况下键名不高亮的问题
 
 #### Added | 新增
 
@@ -378,41 +388,28 @@ ___
 + 新增`ASCII`字符转义渲染
 
 ___
-## markdown_github - 2024-5-7
-### [1.2.0](https://github.com/guobao2333/MT-syntax-highlight/commit/ddf18a0)
-#### Fixed | 修复
+## markdown_github - [1.1.0~1.2.0](https://github.com/guobao2333/MT-syntax-highlight/compare/39a1506...ddf18a0) - 2024-5-7
+### Fixed | 修复
 
-1. 修复因上个版本导致的列表前无空格会不渲染
+1. 修复因1.1.0版本导致的列表前无空格会不渲染
 
-#### Added | 新增
-
-+ 新增github的提示引用块渲染
-
-### [1.1.0](https://github.com/guobao2333/MT-syntax-highlight/commit/39a1506)
-#### Changed | 变化
+### Changed | 变化
 
 * 如果分割线`<hr/>`上一行也是分割线，现在都将会渲染
 
-#### Added | 新增
+### Added | 新增
 
 + 新增setext标题渲染
++ 新增github的提示引用块渲染
 
 ___
 ## markdown_github - 2024-5-2
-### [1.0.3](https://github.com/guobao2333/MT-syntax-highlight/commit/76c1f9a)
-#### Fixed | 修复
-
-1. 将上个版本修改处回退至1.0.0版本，以修复上个版本导致的代码块内容不渲染
-
-### [1.0.2](https://github.com/guobao2333/MT-syntax-highlight/commit/f3f0913)
-#### Fixed | 修复
-
-1. 修复了上个版本导致的标题渲染失效
-
-### [1.0.1](https://github.com/guobao2333/MT-syntax-highlight/commit/4411307)
+### [1.0.1~1.0.3](https://github.com/guobao2333/MT-syntax-highlight/compare/4411307...76c1f9a)
 #### Fixed | 修复
 
 1. 修复了引用块背景渲染与字体渲染不一致的错误
+1. 修复了1.0.1版本导致的标题渲染失效
+1. 将1.0.2版本修改处回退至1.0.0版本，以修复上个版本导致的代码块内容不渲染
 
 #### Changed | 变化
 
@@ -421,7 +418,7 @@ ___
 
 ### [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/cf23fc0)
 
-+ 新增语法高亮：[github 风格和规范的 markdown](mtsx/markdown_github.mtsx)
++ 新增语法高亮：[github 风格和规范的 markdown](mtsx/markdown_github.mtsx)  
   有关GFM的文档请看这里：[GitHub Flavored Markdown Spec](https://github.github.com/gfm)
 
 + 新增许可证

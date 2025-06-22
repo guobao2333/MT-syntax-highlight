@@ -39,7 +39,7 @@
 </details>
 
 <details>
-<summary>JavaScript EX(内置)</summary>
+<summary>JavaScript EX (内置)</summary>
 
 ![light亮色模式](builtin/javascript/light.webp)
 ![dark暗色模式](builtin/javascript/dark.webp)
@@ -50,6 +50,13 @@
 
 ![light亮色模式](minecraft_lang/light.webp)
 ![dark暗色模式](minecraft_lang/dark.webp)
+</details>
+
+<details>
+<summary>MT Syntax EX (内置)</summary>
+
+![light亮色模式](builtin/mt-syntax/light.webp)
+![dark暗色模式](builtin/mt-syntax/dark.webp)
 </details>
 
 <details>
