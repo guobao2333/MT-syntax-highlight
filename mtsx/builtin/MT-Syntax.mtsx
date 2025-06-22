@@ -1,0 +1,160 @@
+// require MT >= 2.16.0
+// 此语法为同名内置语法的增强版本
+// Get update at https://github.com/guobao2333/MT-syntax-highlight
+{
+	name: ["MT-Syntax EX", ".mtsx"]
+	hide: true
+	styles: [
+		"function" > "operator"
+		"flags_B" > "meta" @B
+		"flags_I" > "meta" @I
+		"flags_U" > "meta" @U
+		"flags_S" > "meta" @S
+		"flags_BI" > "meta" @BI
+		"flags_BU" > "meta" @BU
+		"flags_BS" > "meta" @BS
+		"flags_IU" > "meta" @IU
+		"flags_IS" > "meta" @IS
+		"flags_US" > "meta" @US
+		"flags_BIU" > "meta" @BIU
+		"flags_BIS" > "meta" @BIS
+		"flags_BUS" > "meta" @BUS
+		"flags_IUS" > "meta" @IUS
+		"flags_BIUS" > "meta" @BIUS
+		"flags_CLEAR" > "meta"
+		"keyword_deprecated" > "keyword" @IS
+		"colorBaseLight" #000000#0000 #000000#FFFFFF @B
+		"colorBaseDark" #A9B7C6#2B2B2B #A9B7C6#0000 @B
+		"underline" #NULL #NULL @U
+		"require" > "comment" @B
+
+		"escape" #86A4DD #B67332
+		"keyword" #E06B6B #CC7832
+		"keywords" #1750EB #6897BB
+		"startEnd" #871094 #9876AA
+		"class" #808000 #808000
+		"regex" #0A415D#F4F9FF #NULL#353637
+	]
+	comment: {startsWith: "//", addToContains: false}
+	defines: [
+		"escapes": [
+			{match: /\\0[0-7]{1,3}/}
+			{match: /\\c./, 0: "escape"}
+			{match: /\\k<[0-9A-Za-z]+>/, 0: "escape"}
+			{match: /(?i)\\p\{.*?\}/, 0: "escape"}
+
+			// HighSurrogate+LowSurrogate  \uD800-DBFFuDC00-DFFF
+			{match: /(?i)\\uD[89AB][0-9A-F]{2}uD[CDEF][0-9A-F]{2}/, 0: "escape"}
+			{match: /(?i)\\u[0-9a-f]{4}/, 0: "escape"}
+
+			{match: /\\x[0-9A-Fa-f]{2}/, 0: "escape"}
+			{match: /\\x\{[0-9A-Fa-f]+\}/, 0: "escape"}
+
+			// {match: /\\[1-9ABDGHRSVWZabdefhnrstvwz]/, 0: "escape"}
+			{match: /\\[0CEFIJKLMNOPQTUXYcgijklmopquxy]/, 0: "error"}
+			{match: /\\./, 0: "escape"}
+		]
+		
+		"regex": [
+			// 转义类
+			{include: "escapes"}
+
+			// 元字符
+			{match: /[.*+?|]/, 0: "keywords"}
+			{match: /[$^]/, 0: "startEnd"}
+
+			// (?:pattern) (?=pattern) (?!pattern) (?<=pattern) (?<!pattern)
+			{match: /\(/ + /(?:\?[:=!]|\?<[=!])/, 0: "keywords"}
+			{match: /[()]/, 0: "keywords"}
+
+			// {n,m}
+			{match: /\{(\d+)(,(\d+)?)?\}/, 0: "operator"}
+			{match: /[{}]/, 0: "error"}
+
+			// []
+			{
+				// 开头和结尾的 - 为普通字符
+				start: {match: /(\[\^?)-?/, 1: "class"}
+				end: {match: /-?(\])/, 1: "class"}
+				style: "string"
+				contains: [
+					// 这些转义不能在[]里面
+					{match: /\\[1-9ABGPRZbkz]/, 0: "error"}
+					{include: "escapes"}
+					{match: /-/, 0: "comment"}
+				]
+			}
+		]
+		
+		"regexs": [
+			{
+				start: {match: /(?<=match: ?)"/}
+				end: {match: /(?m)"|$/}
+				style: "string"
+				childrenStyle: "regex"
+				contains: [
+					{builtin: #ESCAPED_CHAR#}
+					{include: "regex"}
+				]
+			}
+			{
+				start: {match: /\//, 0: "meta"}
+				end: {match: /(?m)\/|$/, 0: "meta"}
+				childrenStyle: "regex"
+				contains: {
+					{match: /\\\//, 0: "strEscape"}
+					{include: "regex"}
+				}
+			}
+		]
+
+	]
+	contains: [
+		{match: /(?mi)^[ \t]*\/\/[ \t]*require[ \t]+MT[ \t]*(>=?)[ \t]*(\d{8}|\d\.\d{1,3}\.\d{1,3}|(\S+))[ \t]*$/, 0: "require", 3: "error"}
+		{match: "//.*", 0: "comment"}
+		{include: "regexs"}
+		{builtin: #JAVA_DOUBLE_QUOTED_STRING#}
+		{match: /(?<=:\s{0,10})#[0-9A-Z_]+#/, 0: "constant"} // built-in
+		{match: /(?i)(#([A-F0-9]{3,8}|NULL)(?:[#$]([A-F0-9]{3,8}|NULL))?\b)(?:\s*,?\s*(#([A-F0-9]{3,8}|NULL)(?:[#$]([A-F0-9]{3,8}|NULL))?\b))?/,
+				1: "parseColor(2,3,HEX,colorBaseLight)"
+				4: "parseColor(5,6,HEX,colorBaseDark)"
+				2: "underline"
+				3: "underline"
+				5: "underline"
+				6: "underline"
+		}
+		{match: /\b(?:0|[1-9][0-9]*)\b/, 0: "number"} // regex group index
+		{match: /\b(?:true|false)\b/, 0: "number"} // bool
+		{match: /\b(group)\b[ \t]*(?::[ \t]*(/ + keywordsToRegex("link linkAll select") + /)?)?/, 1: "keyword", 2: "number"} // group
+		{match: /\b(?:keywordsToRegex)\b/, 0: "function"}
+
+		{match: /@(?:B)\b/, 0: "flags_B"}
+		{match: /@(?:I)\b/, 0: "flags_I"}
+		{match: /@(?:U)\b/, 0: "flags_U"}
+		{match: /@(?:S)\b/, 0: "flags_S"}
+		{match: /@(?:BI|IB)\b/, 0: "flags_BI"}
+		{match: /@(?:BU|UB)\b/, 0: "flags_BU"}
+		{match: /@(?:BS|SB)\b/, 0: "flags_BS"}
+		{match: /@(?:IU|UI)\b/, 0: "flags_IU"}
+		{match: /@(?:IS|SI)\b/, 0: "flags_IS"}
+		{match: /@(?:US|SU)\b/, 0: "flags_US"}
+		{match: /@/ + keywordsToRegex("BIU BUI IBU IUB UBI UIB"), 0: "flags_BIU"}
+		{match: /@/ + keywordsToRegex("BIS BSI IBS ISB SBI SIB"), 0: "flags_BIS"}
+		{match: /@/ + keywordsToRegex("BUS BSU UBS USB SBU SUB"), 0: "flags_BUS"}
+		{match: /@/ + /(?!.*(.).*\1)[IUS]{3}/, 0: "flags_IUS"}
+		{match: /@/ + /(?!.*(.).*\1)[BIUS]{4}/, 0: "flags_BIUS"}
+		{match: /@_\b/, 0: "flags_CLEAR"}
+		{match: /@\w+/, 0: "error"}
+
+		{match: keywordsToRegex(
+				"match name comment insertSpace contains start end startsWith endsWith builtin"
+				"matchEndFirst mustMatchEnd codeFormatter codeShrinker lineBackground ignoreCase hide"
+				"addToContains number iSuffixes fSuffixes recordAllGroups defines include endPriority"
+				"style styles childrenStyle bracketPairs"
+			), 0: "keyword"
+		}
+		{match: /<EndMatcher>/, 0: "keyword"}
+		{match: /(?i)=> *FAIL\b/, 0: "keyword2"}
+		{match: /colors?/, 0: "keyword_deprecated"} // 建议使用 style 代替 color
+	]
+}
