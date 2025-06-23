@@ -1,5 +1,5 @@
 // require MT >= 2.16.0
-// Version: 1.2.0
+// Version: 1.2.1
 // Get update at https://github.com/guobao2333/MT-syntax-highlight
 // Copyright (c) 2025 shiguobaona
 {
@@ -8,7 +8,7 @@
   styles: [
     "escape" #BBA2FD#FFF #D58F7D#2B2B2B
     "emoji" #E64ABB #CE7DD5
-    "comment" #908caa #8F8D9B @I
+    "comment" #908caa #8F8D9B //@I
     "tab" #NULL#DDD #NULL#404040
     "namespace" #75BB8F #59919A
     "meta" #C985B2 #A88CCA
@@ -20,34 +20,34 @@
     "§1" #00A#FFF #00A#999
     "§2" #0A0#FFF #0A0#2B2B2B
     "§3" #0AA#FFF #0AA#2B2B2B
-    "§4" #A00#FFF #A00#2B2B2B
+    "§4" #A00#FFF #CA00#2B2B2B
     "§5" #A0A#FFF #A0A#2B2B2B
-    "§6" #FA0#FFF #FA0#2B2B2B
+    "§6" #FA0#FFF #BFA0#2B2B2B
     "§7" #AAA#FFF #AAA#2B2B2B
     "§8" #555#FFF #555#BBB
-    "§9" #55F#FFF #55F#2B2B2B
-    "§a" #5F5#BBB #5F5#888
-    "§b" #5FF#BBB #5FF#888
-    "§c" #F55#FFF #F55#2B2B2B
-    "§d" #F5F#FFF #F5F#2B2B2B
-    "§e" #FF5#BBB #FF5#888
-    "§f" #FFF#BBB #FFF#888
-    "§g" #DDD605#555 #DDD605#2B2B2B
-    "§h" #E3D4D1#555 #E3D4D1#2B2B2B
-    "§i" #CECACA#555 #CECACA#2B2B2B
+    "§9" #55F#FFF #C55F#2B2B2B
+    "§a" #5F5#999 #B5F5#2B2B2B
+    "§b" #5FF#999 #B5FF#2B2B2B
+    "§c" #F55#FFF #BF55#2B2B2B
+    "§d" #F5F#FFF #BF5F#2B2B2B
+    "§e" #FF5#999 #BFF5#2B2B2B
+    "§f" #FFF#999 #BFFF#2B2B2B
+    "§g" #DDD605#999 #BBDDD605#2B2B2B
+    "§h" #E3D4D1#777 #BBE3D4D1#2B2B2B
+    "§i" #CECACA#777 #BBCECACA#2B2B2B
     "§j" #443A3B#FFF #443A3B#BBB
-    "§k" @U //> "escape"
+    "§k" > "escape" @U
     "§l" @B
     "§m" #971607#FFF #971607#BBB
     "§n" #B4684D#FFF #B4684D#BBB
     "§o" @I
-    "§p" #DEB12D#FFF #DEB12D#2B2B2B
-    "§q" #47A036#FFF #47A036#2B2B2B
-    "§r" #000 #A9B7C6 @S
-    "§s" #2CBAA8#FFF #2CBAA8#2B2B2B
+    "§p" #DEB12D#FFF #CCDEB12D#2B2B2B
+    "§q" #47A036#FFF #CC47A036#2B2B2B
+    "§r" > "default" @U
+    "§s" #2CBAA8#FFF #CC2CBAA8#2B2B2B
     "§t" #21497B#FFF #21497B#BBB
     "§u" #9A5CC6#FFF #9A5CC6#2B2B2B
-    "§v" #EB7114#FFF #EB7114#2B2B2B
+    "§v" #EB7114#FFF #BBEB7114#2B2B2B
   ]
   defines: [
     "end": /(?m)(?=\§\s|\t#|\n|$)/
@@ -55,7 +55,7 @@
       // param
       {match: /%(?:\d|s)(?:\$(?:s|d|f))?/, 0: "escape"}
       // nonprint
-      {match: /\\[\\ntr]/, 0: "escape"}
+      {match: /\\[\\%§#ntr]/, 0: "escape"}
       // unicode
       {match: /\\(?:x[a-fA-F0-9]{2}|u[a-fA-F0-9]{4}|U[A-F0-9]{8})/, 0: "escape"}
     ]
