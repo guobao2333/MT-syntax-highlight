@@ -1,0 +1,18 @@
+{
+  "format_version": 2,
+  "header": {
+    "description": ":solid_star:§e这里是一些描述，不过很可惜的是\n§6§loreUI§c§o不会§r§l§c显示这些样式 :(",
+    "name": "§kExample Pack",
+    "uuid": "268a66df-f17a-4d74-9b9d-7c0cab114ef6",
+    "version": [ 1, 0, 0 ],
+    "min_engine_version": [ 1, 21, 100 ]
+  },
+  "modules": [
+    {
+      "description": "§b行为包§r模块§a示例",
+      "type": "data",
+      "uuid": "6dc8ee3f-782d-4e2a-93bc-ac1cde37c790",
+      "version": [ 1, 0, 0 ]
+    }
+  ]
+}
