@@ -1,0 +1,112 @@
+// require MT >= 2.16.0
+// version: 1.0.0
+// 此文件为同名内置语法的增强版本
+// 针对minecraft进行语法扩展
+// https://github.com/guobao2333/MT-syntax-highlight
+{
+	name: ["JSON MCBE EX", ".json"]
+	comment: {startsWith: "//"}
+	comment: {startsWith: "/*", endsWith: "*/"}
+	styles: [
+		"escape" #BBA2FD#FFF #D58F7D#2B2B2B
+		"emoji" #E64ABB #CE7DD5
+		"comment" #908caa #8F8D9B
+		"strEscape" > "escape"
+		"error2" #NULL#FCC #NULL#7D4444
+
+		// https://zh.minecraft.wiki/w/%E6%A0%BC%E5%BC%8F%E5%8C%96%E4%BB%A3%E7%A0%81
+		"§0" #000#FFF #000#999
+		"§1" #00A#FFF #00A#999
+		"§2" #0A0#FFF #0A0#2B2B2B
+		"§3" #0AA#FFF #0AA#2B2B2B
+		"§4" #A00#FFF #CA00#2B2B2B
+		"§5" #A0A#FFF #A0A#2B2B2B
+		"§6" #FA0#FFF #BFA0#2B2B2B
+		"§7" #AAA#FFF #AAA#2B2B2B
+		"§8" #555#FFF #555#BBB
+		"§9" #55F#FFF #C55F#2B2B2B
+		"§a" #5F5#999 #B5F5#2B2B2B
+		"§b" #5FF#999 #B5FF#2B2B2B
+		"§c" #F55#FFF #BF55#2B2B2B
+		"§d" #F5F#FFF #BF5F#2B2B2B
+		"§e" #FF5#999 #BFF5#2B2B2B
+		"§f" #FFF#999 #BFFF#2B2B2B
+		"§g" #DDD605#999 #BBDDD605#2B2B2B
+		"§h" #E3D4D1#777 #BBE3D4D1#2B2B2B
+		"§i" #CECACA#777 #BBCECACA#2B2B2B
+		"§j" #443A3B#FFF #443A3B#BBB
+		"§k" > "escape" @U
+		"§l" @B
+		"§m" #971607#FFF #971607#BBB
+		"§n" #B4684D#FFF #B4684D#BBB
+		"§o" @I
+		"§p" #DEB12D#FFF #CCDEB12D#2B2B2B
+		"§q" #47A036#FFF #CC47A036#2B2B2B
+		"§r" > "default" @U
+		"§s" #2CBAA8#FFF #CC2CBAA8#2B2B2B
+		"§t" #21497B#FFF #21497B#BBB
+		"§u" #9A5CC6#FFF #9A5CC6#2B2B2B
+		"§v" #EB7114#FFF #BBEB7114#2B2B2B
+	]
+	defines: [
+		"end": /(?m)(?:\§\s|$)/
+		"escape": [
+			// param
+			{match: /%(?:\d|s)(?:\$(?:s|d|f))?/, 0: "escape"}
+			// common
+			{match: /\\[§\\ntr]/, 0: "!!escape"}
+			// unicode
+			{match: /\\(?:x[a-fA-F0-9]{2}|u[a-fA-F0-9]{4}|U[A-F0-9]{8})/, 0: "escape"}
+		]
+		"emoji": {match: /:[\w-]+:/, 0: "!!emoji"}
+
+		"styles": [
+			{include:"escape"}
+			{include:"emoji"}
+			{builtin: #JAVA_ESCAPED_CHAR#}
+			{start:{match:/§0/}end:{match:include("end")}style:"§0"contains:[{include:"styles"}]}
+			{start:{match:/§1/}end:{match:include("end")}style:"§1"contains:[{include:"styles"}]}
+			{start:{match:/§2/}end:{match:include("end")}style:"§2"contains:[{include:"styles"}]}
+			{start:{match:/§3/}end:{match:include("end")}style:"§3"contains:[{include:"styles"}]}
+			{start:{match:/§4/}end:{match:include("end")}style:"§4"contains:[{include:"styles"}]}
+			{start:{match:/§5/}end:{match:include("end")}style:"§5"contains:[{include:"styles"}]}
+			{start:{match:/§6/}end:{match:include("end")}style:"§6"contains:[{include:"styles"}]}
+			{start:{match:/§7/}end:{match:include("end")}style:"§7"contains:[{include:"styles"}]}
+			{start:{match:/§8/}end:{match:include("end")}style:"§8"contains:[{include:"styles"}]}
+			{start:{match:/§9/}end:{match:include("end")}style:"§9"contains:[{include:"styles"}]}
+			{start:{match:/§a/}end:{match:include("end")}style:"§a"contains:[{include:"styles"}]}
+			{start:{match:/§b/}end:{match:include("end")}style:"§b"contains:[{include:"styles"}]}
+			{start:{match:/§c/}end:{match:include("end")}style:"§c"contains:[{include:"styles"}]}
+			{start:{match:/§d/}end:{match:include("end")}style:"§d"contains:[{include:"styles"}]}
+			{start:{match:/§e/}end:{match:include("end")}style:"§e"contains:[{include:"styles"}]}
+			{start:{match:/§f/}end:{match:include("end")}style:"§f"contains:[{include:"styles"}]}
+			{start:{match:/§g/}end:{match:include("end")}style:"§g"contains:[{include:"styles"}]}
+			{start:{match:/§h/}end:{match:include("end")}style:"§h"contains:[{include:"styles"}]}
+			{start:{match:/§i/}end:{match:include("end")}style:"§i"contains:[{include:"styles"}]}
+			{start:{match:/§j/}end:{match:include("end")}style:"§j"contains:[{include:"styles"}]}
+			{start:{match:/§k/}end:{match:include("end")}style:"§k"contains:[{include:"styles"}]}
+			{start:{match:/§l/}end:{match:include("end")}style:"§l"contains:[{include:"styles"}]}
+			{start:{match:/§m/}end:{match:include("end")}style:"§m"contains:[{include:"styles"}]}
+			{start:{match:/§n/}end:{match:include("end")}style:"§n"contains:[{include:"styles"}]}
+			{start:{match:/§o/}end:{match:include("end")}style:"§o"contains:[{include:"styles"}]}
+			{start:{match:/§p/}end:{match:include("end")}style:"§p"contains:[{include:"styles"}]}
+			{start:{match:/§q/}end:{match:include("end")}style:"§q"contains:[{include:"styles"}]}
+			{start:{match:/(§r)/ 1: "§r"}end:{match:include("end")}style:"!!"contains:[{include:"styles"}]}
+			{start:{match:/§s/}end:{match:include("end")}style:"§s"contains:[{include:"styles"}]}
+			{start:{match:/§t/}end:{match:include("end")}style:"§t"contains:[{include:"styles"}]}
+			{start:{match:/§u/}end:{match:include("end")}style:"§u"contains:[{include:"styles"}]}
+			{start:{match:/§v/}end:{match:include("end")}style:"§v"contains:[{include:"styles"}]}
+		]
+	]
+	contains: [
+		{match: /(["'])((?:\\.|(?!\\|\1).)*)\1/
+			0: "string"
+			2: {include: "styles"}
+		}
+		{match: /(?m)["'].*$/ 0: "error2"}
+		{builtin: #PROGRAM_NUMBER2#}
+		{match: keywordsToRegex("true false null"), 0: "keyword"}
+	]
+	codeFormatter: #BUILT_IN_JS_FORMATTER#
+	codeShrinker: #BUILT_IN_JSON_SHRINKER#
+}
