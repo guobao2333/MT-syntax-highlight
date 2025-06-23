@@ -1,4 +1,5 @@
 // require MT >= 2.16.0
+// version: 2.0.0
 // 此语法为同名内置语法的增强版本
 // Get update at https://github.com/guobao2333/MT-syntax-highlight
 {
@@ -32,6 +33,7 @@
 		"keyword" #E06B6B #CC7832
 		"keywords" #1750EB #6897BB
 		"startEnd" #871094 #9876AA
+		"mode" > "startEnd"
 		"class" #808000 #808000
 		"regex" #0A415D#F4F9FF #NULL#353637
 	]
@@ -54,7 +56,7 @@
 			{match: /\\[0CEFIJKLMNOPQTUXYcgijklmopquxy]/, 0: "error"}
 			{match: /\\./, 0: "escape"}
 		]
-		
+
 		"regex": [
 			// 转义类
 			{include: "escapes"}
@@ -63,8 +65,13 @@
 			{match: /[.*+?|]/, 0: "keywords"}
 			{match: /[$^]/, 0: "startEnd"}
 
-			// (?:pattern) (?=pattern) (?!pattern) (?<=pattern) (?<!pattern)
-			{match: /\(/ + /(?:\?[:=!]|\?<[=!])/, 0: "keywords"}
+			// (?:pattern) (?=pattern) (?!pattern) (?<=pattern) (?<!pattern) (?>pattern)
+			{match: /\((?:\?[:=!>]|/
+			+ /\?(([imsu])(?:(?!\1)([imsu])(?:(?!\1|\2)([imsu])(?:(?!\1|\2|\3)([imsu]))?)?)?)(?=\))/
+			+ /|\?<[=!])/
+				0: "keywords"
+				1: "mode"
+			}
 			{match: /[()]/, 0: "keywords"}
 
 			// {n,m}
@@ -85,7 +92,7 @@
 				]
 			}
 		]
-		
+
 		"regexs": [
 			{
 				start: {match: /(?<=match: ?)"/}
@@ -110,7 +117,7 @@
 
 	]
 	contains: [
-		{match: /(?mi)^[ \t]*\/\/[ \t]*require[ \t]+MT[ \t]*(>=?)[ \t]*(\d{8}|\d\.\d{1,3}\.\d{1,3}|(\S+))[ \t]*$/, 0: "require", 3: "error"}
+		{match: /(?i)^[ \t]*\/\/[ \t]*require[ \t]+MT[ \t]*(>=?)[ \t]*(\d{8}|\d\.\d{1,3}\.\d{1,3}|(\S+))[ \t]*(?m)$/, 0: "require", 3: "error"}
 		{match: "//.*", 0: "comment"}
 		{include: "regexs"}
 		{builtin: #JAVA_DOUBLE_QUOTED_STRING#}
@@ -138,11 +145,11 @@
 		{match: /@(?:IU|UI)\b/, 0: "flags_IU"}
 		{match: /@(?:IS|SI)\b/, 0: "flags_IS"}
 		{match: /@(?:US|SU)\b/, 0: "flags_US"}
-		{match: /@/ + keywordsToRegex("BIU BUI IBU IUB UBI UIB"), 0: "flags_BIU"}
-		{match: /@/ + keywordsToRegex("BIS BSI IBS ISB SBI SIB"), 0: "flags_BIS"}
-		{match: /@/ + keywordsToRegex("BUS BSU UBS USB SBU SUB"), 0: "flags_BUS"}
-		{match: /@/ + /(?!.*(.).*\1)[IUS]{3}/, 0: "flags_IUS"}
-		{match: /@/ + /(?!.*(.).*\1)[BIUS]{4}/, 0: "flags_BIUS"}
+		{match: /@(?!.*(.).*\1)[BIU]{3}\b/, 0: "flags_BIU"}
+		{match: /@(?!.*(.).*\1)[BIS]{3}\b/, 0: "flags_BIS"}
+		{match: /@(?!.*(.).*\1)[BUS]{3}\b/, 0: "flags_BUS"}
+		{match: /@(?!.*(.).*\1)[IUS]{3}\b/, 0: "flags_IUS"}
+		{match: /@(?!.*(.).*\1)[BIUS]{4}\b/, 0: "flags_BIUS"}
 		{match: /@_\b/, 0: "flags_CLEAR"}
 		{match: /@\w+/, 0: "error"}
 
