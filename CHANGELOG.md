@@ -18,12 +18,32 @@
 >
 > 更新多个语法时：  
 > `## 日期`  
-> `### 语法 - 版本1`  
-> `### 语法 - 版本2`  
+> `### 语法1 - 版本2`  
+> `### 语法2 - 版本1`  
 > …</details>
 
 ## 2025-6-23
-### MT Syntax EX (内置)
+### JSON Minecraft EX (内置)
+
++ 新增语法高亮：[JSON Minecraft优化版](mtsx/builtin/JSON_Minecraft.mtsx)
+
+**优化内容：**
+1. 为游戏内颜色代码添加高亮
+2. 为更多其他符号添加高亮
+3. 有多行注释时也可格式化
+
+### MT-Syntax EX (内置) - [2.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/f4a1007)
+#### Added | 新增
+
++ 为修饰符添加高亮
++ 使用更灵活的正则代替穷举语法
+
+### minecraft_lang - [1.2.1](https://github.com/guobao2333/MT-syntax-highlight/commit/f891ad1)
+#### Changed | 变化
+
+* 调整样式，保护眼睛
+
+### MT-Syntax EX (内置)
 
 + 新增语法高亮：[MT语法高亮配置](mtsx/builtin/MT-Syntax.mtsx)
 
