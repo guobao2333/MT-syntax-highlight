@@ -22,8 +22,28 @@
 > `### 语法2 - 版本1`  
 > …</details>
 
+## 2025-7-1
+### HTML EX (内置)
+
++ 新增内置语法高亮：[HTML](mtsx/builtin/JSON_Minecraft.mtsx)
+
+**优化内容：**
+1. 扩展 `<style>` 标签中的CSS代码高亮 (内置版)
+2. 扩展 `<script>` 标签中的JS代码高亮 (EX版)
+3. 优化标签中的注释逻辑
+
+### MT-Syntax EX (内置) - [2.1.0](https://github.com/guobao2333/MT-syntax-highlight/commit/0a53f69)
+#### Fixed | 修复
+
+1. 修复某些排列的修饰符渲染错误
+
+### JavaScript EX (内置) - [1.2.2](https://github.com/guobao2333/MT-syntax-highlight/commit/ed9191f)
+
+* 同步上游更新
+
+___
 ## 2025-6-23
-### JSON Minecraft EX (内置)
+### JSON Minecraft EX
 
 + 新增语法高亮：[JSON Minecraft优化版](mtsx/builtin/JSON_Minecraft.mtsx)
 
@@ -107,8 +127,7 @@ ___
 
 ___
 ## 2025-4-30
-### JavaScript (内置) - [1.2.1](https://github.com/guobao2333/MT-syntax-highlight/commit/31cd6d9)
-#### Changed | 变化
+### JavaScript EX (内置) - [1.2.1](https://github.com/guobao2333/MT-syntax-highlight/commit/31cd6d9)
 
 * 同步上游更新
 
@@ -128,7 +147,7 @@ ___
 ## 2025-2-26
 - 移除所有语法中的多余协议声明  
   由于甚至会比语法高亮本身都长，故仅保留作者版权信息
-### JavaScript (内置) - [1.2.0](https://github.com/guobao2333/MT-syntax-highlight/commit/6d0375b)
+### JavaScript EX (内置) - [1.2.0](https://github.com/guobao2333/MT-syntax-highlight/commit/6d0375b)
 #### Added | 新增
 
 + 再次为部分符号添加高亮  
@@ -168,7 +187,7 @@ ___
 + 为 `.dockerignore` 文件提供高亮
 
 ___
-## JavaScript (内置) - [1.1.0](https://github.com/guobao2333/MT-syntax-highlight/commit/39b8409) - 2024-9-21
+## JavaScript EX (内置) - [1.1.0](https://github.com/guobao2333/MT-syntax-highlight/commit/39b8409) - 2024-9-21
 ### Added | 新增
 
 + 为部分符号/关键字/方法增加高亮
@@ -182,7 +201,7 @@ ___
 + 新增指定语法支持的最低MT版本
 + 新增支持快捷注释
 
-### JavaScript (内置) - [1.0.1](https://github.com/guobao2333/MT-syntax-highlight/compare/40d8dea...cbf4404)
+### JavaScript EX (内置) - [1.0.1](https://github.com/guobao2333/MT-syntax-highlight/compare/40d8dea...cbf4404)
 #### Fixed | 修复
 
 1. 修复因MDN文档导致高亮的语法错误的~~语法错误~~拼写错误：`SynatxError` -> `SyntaxError`
@@ -192,7 +211,7 @@ ___
 + 为语法添加了预览图
 
 ___
-## JavaScript (内置) - 2024-9-2
+## JavaScript EX (内置) - 2024-9-2
 
 + 新增内置语法高亮：[JavaScript](mtsx/builtin/JavaScript.mtsx)
 
