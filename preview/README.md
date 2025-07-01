@@ -39,6 +39,13 @@
 </details>
 
 <details>
+<summary>HTML EX (内置)</summary>
+
+![亮色](builtin/html/light.webp)
+![暗色](builtin/html/dark.webp)
+</details>
+
+<details>
 <summary>JavaScript EX (内置)</summary>
 
 ![亮色](builtin/javascript/light.webp)
