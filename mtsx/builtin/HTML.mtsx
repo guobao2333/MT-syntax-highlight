@@ -1,0 +1,231 @@
+// require MT >= 2.16.0
+// version: 1.0.0
+// 此语法为同名内置语法的增强版本
+// https://github.com/guobao2333/MT-syntax-highlight
+{
+	name: ["HTML EX", ".html", ".htm"]
+	ignoreCase: true
+	styles: [
+		"tagName1" > "keyword2"
+		"className1" > "constant"
+		"idSelector" > "operator"
+		"psSelector" > "operator"
+		"values" > "label"
+	]
+	comment: {startsWith: "<!--", endsWith: "-->"}
+	defines: [
+		"startTagContains": [
+			{match: /(?s)<!--.*?(-->|$)/, 0: "comment"}
+			{match: /(xmlns:)([^='"\s]+)/, 1: "attrName", 2: "namespace"}
+			{match: /(?:([^='"<\/>\s]+)(:))?([^='"<\/>\s]+)/, 1: "namespace", 2: "attrName", 3: "attrName"}
+			{
+				group: link
+				contains: [
+					{match: /=\s*/, 0: "string"}
+					{match: /(?s)(["']).*?\1/, 0: "string"}
+				]
+			}
+		]
+
+		// ###################################### CSS ######################################
+		"css": [
+			{match: /(?s)\/\*[\s\S]*?(?:\*\/|(?=<\/style>))/, 0: "comment"}
+			{match: keywordsToRegex("html body a code div em h1 h2 h3 h4 h5 h6 img li ol p pre span table th td tr ul"), 0: "tagName1"}
+			{match: /\.[\w\-]+/, 0: "className1"}
+			{match: /#[\w\-]+/, 0: "idSelector"}
+			{match: /:[\w\-]+/, 0: "psSelector"}
+			{match: /@[\w\-]+/, 0: "meta"}
+			{match: /\d+/, 0: "number"}
+			{builtin: #QUOTED_STRING#}
+			{
+				start: {match: /\{/}
+				end: {match: /\}/}
+				contains: [
+					// 默认的comment仅在最外层进行匹配，要在start与end之间匹配注释的话需要单独添加规则
+					{match: /(?s)\/\*[\s\S]*?(?:\*\/|(?=<\/style>))/, 0: "comment"}
+					{builtin: #QUOTED_STRING#}
+					{match: /@[\w\-]+/, 0: "meta"}
+					{match: /!important/, 0: "meta"}
+					{match: keywordsToRegex(
+							"zoom z-index writing-mode word-wrap word-spacing word-break width widows white-space volume voice-family visibility"
+							"vertical-align unicode-bidi top text-underline-position text-transform text-shadow text-overflow text-kashida-space"
+							"text-justify text-indent text-decoration text-autospace text-align-last text-align table-layout stress speech-rate"
+							"speak-punctuation speak-numeral speak-header speak size scrollbar-track-color scrollbar-shadow-color"
+							"scrollbar-highlight-color scrollbar-face-color scrollbar-dark-shadow-color scrollbar-base-color scrollbar-arrow-color"
+							"scrollbar-3d-light-color ruby-position ruby-overhang ruby-align right richness quotes position play-during pitch-range"
+							"pitch pause-before pause-after pause page-break-inside page-break-before page-break-after page padding-top padding-right"
+							"padding-left padding-bottom padding overflow-Y overflow-X overflow outline-width outline-style outline-color outline"
+							"orphans min-width min-height max-width max-height marks marker-offset margin-top margin-right margin-left margin-bottom"
+							"margin list-style-type list-style-position list-style-image list-style line-height line-break letter-spacing left"
+							"layout-grid-type layout-grid-mode layout-grid-line layout-grid-char-spacing layout-grid-char layout-grid layout-flow"
+							"layer-background-image layer-background-color include-source ime-mode height font-weight font-variant font-style"
+							"font-stretch font-size-adjust font-size font-family font float filter empty-cells elevation display direction cursor"
+							"cue-before cue-after cue counter-reset counter-increment content color clip clear caption-side bottom border-width"
+							"border-top-width border-top-style border-top-color border-top border-style border-spacing border-right-width"
+							"border-right-style border-right-color border-right border-left-width border-left-style border-left-color border-left"
+							"border-color border-collapse border-bottom-width border-bottom-style border-bottom-color border-bottom border behavior"
+							"background-repeat background-position-y background-position-x background-position background-image background-color"
+							"background-attachment background azimuth accelerator object-fit box-sizing"
+						), 0: "keyword"}
+					{match: keywordsToRegex(
+							"xx-small xx-large x-soft x-small x-slow x-low x-loud x-large x-high x-fast wider wait w-resize visible url uppercase"
+							"upper-roman upper-latin upper-alpha underline ultra-expanded ultra-condensed tv tty transparent top thin thick text-top"
+							"text-bottom table-row-group table-row table-header-group table-footer-group table-column-group table-column table-cell"
+							"table-caption sw-resize super sub status-bar static square spell-out speech solid soft smaller small-caption small-caps"
+							"small slower slow silent show separate semi-expanded semi-condensed se-resize scroll screen s-resize run-in rtl narrower"
+							"right-side right ridge rgb rgba repeat-y repeat-x repeat relative projection print pre portrait pointer overline outside"
+							"outset open-quote once oblique nw-resize nowrap normal none no-repeat no-open-quote no-close-quote ne-resize rightwards"
+							"n-resize menlo monospace tahoma verdana arial helvetica sans-serif serif courier mono sans move mix middle message-box"
+							"medium marker ltr lowercase lower-roman lower-latin lower-greek lower-alpha lower low loud local list-item line-through"
+							"lighter level leftwards left-side left larger large landscape justify italic invert inside inset inline-table inline icon"
+							"higher high hide hidden help hebrew handheld groove format fixed faster fast far-right far-left fantasy extra-expanded"
+							"extra-condensed expanded embossed embed e-resize double dotted disc digits default decimal-leading-zero decimal dashed"
+							"cursive crosshair cross crop counters counter continuous condensed compact collapse code close-quote circle center-right"
+							"center-left center caption capitalize braille bottom both bolder bold block blink bidi-override below behind baseline"
+							"avoid auto aural attr armenian always all absolute above black silver gray white maroon red purple fuchsia green lime"
+							"olive  yellow navy blue teal aqua orange cover content-box border-box"
+						), 0: "values"}
+					{match: /\b\d+(\.\d+)?((px|pt|em)\b|%)?/, 0: "number"}
+					{match: /#([a-fA-F0-9]{3,6})\b/, 0: "parseColor(auto,1,HEX)"}
+				]
+			}
+		]
+
+		// ###################################### JavaScript ######################################
+		"javascript": [
+			{match: /(?s)\/\*[\s\S]*?(?:\*\/|(?=<\/style>))/, 0: "comment"}
+			{match: "(?m)//[^\\n]*?$", 0: "comment"}
+			{include: "single-quoted-string"}
+			{include: "double-quoted-string"}
+			{include: "regex"}
+			{include: "backtick-string"}
+			// 正则表达式
+			{
+				start: {match: /(?<=[=,(&|!:]\s{0,20})/ + "/"}
+				end: {match: "/" + /([img]*)/, 1: "operator"}
+				color: "meta"
+				contains: [
+					{match: /\\./, 0: "strEscape"}
+					{
+						start: {match: /\[/}
+						end: {match: /\]/}
+						contains: [
+							{match: /\\./, 0: "strEscape"}
+						]
+					}
+				]
+			}
+			{builtin: #JAVA_NUMBER#}
+			{match: /\basync(?=\s+(?:function\b|\S*\s*\())/, 0: "keyword"}
+			{match: /\bget(?=:?\s+(?:function\b|\S+\s*\())/, 0: "keyword"}
+			{match: keywordsToRegex(
+					"break case catch class const continue debugger default delete do else enum export await"
+					"extends false finally for function if implements import instanceof interface let debugger"
+					"new null package private protected public return static super switch this with"
+					"throw true try typeof var void while yield function of import in from as require"
+			), 0: "keyword"}
+			{match: keywordsToRegex(
+				"JSON Date Function Symbol RegExp Array String Number Boolean Math BigInt Map Set Object WeakMap WeakSet console globalThis Set"
+			), 0: "namespace"}
+			{match: keywordsToRegex(
+				"Error AggregateError EvalError RangeError ReferenceError SyntaxError TypeError URIError InternalError"
+			), 0: "error"}
+			{match: keywordsToRegex("prototype Infinity NaN undefined"), 0: "operator"}
+			{match: keywordsToRegex("=> === !== ~ ^ ..."), 0: "label"}
+		]
+
+		"single-quoted-string": {
+			style: "string"
+			start: {match: /'/}
+			end: {match: /(?m)'|$/}
+			contains: [
+				{match: /\\\n/, 0: "strEscape"}
+				{builtin: #JAVA_ESCAPED_CHAR#}
+			]
+		}
+		"double-quoted-string": {
+			style: "string"
+			start: {match: /"/}
+			end: {match: /(?m)"|$/}
+			contains: [
+				{match: /\\\n/, 0: "strEscape"}
+				{builtin: #JAVA_ESCAPED_CHAR#}
+			]
+		}
+		"backtick-string": {
+			style: "string"
+			start: {match: /`/}
+			end: {match: /`/}
+			contains: [
+				{match: /\\`/, 0: "strEscape"}
+				{builtin: #JAVA_ESCAPED_CHAR#}
+				{include: "dollarExp"}
+			]
+		}
+		"regex": {
+			start: {match: /(?<=(?:[=,(&|!:;]|^|\breturn)\s{0,20})/ + "/"}
+			end: {match: "/" + /([img]*)/, 1: "operator"}
+			style: "meta"
+			contains: [
+				{match: /\\./, 0: "strEscape"}
+				{
+					start: {match: /\[/}
+					end: {match: /\]/}
+					contains: [
+						{match: /\\./, 0: "strEscape"}
+					]
+				}
+			]
+		}
+		"dollarExp": {
+			start: {match: /\$\{/}
+			end: {match: /\}/}
+			style: "strEscape"
+			contains: [
+				{include: "single-quoted-string"}
+				{include: "double-quoted-string"}
+				{include: "regex"}
+				{include: "backtick-string"}
+				{include: "dollarExp"}
+			]
+		}
+	]
+	contains: [
+		{
+			start:  {
+				start: {match: /<\s*(script)\b/, 1: "tagName"}
+				end: {match: ">|$"}
+				contains: [ {include: "startTagContains"} ]
+			}
+			end: {match: "</\\s*(script)\\s*>", 1: "tagName"}
+			contains: [ {include: "javascript"} ]
+		}
+		{
+			start:  {
+				start: {match: /<\s*(style)\b/, 1: "tagName"}
+				end: {match: ">|$"}
+				contains: [ {include: "startTagContains"} ]
+			}
+			end: {match: "</\\s*(style)\\s*>", 1: "tagName"}
+			contains: [ {include: "css"} ]
+		}
+		{
+			start:  {
+				start: {match: /<\s*(pre)\b/, 1: "tagName"}
+				end: {match: ">|$"}
+				contains: [ {include: "startTagContains"} ]
+			}
+			end: {match: "</\\s*(pre)\\s*>", 1: "tagName"}
+		}
+		{
+			start: {match: "<\\??([^/>\\s]+)", 1: "tagName"}
+			end: {match: "[?/]?>|$"}
+			contains: [ {include: "startTagContains"} ]
+		}
+		{
+			match: "</\\s*([^>\\s]+)\\s*>", 1: "tagName"
+		}
+	]
+	codeFormatter: #BUILT_IN_HTML_FORMATTER#
+	codeShrinker: #BUILT_IN_HTML_SHRINKER#
+}

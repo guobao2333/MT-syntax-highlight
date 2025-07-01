@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>生成UUID</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<style type="text/css">
+		h1 {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		/* 输出样式 */
+		.uuid {
+			margin-bottom: 10px;
+			padding: 10px;
+			border-radius: 5px;
+			box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+		}
+		</style>
+		<script>
+		function 生成UUID() {
+		// 生成一个随机的 UUID
+		var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+			var r = Math.random() * 16 | 0,
+			v = c == 'x' ? r : (r & 0x3 | 0x8);
+			return v.toString(16);
+		});
+		document.getElementById('uuid').value = uuid;
+		}
+	</script>
+	</head>
+	<body>
+		<h1 align="center">生成UUID</h1>
+		<input type="text" id="uuid" readonly>
+		<button onclick="生成UUID()">生成</button> <br><br>
+		<label for="uuid"></label>
+	</body>
+</html>
