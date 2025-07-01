@@ -1,5 +1,7 @@
+// require MT >= 2.16.0
+// version: 1.2.2
 // 此文件为同名内置语法的增强版本
-// 内置语法更新时，仓库会同步更新
+// 针对minecraft进行语法扩展
 // https://github.com/guobao2333/MT-syntax-highlight
 {
     name: ["JavaScript EX", ".js", ".es", ".mjs", ".cjs"]
@@ -57,7 +59,7 @@
                 {include: "single-quoted-string"}
                 {include: "double-quoted-string"}
                 {include: "regex"}
-                {include: "backtick-string"}
+                {include: "backtick-string"} => FAIL
                 {include: "dollarExp"}
             ]
         }
@@ -67,22 +69,6 @@
         {include: "double-quoted-string"}
         {include: "regex"}
         {include: "backtick-string"}
-        // 正则表达式
-        {
-            start: {match: /(?<=[=,(&|!:]\s{0,20})/ + "/"}
-            end: {match: "/" + /([img]*)/, 1: "operator"}
-            color: "meta"
-            contains: [
-                {match: /\\./, 0: "strEscape"}
-                {
-                    start: {match: /\[/}
-                    end: {match: /\]/}
-                    contains: [
-                        {match: /\\./, 0: "strEscape"}
-                    ]
-                }
-            ]
-        }
         {builtin: #JAVA_NUMBER#}
         {match: /\basync(?=\s+(?:function\b|\S*\s*\())/, 0: "keyword"}
         {match: /\bget(?=:?\s+(?:function\b|\S+\s*\())/, 0: "keyword"}
