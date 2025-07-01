@@ -28,7 +28,7 @@ MT管理器的语法高亮核心使用了JAVA语法的***正则表达式***来�
 ### HTML EX (内置)
 
 + 新增内置语法高亮：[HTML](mtsx/builtin/JSON_Minecraft.mtsx)
-  听说大家很喜欢用mt写前端，但HTML没有css和js，所以最终没听劝看了一眼实现，稍微改了改发现性能还算能接受😂
+  > 听说大家很喜欢用mt写前端，但HTML没有css和js，所以最终没听劝看了一眼实现，稍微改了改结果发现性能还算能接受😂
 
 **优化内容：**
 1. 扩展 `<style>` 标签中的CSS代码高亮 (内置版)
@@ -133,7 +133,7 @@ ___
     Copyright (c) 2024-2025 shiguobaona
 
     Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
+    you may not use all mtsx file except in compliance with the License.
     You may obtain a copy of the License at
 
        http://www.apache.org/licenses/LICENSE-2.0
