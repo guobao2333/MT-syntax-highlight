@@ -1,7 +1,7 @@
 // require MT >= 2.16.0
-// version: 2.0.0
+// version: 2.1.0
 // 此语法为同名内置语法的增强版本
-// Get update at https://github.com/guobao2333/MT-syntax-highlight
+// https://github.com/guobao2333/MT-syntax-highlight
 {
 	name: ["MT-Syntax EX", ".mtsx"]
 	hide: true
@@ -35,6 +35,8 @@
 		"startEnd" #871094 #9876AA
 		"mode" > "startEnd"
 		"class" #808000 #808000
+		// 如果不想要背景色，取消注释下行然后注释下下行
+		// "regex" > "default"
 		"regex" #0A415D#F4F9FF #NULL#353637
 	]
 	comment: {startsWith: "//", addToContains: false}
@@ -67,10 +69,11 @@
 
 			// (?:pattern) (?=pattern) (?!pattern) (?<=pattern) (?<!pattern) (?>pattern)
 			{match: /\((?:\?[:=!>]|/
-			+ /\?(([imsu])(?:(?!\1)([imsu])(?:(?!\1|\2)([imsu])(?:(?!\1|\2|\3)([imsu]))?)?)?)(?=\))/
+			+ /\?(-)?(?![imus]*([imus])[imus]*\2)([imus]{1,4})(?=\))/
 			+ /|\?<[=!])/
 				0: "keywords"
-				1: "mode"
+				1: "keyword"
+				3: "mode"
 			}
 			{match: /[()]/, 0: "keywords"}
 
