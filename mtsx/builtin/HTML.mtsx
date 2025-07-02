@@ -1,5 +1,5 @@
 // require MT >= 2.16.0
-// version: 1.0.0
+// version: 1.0.1
 // 此语法为同名内置语法的增强版本
 // https://github.com/guobao2333/MT-syntax-highlight
 {
@@ -93,7 +93,7 @@
 
 		// ###################################### JavaScript ######################################
 		"javascript": [
-			{match: /(?s)\/\*[\s\S]*?(?:\*\/|(?=<\/style>))/, 0: "comment"}
+			{match: /(?s)\/\*[\s\S]*?(?:\*\/|(?=<\/script>))/, 0: "comment"}
 			{match: "(?m)//[^\\n]*?$", 0: "comment"}
 			{include: "single-quoted-string"}
 			{include: "double-quoted-string"}
