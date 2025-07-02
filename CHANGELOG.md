@@ -4,7 +4,7 @@
 
 > [!IMPORTANT]
 > **变更日志特殊规范**
-> 版本号前增加文件名作为标题： `文件名 - 版本号`  
+> 版本号前增加文件名和日期作为标题： `日期 - 文件名 - 版本号`  
 > <details>
 > <summary>标题合并规范</summary>
 >
@@ -22,8 +22,8 @@
 > `### 语法2 - 版本1`  
 > …</details>
 
-## HTML EX (内置) - [1.0.1](https://github.com/guobao2333/MT-syntax-highlight/commit/476d201) - 2025-7-2
-#### Fixed | 修复
+## 2025-7-2 - HTML EX (内置) - [1.0.1](https://github.com/guobao2333/MT-syntax-highlight/commit/476d201)
+### Fixed | 修复
 
 1. JS代码注释的结束标签错误 `style` → `script`
 
@@ -183,7 +183,7 @@ ___
 1. 修复了未正确高亮的注释
 
 ___
-## gitignore - [1.2.4](https://github.com/guobao2333/MT-syntax-highlight/commit/9ab909d) - 2024-10-15
+## 2024-10-15 - gitignore - [1.2.4](https://github.com/guobao2333/MT-syntax-highlight/commit/9ab909d)
 ### Fixed | 修复
 
 1. 使后缀只会在匹配为文件时高亮
@@ -193,7 +193,7 @@ ___
 + 为 `.dockerignore` 文件提供高亮
 
 ___
-## JavaScript EX (内置) - [1.1.0](https://github.com/guobao2333/MT-syntax-highlight/commit/39b8409) - 2024-9-21
+## 2024-9-21 - JavaScript EX (内置) - [1.1.0](https://github.com/guobao2333/MT-syntax-highlight/commit/39b8409)
 ### Added | 新增
 
 + 为部分符号/关键字/方法增加高亮
@@ -232,7 +232,7 @@ ___
   > 5个语法，写了3天😂
 
 ___
-## markdown_github - [3.2.0](https://github.com/guobao2333/MT-syntax-highlight/commit/1888619) - 2024-8-22
+## 2024-8-22 - markdown_github - [3.2.0](https://github.com/guobao2333/MT-syntax-highlight/commit/1888619)
 ### Added | 新增
 
 + 为引用块单独添加背景，以匹配github样式
@@ -276,7 +276,7 @@ ___
   改为使用性能更好的新语法代替原有实现
 
 ___
-## markdown_github - [3.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/0ae9664) - 2024-7-19
+## 2024-7-19 - markdown_github - [3.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/0ae9664)
 **使用`2.16.0`版本新增语法重构了代码！！**
 ### Fixed | 修复
 
@@ -297,7 +297,7 @@ ___
 + 添加了光标旁的括号对高亮
 
 ___
-## vimscript - [1.0.1](https://github.com/guobao2333/MT-syntax-highlight/commit/ef4551a) - 2024-7-12
+## 2024-7-12 - vimscript - [1.0.1](https://github.com/guobao2333/MT-syntax-highlight/commit/ef4551a)
 ### Fixed | 修复
 
 1. 修复冒号命令的渲染错误
@@ -322,7 +322,7 @@ ___
   > 明明都叫标题，title代表整个页面的标题，而heading代表某个部分的标题……我英语不好，在学了在学了😣
 
 ___
-## gitignore - [1.2.0](https://github.com/guobao2333/MT-syntax-highlight/commit/d7ff1ec) - 2024-7-3
+## 2024-7-3 - gitignore - [1.2.0](https://github.com/guobao2333/MT-syntax-highlight/commit/d7ff1ec)
 ### Fixed | 修复
 
 1. 修复 `?` 前面如果是 `*` 则不会渲染的问题
@@ -363,7 +363,7 @@ ___
   有关gitignore的文档请看这里：[Git - gitignore Documentation](https://git-scm.com/docs/gitignore)
 
 ___
-## markdown_github - [2.1.1](https://github.com/guobao2333/MT-syntax-highlight/commit/156ec0c) - 2024-6-8
+## 2024-6-8 - markdown_github - [2.1.1](https://github.com/guobao2333/MT-syntax-highlight/commit/156ec0c)
 > [!IMPORTANT]
 > 从此版本开始仅适用于MT管理器 `2.16.0` 及以上版本！
 ### Changed | 变化
@@ -375,7 +375,7 @@ ___
 `GitHub Flavored Markdown` -> ` Markdown(GFM)`
 
 ___
-## markdown_github - [2.1.0](https://github.com/guobao2333/MT-syntax-highlight/commit/73d9f05) - 2024-5-27
+## 2024-5-27 - markdown_github - [2.1.0](https://github.com/guobao2333/MT-syntax-highlight/commit/73d9f05)
 ### Added | 新增
 
 + 新增缩进代码块渲染
@@ -403,7 +403,7 @@ _**调整了历史版本号，使其遵守版本控制规范**_
 * 清除了部分无用冗(rǒng)余代码
 
 ___
-## markdown_github - [2.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/792634d) - 2024-5-16
+## 2024-5-16 - markdown_github - [2.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/792634d)
 **进行了重构。**
 
 ### Removed | 移除
@@ -433,7 +433,7 @@ ___
 + 新增`ASCII`字符转义渲染
 
 ___
-## markdown_github - [1.1.0~1.2.0](https://github.com/guobao2333/MT-syntax-highlight/compare/39a1506...ddf18a0) - 2024-5-7
+## 2024-5-7 - markdown_github - [1.1.0~1.2.0](https://github.com/guobao2333/MT-syntax-highlight/compare/39a1506...ddf18a0)
 ### Fixed | 修复
 
 1. 修复因1.1.0版本导致的列表前无空格会不渲染
