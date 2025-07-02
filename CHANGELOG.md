@@ -22,6 +22,12 @@
 > `### 语法2 - 版本1`  
 > …</details>
 
+## HTML EX (内置) - [1.0.1](https://github.com/guobao2333/MT-syntax-highlight/commit/476d201) - 2025-7-2
+#### Fixed | 修复
+
+1. JS代码注释的结束标签错误 `style` → `script`
+
+___
 ## 2025-7-1
 ### HTML EX (内置)
 
