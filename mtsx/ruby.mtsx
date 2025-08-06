@@ -1,0 +1,43 @@
+{
+	name: ["Ruby", ".rb"]
+	comment: {startsWith: "#"}
+	comment: {startsWith: "=begin", endsWith: "=end"}
+	styles: [
+		"con", #CC6699, #CC6699
+		"func", #6666CC, #6666CC
+		"bool", #CC7832, #CC7832
+		"name", #333399, #555599, @U
+		"func_name", #FF9933, #FF9933
+		"global", #00CC00, #00CC99, @U
+		"symbol", #CC33FF, #CCA9AA
+	]
+	defines: [
+		"all": [ // 字符串内插
+			{builtin: #SINGLE_QUOTED_STRING#}
+			{builtin: #PROGRAM_NUMBER#}
+			{
+				start: {match: /"/}
+				end: {match: /"/}
+				style: "string"
+				contains: [
+					{match: /\\./}
+					{match: /#\{(.+?)?\}/, 0: "default", 1: {include: "all"}}
+				]
+			}
+			{match: /(def)(?:\s+(.+)\(?)?/, 1: "con", 2: "func_name"}
+			{match: /\$([!@&`'+~=\/\\,;.<>_*$?:"^-]|[0-9]|[a-zA-Z_][a-zA-Z0-9_]*)/, 0: "global"} // $开头的全局变量和特殊变量
+			{match: /:[a-zA-Z_][a-zA-Z0-9_]*/, 0: "symbol"}
+			{match: /[a-zA-Z_][a-zA-Z0-9_]*:/, 0: "symbol"}
+			{match: keywordsToRegex("for in while do end begin end rescue ensure if elsif else then class module defraise yield retry undef alias super break next redo case when unless until"), 0: "con"}
+			{match: keywordsToRegex("return attr_writer attr_accessor attr_reader module_function and or not"), 0: "func"}
+			{match: keywordsToRegex("require require_relative public private protected self proc lambda"), 0: "meta"}
+			{match: keywordsToRegex("true false nil "), 0: "bool"}
+			{match: /(\d+(?:\.\d+)?)\s*\.\.\s*(\d+(?:\.\d+)?)?/, 1: "number", 2: "number"} // PROGRAM_NUMBER处理Range时有问题，单独处理
+			{match: /(\d+)\s*\./, 1: "number"} // 数字作为对象时有问题，单独处理
+			{match: /\b[A-Z](?:\w+)?\b/, 0: "name"} // 类名，模块名
+		]
+	]
+	contains: [
+		{include: "all"}
+	]
+}
