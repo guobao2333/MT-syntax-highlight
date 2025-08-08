@@ -1,43 +1,60 @@
 {
+	// @author: UndefTaco
+	// @email: Wgpooi@outlook.com
 	name: ["Ruby", ".rb"]
 	comment: {startsWith: "#"}
 	comment: {startsWith: "=begin", endsWith: "=end"}
 	styles: [
 		"con", #CC6699, #CC6699
-		"func", #6666CC, #6666CC
+		"func", #6666CC, #33AACC
 		"bool", #CC7832, #CC7832
-		"name", #333399, #555599, @U
+		"name", #333399, #107DFF, @UIB
 		"func_name", #FF9933, #FF9933
-		"global", #00CC00, #00CC99, @U
+		"global", #00CC00, #00CC99, @UB
 		"symbol", #CC33FF, #CCA9AA
+		"regex", #FF6633, #FF6633
+		"class_def", #CC6699$FFEDED, #CC6699$434343
+		"italics", @IB
 	]
 	defines: [
-		"all": [ // 字符串内插
+		"main": [
 			{builtin: #SINGLE_QUOTED_STRING#}
-			{builtin: #PROGRAM_NUMBER#}
 			{
 				start: {match: /"/}
 				end: {match: /"/}
 				style: "string"
 				contains: [
 					{match: /\\./}
-					{match: /#\{(.+?)?\}/, 0: "default", 1: {include: "all"}}
+					{match: /(?s)#\{(.+?)?\}/, 0: "default", 1: {include: "main"}}
 				]
 			}
-			{match: /(def)(?:\s+(.+)\(?)?/, 1: "con", 2: "func_name"}
+			{match: /\s*\.\s*([^\S\r\n]|[A-Za-z_?!])+/, 0: "default"}
+			{
+				start: {match: /\|/, 0: "func_name"}
+				end: {match: /\|/, 0: "func_name"}
+				contains: [
+					{match: /(.+?)/, 0: "italics"}
+				]
+			}
+			{match: /\/(.+)\//, 0: "regex"}
+			{match: /@@?(?:[A-Za-z_?!]+[A-Za-z_?!0-9]*)/, 0: "symbol"}
+			{match: /(?:-?0o[0-7]+)|(?:0b[01]+)|(?:-?0x[0-9A-Fa-f]+)|(?:-?(?:0d)?[0-9]+(?:(?:[eE]-?\d+)|(?:\.\d+(?:(?:[e|E]-?\d+)|[ri])?)|[ri])?)/, 0: "number"} // 数值对象字面量
 			{match: /\$([!@&`'+~=\/\\,;.<>_*$?:"^-]|[0-9]|[a-zA-Z_][a-zA-Z0-9_]*)/, 0: "global"} // $开头的全局变量和特殊变量
-			{match: /:[a-zA-Z_][a-zA-Z0-9_]*/, 0: "symbol"}
-			{match: /[a-zA-Z_][a-zA-Z0-9_]*:/, 0: "symbol"}
-			{match: keywordsToRegex("for in while do end begin end rescue ensure if elsif else then class module defraise yield retry undef alias super break next redo case when unless until"), 0: "con"}
-			{match: keywordsToRegex("return attr_writer attr_accessor attr_reader module_function and or not"), 0: "func"}
-			{match: keywordsToRegex("require require_relative public private protected self proc lambda"), 0: "meta"}
-			{match: keywordsToRegex("true false nil "), 0: "bool"}
+			{match: /(?<!:):[a-zA-Z_+*-][a-zA-Z0-9_]*/, 0: "symbol"}
+			{match: /[a-zA-Z_][a-zA-Z0-9_]*:(?!:)/, 0: "symbol"}
+			{match: keywordsToRegex("for in while do end begin end rescue ensure if elsif else then defraise yield retry undef alias super break next redo case when unless until BEGIN END"), 0: "con"}
+			{match: keywordsToRegex("return attr_writer attr_accessor attr_reader module_function and or not exit"), 0: "func"}
+			{match: keywordsToRegex("require require_relative public private protected self proc lambda include"), 0: "meta"}
+			{match: keywordsToRegex("module class"), 0: "class_def"}
+			{match: /(def)(?:[^\S\r\n]+([a-zA-Z_!?][a-zA-Z0-9_!?]*)[^\S\r\n]*\(?(?:(.+)\))?)?/, 1: "class_def", 2: "func_name", 3: "italics"}
+			{match: keywordsToRegex("! == & ^ >> << > < <= >= != =~ !~ ~ | + - / * ** += -= *= %= /= &&= ||= && || <=> === =>"), 0: "func_name"}
+			{match: keywordsToRegex("true false nil"), 0: "bool"}
 			{match: /(\d+(?:\.\d+)?)\s*\.\.\s*(\d+(?:\.\d+)?)?/, 1: "number", 2: "number"} // PROGRAM_NUMBER处理Range时有问题，单独处理
 			{match: /(\d+)\s*\./, 1: "number"} // 数字作为对象时有问题，单独处理
-			{match: /\b[A-Z](?:\w+)?\b/, 0: "name"} // 类名，模块名
+			{match: /(?:[A-Z]+(?:[0-9a-z_]+)?)(?:::[A-Z](?:[0-9a-z_]+)?)?/, 0: "name"} // 类名，模块名
 		]
 	]
 	contains: [
-		{include: "all"}
+		{include: "main"}
 	]
 }
