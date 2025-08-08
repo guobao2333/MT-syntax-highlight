@@ -1,0 +1,38 @@
+require "pp"
+# 单行注释
+=begin
+	多行注释
+=end
+
+str = "字符串内插: #{ nil.class }"
+result = "100!: #{ (1..100).inject(:*) } }"
+
+module Cat
+	def meow
+		puts "meow!"
+	end
+	module_function :meow
+end
+
+class WeirdError < StandardError
+	include Cat
+	attr_reader :field, :message
+	def initialize(field, message)
+		super("The program likes dying. #{field}: #{message}")
+		@field = field
+		@message = message
+	end
+end
+
+numbers = [1, 0.1, -1, -0.1, 0xAFF, 0o154, 0b1001, 0d1, 1.03e9]
+pi = MATH::PI
+r = 123r
+r = 123.45r
+i = 123i
+i = 123.45i
+
+begin
+	cat = File.open("cat.txt")
+rescue Errno::ENOENT => e
+	raise(WeirdError.new(:what, "What happened??")
+end
