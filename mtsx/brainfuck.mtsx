@@ -1,0 +1,31 @@
+// Version: 1.0.0
+// Repo: https://github.com/guobao2333/MT-syntax-highlight
+// Copyright (c) 2025 shiguobaona
+{
+	name: ["Brainfuck", ".bf"]
+	styles: [
+		"comment" #8C8C8C #808080 //@I
+		"char1"   #27B370 #B762BE
+		"char2"   #78BFE6 #24A2AE
+		"char3"   #0077FF #4588B9 @B
+		"char4"   #8356C2 #668F56 @B
+		"char5"   #FF7000 #D2B72D @B
+	]
+
+	defines: [
+		"char": /-+.><\[\],/
+	]
+
+	contains: [
+		{match: /(([-+.><\[\],])(\2)?)+/
+			recordAllGroups: true
+			0: {match: /,/ 0: "char1"}
+			0: {match: /\./ 0: "char5"}
+			0: {match: /[\[\]]/ 0: "char3"}
+			1: "char2"
+			2: "char4"
+		}
+		// 非8个指令外的任何字符都会被忽略
+		{match: /[^/ + include("char") + /]/ 0: "comment"}
+	]
+}
