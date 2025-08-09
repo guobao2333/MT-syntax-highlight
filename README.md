@@ -13,7 +13,7 @@
 > [!IMPORTANT]
 > <details>
 > <summary><b>项目缓慢更新中……点击查看<s>(废话)</s>原因</b></summary>
-> <br><p>虽然我知道我写的性能不好，但我依旧在改进和使用自己编写的语法高亮，因为我为自己所创造出的内容感到骄傲。在后续可能只会进行少量更新，但更新频率将会无限趋近于停更。我的精力并不足以让我维护这些项目，因为我可能需要花费比别人多10倍甚至更多的时间去完成，甚至还做不到同等程度。所以我并不相信“努力就一定会成功”这种狗屁鸡汤，我相信的不是努力，而是天赋和努力互相成就，因为没有天赋一切都是白费力气。</p>
+> <br><p>虽然我知道我写的性能不好，但我依旧在改进和使用自己编写的语法高亮，因为我为自己所创造出的内容感到骄傲。在后续可能只会进行少量更新，但更新频率将会无限趋近于停更。我的精力并不足以让我维护这些项目，因为我可能需要花费比别人多10倍甚至更多的时间去完成，甚至还做不到同等程度。所以我并不相信“努力就一定会成功”这种狗屁鸡汤，我相信的不是努力，而是天赋和努力相互成就，因为没有天赋一切都是白费力气。</p>
 </details>
 
 # Introduction | 简介
@@ -24,6 +24,24 @@ MT管理器的语法高亮核心使用了JAVA语法的***正则表达式***来�
 从`2.16.0`版本开始，MT增加了更多高级语法和文本样式，这使得我们可以在今后写出性能更好、复杂性更高、样式更好看的语法高亮了！
 # Change Log | 更新日志
 > 仅展示最新版本的**部分变化**，更多版本请[查看完整更新日志](CHANGELOG.md)
+## 2025-8-9
+### brainfuck
+
++ 新增语法高亮：[Brainfuck](mtsx/brainfuck.mtsx)  
+  有关bf的文档请看这里：[Brainfuck - Wikipedia](https://wikipedia.org/wiki/Brainfuck)
+
+### ruby
+
++ 新增语法高亮：[Ruby](mtsx/ruby.mtsx)
+
+感谢该语法的贡献者：[**@UndefTaco**](https://github.com/UndefTaco)
+
+### MT-Syntax EX (内置) - [2.1.1](https://github.com/guobao2333/MT-syntax-highlight/commit/c203452)
+#### Fixed | 修复
+
+1. 修复某些情况下字符集合渲染错误
+
+___
 ## 2025-7-2 - HTML EX (内置) - [1.0.1](https://github.com/guobao2333/MT-syntax-highlight/commit/476d201)
 ### Fixed | 修复
 
@@ -34,7 +52,7 @@ ___
 ### HTML EX (内置)
 
 + 新增内置语法高亮：[HTML](mtsx/builtin/JSON_Minecraft.mtsx)
-  > 听说大家很喜欢用mt写前端，但HTML没有css和js，所以最终没听劝看了一眼实现，稍微改了改结果发现性能还算能接受😂
+  > 听说大家很喜欢用mt写前端，但HTML没有css和js，没听劝看了一眼实现，稍微改了改结果发现性能还算能接受😂
 
 **优化内容：**
 1. 扩展 `<style>` 标签中的CSS代码高亮 (内置版)
@@ -56,43 +74,13 @@ ___
 * 同步上游更新
 
 ___
-## 2025-6-23
-### JSON Minecraft EX (内置)
-
-+ 新增语法高亮：[JSON Minecraft优化版](mtsx/builtin/JSON_Minecraft.mtsx)
-
-**优化内容：**
-1. 为游戏内颜色代码添加高亮
-2. 为更多其他符号添加高亮
-3. 有多行注释时也可格式化
-
-### MT-Syntax EX (内置) - [2.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/f4a1007)
-#### Added | 新增
-
-+ 为修饰符添加高亮
-+ 使用更灵活的正则代替穷举语法
-
-### minecraft_lang - [1.2.1](https://github.com/guobao2333/MT-syntax-highlight/commit/f891ad1)
-#### Changed | 变化
-
-* 调整样式，保护眼睛
-
-### MT-Syntax EX (内置)
-
-+ 新增语法高亮：[MT语法高亮配置](mtsx/builtin/MT-Syntax.mtsx)
-
-**优化内容：**
-1. 为正则表达式添加高亮
-2. 使用更少的正则代替部分穷举 (实验) (ps: 可能会降低性能)
-
-___
 # Preview | 预览
 由于更新较为频繁，所以此处预览图**可能**会过时，最新的版本应以语法高亮文件为准，安装后在mt管理器中打开 `preview.[相应语法后缀]` 即可查看*完整效果*。  
 - 你可以在[此处](preview/)查看预览索引。
 
 # Usage | 使用
 > [!IMPORTANT]
-> 大部分语法高亮仅适用于MT管理器 `2.16.0` 及以上版本！
+> 大部分语法高亮仅适用于MT管理器 `2.16.0` 及以上版本！  
 你可以在[此处](mtsx/)查看所有语法。
 
 ## Installation | 安装
@@ -143,6 +131,7 @@ ___
     You may obtain a copy of the License at
 
        http://www.apache.org/licenses/LICENSE-2.0
+
     Unless required by applicable law or agreed to in writing, software
     distributed under the License is distributed on an "AS IS" BASIS,
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.

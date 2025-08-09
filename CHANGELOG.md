@@ -22,6 +22,24 @@
 > `### 语法2 - 版本1`  
 > …</details>
 
+## 2025-8-9
+### brainfuck
+
++ 新增语法高亮：[Brainfuck](mtsx/brainfuck.mtsx)  
+  有关bf的文档请看这里：[Brainfuck - Wikipedia](https://wikipedia.org/wiki/Brainfuck)
+
+### ruby
+
++ 新增语法高亮：[Ruby](mtsx/ruby.mtsx)
+
+感谢该语法的贡献者：[**@UndefTaco**](https://github.com/UndefTaco)
+
+### MT-Syntax EX (内置) - [2.1.1](https://github.com/guobao2333/MT-syntax-highlight/commit/c203452)
+#### Fixed | 修复
+
+1. 修复某些情况下字符集合渲染错误
+
+___
 ## 2025-7-2 - HTML EX (内置) - [1.0.1](https://github.com/guobao2333/MT-syntax-highlight/commit/476d201)
 ### Fixed | 修复
 
