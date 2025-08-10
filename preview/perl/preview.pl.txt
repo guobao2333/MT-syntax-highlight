@@ -1,0 +1,55 @@
+# 单行注释
+=begin
+多行注释
+=end
+use strict;
+use warnings;
+use threads;
+use threads::shared;
+use Math::BigInt;
+
+package Cat;
+
+sub new {
+	my ($class, $name) = @_;
+	my $self = {
+		name => $name,
+		v => 0,
+	};
+	bless $self, $class;
+	return $self;
+}
+
+1;
+
+my $timer :shared = 0;
+my $end :shared = 0;
+
+sub timer {
+	while (1) {
+		last if $end == 1;
+		sleep 0.001;
+		$timer++;
+	}
+}
+
+sub main {
+	sub fib {
+		my $num = shift;
+		my @fn = (Math::BigInt->new(0), Math::BigInt->new(1));
+		foreach (1 .. $num) {
+			push @fn, $fn[-1] + $fn[-2];
+		}
+		$end = 1;
+		return @fn;
+	}
+	print join ' ', fib 4000;
+}
+
+my $time = threads->new(\&timer);
+my $fb = threads->new(\&main);
+
+$time->join;
+$fb->join;
+
+print "\n", $timer / 1000, "s\n";
