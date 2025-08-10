@@ -1,6 +1,9 @@
+// require MT >= 2.16.0
+// Version: 1.0.0
+// Repo: https://github.com/guobao2333/MT-syntax-highlight
+// Copyright (c) 2025 UndefTaco
+// Email: Wgpooi@outlook.com
 {
-	// @author: UndefTaco
-	// @email: Wgpooi@outlook.com
 	name: ["Perl", ".pl", ".pm"]
 	comment: {startsWith: "#"}
 	comment: {startsWith: "=begin", endsWith: "=end"}
@@ -34,26 +37,23 @@
 		"num": [
 			{match: /-?(?:\d+_?)(?:(?:\.\d+_?(?:(?<!_)e\d+_?)?)|(?:(?<!_)e\d+_?))?/, 0: "number"}
 		]
-		"main": [
-			{builtin: #SINGLE_QUOTED_STRING#}
-			{include: "var"}
-			{include: "str"}
-			{include: "num"}
-			
-			{match: keywordsToRegex("q qw qq qx") + /(?:\s*(?:\/(.+)\/)|(?:\|(.+)\|)|(?:#(.+)#)|(?:\{(.+)\})|(?:\((.+)\))|(?:\[(.+)\])|(?:!(.+)!)|(?:&(.+)?&)|(?:%(.+)?%)|(?:<(.+)?>))/, 0: "string"}
-			{match: keywordsToRegex("qr") + /(?:\s*(?:\/(.+)\/)|(?:\|(.+)\|)|(?:#(.+)#)|(?:\{(.+)\})|(?:\((.+)\))|(?:\[(.+)\])|(?:!(.+)!)|(?:&(.+)?&)|(?:%(.+)?%)|(?:<(.+)?>))[imsxogaydlnper]*/, 0: "regex"} // 构造
-			{match: /(?:(?:m?\/(.+)\/)|(?:m\|(.+)\|)|(?:m#(.+)#)|(?:m\{(.+)\})|(?:m\((.+)\))|(?:m\[(.+)\])|(?:m!(.+)!)|(?:m&(.+)?&)|(?:m%(.+)?%)|(?:m<(.+)?>))[imsxogaydlnper]*/, 0: "regex"} // 匹配模式
-			{match: /(?<!\w)(tr)|y(?:(?:(?:\/(.+)?\/(.+)?\/)|(?:\|(.+?)\|(.+?)\|)|(?:#(.+)#(.+)#)|(?:!(.*?)!(.*?)!)|(?:%(.+)%(.+)%)|(?:&(.+)&(.+)&))|(?:(?:\{(.+?)\}\{(.+?)\})|(?:\[(.+)\]\[(.+)\])|(?:\<(.+)\>\<(.+)\>)|(?:\((.+)\)\((.+)\))))[cdsr]*/, 0: "regex"} // 转换模式
-			{match: /(?<!\w)s(?:(?:(?:\/(.+)?\/(.+)?\/)|(?:\|(.+?)\|(.+?)\|)|(?:#(.+)#(.+)#)|(?:!(.*?)!(.*?)!)|(?:%(.+)%(.+)%)|(?:&(.+)&(.+)&))|(?:(?:\{(.+?)\}\{(.+?)\})|(?:\[(.+)\]\[(.+)\])|(?:\<(.+)\>\<(.+)\>)|(?:\((.+)\)\((.+)\))))[cdsr]*/, 0: "regex"} // 转换模式
-			
-			{match: /&([a-zA-Z_][a-zA-Z0-9_]*)/, 0: "opr"}
-			{match: keywordsToRegex("use no require improve unimport eof seek tell") + /(?:\s+([A-Z:a-z0-9_]+)?)?/, 0: "meta", 1: "module"}
-			{match: /(?<!>)/ + keywordsToRegex("my state local our if elsif else unless do while until eval for foreach return goto last redo next split join die warn undef defined bless scalar"), 0: "con"}
-			{match: keywordsToRegex("<=> => and or not xor eq gt lt ne le ge"), 0: "opr"}
-			{match: /((?:sub)|(?:package))(?:[^\S\r\n]+([a-zA-Z_!:?][a-zA-Z0-9_:!?]*)[^\S\r\n]*)?/, 1: "class_def", 2: "opr"}
-		]
 	]
 	contains: [
-		{include: "main"}
+		{builtin: #SINGLE_QUOTED_STRING#}
+		{include: "var"}
+		{include: "str"}
+		{include: "num"}
+		
+		{match: keywordsToRegex("q qw qq qx") + /(?:\s*(?:\/(.+)\/)|(?:\|(.+)\|)|(?:#(.+)#)|(?:\{(.+)\})|(?:\((.+)\))|(?:\[(.+)\])|(?:!(.+)!)|(?:&(.+)?&)|(?:%(.+)?%)|(?:<(.+)?>))/, 0: "string"}
+		{match: keywordsToRegex("qr") + /(?:\s*(?:\/(.+)\/)|(?:\|(.+)\|)|(?:#(.+)#)|(?:\{(.+)\})|(?:\((.+)\))|(?:\[(.+)\])|(?:!(.+)!)|(?:&(.+)?&)|(?:%(.+)?%)|(?:<(.+)?>))[imsxogaydlnper]*/, 0: "regex"} // 构造
+		{match: /(?:(?:m?\/(.+)\/)|(?:m\|(.+)\|)|(?:m#(.+)#)|(?:m\{(.+)\})|(?:m\((.+)\))|(?:m\[(.+)\])|(?:m!(.+)!)|(?:m&(.+)?&)|(?:m%(.+)?%)|(?:m<(.+)?>))[imsxogaydlnper]*/, 0: "regex"} // 匹配模式
+		{match: /(?<!\w)(tr)|y(?:(?:(?:\/(.+)?\/(.+)?\/)|(?:\|(.+?)\|(.+?)\|)|(?:#(.+)#(.+)#)|(?:!(.*?)!(.*?)!)|(?:%(.+)%(.+)%)|(?:&(.+)&(.+)&))|(?:(?:\{(.+?)\}\{(.+?)\})|(?:\[(.+)\]\[(.+)\])|(?:\<(.+)\>\<(.+)\>)|(?:\((.+)\)\((.+)\))))[cdsr]*/, 0: "regex"} // 转换模式
+		{match: /(?<!\w)s(?:(?:(?:\/(.+)?\/(.+)?\/)|(?:\|(.+?)\|(.+?)\|)|(?:#(.+)#(.+)#)|(?:!(.*?)!(.*?)!)|(?:%(.+)%(.+)%)|(?:&(.+)&(.+)&))|(?:(?:\{(.+?)\}\{(.+?)\})|(?:\[(.+)\]\[(.+)\])|(?:\<(.+)\>\<(.+)\>)|(?:\((.+)\)\((.+)\))))[cdsr]*/, 0: "regex"} // 转换模式
+		
+		{match: /&([a-zA-Z_][a-zA-Z0-9_]*)/, 0: "opr"}
+		{match: keywordsToRegex("use no require improve unimport eof seek tell") + /(?:\s+([A-Z:a-z0-9_]+)?)?/, 0: "meta", 1: "module"}
+		{match: /(?<!>)/ + keywordsToRegex("my state local our if elsif else unless do while until eval for foreach return goto last redo next split join die warn undef defined bless scalar"), 0: "con"}
+		{match: keywordsToRegex("<=> => and or not xor eq gt lt ne le ge"), 0: "opr"}
+		{match: /((?:sub)|(?:package))(?:[^\S\r\n]+([a-zA-Z_!:?][a-zA-Z0-9_:!?]*)[^\S\r\n]*)?/, 1: "class_def", 2: "opr"}
 	]
 }
