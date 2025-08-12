@@ -8,6 +8,7 @@
 - [GoLang](golang.mtsx)
 - [Markdown(GFM)](markdown_github.mtsx)[^GFM]
 - [Minecraft Bedrock Localized Language](minecraft_lang.mtsx)
+- [Perl](perl.mtsx)
 - [Ruby](ruby.mtsx)
 - [VimScript](vim.mtsx)
 

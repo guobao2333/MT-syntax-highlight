@@ -22,13 +22,40 @@
 MT管理器的语法高亮核心使用了JAVA语法的***正则表达式***来实现。
 
 从`2.16.0`版本开始，MT增加了更多高级语法和文本样式，这使得我们可以在今后写出性能更好、复杂性更高、样式更好看的语法高亮了！
+
 # Change Log | 更新日志
 > 仅展示最新版本的**部分变化**，更多版本请[查看完整更新日志](CHANGELOG.md)
+## 2025-8-12
+### markdown_github - [4.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/c74e2d1)
+性能大优化！
+#### Added | 新增
+
++ 新增空格换行符高亮
++ 新增任务列表高亮
+
+#### Fixed | 修复
+
+1. 现在标题内支持更多语法
+2. 修复setext标题的一些高亮错误
+3. 修复缩进代码块的高亮错误
+
+#### Changed | 变化
+
+* 优化链接语法的匹配效率
+* 优化警告块的匹配效率和样式
+
+___
 ## 2025-8-9
 ### brainfuck
 
 + 新增语法高亮：[Brainfuck](mtsx/brainfuck.mtsx)  
   有关bf的文档请看这里：[Brainfuck - Wikipedia](https://wikipedia.org/wiki/Brainfuck)
+
+### Perl
+
++ 新增语法高亮：[Perl](mtsx/perl.mtsx)
+
+感谢该语法的贡献者：[**@UndefTaco**](https://github.com/UndefTaco)
 
 ### ruby
 
@@ -42,48 +69,14 @@ MT管理器的语法高亮核心使用了JAVA语法的***正则表达式***来�
 1. 修复某些情况下字符集合渲染错误
 
 ___
-## 2025-7-2 - HTML EX (内置) - [1.0.1](https://github.com/guobao2333/MT-syntax-highlight/commit/476d201)
-### Fixed | 修复
-
-1. CV工程师搞忘了改JS代码注释的结束标签
-
-___
-## 2025-7-1
-### HTML EX (内置)
-
-+ 新增内置语法高亮：[HTML](mtsx/builtin/JSON_Minecraft.mtsx)
-  > 听说大家很喜欢用mt写前端，但HTML没有css和js，没听劝看了一眼实现，稍微改了改结果发现性能还算能接受😂
-
-**优化内容：**
-1. 扩展 `<style>` 标签中的CSS代码高亮 (内置版)
-2. 扩展 `<script>` 标签中的JS代码高亮 (EX版)
-3. 优化标签中的注释逻辑
-
-> [!IMPORTANT]
-> 此语法处于实验状态，由于将多种语法放在一起高亮，可能会降低性能。
-> 虽然没有markdown卡，但一般情况下的html至少比markdown文件大30%，因此可能会造成同等卡顿。
-> 如果未来MT的语法高亮引擎有了更高效的渲染方式，此语法将被官方内置语法取缔。
-
-### MT-Syntax EX (内置) - [2.1.0](https://github.com/guobao2333/MT-syntax-highlight/commit/0a53f69)
-#### Fixed | 修复
-
-1. 修复某些排列的修饰符渲染错误
-
-### JavaScript EX (内置) - [1.2.2](https://github.com/guobao2333/MT-syntax-highlight/commit/ed9191f)
-
-* 同步上游更新
-
-___
 # Preview | 预览
-由于更新较为频繁，所以此处预览图**可能**会过时，最新的版本应以语法高亮文件为准，安装后在mt管理器中打开 `preview.[相应语法后缀]` 即可查看*完整效果*。  
 - 你可以在[此处](preview/)查看预览索引。
 
-# Usage | 使用
+# Installation | 安装
 > [!IMPORTANT]
 > 大部分语法高亮仅适用于MT管理器 `2.16.0` 及以上版本！  
-你可以在[此处](mtsx/)查看所有语法。
+- 你可以在[此处](mtsx/)查看所有语法。
 
-## Installation | 安装
 1. 下载你需要的语法配置后，在你的设备中打开`MT管理器`
 2. 找到并点击以`.mtsx`为后缀的文件，然后在弹出的窗口中点击`安装`
 > 文件可能会多一个 `.txt` 后缀，这是github的安全策略所导致，去掉即可
@@ -91,7 +84,7 @@ ___
 现在您可以打开对应语法的文件，例如 preview.md(Markdown) 查看效果。
 
 # Update Plan | 更新计划
-- [x] Envionment Variable
+- [X] Envionment Variable
 - [x] Git Ignore
 - [x] GoLang Ice(冷色调)
 - [x] Markdown(GFM) (WIP……)

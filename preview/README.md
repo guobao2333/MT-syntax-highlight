@@ -81,6 +81,13 @@
 </details>
 
 <details>
+<summary>Perl</summary>
+
+![亮色](perl/light.webp)
+![暗色](perl/dark.webp)
+</details>
+
+<details>
 <summary>Ruby</summary>
 
 ![亮色](builtin/ruby/light.webp)
