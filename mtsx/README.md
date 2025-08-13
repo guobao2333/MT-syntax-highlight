@@ -2,16 +2,19 @@
 > [!NOTE]
 > 预览效果请在[此处](../preview)查看。
 
+- [Brainfuck](brainfuck.mtsx)
 - [Environment Variable](dotenv.mtsx)
 - [Git Ignore](gitignore.mtsx)
 - [GoLang](golang.mtsx)
 - [Markdown(GFM)](markdown_github.mtsx)[^GFM]
 - [Minecraft Bedrock Localized Language](minecraft_lang.mtsx)
+- [Perl](perl.mtsx)
+- [Ruby](ruby.mtsx)
 - [VimScript](vim.mtsx)
 
 ## Builtin | 内置语法
 > [!NOTE]
-> 内置语法是原本在MT管理器中已有语法的增强版。  
+> 内置语法是MT管理器中已有语法的增强版。  
 > 在增强版中添加/修改了一些额外语法/配色。
 - [HTML EX (HTML+CSS+JS)](builtin/HTML.mtsx)
 - [JavaScript EX](builtin/JavaScript.mtsx)

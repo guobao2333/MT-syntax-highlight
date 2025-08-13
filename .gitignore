@@ -3,3 +3,6 @@
 
 # Backup Files
 *.bak
+
+# Preview files
+*.mtsx_preview

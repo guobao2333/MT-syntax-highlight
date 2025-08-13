@@ -1,49 +1,51 @@
 // require MT >= 2.16.0
-// Version: 3.4.1
-// Get update at https://github.com/guobao2333/MT-syntax-highlight
-// Copyright (c) 2025 shiguobaona
+// Version: 4.0.0
+// Repo: https://github.com/guobao2333/MT-syntax-highlight
+// Copyright (c) 2024 shiguobaona
 {
 	name: ["Markdown(GFM)", ".md"]
-	ignoreCase: false
-	comment: {startsWith: "<!--", endsWith: "-->", addToContains: false}
+	comment: {startsWith: "<!--", endsWith: "-->"}
 	styles: [
-		"comment" #8C8C8C, #808080, //@I
+		"comment"					#8C8C8C #808080 //@I
 		// 取消上行注释将注释变为斜体
-		"heading", #E03030, #E06C75, @B
-		"escape", #866BD3, #CC7832
-		"list" > "number"
-		"list_heading", #4663CC, #5A6DE4, @B
-		"footnote", #4493F8, #4493F8, @B
+		"heading"					#E03030 #E06C75 @B
+		"escape"					#866BD3 #CC7832
+		"list"						#4663CC #5A6DE4 @B
+		"list_heading" > "list"
+		"list_task"					#3FB950 #3FB950 @B
+		"footnote"					#4493F8 #4493F8 @B
 		"mathjax" > "meta"
 
 		// 这里有两个短代码的配色版本，可以根据喜好调整
-		"code", #1F2328#EFF1F3, #929DA0#394050
-		 // "code", #EEE#ABB1BA, #A9B7C6#343942
+		"code"						#1F2328#EFF1F3 #929DA0#394050
+		//"code"						#EEE#ABB1BA #A9B7C6#343942
 
-		"code_block", #7050E0, #7050E0
-		"code_content", #586368$D8D8D8, #C7C7C7$1E1E1E
-		"code_syntax_name", #FF51E2, #A64EAD
-		"quote_serif", #NULL#D0D7DE, #555#444, @B
-		"quote_note", #2F81F7, #2F81F7
-		"quote_note_text", #2F81F7, #2F81F7
-		"quote_tip", #238636, #238636
-		"quote_tip_text", #3FB950, #3FB950
-		"quote_important", #8957E5, #8957E5
-		"quote_important_text", #A371F7, #A371F7
-		"quote_warning", #9E6A03, #9E6A03
-		"quote_warning_text", #D29922, #D29922
-		"quote_caution", #DA3633, #DA3633
-		"quote_caution_text", #F85149, #F85149
-		"quote_text", #777, #858F99
-		"exclamation_mark", #FF7000, #D2B72D, @B
-		"url_text", #009688, #639274
-		"url_title" > "string"
-		"url", #508090, #508090, @UI
-		"bracket", #999, #999
-		"split_line", #30363D$D0D7DE, #B59911$30363D, @B
-		"B", @B
-		"I", @I
-		"S", @S
+		"code_block"				#7050E0 #7050E0
+		"code_content"				#1F2328$D8D8D8 #C7C7C7$1E1E1E
+		"code_syntax_name"			#FF51E2 #A64EAD
+		"quote_serif"				#NULL#D0D7DE #555#444 @B
+		"quote_note"				#2F81F7#2F81F7 #2F81F7#2F81F7
+		"quote_note_text"			#2F81F7 #2F81F7
+		"quote_tip"					#238636#238636 #238636#238636
+		"quote_tip_text"			#3FB950 #3FB950
+		"quote_important"			#8957E5#8957E5 #8957E5#8957E5
+		"quote_important_text"		#A371F7 #A371F7
+		"quote_warning"				#9E6A03#9E6A03 #9E6A03#9E6A03
+		"quote_warning_text"		#D29922 #D29922
+		"quote_caution"				#DA3633#DA3633 #DA3633#DA3633
+		"quote_caution_text"		#F85149 #F85149
+		"quote_text"				#777 #858F99
+		"exclamation_mark"			#FF7000 #D2B72D @B
+		"url_text"					#NULL#AFD2CE #NULL#333 @U
+		"url_title"					#009688 #639274
+		"url"						#508090 #508090 @UI
+		"bracket"					#999 #999
+		"split_line"				#30363D$D0D7DE #B59911$30363D @B
+		"line_break"				#NULL#D0DED3 #NULL#383B37 @B
+		"B" @B
+		"I" @I
+		"S" @S
+		"U" @U
 	]
 	// 括号对高亮
 	bracketPairs: ["()", "[]", "{}", "<>"]
@@ -58,97 +60,154 @@
 			{include: "footnote"}
 			{include: "link"}
 			{include: "htmlMatchers"}
+			{include: "lineBreak"}
+		]
+
+		"submatcher2": [
+			{include: "escape"}
+			{include: "shortCode"}
+			{include: "link"}
 		]
 
 		"heading": [
 			// atx 标题
-			{match: /(?m)(?:^ {0,3}#{1,6} [^\n]*)/, 0: "heading"}
+			{match: /(?m)(?:^ {0,3}#{1,6}(?!#)([^\n]*))/
+				0: "heading"
+				1: {include: "submatcher2"}
+			}
 		]
 
-		"heading_setext": [
+		"headingSetext": [
 			// setext 标题
-			{match: /(?m)(?:^(?! *>).+(?<!^-+|=+|\*+|_+)\n^ {0,3}(?:[= ]{3,}|[- ]{3,}) *$)/, 0: "heading"}
+			{match: /(?m)(?:^(?! *>)([^\n]+)(?<!^-+|=+|\*+|_+)\n^ {0,3}(?:(= *){3,}|(- *){3,}) *$)/
+				0: "heading"
+				1: {include: "submatcher2"}
+			}
+		]
+
+		"lineBreak": [
+			{match: /(?m) {2}$/ 0: "line_break"}
 		]
 
 		// Thematic breaks(分割线)
-		"splitLine": {match: /(?m)^ {0,3}([_*-](?: *)){3,}$/, 0: "split_line"}
+		"splitLine": {match: /(?m)^ {0,3}([_*-](?: *)){3,}$/ 0: "split_line"}
 		// 转义
-		"escape": {match: /(?:\\[!"#$%&'()*+,-.\\\/:;<=>?@\[\]\^_`{|}~])/, 0: "escape"}
+		"escape": {match: /(?:\\[!"#$%&'()*+,-.\\\/:;<=>?@\[\]\^_`{|}~])/ 0: "escape"}
 
 		"link": [
-			// 嵌套
-			{match: /(?:/ + include("img") + /)/
-			0: "bracket"
-			1: "exclamation_mark"
-			2: "url_text"
-			3: "url"
-			4: "url_title"
-			5: "url"
-			6: "url_title"}
-			// 链接
-			{match: /(!)?/ + include("url")
-			0: "bracket"
-			1: "exclamation_mark"
-			2: "url_text"
-			3: "url"
-			4: "url_title"}
+			{
+				group: linkAll
+				contains: [
+					{start: {match: /(!)?\[/ 0: "!!bracket" 1: "exclamation_mark"}
+						end: {match: /\]/ 0: "!!bracket"}
+						mustMatchEnd: true
+						childrenStyle: "U"
+						contains: [ {include: "link"} ]
+					}
+					{match: /\(([^ ]+?)( "[^"]*?")?\)/
+					0: "!!bracket"
+					1: "url"
+					2: "url_title"}
+				]
+			}
 		]
 
-		"shortCode": {match: /`(?:\\`|[^`\n])+`/, 0: "code"}
+		"shortCode": {match: /`[^\n]+?`/ 0: "code"}
 
 		"codeBlock": [
 			// 缩进代码块
-			{match: /(?im)^(?<=\n) (?> {3,}|\t)(?:.*(?=\n|$))/, 0: "code_content"}
+			{match: /(?m)^( {4,}| *\t)\S.*\n/ + /(\s*(^( {4,}| *\t)\S.*(\n|$))+)*/ 0: "code_content"}
 
-			{match: /(?m)(?:^ {0,3})(`{3,}|~{3,})([- a-z]*?)(?:\n[\s\S]*?)*(?:^ {0,3})(\1)/, 0: "code_content" 1: "code_block" 2: "code_syntax_name" 3: "code_block"}
+			{match: /(?m)(?:^ {0,3})(`{3,}|~{3,})([- a-z]*?)(?:\n[\s\S]*?)*(?:^ {0,3})(\1)/
+			0: "code_content" 1: "code_block" 2: "code_syntax_name" 3: "code_block"}
 		]
 
 		"list": [
 			{
-				// 这里不能用 \N 捕获组，非相同字符将会导致匹配失败
-				match: /(?m)^ {0,3}([*+-]|[1-9]\d*\.) (.*)/
-				+ /(?:\n^[\t ]*([*+-]|[1-9]\d*\.) (.*))*/
+				// 这里不能用 \num 捕获组，非相同字符将会导致匹配失败
+				match: /(?m)^ {0,3}([*+-]|\d*\.) (\[([ xX])\])?[^\n]*/
+				+ /(?:\n^[\t ]*([*+-]|\d*\.) (\[([ xX])\])?[^\n]*)*/
 				recordAllGroups: true
-				1: "list_heading"
-				2: "list"
-				2: {include: "submatcher"}
-				3: "list_heading"
-				4: "list"
-				4: {include: "submatcher"}
+					0: {include: "submatcher"}
+					1: "list_heading"
+					2: "list"
+					3: "list_task"
+					4: "list_heading"
+					5: "list"
+					6: "list_task"
 			}
 		]
 
 		// LaTeX
 		"mathjax": [
 			{
-				match: /\$(.+?)\$/
+				match: /\$([^$]+?)\$/
 				// 相同捕获组靠后的优先(覆盖靠前的)
 				0: "mathjax"
 				1: "string"
-				1: {include: "escape"}
+				1: {match: /\\\$/ 0: "escape"}
 				1: {include: "shortCode"}
 			}
 		]
 
 		"quote": [
-			// {match: /(?m)(?:^(?: *(>)))/, 1: "quote_serif"}
 			{
-				match: /(?m)(?:^(?: *(>))+ *)\[(!)(?:(NOTE)|(TIP)|(IMPORTANT)|(WARNING)|(CAUTION))\](?:/ + include("prefix") + /(>)(.*))+/
+				match: /(?m)(?:^(?: *(>))+ *)\[(!)NOTE\](?:/ + include("prefix") + /(>)([^\n]*))+/
 				recordAllGroups: true
-				0: "quote_text"
-				1: "quote_serif"
+				0: "B"
+				0: "quote_note_text"
+				1: "quote_note"
 				2: "exclamation_mark"
-				3: "quote_note_text"
-				4: "quote_tip_text"
-				5: "quote_important_text"
-				6: "quote_warning_text"
-				7: "quote_caution_text"
-				8: "quote_serif"
-				9: "default"
-				9: {include: "submatcher"}
+				3: "quote_note"
+				4: "!!default"
+				4: {include: "submatcher"}
 			}
 			{
-				match: /(?m)(?:^(?: *(>))+(.*))/
+				match: /(?m)(?:^(?: *(>))+ *)\[(!)TIP\](?:/ + include("prefix") + /(>)([^\n]*))+/
+				recordAllGroups: true
+				0: "B"
+				0: "quote_tip_text"
+				1: "quote_tip"
+				2: "exclamation_mark"
+				3: "quote_tip"
+				4: "!!default"
+				4: {include: "submatcher"}
+			}
+			{
+				match: /(?m)(?:^(?: *(>))+ *)\[(!)IMPORTANT\](?:/ + include("prefix") + /(>)([^\n]*))+/
+				recordAllGroups: true
+				0: "B"
+				0: "quote_important_text"
+				1: "quote_important"
+				2: "exclamation_mark"
+				3: "quote_important"
+				4: "!!default"
+				4: {include: "submatcher"}
+			}
+			{
+				match: /(?m)(?:^(?: *(>))+ *)\[(!)WARNING\](?:/ + include("prefix") + /(>)([^\n]*))+/
+				recordAllGroups: true
+				0: "B"
+				0: "quote_warning_text"
+				1: "quote_warning"
+				2: "exclamation_mark"
+				3: "quote_warning"
+				4: "!!default"
+				4: {include: "submatcher"}
+			}
+			{
+				match: /(?m)(?:^(?: *(>))+ *)\[(!)CAUTION\](?:/ + include("prefix") + /(>)([^\n]*))+/
+				recordAllGroups: true
+				0: "B"
+				0: "quote_caution_text"
+				1: "quote_caution"
+				2: "exclamation_mark"
+				3: "quote_caution"
+				4: "!!default"
+				4: {include: "submatcher"}
+			}
+			{
+				match: /(?m)(?:^((?: *>)+)([^\n]*))/
 				0: "quote_text"
 				1: "quote_serif"
 				2: {include: "submatcher"}
@@ -157,39 +216,39 @@
 
 		"footnote": [
 			{
-				match: /(?m)^\[\^(?:\\]|[^\]\n])+\]: /
+				match: /(?m)^\[\^?(?:\\]|[^\]\n])+?\]:/
 				0: "footnote"
-				0: {match: /\\]/, 0: "escape"}
+				0: {match: /\\]/ 0: "escape"}
 			}
 			{
-				match: /\[\^(?:\\]|[^\]\n])+\]/
+				match: /\[\^(?:\\]|[^\]\n])+?\]/
 				0: "footnote"
-				0: {match: /\\]/, 0: "escape"}
+				0: {match: /\\]/ 0: "escape"}
 			}
 		]
 
 		"colors": [
-			{match: /(?i)#([a-f0-9]{3,6})\b/, 0: "parseColor(auto,1,HEX)"}
-			{match: /(?i)\bRGB *\(/ + / *(\d+ *, *\d+ *, *\d+) */ + /\)/, 0: "parseColor(auto,1,RGB)"}
-			{match: /(?i)\bRGBA *\(/ + / *(\d+ *, *\d+ *, *\d+ *, *\d+(?:\.\d+)?) */ + /\)/, 0: "parseColor(auto,1,RGBA)"}
-			{match: /(?i)\bHSL *\(/ + / *(\d+ *, *\d+% *, *\d+%) */ + /\)/, 0: "parseColor(auto,1,HSL)"}
-			{match: /(?i)\bHSLA *\(/ + / *(\d+ *, *\d+% *, *\d+% *, *\d+(?:\.\d+)?) */ + /\)/, 0: "parseColor(auto,1,HSLA)"}
+			{match: /(?i)#([a-f0-9]{3,6})\b/ 0: "parseColor(auto,1,HEX)"}
+			{match: /(?i)\bRGB *\(/ + / *(\d+ *, *\d+ *, *\d+) */ + /\)/ 0: "parseColor(auto,1,RGB)"}
+			{match: /(?i)\bRGBA *\(/ + / *(\d+ *, *\d+ *, *\d+ *, *\d+(?:\.\d+)?) */ + /\)/ 0: "parseColor(auto,1,RGBA)"}
+			{match: /(?i)\bHSL *\(/ + / *(\d+ *, *\d+% *, *\d+%) */ + /\)/ 0: "parseColor(auto,1,HSL)"}
+			{match: /(?i)\bHSLA *\(/ + / *(\d+ *, *\d+% *, *\d+% *, *\d+(?:\.\d+)?) */ + /\)/ 0: "parseColor(auto,1,HSLA)"}
 		]
 		"startTagContains": [
-			{match: /(?:([^='"<\/>\s]+)(:))?([^='"<\/>\s]+)/, 1: "namespace", 2: "attrName", 3: "attrName"}
+			{match: /(?:([^='"<\/>\s]+)(:))?([^='"<\/>\s]+)/ 1: "namespace" 2: "attrName" 3: "attrName"}
 			{
 				group: link
 				contains: [
-					{match: /=\s*/, 0: "string"}
-					{match: /(?s)(["']).*?\1/, 0: "string"}
+					{match: /=\s*/ 0: "string"}
+					{match: /(?s)(["']).*?\1/ 0: "string"}
 				]
 			}
 		]
+
 		"htmlMatchers": [
-			{match: /(?s)<!--.*?-->/, 0: "comment"}
 			{
 				start: {
-					start: {match: /<\s*(script)\b/, 1: "tagName"}
+					start: {match: /<\s*(script)\b/ 1: "tagName"}
 					end: {match: ">|$"}
 					contains: [ {include: "startTagContains"} ]
 				}
@@ -197,7 +256,7 @@
 			}
 			{
 				start: {
-					start: {match: /<\s*(style)\b/, 1: "tagName"}
+					start: {match: /<\s*(style)\b/ 1: "tagName"}
 					end: {match: ">|$"}
 					contains: [ {include: "startTagContains"} ]
 				}
@@ -208,7 +267,7 @@
 			}
 			{
 				start: {
-					start: {match: /<\s*(pre)\b/, 1: "tagName"}
+					start: {match: /<\s*(pre)\b/ 1: "tagName"}
 					end: {match: ">|$"}
 					contains: [ {include: "startTagContains"} ]
 				}
@@ -226,17 +285,18 @@
 	contains: [
 		// 这样写是为了后续方便调整顺序，以最佳顺序高亮语法，避免bug。
 		// 优先级：top to bottom
-		{include: "heading"}
 		{include: "htmlMatchers"}
 		{include: "footnote"}
 		{include: "link"}
+		{include: "heading"}
 		{include: "escape"}
 		{include: "mathjax"}
 		{include: "splitLine"}
 		{include: "list"}
 		{include: "quote"}
-		{include: "heading_setext"}
+		{include: "headingSetext"}
 		{include: "codeBlock"}
 		{include: "shortCode"}
+		{include: "lineBreak"}
 	]
 }

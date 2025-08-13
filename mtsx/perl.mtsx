@@ -1,0 +1,59 @@
+// require MT >= 2.16.0
+// Version: 1.0.0
+// Repo: https://github.com/guobao2333/MT-syntax-highlight
+// Copyright (c) 2025 UndefTaco
+// Email: Wgpooi@outlook.com
+{
+	name: ["Perl", ".pl", ".pm"]
+	comment: {startsWith: "#"}
+	comment: {startsWith: "=begin", endsWith: "=end"}
+	styles: [
+		"con", #6666FF, #9F7FDF
+		"scalar", #189, #4F97D7
+		"arr", #67B373, #67B373
+		"hash", #A6794D, #A6794D
+		"module", #706180, #E0C2FF
+		"name", #333399, #107DFF, @UIB
+		"opr", #FF9933, #FF9933
+		"regex", #FF6633, #FF6633
+		"class_def", #CC6699$FFEDED, #CC6699$434343
+		"italics", @IB
+	]
+	defines: [
+		"str": {
+			start: {match: /"/}
+			end: {match: /"/}
+			style: "string"
+			contains: [
+				{match: /\\./}
+				{include: "var"}
+			]
+		}
+		"var": [
+			{match: /\$\{?([&A-Za-z0-9_$@%!#&\(*.:;?@\[\]^_|~`'+<=]+)(\-\>(?:\{|\[)(.+)(?:\}|\]))?\}?/, 0: "scalar", 3: {include: "str"}, 3: {include: "num"}} // 没有特殊变量! 记得补充!
+			{match: /@(?:[A-Za-z_!$@%\{\}][A-Za-z0-9_$%@]*)+/, 0: "arr"}
+			{match: /%(?:[A-Za-z_!$\{\}$@%][A-Za-z0-9_$@%]*)+/, 0: "hash"}
+		]
+		"num": [
+			{match: /-?(?:\d+_?)(?:(?:\.\d+_?(?:(?<!_)e\d+_?)?)|(?:(?<!_)e\d+_?))?/, 0: "number"}
+		]
+	]
+	contains: [
+		{builtin: #SINGLE_QUOTED_STRING#}
+		{include: "var"}
+		{include: "str"}
+		{include: "num"}
+		
+		{match: keywordsToRegex("q qw qq qx") + /(?:\s*(?:\/(.+)\/)|(?:\|(.+)\|)|(?:#(.+)#)|(?:\{(.+)\})|(?:\((.+)\))|(?:\[(.+)\])|(?:!(.+)!)|(?:&(.+)?&)|(?:%(.+)?%)|(?:<(.+)?>))/, 0: "string"}
+		{match: keywordsToRegex("qr") + /(?:\s*(?:\/(.+)\/)|(?:\|(.+)\|)|(?:#(.+)#)|(?:\{(.+)\})|(?:\((.+)\))|(?:\[(.+)\])|(?:!(.+)!)|(?:&(.+)?&)|(?:%(.+)?%)|(?:<(.+)?>))[imsxogaydlnper]*/, 0: "regex"} // 构造
+		{match: /(?:(?:m?\/(.+)\/)|(?:m\|(.+)\|)|(?:m#(.+)#)|(?:m\{(.+)\})|(?:m\((.+)\))|(?:m\[(.+)\])|(?:m!(.+)!)|(?:m&(.+)?&)|(?:m%(.+)?%)|(?:m<(.+)?>))[imsxogaydlnper]*/, 0: "regex"} // 匹配模式
+		{match: /(?<!\w)(tr)|y(?:(?:(?:\/(.+)?\/(.+)?\/)|(?:\|(.+?)\|(.+?)\|)|(?:#(.+)#(.+)#)|(?:!(.*?)!(.*?)!)|(?:%(.+)%(.+)%)|(?:&(.+)&(.+)&))|(?:(?:\{(.+?)\}\{(.+?)\})|(?:\[(.+)\]\[(.+)\])|(?:\<(.+)\>\<(.+)\>)|(?:\((.+)\)\((.+)\))))[cdsr]*/, 0: "regex"} // 转换模式
+		{match: /(?<!\w)s(?:(?:(?:\/(.+)?\/(.+)?\/)|(?:\|(.+?)\|(.+?)\|)|(?:#(.+)#(.+)#)|(?:!(.*?)!(.*?)!)|(?:%(.+)%(.+)%)|(?:&(.+)&(.+)&))|(?:(?:\{(.+?)\}\{(.+?)\})|(?:\[(.+)\]\[(.+)\])|(?:\<(.+)\>\<(.+)\>)|(?:\((.+)\)\((.+)\))))[cdsr]*/, 0: "regex"} // 转换模式
+		
+		{match: /&([a-zA-Z_][a-zA-Z0-9_]*)/, 0: "opr"}
+		{match: keywordsToRegex("use no require improve unimport eof seek tell") + /(?:\s+([A-Z:a-z0-9_]+)?)?/, 0: "meta", 1: "module"}
+		{match: /(?<!>)/ + keywordsToRegex("my state local our if elsif else unless do while until eval for foreach return goto last redo next split join die warn undef defined bless scalar"), 0: "con"}
+		{match: keywordsToRegex("<=> => and or not xor eq gt lt ne le ge"), 0: "opr"}
+		{match: /((?:sub)|(?:package))(?:[^\S\r\n]+([a-zA-Z_!:?][a-zA-Z0-9_:!?]*)[^\S\r\n]*)?/, 1: "class_def", 2: "opr"}
+	]
+}

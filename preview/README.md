@@ -4,6 +4,13 @@
 > 由于部分文件后缀会污染存储库语言，故增加 `.txt` 后缀，预览时请手动切换语法或去除此后缀。
 
 <details>
+<summary>Brainfuck</summary>
+
+![亮色](brainfuck/light.webp)
+![暗色](brainfuck/dark.webp)
+</details>
+
+<details>
 <summary>Environment Variable</summary>
 
 ![亮色](dotenv/light.webp)
@@ -71,6 +78,20 @@
 
 ![亮色](builtin/mt-syntax/light.webp)
 ![暗色](builtin/mt-syntax/dark.webp)
+</details>
+
+<details>
+<summary>Perl</summary>
+
+![亮色](perl/light.webp)
+![暗色](perl/dark.webp)
+</details>
+
+<details>
+<summary>Ruby</summary>
+
+![亮色](builtin/ruby/light.webp)
+![暗色](builtin/ruby/dark.webp)
 </details>
 
 <details>
