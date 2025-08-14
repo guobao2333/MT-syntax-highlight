@@ -25,8 +25,18 @@ MT管理器的语法高亮核心使用了JAVA语法的***正则表达式***来�
 
 # Change Log | 更新日志
 > 仅展示最新版本的**部分变化**，更多版本请[查看完整更新日志](CHANGELOG.md)
+## 2025-8-13 - Ruby - [1.1.0](https://github.com/guobao2333/MT-syntax-highlight/commit/ec7c5c3)
+### Fixed | 修复
+
+1. 修复含有数字的标志名高亮错误
+
+### Added | 新增
+
++ 新增%w和%i高亮
+
+___
 ## 2025-8-12
-### markdown_github - [4.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/c74e2d1)
+### Markdown(GFM) - [4.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/c74e2d1)
 性能大优化！
 #### Added | 新增
 
@@ -46,7 +56,7 @@ MT管理器的语法高亮核心使用了JAVA语法的***正则表达式***来�
 
 ___
 ## 2025-8-9
-### brainfuck
+### Brainfuck
 
 + 新增语法高亮：[Brainfuck](mtsx/brainfuck.mtsx)  
   有关bf的文档请看这里：[Brainfuck - Wikipedia](https://wikipedia.org/wiki/Brainfuck)
@@ -57,7 +67,7 @@ ___
 
 感谢该语法的贡献者：[**@UndefTaco**](https://github.com/UndefTaco)
 
-### ruby
+### Ruby
 
 + 新增语法高亮：[Ruby](mtsx/ruby.mtsx)
 
@@ -111,11 +121,12 @@ ___
 > [!IMPORTANT]
 > 由于github检测文件后缀来判断项目使用的语言，为了避免混乱，所以在贡献新语法时，请在预览使用的文件后方添加`.txt`，例如：`preview.js.txt`  
 
-1. 点击上方`fork`仓库后，修改已有语法或添加新语法
+1. 点击`fork`复刻仓库后，修改已有语法或添加新语法
    1. 如果要添加新语法，必须添加预览文件，预览图不是必须的。如果您还有空闲，请顺手更新一下 `mtsx/README.md` `preview/README.md` 这些文件为维护者减轻负担。
    2. 修改已有语法时需遵守源文件的缩进样式。(禁止空格tab混用)
 2. 点击`Pull requests`创建新的拉取请求
-   1. 请将开发时参考的官方资料贴出，以便他人进行后续维护工作，否则此语法的更新优先级将降低，最坏情况将无人维护。
+   1. 如果添加了新语法，请将开发时参考的官方资料贴出，以便他人进行后续维护工作，否则此语法的更新优先级将降低，最坏情况将无人维护。
+   2. 修改已有语法时，需要以用户友好的方式具体描述更新内容，并以此决定如何撰写发布版本号。
 3. 接下来请等待代码审查，如果审查结束将会合并代码。
 
 如果合并完成，恭喜你🎉您完成了对本项目的贡献！我们由衷的感谢为每个开源项目做出贡献的人，无论贡献多少。
