@@ -4,7 +4,7 @@
 
 > [!IMPORTANT]
 > **变更日志特殊规范**
-> 版本号前增加文件名和日期作为标题： `日期 - 文件名 - 版本号`  
+> 版本号前增加语法名和日期作为标题： `日期 - 语法名 - 版本号`  
 > <details>
 > <summary>标题合并规范</summary>
 >
@@ -22,8 +22,18 @@
 > `### 语法2 - 版本1`  
 > …</details>
 
+## 2025-8-13 - Ruby - [1.1.0](https://github.com/guobao2333/MT-syntax-highlight/commit/ec7c5c3)
+### Fixed | 修复
+
+1. 修复含有数字的标志名高亮错误
+
+### Added | 新增
+
++ 新增%w和%i高亮
+
+___
 ## 2025-8-12
-### markdown_github - [4.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/c74e2d1)
+### Markdown(GFM) - [4.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/c74e2d1)
 性能大优化！
 #### Added | 新增
 
@@ -43,7 +53,7 @@
 
 ___
 ## 2025-8-9
-### brainfuck
+### Brainfuck
 
 + 新增语法高亮：[Brainfuck](mtsx/brainfuck.mtsx)  
   有关bf的文档请看这里：[Brainfuck - Wikipedia](https://wikipedia.org/wiki/Brainfuck)
@@ -54,7 +64,7 @@ ___
 
 感谢该语法的贡献者：[**@UndefTaco**](https://github.com/UndefTaco)
 
-### ruby
+### Ruby
 
 + 新增语法高亮：[Ruby](mtsx/ruby.mtsx)
 
@@ -108,7 +118,7 @@ ___
 + 为修饰符添加高亮
 + 使用更灵活的正则代替穷举语法
 
-### minecraft_lang - [1.2.1](https://github.com/guobao2333/MT-syntax-highlight/commit/f891ad1)
+### Minecraft Lang - [1.2.1](https://github.com/guobao2333/MT-syntax-highlight/commit/f891ad1)
 #### Changed | 变化
 
 * 调整样式，保护眼睛
@@ -122,7 +132,7 @@ ___
 2. 使用更少的正则代替部分穷举 (实验) (ps: 可能会降低性能)
 
 ___
-## minecraft_lang
+## Minecraft Lang
 ### [1.2.0](https://github.com/guobao2333/MT-syntax-highlight/commit/1bc67f7) - 2025-6-12
 应该算是目前除性能之外最完美的版本了
 #### Fixed | 修复
@@ -140,29 +150,29 @@ ___
 
 ___
 ## 2025-5-24
-### minecraft_lang
+### Minecraft Lang
 
 + 新增语法高亮：[Minecraft基岩版本地化语言](mtsx/minecraft_lang.mtsx)
 
 感谢 [**@Love-Kogasa**](https://github.com/Love-Kogasa) 提供的语法原型 https://github.com/guobao2333/MT-syntax-highlight/pull/4#issuecomment-2439806367
 
-### markdown_github - [3.4.1](https://github.com/guobao2333/MT-syntax-highlight/commit/6266358)
+### Markdown(GFM) - [3.4.1](https://github.com/guobao2333/MT-syntax-highlight/commit/6266358)
 
 * 调整亮色模式代码块的配色避免看不清
 
-### dotenv - [1.0.3](https://github.com/guobao2333/MT-syntax-highlight/commit/7e41807)
+### DotEnv - [1.0.3](https://github.com/guobao2333/MT-syntax-highlight/commit/7e41807)
 #### Changed | 变化
 
 * 优化匹配逻辑
 
 ___
 ## 2025-5-21
-### dotenv - [1.0.2](https://github.com/guobao2333/MT-syntax-highlight/commit/8877c73)
+### DotEnv - [1.0.2](https://github.com/guobao2333/MT-syntax-highlight/commit/8877c73)
 #### Fixed | 修复
 
 1. 纠正写错的转义符号
 
-### markdown_github - [3.4.0](https://github.com/guobao2333/MT-syntax-highlight/commit/046c31e)
+### Markdown(GFM) - [3.4.0](https://github.com/guobao2333/MT-syntax-highlight/commit/046c31e)
 #### Fixed | 修复
 
 1. 修复setext标题优先级过高导致列表渲染错误
@@ -181,7 +191,7 @@ ___
 
 * 同步上游更新
 
-### markdown_github - [3.3.0](https://github.com/guobao2333/MT-syntax-highlight/commit/62e201e)
+### Markdown(GFM) - [3.3.0](https://github.com/guobao2333/MT-syntax-highlight/commit/62e201e)
 #### Fixed | 修复
 
 1. 短代码内无法转义的问题
@@ -205,7 +215,7 @@ ___
 
 ___
 ## 2024-11-8
-### haskell
+### Haskell
 
 + 新增语法高亮：[Haskell](mtsx/haskell.mtsx)
 
@@ -213,7 +223,7 @@ ___
 
 ___
 ## 2024-10-28
-### golang_ice
+### Golang Ice
 
 + 新增语法高亮：[GoLang(冷色调)](mtsx/golang.mtsx)
 
@@ -221,13 +231,13 @@ ___
 
 虽然已有内置golang语法，但此语法高亮作者写了一个冷色调的配色以及匹配模式，暗色由果宝补充。
 
-### dotenv - [1.0.1](https://github.com/guobao2333/MT-syntax-highlight/commit/30140d2)
+### DotEnv - [1.0.1](https://github.com/guobao2333/MT-syntax-highlight/commit/30140d2)
 #### Fixed | 修复
 
 1. 修复了未正确高亮的注释
 
 ___
-## 2024-10-15 - gitignore - [1.2.4](https://github.com/guobao2333/MT-syntax-highlight/commit/9ab909d)
+## 2024-10-15 - Gitignore - [1.2.4](https://github.com/guobao2333/MT-syntax-highlight/commit/9ab909d)
 ### Fixed | 修复
 
 1. 使后缀只会在匹配为文件时高亮
@@ -245,7 +255,7 @@ ___
 
 ___
 ## 2024-9-19
-### gitignore - [1.2.3](https://github.com/guobao2333/MT-syntax-highlight/commit/ecdac20) & dotenv - [1.0.1](https://github.com/guobao2333/MT-syntax-highlight/commit/2f99ad9)
+### Gitignore - [1.2.3](https://github.com/guobao2333/MT-syntax-highlight/commit/ecdac20) & DotEnv - [1.0.1](https://github.com/guobao2333/MT-syntax-highlight/commit/2f99ad9)
 #### Added | 新增
 
 + 新增指定语法支持的最低MT版本
@@ -270,13 +280,13 @@ ___
 2. 为部分全局属性添加高亮
 
 ___
-## dotenv - 2024-8-31
+## DotEnv - 2024-8-31
 
 + 新增语法高亮：[环境变量配置](mtsx/dotenv.mtsx) - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/b6cdf7b)
   > 5个语法，写了3天😂
 
 ___
-## 2024-8-22 - markdown_github - [3.2.0](https://github.com/guobao2333/MT-syntax-highlight/commit/1888619)
+## 2024-8-22 - Markdown(GFM) - [3.2.0](https://github.com/guobao2333/MT-syntax-highlight/commit/1888619)
 ### Added | 新增
 
 + 为引用块单独添加背景，以匹配github样式
@@ -291,18 +301,18 @@ ___
 
 ___
 ## 2024-7-22
-### gitignore - [1.2.2](https://github.com/guobao2333/MT-syntax-highlight/commit/5f7ec22)
+### Gitignore - [1.2.2](https://github.com/guobao2333/MT-syntax-highlight/commit/5f7ec22)
 #### Fixed | 修复
 
 1. 修复上个版本导致的一些后缀不渲染问题  
    但是上个版本要实现的效果就没了……
 
-### gitignore - [1.2.1](https://github.com/guobao2333/MT-syntax-highlight/commit/c432cd3)
+### Gitignore - [1.2.1](https://github.com/guobao2333/MT-syntax-highlight/commit/c432cd3)
 #### Fixed | 修复
 
 1. 现在只会高亮文件夹和最后一个文件的后缀
 
-### markdown_github - [3.1.0](https://github.com/guobao2333/MT-syntax-highlight/commit/212151f)
+### Markdown(GFM) - [3.1.0](https://github.com/guobao2333/MT-syntax-highlight/commit/212151f)
 #### Fixed | 修复
 
 1. 修复缩进代码块可能出现的一个错误
@@ -320,7 +330,7 @@ ___
   改为使用性能更好的新语法代替原有实现
 
 ___
-## 2024-7-19 - markdown_github - [3.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/0ae9664)
+## 2024-7-19 - Markdown(GFM) - [3.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/0ae9664)
 **使用`2.16.0`版本新增语法重构了代码！！**
 ### Fixed | 修复
 
@@ -352,20 +362,20 @@ ___
 
 ___
 ## 2024-7-11
-### vimscript
+### Vimscript
 
 + 新增语法高亮：[vim脚本](mtsx/vim.mtsx)  
 有关vimscript的文档请看这里：[VimScript - VimDoc](https://vimdoc.sourceforge.net/htmldoc/usr_41.html)
 
 感谢该语法的贡献者：[**@danicaStarR**](https://github.com/danicaStarR)
 
-### markdown_github - [2.1.2](https://github.com/guobao2333/MT-syntax-highlight/commit/8477c47)
+### Markdown(GFM) - [2.1.2](https://github.com/guobao2333/MT-syntax-highlight/commit/8477c47)
 #### Changed | 变化
 
 * 将`title`重命名为`heading`以遵守英文规范
 
 ___
-## 2024-7-3 - gitignore - [1.2.0](https://github.com/guobao2333/MT-syntax-highlight/commit/d7ff1ec)
+## 2024-7-3 - Gitignore - [1.2.0](https://github.com/guobao2333/MT-syntax-highlight/commit/d7ff1ec)
 ### Fixed | 修复
 
 1. 修复 `?` 前面如果是 `*` 则不会渲染的问题
@@ -381,7 +391,7 @@ ___
 + 新增文件后缀渲染
 
 ___
-## gitignore - 2024-6-25
+## Gitignore - 2024-6-25
 ### [1.1.1](https://github.com/guobao2333/MT-syntax-highlight/commit/ca80ab9)
 #### Changed | 变化
 
@@ -399,14 +409,14 @@ ___
 * 调整配色，观感提升~
 
 ___
-## gitignore - 2024-6-24
+## Gitignore - 2024-6-24
 ### New | 新语法
 
 + 新增语法高亮：[git提交忽略](mtsx/gitignore.mtsx)  
   有关gitignore的文档请看这里：[Git - gitignore Documentation](https://git-scm.com/docs/gitignore)
 
 ___
-## 2024-6-8 - markdown_github - [2.1.1](https://github.com/guobao2333/MT-syntax-highlight/commit/156ec0c)
+## 2024-6-8 - Markdown(GFM) - [2.1.1](https://github.com/guobao2333/MT-syntax-highlight/commit/156ec0c)
 > [!IMPORTANT]
 > 从此版本开始仅适用于MT管理器 `2.16.0` 及以上版本！
 ### Changed | 变化
@@ -418,7 +428,7 @@ ___
 `GitHub Flavored Markdown` -> ` Markdown(GFM)`
 
 ___
-## 2024-5-27 - markdown_github - [2.1.0](https://github.com/guobao2333/MT-syntax-highlight/commit/73d9f05)
+## 2024-5-27 - Markdown(GFM) - [2.1.0](https://github.com/guobao2333/MT-syntax-highlight/commit/73d9f05)
 ### Added | 新增
 
 + 新增缩进代码块渲染
@@ -446,7 +456,7 @@ _**调整了历史版本号，使其遵守版本控制规范**_
 * 清除了部分无用冗(rǒng)余代码
 
 ___
-## 2024-5-16 - markdown_github - [2.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/792634d)
+## 2024-5-16 - Markdown(GFM) - [2.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/792634d)
 **进行了重构。**
 
 ### Removed | 移除
@@ -476,7 +486,7 @@ ___
 + 新增`ASCII`字符转义渲染
 
 ___
-## 2024-5-7 - markdown_github - [1.1.0~1.2.0](https://github.com/guobao2333/MT-syntax-highlight/compare/39a1506...ddf18a0)
+## 2024-5-7 - Markdown(GFM) - [1.1.0~1.2.0](https://github.com/guobao2333/MT-syntax-highlight/compare/39a1506...ddf18a0)
 ### Fixed | 修复
 
 1. 修复因1.1.0版本导致的列表前无空格会不渲染
@@ -491,7 +501,7 @@ ___
 + 新增github的提示引用块渲染
 
 ___
-## markdown_github - 2024-5-2
+## Markdown(GFM) - 2024-5-2
 ### [1.0.1~1.0.3](https://github.com/guobao2333/MT-syntax-highlight/compare/4411307...76c1f9a)
 #### Fixed | 修复
 
