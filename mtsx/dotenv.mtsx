@@ -6,14 +6,14 @@
 	name: ["DotEnv", ".env"]
 	comment: {startsWith: "#", addToContains: false}
 	styles: [
-		"comment" #8C8C8C, #808080, //@I
+		"comment"     #8C8C8C, #808080, //@I
 		// 取消上行注释将注释变为斜体
-		"escape" #A371F7, #866BD3, @B
-		"equal" #CC7832, #CC7832, //@B
-		"key" #4663CC, #D7BA7D
-		"value" #0077FF, #5DB0EE
-		"str" #639274, #7FADB6
-		"line_break" #871094, #C2C342, @B
+		"escape"      #A371F7, #866BD3, @B
+		"equal"       #CC7832, #CC7832, //@B
+		"key"         #4663CC, #D7BA7D
+		"value"       #0077FF, #5DB0EE
+		"str"         #639274, #7FADB6
+		"line_break"  #871094, #C2C342, @B
 		"line_break2" #CC9ABB, #FBBAAA
 	]
 

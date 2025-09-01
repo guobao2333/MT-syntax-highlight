@@ -49,7 +49,7 @@
 		"§v" #EB7114#FFF #BBEB7114#2B2B2B
 	]
 	defines: [
-		"end": /(?m)(?:\§\s|$)/
+		"end": /(?im)(?:\§[0-9a-v]|$)/
 		"escape": [
 			// param
 			{match: /%(?:\d|s)(?:\$(?:s|d|f))?/, 0: "escape"}
@@ -103,7 +103,7 @@
 			0: "string"
 			2: {include: "styles"}
 		}
-		{match: /(?m)["'].*$/ 0: "error2"}
+		{match: /(?m)["'][^"']*$/ 0: "error2"}
 		{builtin: #PROGRAM_NUMBER2#}
 		{match: keywordsToRegex("true false null"), 0: "keyword"}
 	]

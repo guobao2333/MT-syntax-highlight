@@ -1,6 +1,6 @@
 // require MT >= 2.16.0
 // Get update at https://github.com/guobao2333/MT-syntax-highlight
-// Copyright (c) 2025 shiguobaona
+// Copyright (c) 2024 shiguobaona
 {
 	name: ["gitignore", ".gitignore", ".dockerignore"]
 	comment: {startsWith: "#", addToContains: false}

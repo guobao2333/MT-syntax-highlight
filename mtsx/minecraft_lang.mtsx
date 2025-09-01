@@ -6,14 +6,14 @@
   name: ["MinecraftBELang", ".lang"]
   comment: {startsWith: "##", addToContains: false}
   styles: [
-    "escape" #BBA2FD#FFF #D58F7D#2B2B2B
-    "emoji" #E64ABB #CE7DD5
-    "comment" #908caa #8F8D9B //@I
-    "tab" #NULL#DDD #NULL#404040
+    "escape"    #BBA2FD#FFF #D58F7D#2B2B2B
+    "emoji"     #E64ABB #CE7DD5
+    "comment"   #908caa #8F8D9B //@I
+    "tab"       #NULL#DDD #NULL#404040
     "namespace" #75BB8F #59919A
-    "meta" #C985B2 #A88CCA
-    "key" #4484CC #7889C1
-    "=" #666 #CCC
+    "meta"      #C985B2 #A88CCA
+    "key"       #4484CC #7889C1
+    "="         #666 #CCC
 
     // https://zh.minecraft.wiki/w/%E6%A0%BC%E5%BC%8F%E5%8C%96%E4%BB%A3%E7%A0%81
     "§0" #000#FFF #000#999

@@ -1,9 +1,9 @@
 // require MT >= 2.16.0
 // 此语法为同名内置语法的增强版本
-// version: 2.1.1
+// version: 2.1.2
 // Repo: https://github.com/guobao2333/MT-syntax-highlight
 {
-	name: ["MT-Syntax EX", ".mtsx"]
+	name: ["MT-Syntax", ".mtsx"]
 	hide: true
 	styles: [
 		"function" > "operator"
@@ -37,8 +37,8 @@
 		"scope" > "require"
 		"class" #808000 #808000
 		// 如果不想要背景色，取消注释下行然后注释下下行
-		// "regex" > "default"
-		"regex" #0A415D#F4F9FF #NULL#353637
+		"regex" > "default"
+		// "regex" #0A415D#F4F9FF #NULL#353637
 	]
 	comment: {startsWith: "//", addToContains: false}
 	defines: [
