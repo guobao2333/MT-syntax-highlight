@@ -22,6 +22,22 @@
 > `### 语法2 - 版本1`  
 > …</details>
 
+## 2025-8-31 - Ruby - [1.2.0](https://github.com/guobao2333/MT-syntax-highlight/commit/0175f49)
+### Fixed | 修复
+
+1. Regex对象的高亮错误。
+
+### Added | 新增
+
+* 支持下划线分隔数字。
+* 新增调用方法高亮。
+
+#### Changed | 变化
+
+* 移除了逻辑运算符的高亮。
+* 更改了部分语句高亮的颜色。
+
+___
 ## 2025-8-13 - Ruby - [1.1.0](https://github.com/guobao2333/MT-syntax-highlight/commit/ec7c5c3)
 ### Fixed | 修复
 
