@@ -1,6 +1,10 @@
 # ChangeLog | 变更日志
 
-这里是本项目文件的变更日志，由于本项目并非仅发布某个单独的发行版，所以与[通用变更日志](https://common-changelog.org)的规范会有所不同。
+这里是本项目文件的变更日志，与[通用变更日志][1]的规范有所不同，您可以阅读下文查看特殊规范。  
+[通用变更日志][1]旨在提供有温度的更新文档，让用户可以轻松理解开发者做了什么，同时也让开发者可以更方便的回溯以往更新，以确定何时引入了意外bug；与git相结合开发效率事半功倍，前提是您拥有且遵守自己的行为准则。  
+如果您对本项目的更新日志有任何意见或建议，随时欢迎您的帮助！
+
+[1]: https://common-changelog.org
 
 > [!IMPORTANT]
 > **变更日志特殊规范**
@@ -22,6 +26,26 @@
 > `### 语法2 - 版本1`  
 > …</details>
 
+## 2025-10-7
+### Markdown(GFM) - [4.0.1](https://github.com/guobao2333/MT-syntax-highlight/commit/385714e)
+#### Changed | 变化
+
+* 调整配色
+
+### JSON Minecraft EX - [2.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/be35a81)
+#### Fixed | 修复
+
+1. 修复因意外提交了实验中的正则语法导致的高亮错误
+
+#### Changed | 变化
+
+* 同步上游更新
+
+**优化内容：**
+1. 扩展非标准JSON语法的高亮，包括 `json5`、`hjson`、`jsonl`
+> 不过我发现他们中的部分语法存在缺失，这会在后续更新中完善。
+
+___
 ## 2025-8-31 - Ruby - [1.2.0](https://github.com/guobao2333/MT-syntax-highlight/commit/0175f49)
 ### Fixed | 修复
 
