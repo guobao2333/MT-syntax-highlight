@@ -1,7 +1,7 @@
 // require MT >= 2.16.0
-// Version: 4.0.0
+// Version: 4.0.1
 // Repo: https://github.com/guobao2333/MT-syntax-highlight
-// Copyright (c) 2024 shiguobaona
+// Copyright (c) 2025 shiguobaona
 {
 	name: ["Markdown(GFM)", ".md"]
 	comment: {startsWith: "<!--", endsWith: "-->"}
