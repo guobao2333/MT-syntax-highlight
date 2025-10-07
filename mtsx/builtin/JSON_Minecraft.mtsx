@@ -1,12 +1,13 @@
 // require MT >= 2.16.0
-// version: 1.0.0
+// version: 2.0.0
 // 此文件为同名内置语法的增强版本
 // 针对minecraft进行语法扩展
 // https://github.com/guobao2333/MT-syntax-highlight
 {
-	name: ["JSON MCBE EX", ".json"]
+	name: ["JSON MCBE EX", ".json", ".json5", ".hjson", ".jsonl"]
 	comment: {startsWith: "//"}
 	comment: {startsWith: "/*", endsWith: "*/"}
+	comment: {startsWith: "#"} // hjson
 	styles: [
 		"escape" #BBA2FD#FFF #D58F7D#2B2B2B
 		"emoji" #E64ABB #CE7DD5
@@ -49,7 +50,7 @@
 		"§v" #EB7114#FFF #BBEB7114#2B2B2B
 	]
 	defines: [
-		"end": /(?im)(?:\§[0-9a-v]|$)/
+		"end": /(?m)(?:\§\s|$)/
 		"escape": [
 			// param
 			{match: /%(?:\d|s)(?:\$(?:s|d|f))?/, 0: "escape"}
@@ -57,6 +58,10 @@
 			{match: /\\[§\\ntr]/, 0: "!!escape"}
 			// unicode
 			{match: /\\(?:x[a-fA-F0-9]{2}|u[a-fA-F0-9]{4}|U[A-F0-9]{8})/, 0: "escape"}
+		]
+		"escapedChar": [
+			{match: /\\([btnfr"'\/\\]|([0-3]?[0-7])?[0-7]|[uU][0-9a-fA-F]{4}|[xX][0-9a-fA-F]{2})/, 0: "strEscape"}
+			{match: /\\./, 0: "error"}
 		]
 		"emoji": {match: /:[\w-]+:/, 0: "!!emoji"}
 
@@ -99,14 +104,20 @@
 		]
 	]
 	contains: [
+		{match: /@?(?:\b[a-zA-Z_]|\$)[$a-zA-Z_\d]*(?!::)\s*(?=:)/ 0: "type"}
+		{match: /"(?:[^"\\]|\\.)*"\s*(?=:)/
+			0: "type"
+			0: {include: "escapedChar"}
+		}
 		{match: /(["'])((?:\\.|(?!\\|\1).)*)\1/
 			0: "string"
 			2: {include: "styles"}
 		}
-		{match: /(?m)["'][^"']*$/ 0: "error2"}
+		{builtin: #JAVA_NUMBER#}
+		{match: /[+-]?Infinity|NaN/, 0: "number"}
 		{builtin: #PROGRAM_NUMBER2#}
 		{match: keywordsToRegex("true false null"), 0: "keyword"}
 	]
-	codeFormatter: #BUILT_IN_JS_FORMATTER#
+	codeFormatter: #BUILT_IN_JSON_FORMATTER#
 	codeShrinker: #BUILT_IN_JSON_SHRINKER#
 }
