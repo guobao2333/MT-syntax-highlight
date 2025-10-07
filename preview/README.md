@@ -53,6 +53,13 @@
 </details>
 
 <details>
+<summary>Java EX (内置)</summary>
+
+![亮色](builtin/java/light.webp)
+![暗色](builtin/java/dark.webp)
+</details>
+
+<details>
 <summary>JavaScript EX (内置)</summary>
 
 ![亮色](builtin/javascript/light.webp)

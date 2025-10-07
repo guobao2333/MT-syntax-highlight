@@ -7,7 +7,7 @@
 [1]: https://common-changelog.org
 
 > [!IMPORTANT]
-> **变更日志特殊规范**
+> **变更日志特殊规范**  
 > 版本号前增加语法名和日期作为标题： `日期 - 语法名 - 版本号`  
 > <details>
 > <summary>标题合并规范</summary>
@@ -27,6 +27,14 @@
 > …</details>
 
 ## 2025-10-7
+### Java EX (NEW)
+
++ 新增内置语法高亮：[Java EX](mtsx/java.mtsx)
+
+**优化内容：**
+1. 导入标识符高亮
+2. 类型声明或泛型中的常量名/类型名高亮
+
 ### Markdown(GFM) - [4.0.1](https://github.com/guobao2333/MT-syntax-highlight/commit/385714e)
 #### Changed | 变化
 
@@ -93,18 +101,18 @@ ___
 
 ___
 ## 2025-8-9
-### Brainfuck
+### Brainfuck (NEW)
 
 + 新增语法高亮：[Brainfuck](mtsx/brainfuck.mtsx)  
   有关bf的文档请看这里：[Brainfuck - Wikipedia](https://wikipedia.org/wiki/Brainfuck)
 
-### Perl
+### Perl (NEW)
 
 + 新增语法高亮：[Perl](mtsx/perl.mtsx)
 
 感谢该语法的贡献者：[**@UndefTaco**](https://github.com/UndefTaco)
 
-### Ruby
+### Ruby (NEW)
 
 + 新增语法高亮：[Ruby](mtsx/ruby.mtsx)
 
@@ -123,7 +131,7 @@ ___
 
 ___
 ## 2025-7-1
-### HTML EX (内置)
+### HTML EX (NEW)
 
 + 新增内置语法高亮：[HTML](mtsx/builtin/JSON_Minecraft.mtsx)
 
@@ -143,7 +151,7 @@ ___
 
 ___
 ## 2025-6-23
-### JSON Minecraft EX
+### JSON Minecraft EX (NEW)
 
 + 新增语法高亮：[JSON Minecraft优化版](mtsx/builtin/JSON_Minecraft.mtsx)
 
@@ -190,7 +198,7 @@ ___
 
 ___
 ## 2025-5-24
-### Minecraft Lang
+### Minecraft Lang (NEW)
 
 + 新增语法高亮：[Minecraft基岩版本地化语言](mtsx/minecraft_lang.mtsx)
 
@@ -255,7 +263,7 @@ ___
 
 ___
 ## 2024-11-8
-### Haskell
+### Haskell (NEW)
 
 + 新增语法高亮：[Haskell](mtsx/haskell.mtsx)
 
@@ -263,7 +271,7 @@ ___
 
 ___
 ## 2024-10-28
-### Golang Ice
+### Golang Ice (NEW)
 
 + 新增语法高亮：[GoLang(冷色调)](mtsx/golang.mtsx)
 
@@ -320,7 +328,7 @@ ___
 2. 为部分全局属性添加高亮
 
 ___
-## DotEnv - 2024-8-31
+## 2024-8-31 - DotEnv (NEW)
 
 + 新增语法高亮：[环境变量配置](mtsx/dotenv.mtsx) - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/b6cdf7b)
   > 5个语法，写了3天😂
@@ -402,7 +410,7 @@ ___
 
 ___
 ## 2024-7-11
-### Vimscript
+### Vimscript (NEW)
 
 + 新增语法高亮：[vim脚本](mtsx/vim.mtsx)  
 有关vimscript的文档请看这里：[VimScript - VimDoc](https://vimdoc.sourceforge.net/htmldoc/usr_41.html)
@@ -431,7 +439,7 @@ ___
 + 新增文件后缀渲染
 
 ___
-## Gitignore - 2024-6-25
+## 2024-6-25 - Gitignore (NEW)
 ### [1.1.1](https://github.com/guobao2333/MT-syntax-highlight/commit/ca80ab9)
 #### Changed | 变化
 
@@ -449,7 +457,7 @@ ___
 * 调整配色，观感提升~
 
 ___
-## Gitignore - 2024-6-24
+## 2024-6-24 - Gitignore (NEW)
 ### New | 新语法
 
 + 新增语法高亮：[git提交忽略](mtsx/gitignore.mtsx)  
@@ -541,7 +549,7 @@ ___
 + 新增github的提示引用块渲染
 
 ___
-## Markdown(GFM) - 2024-5-2
+## 2024-5-2 - Markdown(GFM)
 ### [1.0.1~1.0.3](https://github.com/guobao2333/MT-syntax-highlight/compare/4411307...76c1f9a)
 #### Fixed | 修复
 
@@ -556,7 +564,7 @@ ___
 
 ### [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/cf23fc0)
 
-+ 新增语法高亮：[github 风格和规范的 markdown](mtsx/markdown_github.mtsx)  
++ 新增语法高亮：[github 风格的 markdown](mtsx/markdown_github.mtsx)  
   有关GFM的文档请看这里：[GitHub Flavored Markdown Spec](https://github.github.com/gfm)
 
 + 新增许可证

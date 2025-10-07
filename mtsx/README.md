@@ -17,6 +17,7 @@
 > 内置语法是MT管理器中已有语法的增强版。  
 > 在增强版中添加/修改了一些额外语法/配色。
 - [HTML EX (HTML+CSS+JS)](builtin/HTML.mtsx)
+- [Java EX](builtin/Java.mtsx)
 - [JavaScript EX](builtin/JavaScript.mtsx)
 <!-- - [JavaScript Minecraft EX](builtin/JavaScript_Minecraft.mtsx) -->
 - [JSON Minecraft EX](builtin/JSON_Minecraft.mtsx)
