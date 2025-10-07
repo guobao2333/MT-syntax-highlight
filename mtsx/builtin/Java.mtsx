@@ -1,0 +1,50 @@
+// require MT >= 2.16.0
+// version: 1.0.0
+// 此文件为同名内置语法的增强版本
+// 针对minecraft进行语法扩展
+// https://github.com/guobao2333/MT-syntax-highlight
+{
+    name: ["Java EX", ".java", ".jsp", ".aidl"]
+    comment: {startsWith: "//"}
+    comment: {startsWith: "/*", endsWith: "*/"}
+    defines: [
+        "type_name": /\b[A-Za-z_$][A-Za-z0-9_$]*\b/
+        "keywords": keywordsToRegex(
+            "class enum interface record annotation"
+            "public protected private abstract final static sealed non-sealed"
+            "strictfp transient volatile synchronized native"
+            "extends implements super new throws default permits"
+        )
+
+    ]
+    contains: [
+        {
+            style: "string"
+            start: {match: /"""/}
+            end: {match: /"""/}
+        }
+        {builtin: #JAVA_QUOTED_STRING#}
+        {builtin: #JAVA_NUMBER#}
+        // 导入标识符
+        {match: /\b(?<=import)\s+(?:static\s+)?\S+\.((\*)|[^;\s.]+);/ 1: "constant" 2: "meta"}
+        // 类型声明或泛型中的常量名/类型名
+        {match: /(?<!/ + include("keywords") + /\s)([A-Z][A-Za-z0-9_]*)\s*(<[^>]*>|\[.*\])?(?=\s+/ + include("type_name") + /)/
+            1: "constant"
+            2: {match: include("type_name") 0: "constant"}
+            2: {match: /[\[<\]>]/ 0: "type"}
+        }
+
+        {match: /@\w+(?:\.\w+)*/, 0: "meta"}
+        {match: /\b(?!(?:CRC32|URL)\b)[A-Z][A-Z0-9]+\b(?!\.)(?!\s{0,10}\()/, 0: "constant"}
+        {match: /\b[A-Z][A-Z0-9]*(?:_[A-Z0-9]+)+\b(?!\.)(?!\s{0,10}\()/, 0: "constant"}
+        {match: keywordsToRegex(
+                "while volatile void try true transient throws throw this synchronized switch super"
+                "strictfp static short return public protected private package null new native long"
+                "interface int instanceof import implements if goto for float finally final false"
+                "extends enum else double do default continue const class char catch case byte"
+                "break boolean assert abstract var record yield sealed non-sealed permits when"
+            ), 0: "keyword"
+        }
+    ]
+    codeFormatter: #BUILT_IN_JAVA_FORMATTER#
+}
