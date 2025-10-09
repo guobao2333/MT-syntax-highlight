@@ -17,24 +17,53 @@
 </details>
 
 # Introduction | 简介
-[MT Syntax HighLight](https://github.com/guobao2333/MT-syntax-highlight)是适用于[MT管理器](https://mt2.cn)的第三方扩展语法高亮(.mtsx)，仓库创建之初因官方内置的语法高亮非常少，所以为自己写了一些语法高亮使用，后来内置语法越来越多，就作为个人兴趣减缓维护频率了，希望大家也能够写出更多好用的mt语法高亮！
+[MT Syntax HighLight](https://github.com/guobao2333/MT-syntax-highlight)是适用于[MT管理器](https://mt2.cn)的第三方扩展语法高亮(.mtsx)，MT的语法高亮使用JAVA***正则表达式***实现。仓库创建之初因官方内置的语法高亮非常少，所以写了一些语法高亮供自己使用，后来内置语法越来越多，就减缓更新频率作为个人兴趣维护了，希望大家也能够写出更多漂亮的mt语法高亮！
 
-MT管理器的语法高亮核心使用了JAVA语法的***正则表达式***来实现。
+## MT 2.16.0
+从`2.16.0`版本开始，MT增加了更多高级语法和文本样式，这使得我们可以在今后写出性能更好、复杂性更高、样式更好看的高亮了！
 
-从`2.16.0`版本开始，MT增加了更多高级语法和文本样式，这使得我们可以在今后写出性能更好、复杂性更高、样式更好看的语法高亮了！
+# Navigation | 快速跳转
+* [Introduction | 简介](#introduction--%E7%AE%80%E4%BB%8B)
+* Navigation | 快速跳转
+* [Preview | 预览](#preview--%E9%A2%84%E8%A7%88)
+* [Installation | 安装](#installation--%E5%AE%89%E8%A3%85)
+* [Update Plan | 更新计划](#update-plan--%E6%9B%B4%E6%96%B0%E8%AE%A1%E5%88%92)
+* [Contribute | 贡献](#contribute--%E8%B4%A1%E7%8C%AE)
+  * [Contribution Guidelines | 贡献指南](#Contribution-Guidelines--%E8%B4%A1%E7%8C%AE%E6%8C%87%E5%8D%97)
+* [License | 许可证](#license--%E8%AE%B8%E5%8F%AF%E8%AF%81)
+* [References | 参考](#references--%E5%8F%82%E8%80%83)
 
 # Change Log | 更新日志
 > 仅展示**近期变化**，更多版本请[查看完整更新日志](CHANGELOG.md)
-## 2025-10-9 - Java EX (内置) - [1.1.0](https://github.com/guobao2333/MT-syntax-highlight/commit/30e842a)
-### Fixed | 修复
+## 2025-10-9
+### Protobuf (NEW)
+
++ 新增语法高亮：[协议缓冲区](mtsx/protobuf.mtsx)  
+  有关的Protocol Buffers文档请看这里：[Protocol Buffers Docs](https://protobuf.dev/)
+
+### Dockerfile (NEW)
+
++ 新增语法高亮：[Docker镜像构建指令](mtsx/dockerfile.mtsx)  
+  有关的Dockerfile文档请看这里：[Dockerfile reference | Docker Docs](https://docs.docker.com/reference/dockerfile/)
+
+### Java EX (NEW)
+
++ 新增内置语法高亮：[Java EX](mtsx/java.mtsx)
+
+**优化内容：**
+1. 导入标识符高亮
+2. 类型声明或泛型中的常量名/类型名高亮
+
+### Java EX (内置) - [1.1.0](https://github.com/guobao2333/MT-syntax-highlight/commit/30e842a)
+#### Fixed | 修复
 
 1. 修复类相关的前向断言匹配过多，导致类型高亮异常
 
-### Added | 新增
+#### Added | 新增
 
 + 增加方法名高亮
 
-### Changed | 变化
+#### Changed | 变化
 
 * 调整配色以区分类型
 
@@ -88,7 +117,7 @@ ___
 
 # Installation | 安装
 > [!IMPORTANT]
-> 大部分语法高亮仅适用于MT管理器 `2.16.0` 及以上版本！
+> 大部分语法高亮仅适用于MT管理器 `2.16.0` 及以上版本！始终建议您使用最新版本的MT！
 
 你可以在[此处](mtsx/)查看所有语法。
 
@@ -99,13 +128,18 @@ ___
 现在您可以打开对应语法的文件，例如 `preview.md` (Markdown) 查看效果。
 
 # Update Plan | 更新计划
+> [!NOTE]
+> 为避免重复，请在[此处](mtsx/)查看所有语法
+
 - [x] Brainfuck
+- [x] Dockerfile
 - [x] Envionment Variable
 - [x] Git Ignore
 - [x] GoLang Ice(冷色调)
 - [x] Markdown(GFM) (WIP……)
 - [x] Minecraft Bedrock Localized Language
 - [x] Perl
+- [x] Protobuf
 - [x] Ruby
 - [x] VimScript
 
@@ -129,19 +163,21 @@ ___
 > [!NOTE]
 > <details><summary><b>开发小技巧</b></summary>
 >
-> 如果将预览文件的后缀改为`<语法文件名>.mtsx_preview`，且与同名语法放在相同目录下，您将可以点击语法文件的右上角的`预览`按钮直接查看效果，而无需安装后打开预览文件。举个例子：
-> * Java.mtsx - 语法文件
-> * Java.mtsx_preview - 预览文件
+> 如果将预览文件的后缀改为`<语法文件名>.mtsx_preview`，且与同名语法(不分大小写)放在相同目录下，您将可以点击语法文件的右上角的`预览`按钮直接查看效果，而无需安装后打开预览文件。举个例子：
+> * `Java.mtsx`			- 语法文件
+> * `Java.mtsx_preview` - 预览文件
 </details>
 
 如果您第一次贡献或不明白贡献的概念，请查看[《如何为开源做贡献》](https://opensource.guide/how-to-contribute/)
 
-**要为本项目做出贡献，请遵守以下贡献规则：**
+## Contribution Guidelines | 贡献指南
+**要为本项目做出贡献，建议您遵循以下贡献规则及步骤：**
 
 0. 第一次贡献请点击`fork`复刻（克隆）仓库，否则请点击`Sync fork`同步最新代码！（处理冲突很麻烦の）
 1. 复刻仓库后，修改已有语法或添加新语法
    1. 新语法必须添加预览文件，预览图可以选择性添加。如果您还有空闲，请顺手更新一下 `mtsx/README.md` `preview/README.md` 可以为维护者减轻负担。
-   2. 修改已有语法时需遵守源文件的缩进样式。(禁止空格tab混用)
+   2. 添加预览图时，请打开`只读模式`并将预览文件保留在编辑器（上方图钉按钮）然后分别切换亮色和暗色模式截图，将图片以相同分辨率裁剪，并导出为`webp`格式。
+   3. 修改已有语法时需遵守源文件的缩进样式。(禁止空格tab混用)
 2. 点击`Pull requests`创建新的拉取请求
    1. 请将开发时参考的资料贴出，以便他人进行后续维护工作，否则此语法的更新优先级将降低，最坏情况将无人维护。
    2. 修改已有语法时，需要以用户友好的方式具体描述更新内容，并以此决定如何撰写发布版本号。
@@ -155,13 +191,13 @@ ___
     Copyright (c) 2024-2025 shiguobaona
 
     Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use all mtsx file except in compliance with the License.
+    you may not use any mtsx file except in compliance with the License.
     You may obtain a copy of the License at
 
        http://www.apache.org/licenses/LICENSE-2.0
 
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
+    Unless required by applicable law or agreed to in writing,
+    mtsx file distributed under the License is distributed on an "AS IS" BASIS,
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     See the License for the specific language governing permissions and
     limitations under the License.
@@ -173,3 +209,5 @@ ___
 4. [Git - gitignore Documentation](https://git-scm.com/docs/gitignore)
 5. [VimScript - VimDoc](https://vimdoc.sourceforge.net/htmldoc/usr_41.html)
 6. [Brainfuck - Wikipedia](https://wikipedia.org/wiki/Brainfuck)
+7. [Dockerfile reference | Docker Docs](https://docs.docker.com/reference/dockerfile/)
+8. [Protocol Buffers Docs](https://protobuf.dev/)

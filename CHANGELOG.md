@@ -29,16 +29,35 @@
 > ```
 </details>
 
-## 2025-10-9 - Java EX (内置) - [1.1.0](https://github.com/guobao2333/MT-syntax-highlight/commit/30e842a)
-### Fixed | 修复
+## 2025-10-9
+### Protobuf (NEW)
+
++ 新增语法高亮：[协议缓冲区](mtsx/protobuf.mtsx)  
+  有关的Protocol Buffers文档请看这里：[Protocol Buffers Docs](https://protobuf.dev/)
+
+### Dockerfile (NEW)
+
++ 新增语法高亮：[Docker镜像构建指令](mtsx/dockerfile.mtsx)  
+  有关的Dockerfile文档请看这里：[Dockerfile reference | Docker Docs](https://docs.docker.com/reference/dockerfile/)
+
+### Java EX (NEW)
+
++ 新增内置语法高亮：[Java EX](mtsx/java.mtsx)
+
+**优化内容：**
+1. 导入标识符高亮
+2. 类型声明或泛型中的常量名/类型名高亮
+
+### Java EX (内置) - [1.1.0](https://github.com/guobao2333/MT-syntax-highlight/commit/30e842a)
+#### Fixed | 修复
 
 1. 修复类相关的前向断言匹配过多，导致类型高亮异常
 
-### Added | 新增
+#### Added | 新增
 
 + 增加方法名高亮
 
-### Changed | 变化
+#### Changed | 变化
 
 * 调整配色以区分类型
 
@@ -71,28 +90,28 @@ ___
 > 不过我发现他们中的部分语法存在缺失，这会在后续更新中完善。
 
 ___
-## 2025-8-31 - Ruby - [1.2.0](https://github.com/guobao2333/MT-syntax-highlight/commit/0175f49)
-### Fixed | 修复
+## Ruby
+### 2025-8-31 - [1.2.0](https://github.com/guobao2333/MT-syntax-highlight/commit/0175f49)
+#### Fixed | 修复
 
-1. Regex对象的高亮错误。
+1. Regex对象的高亮错误
 
-### Added | 新增
+#### Added | 新增
 
-* 支持下划线分隔数字。
-* 新增调用方法高亮。
+* 支持下划线分隔数字
+* 新增调用方法高亮
 
 #### Changed | 变化
 
-* 移除了逻辑运算符的高亮。
-* 更改了部分语句高亮的颜色。
+* 移除了逻辑运算符的高亮
+* 更改了部分语句高亮的颜色
 
-___
-## 2025-8-13 - Ruby - [1.1.0](https://github.com/guobao2333/MT-syntax-highlight/commit/ec7c5c3)
-### Fixed | 修复
+### 2025-8-13 - [1.1.0](https://github.com/guobao2333/MT-syntax-highlight/commit/ec7c5c3)
+#### Fixed | 修复
 
 1. 修复含有数字的标志名高亮错误
 
-### Added | 新增
+#### Added | 新增
 
 + 新增%w和%i高亮
 
