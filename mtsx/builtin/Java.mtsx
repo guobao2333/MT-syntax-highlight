@@ -1,5 +1,5 @@
 // require MT >= 2.16.0
-// version: 1.0.0
+// version: 1.1.0
 // 此文件为同名内置语法的增强版本
 // 针对minecraft进行语法扩展
 // https://github.com/guobao2333/MT-syntax-highlight
@@ -9,12 +9,7 @@
     comment: {startsWith: "/*", endsWith: "*/"}
     defines: [
         "type_name": /\b[A-Za-z_$][A-Za-z0-9_$]*\b/
-        "keywords": keywordsToRegex(
-            "class enum interface record annotation"
-            "public protected private abstract final static sealed non-sealed"
-            "strictfp transient volatile synchronized native"
-            "extends implements super new throws default permits"
-        )
+        "keywords": keywordsToRegex("class enum interface record annotation")
 
     ]
     contains: [
@@ -30,7 +25,7 @@
         // 类型声明或泛型中的常量名/类型名
         {match: /(?<!/ + include("keywords") + /\s)([A-Z][A-Za-z0-9_]*)\s*(<[^>]*>|\[.*\])?(?=\s+/ + include("type_name") + /)/
             1: "constant"
-            2: {match: include("type_name") 0: "constant"}
+            2: {match: include("type_name") 0: "operator"}
             2: {match: /[\[<\]>]/ 0: "type"}
         }
 
@@ -45,6 +40,9 @@
                 "break boolean assert abstract var record yield sealed non-sealed permits when"
             ), 0: "keyword"
         }
+
+        // 方法
+        {match: /\b\.?([^;\s.(]+)\(/ 1: "label"}
     ]
     codeFormatter: #BUILT_IN_JAVA_FORMATTER#
 }
