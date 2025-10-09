@@ -1,0 +1,51 @@
+// require MT >= 2.16.0
+// Version: 1.0.0
+// Repo: https://github.com/guobao2333/MT-syntax-highlight
+// Copyright (c) 2025 shiguobaona
+{
+	name: ["Protocol Buffers", ".proto"]
+	styles: [
+		"keyword" #0033B3 #CC7832
+		"type" #871094 #9876AA
+		"literal" #7050E0 #CC7832 @B
+		"titleClass" #0033B3 #BFA0 @B
+		"titleFunction" > "keyword"
+		"constant" #871094 #9876AA
+		"operator" #205060 #BABABA
+		"deprecated" @S
+	]
+	comment: {startsWith: "//"}
+	comment: {startsWith: "/*", endsWith: "*/"}
+	bracketPairs: ["{}", "[]", "<>"]
+	contains: [
+		{builtin: #PROGRAM_NUMBER#}
+		{builtin: #DOUBLE_QUOTED_STRING#}
+
+		{match: /[=;\[\]{},<>]/ 0: "operator"}
+		{match: keywordsToRegex("package import option optional repeated group oneof"), 0: "keyword"}
+		// 不推荐使用，在proto3中已完全移除，改用 `// required` 约定注释
+		{match: /\brequired\b/ 0: "keyword" 0: "deprecated"}
+
+		// 常见类型
+		{match: keywordsToRegex(
+			"double float int32 int64 uint32 uint64 sint32 sint64"
+			"fixed32 fixed64 sfixed32 sfixed64 bool string bytes"
+		), 0: "type"}
+
+		// 字面量
+		{match: keywordsToRegex("true false"), 0: "literal"}
+		// 消息、枚举、服务定义
+		{match: /\b(message|enum|service)\s+(\w+)/
+			1: "keyword"
+			2: "titleClass"}
+
+		// RPC 定义
+		{match: /(rpc)\s+(\w+)\s*\(\s*[^)]*\s*\)\s*(returns)\s*\(\s*[^)]*\s*\)/
+			1: "keyword"
+			2: "titleFunction"
+			3: "keyword"}
+
+		// 枚举
+		{match: /^\s*[A-Z_][A-Z0-9_]*(?=\s*=)/ 0: "constant"}
+	]
+}

@@ -1,0 +1,10 @@
+package preview;
+message example {
+   // proto3 已经移除 required 所以不建议使用
+   required int32 user = 1;
+   
+   // 错误示范：不要用布尔值表示将来可能有两种以上的状态
+   optional bool admin = 2;
+   // 正确示范：改用更灵活的枚举，即使首次引用时只有两个值
+   optional PhotoType type = 3;
+}
