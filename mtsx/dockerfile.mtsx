@@ -1,0 +1,74 @@
+// require MT >= 2.16.0
+// Version: 1.0.0
+// Repo: https://github.com/guobao2333/MT-syntax-highlight
+// Copyright (c) 2025 shiguobaona
+{
+	name: ["Dockerfile", "Dockerfile", ".dockerfile"]
+	ignoreCase: true
+	styles: [
+		"keyword"		#0033B3	#CC7832 @B
+		"string"		#067D17 #6A8759
+		"number"		#1750EB #6897BB
+		"comment"		#8C8C8C #808080
+		"instruction"	#0033B3 #CC7832 @B
+		"param"			#871094 #9876AA
+		"path"			@U
+	]
+	comment: {startsWith: "#"}
+	defines: [
+		// 健康检查参数
+		"param": /(?:\s+(?:--\w+)=([^\s]+))/
+	]
+	contains: [
+		// 关键字
+		{match: keywordsToRegex("from maintainer expose env arg user onbuild stopsignal") 0: "keyword"}
+		// 指令
+		{match: keywordsToRegex("run cmd entrypoint volume add copy workdir label healthcheck shell") 0: "instruction"}
+
+		// 多行 RUN 命令（以反斜杠结尾）
+		{start: {match: /(?<=RUN)\s+/}
+		end: {match: /(?m)[^\\]$/}
+		contains: [
+			// Bash 变量
+			{match: /\$\{?[\w@*#-]+\}?/ 0: "param"}
+			// 常见 Bash 命令
+			{match: keywordsToRegex("apt-get apt yum apk pip npm git curl wget echo cat ls cd mkdir rm cp mv chmod chown") 0: "keyword"}
+			// 选项参数（以 - 或 -- 开头）
+			{match: /(?:^|\s)(--?\w+)/ 1: "number"}
+			// 路径
+			{match: /\/[\w\/.-]+/ 0: "path"}
+		]}
+
+		// FROM 指令的特殊处理（包含镜像标签）
+		{match: /(?<=FROM)\s+([^\s]+)(?:\:([^\s]+))?/ 1: "string" 2: "param"}
+		// EXPOSE 指令（端口号）
+		{match: /(?<=EXPOSE)\s+(\d+)/ 1: "number"}
+		// ENV 和 ARG 指令（键值对）
+		{match: /(?<=ENV|ARG)\s+(\w+)\s*=\s*([^\s]+)/ 1: "param" 2: "string"}
+		// USER 指令（用户和组）
+		{match: /(?<=USER)\s+([^\s:]+)(?::([^\s]+))?/ 1: "param" 2: "param"}
+		// WORKDIR 指令（路径）
+		{match: /(?<=WORKDIR)\s+([^\s]+)/ 1: "path"}
+		// COPY 和 ADD 指令（源和目标路径）
+		{match: /(?<=COPY|ADD)/ + include("param") + /?\s+([^\s]+)\s+([^\s]+)/ 1: "string" 2: "path" 3: "path"}
+
+		// LABEL 指令（多个键值对）
+		{start: {match: /(?<=LABEL)\s+/}
+		end: {match: /(?m)$/}
+		contains: [
+			{match: /(\w+)\s*=\s*"([^"]*)"/ 1: "param" 2: "string"}
+			{match: /(\w+)\s*=\s*'([^']*)'/ 1: "param" 2: "string"}
+			{match: /(\w+)\s*=\s*([^\s]+)/ 1: "param" 2: "string"}
+		]}
+
+		// 多行命令的连续行
+		{match: /(?m)^?\s*\\$?/ 0: "string"}
+		// 阶段构建（AS 关键字）
+		{match: /(AS)\s+(\w+)/ 1: "keyword" 2: "param"}
+		{match: include("param") 1: "string"}
+
+		{builtin: #SINGLE_QUOTED_STRING#}
+		{builtin: #DOUBLE_QUOTED_STRING#}
+		{builtin: #NORMAL_NUMBER#}
+	]
+}
