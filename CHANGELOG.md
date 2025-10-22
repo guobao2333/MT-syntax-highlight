@@ -7,26 +7,30 @@
 [1]: https://common-changelog.org
 
 > [!IMPORTANT]
-> **变更日志特殊规范**  
-> 版本号前增加语法名和日期作为标题： `日期 - 语法名 - 版本号`  
+> **变更日志特殊规范：**  
+> 一般情况下，版本号前增加语法名和日期作为标题：`日期 - 语法名 - 版本号`
+>
 > <details>
-> <summary>标题合并规范</summary>
+> <summary>规范细节</summary>
 >
-> 如果当天进行了多次更新，且为同一类型，则合并至相同标题下。其下属标题会根据不同情况产生各种变化，总体而言会根据一定优先级排列组合。
+> 如果当天进行了多次更新，且为同一类型，则合并至相同标题下。  
+> 其下属标题会根据不同情况产生各种变化，总之会根据一定优先级的顺序排列组合。
 >
-> 更新单一语法时：
+> 单一语法：
 > ```md
 > ## 日期 - 语法
 > ### 版本1
 > ### 版本2
 > ```
 >
-> 更新多个语法时：
+> 多个语法：
 > ```md
 > ## 日期
 > ### 语法1 - 版本5
 > ### 语法2 - 版本3
 > ```
+>
+> 由于允许排列组合，所以此处不再列举。
 </details>
 
 ## 2025-10-9
@@ -39,14 +43,6 @@
 
 + 新增语法高亮：[Docker镜像构建指令](mtsx/dockerfile.mtsx)  
   有关的Dockerfile文档请看这里：[Dockerfile reference | Docker Docs](https://docs.docker.com/reference/dockerfile/)
-
-### Java EX (NEW)
-
-+ 新增内置语法高亮：[Java EX](mtsx/java.mtsx)
-
-**优化内容：**
-1. 导入标识符高亮
-2. 类型声明或泛型中的常量名/类型名高亮
 
 ### Java EX (内置) - [1.1.0](https://github.com/guobao2333/MT-syntax-highlight/commit/30e842a)
 #### Fixed | 修复
