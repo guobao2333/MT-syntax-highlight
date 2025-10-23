@@ -1,0 +1,60 @@
+name: 语言请求
+description: 请求调整语法或仓库中不存在的新语言
+title: "[Request]: "
+labels: ["new"]
+assignees:
+  - guobao2333
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **标题示例：**请求优化/添加 JavaScript 语法高亮
+  - type: input
+    id: name
+    attributes:
+      label: 语言正式名称
+      description: 该语言官方/常用/约定俗成的名称
+      placeholder: 例如：JavaScript
+    validations:
+      required: true
+  - type: input
+    id: alias
+    attributes:
+      label: 别名（不区分大小写）
+      description: 该语言的其他名字（可选，如果有多个，以空格分割）
+      placeholder: 例如：JS
+    validations:
+      required: false
+  - type: input
+    id: suffix
+    attributes:
+      label: 后缀名
+      description: 使用该语言的文件后缀名（如果有多个，以空格分割）
+      placeholder: 例如：js cjs mjs
+    validations:
+      required: true
+  - type: textarea
+    id: reference
+    attributes:
+      label: 相关资料
+      description: 该语言的官方语法介绍和其他信息
+      # value: ""
+      placeholder: |
+      	如果实在找不到请用wiki链接代替，但正确填写有助于维护者更快完成。
+    validations:
+      required: true
+  - type: textarea
+    id: additional
+    attributes:
+      label: 补充信息
+      description: 如果您发现该语言已有其他方式的高亮实现，可以附上相关链接以及效果截图
+    validations:
+      required: false
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: 行为准则
+      description: 提交此问题即表示您同意遵守我们的[行为准则](https://github.com/guobao2333/MT-syntax-highlight?tab=readme-ov-file#request-new-syntax--%E8%AF%B7%E6%B1%82%E6%96%B0%E8%AF%AD%E6%B3%95)。
+      options:
+        - label: 我同意遵守该项目的行为准则
+          required: true
