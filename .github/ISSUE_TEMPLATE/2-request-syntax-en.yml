@@ -8,7 +8,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        **标题示例：**请求优化/添加 JavaScript 语法高亮
+        **标题示例：** 请求优化/添加 JavaScript 语法高亮
   - type: input
     id: name
     attributes:
