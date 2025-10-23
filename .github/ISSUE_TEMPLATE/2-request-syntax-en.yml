@@ -40,7 +40,7 @@ body:
       description: 该语言的官方语法介绍和其他信息
       # value: ""
       placeholder: |
-      	如果实在找不到请用wiki链接代替，但正确填写有助于维护者更快完成。
+        如果实在找不到请用wiki链接代替，但正确填写有助于维护者更快完成。
     validations:
       required: true
   - type: textarea
