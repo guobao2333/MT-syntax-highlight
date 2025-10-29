@@ -33,6 +33,14 @@
 > 由于允许排列组合，所以此处不再列举。
 </details>
 
+## 2025-10-29
+### MT-Syntax EX - [2.2.0](https://github.com/guobao2333/MT-syntax-highlight/commit/230887a)
+#### Fixed | 修复
+
+1. 正确高亮引号内的正则转义
+2. 修复某些情况下字符集合渲染错误
+
+___
 ## 2025-10-9
 ### Protobuf (NEW)
 

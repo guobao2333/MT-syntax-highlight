@@ -2,7 +2,7 @@
 > [!NOTE]
 > 预览效果请在[此处](../preview)查看。
 
-- [Brainfuck](brainfuck.mtsx)
+- [Brainfuck](brainfuck.mtsx) (已内置)[^已内置]
 - [Dockerfile](dockerfile.mtsx) (暂时需手动切换)[^1]
 - [Environment Variable](dotenv.mtsx)
 - [Git Ignore](gitignore.mtsx)
@@ -26,6 +26,7 @@
 <!-- - [Markdown EX](builtin/Markdown.mtsx) -->
 - [MT Syntax EX](builtin/MT-Syntax.mtsx) (隐藏)[^隐藏]
 
-[^1]: 目前MT管理器仅支持匹配文件后缀来判断高亮哪些文件，此问题已向上游反馈，不久后应该会支持匹配无后缀文件。
+[^1]: 目前MT管理器仅支持匹配文件后缀来判断高亮哪些文件，此问题已向上游反馈，不久后应该会支持高亮无后缀文件。
+[^已内置]: 该语言已提交至官方内置列表，无需手动安装。
 [^GFM]: [GitHub Flavored Markdown](https://github.github.com/gfm)（通常缩写为 GFM）是 Markdown 的方言。该正式规范基于 [CommonMark](https://commonmark.org) 规范，定义了该方言的语法和语义。
 [^隐藏]: 一些特殊的内置语法会被隐藏，使得无法在文件编辑器的语法列表中切换，它们的实现一般用户无需关注。
