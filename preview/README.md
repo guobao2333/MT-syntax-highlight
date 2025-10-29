@@ -111,8 +111,8 @@
 <details>
 <summary>Ruby</summary>
 
-![亮色](builtin/ruby/light.webp)
-![暗色](builtin/ruby/dark.webp)
+![亮色](ruby/light.webp)
+![暗色](ruby/dark.webp)
 </details>
 
 <details>
