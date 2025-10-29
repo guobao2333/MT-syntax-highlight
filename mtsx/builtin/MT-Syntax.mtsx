@@ -1,6 +1,6 @@
 // require MT >= 2.16.0
 // 此语法为同名内置语法的增强版本
-// version: 2.1.2
+// version: 2.2.0
 // Repo: https://github.com/guobao2333/MT-syntax-highlight
 {
 	name: ["MT-Syntax", ".mtsx"]
@@ -37,12 +37,12 @@
 		"scope" > "require"
 		"class" #808000 #808000
 		// 如果不想要背景色，取消注释下行然后注释下下行
-		"regex" > "default"
-		// "regex" #0A415D#F4F9FF #NULL#353637
+		// "regex" > "default"
+		"regex" #0A415D#F4F9FF #NULL#353637
 	]
 	comment: {startsWith: "//", addToContains: false}
 	defines: [
-		"escapes": [
+		"escapes_1": [
 			{match: /\\0[0-7]{1,3}/}
 			{match: /\\c./ 0: "escape"}
 			{match: /\\k<[0-9A-Za-z]+>/ 0: "escape"}
@@ -56,13 +56,32 @@
 			{match: /\\x\{[0-9A-Fa-f]+\}/ 0: "escape"}
 
 			// {match: /\\[1-9ABDGHRSVWZabdefhnrstvwz]/ 0: "escape"}
-			{match: /\\[0CEFIJKLMNOPQTUXYcgijklmopquxy]/ 0: "error"}
+			{match: /(?i)\\[0CEFIJKLMNOPQTUXY]/ 0: "error"}
 			{match: /\\./ 0: "escape"}
+		]
+
+		"escapes_2": [
+			{match: /\\{2}0[0-7]{1,3}/}
+			{match: /\\{2}c./ 0: "escape"}
+			{match: /\\{2}k<[0-9A-Za-z]+>/ 0: "escape"}
+			{match: /(?i)\\{2}p\{.*?\}/ 0: "escape"}
+
+			// HighSurrogate+LowSurrogate \uD800-DBFFuDC00-DFFF
+			{match: /(?i)\\{2}uD[89AB][0-9A-F]{2}uD[CDEF][0-9A-F]{2}/ 0: "escape"}
+			{match: /(?i)\\{2}u[0-9a-f]{4}/ 0: "escape"}
+
+			{match: /\\{2}x[0-9A-Fa-f]{2}/ 0: "escape"}
+			{match: /\\{2}x\{[0-9A-Fa-f]+\}/ 0: "escape"}
+
+			// {match: /\\{2}[1-9ABDGHRSVWZabdefhnrstvwz]/ 0: "escape"}
+			{match: /(?i)\\{2}[0CEFIJKLMNOPQTUXY]/ 0: "error"}
+			{match: /(?i)\\[a-z0-9]/ 0: "error"}
+			{match: /\\{2}./ 0: "escape"}
 		]
 
 		"regex": [
 			// 转义类
-			{include: "escapes"}
+			// {include: "escapes_1"}
 
 			// 元字符
 			{match: /[.*+?|]/ 0: "keywords"}
@@ -81,42 +100,67 @@
 			// {n,m}
 			{match: /\{(\d+)(,(\d+)?)?\}/ 0: "operator"}
 			{match: /[{}]/ 0: "error"}
-
-			// []
-			{
-				// 开头和结尾的 - 为普通字符
-				start: {match: /(\[\^?)-?/ 1: "class"}
-				end: {match: /-?(\])/ 1: "class"}
-				style: "string"
-				contains: [
-					// 这些转义不能在[]里面
-					{match: /\\[1-9ABGPRZbkz]/ 0: "error"}
-					{include: "escapes"}
-					{match: /-/ 0: "scope"}
-					{match: /(?<!\\)[\/]/} => FAIL
-				]
-			}
 		]
+
+		// []
+		"charset_1": {
+			start: {match: /(\[\^?)-?/ 1: "class"}
+			end: {match: /(?m)-?(\])|$/ 1: "class"}
+			style: "string"
+			mustMatchEnd: true
+			contains: [
+				{match: /\\[1-9ABGPRZbkz]/ 0: "error"}
+				{match: /(?<!\\)\// 0: "error"} => FAIL
+				{include: "escapes_1"}
+				{match: /-/ 0: "scope"}
+			]
+		}
+		"charset_2": {
+			// 开头和结尾的 - 为普通字符
+			start: {match: /(\[\^?)-?/ 1: "class"}
+			end: {match: /(?m)-?(\])|$/ 1: "class"}
+			style: "string"
+			mustMatchEnd: true
+			contains: [
+				// 这些转义不能在[]里面
+				{match: /\\{2}[1-9ABGPRZbkz]/ 0: "error"}
+				// 由于目前没有找到好的办法与上层共用end，因此暂时截断
+				{match: /(?<!\\)"/ 0: "error"} => FAIL
+				{include: "escapes_2"}
+				// {builtin: #ESCAPED_CHAR#}
+				{match: /-/ 0: "scope"}
+			]
+		}
 
 		"regexs": [
 			{
-				start: {match: /(?<=match: ?)"/}
-				end: {match: /(?m)"|$/}
-				style: "string"
+				start: {match: "/"}
+				end: {match: "(?m)/|$"}
+				style: "meta"
 				childrenStyle: "regex"
-				contains: [
-					{builtin: #ESCAPED_CHAR#}
+				// matchEndFirst: true
+				mustMatchEnd: true
+				contains: {
+					{match: "\\/" 0: "strEscape"}
+					{include: "escapes_1"}
+					{include: "charset_1"}
 					{include: "regex"}
-				]
+					// {match: /(?<!\\)\//} => FAIL
+				}
 			}
 			{
-				start: {match: /\// 0: "meta"}
-				end: {match: /(?m)\/|$/ 0: "meta"}
+				start: {match: /(?<=match:\s?)"/}
+				end: {match: /(?m)"|$/}
+				style: "meta"
 				childrenStyle: "regex"
-				contains: {
-					{match: /\\\// 0: "strEscape"}
+				// matchEndFirst: true
+				mustMatchEnd: true
+				contains: [
+					{match: /\\"/ 0: "strEscape"}
+					{include: "escapes_2"}
+					{include: "charset_2"}
 					{include: "regex"}
-				}
+				]
 			}
 		]
 
