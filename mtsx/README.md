@@ -2,17 +2,19 @@
 > [!NOTE]
 > 预览效果请在[此处](../preview)查看。
 
+- [BBCode](bbcode.mtsx)
 - [Brainfuck](brainfuck.mtsx) (已内置)[^已内置]
 - [Dockerfile](dockerfile.mtsx) (暂时需手动切换)[^1]
 - [Environment Variable](dotenv.mtsx)
 - [Git Ignore](gitignore.mtsx)
-- [GoLang](golang.mtsx)
+- [Golang Ice](golang.mtsx) 贡献者 [**@Love-Kogasa**](https://github.com/Love-Kogasa)
+- [Haskell](haskell.mtsx) 贡献者 [**@ZQBCWG**](https://github.com/ZQBCWG)
 - [Markdown(GFM)](markdown_github.mtsx)[^GFM]
-- [Minecraft Bedrock Localized Language](minecraft_lang.mtsx)
-- [Perl](perl.mtsx)
+- [Minecraft Bedrock Localized Language](minecraft_lang.mtsx) 感谢 [**@Love-Kogasa**](https://github.com/Love-Kogasa) 提供的语法原型 https://github.com/guobao2333/MT-syntax-highlight/pull/4#issuecomment-2439806367
+- [Perl](perl.mtsx) 贡献者 [**@UndefTaco**](https://github.com/UndefTaco)
 - [Protobuf](protobuf.mtsx)
-- [Ruby](ruby.mtsx)
-- [VimScript](vim.mtsx)
+- [Ruby](ruby.mtsx) 贡献者 [**@UndefTaco**](https://github.com/UndefTaco)
+- [VimScript](vim.mtsx) 贡献者 [**@danicaStarR**](https://github.com/danicaStarR)
 
 ## Builtin | 内置语法
 > [!NOTE]

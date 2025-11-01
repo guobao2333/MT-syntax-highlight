@@ -33,9 +33,30 @@
 > 由于允许排列组合，所以此处不再列举。
 </details>
 
-## 2025-10-29
-### MT-Syntax EX - [2.2.0](https://github.com/guobao2333/MT-syntax-highlight/commit/230887a)
+## 2025-11-1
+### BBCode (NEW)
+
++ 新增语法高亮：[Bulletin Board Code](mtsx/java.mtsx)  
+  有关Bulletin Board Code的文档请看这里：[BBCode - Wikipedia](https://wikipedia.org/wiki/BBCode)
+
+### Java EX (内置) - [1.1.1](https://github.com/guobao2333/MT-syntax-highlight/commit/1a06d9e)
 #### Fixed | 修复
+
+1. 忽略部分关键字以防止错误高亮
+
+### Gitignore - [1.3.0](https://github.com/guobao2333/MT-syntax-highlight/commit/e2f1616)
+#### Changed | 变化
+
+* 重命名 `gitignore` → `GitIgnore`
+
+### DotEnv - [1.0.4](https://github.com/guobao2333/MT-syntax-highlight/commit/dfdf55a)
+#### Changed | 变化
+
+* 高亮`conf`后缀的文件
+
+___
+## 2025-10-29 - MT-Syntax EX - [2.2.0](https://github.com/guobao2333/MT-syntax-highlight/commit/230887a)
+### Fixed | 修复
 
 1. 正确高亮引号内的正则转义
 2. 修复某些情况下字符集合渲染错误
@@ -45,12 +66,12 @@ ___
 ### Protobuf (NEW)
 
 + 新增语法高亮：[协议缓冲区](mtsx/protobuf.mtsx)  
-  有关的Protocol Buffers文档请看这里：[Protocol Buffers Docs](https://protobuf.dev/)
+  有关Protocol Buffers的文档请看这里：[Protocol Buffers Docs](https://protobuf.dev/)
 
 ### Dockerfile (NEW)
 
 + 新增语法高亮：[Docker镜像构建指令](mtsx/dockerfile.mtsx)  
-  有关的Dockerfile文档请看这里：[Dockerfile reference | Docker Docs](https://docs.docker.com/reference/dockerfile/)
+  有关Dockerfile的文档请看这里：[Dockerfile reference | Docker Docs](https://docs.docker.com/reference/dockerfile/)
 
 ### Java EX (内置) - [1.1.0](https://github.com/guobao2333/MT-syntax-highlight/commit/30e842a)
 #### Fixed | 修复
