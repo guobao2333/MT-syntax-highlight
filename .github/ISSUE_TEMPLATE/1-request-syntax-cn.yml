@@ -54,7 +54,7 @@ body:
     id: terms
     attributes:
       label: 行为准则
-      description: 提交此问题即表示您同意遵守我们的[行为准则](https://github.com/guobao2333/MT-syntax-highlight?tab=readme-ov-file#request-new-syntax--%E8%AF%B7%E6%B1%82%E6%96%B0%E8%AF%AD%E6%B3%95)。
+      description: 提交此问题即表示您同意遵守我们的[行为准则](https://github.com/guobao2333/MT-syntax-highlight?tab=readme-ov-file#request-new-language--%E8%AF%B7%E6%B1%82%E6%96%B0%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE)。
       options:
         - label: 我同意遵守该项目的行为准则
           required: true

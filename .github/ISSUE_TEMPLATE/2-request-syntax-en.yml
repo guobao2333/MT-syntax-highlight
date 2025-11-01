@@ -54,7 +54,7 @@ body:
     id: terms
     attributes:
       label: Code of Conduct
-      description: By submitting this issue, you agree to follow our [Code of Conduct](https://github.com/guobao2333/MT-syntax-highlight?tab=readme-ov-file#request-new-syntax--%E8%AF%B7%E6%B1%82%E6%96%B0%E8%AF%AD%E6%B3%95). 
+      description: By submitting this issue, you agree to follow our [Code of Conduct](https://github.com/guobao2333/MT-syntax-highlight?tab=readme-ov-file#request-new-language--%E8%AF%B7%E6%B1%82%E6%96%B0%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE). 
       options:
         - label: I agree to follow this project's Code of Conduct
           required: true
