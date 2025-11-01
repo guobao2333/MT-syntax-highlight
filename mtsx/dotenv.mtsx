@@ -1,9 +1,9 @@
 // require MT >= 2.16.0
-// Version: 1.0.3
+// Version: 1.0.4
 // Get update at https://github.com/guobao2333/MT-syntax-highlight
 // Copyright (c) 2025 shiguobaona
 {
-	name: ["DotEnv", ".env"]
+	name: ["DotEnv", ".env", ".conf"]
 	comment: {startsWith: "#", addToContains: false}
 	styles: [
 		"comment"     #8C8C8C, #808080, //@I
