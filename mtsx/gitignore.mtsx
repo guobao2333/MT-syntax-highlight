@@ -1,8 +1,9 @@
 // require MT >= 2.16.0
+// Version: 1.3.0
 // Get update at https://github.com/guobao2333/MT-syntax-highlight
 // Copyright (c) 2024 shiguobaona
 {
-	name: ["gitignore", ".gitignore", ".dockerignore"]
+	name: ["GitIgnore", ".gitignore", ".dockerignore"]
 	comment: {startsWith: "#", addToContains: false}
 	styles: [
 		"comment" #8C8C8C, #808080, //@I
