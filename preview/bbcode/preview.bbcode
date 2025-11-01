@@ -1,0 +1,59 @@
+[h]Some common bbcode tags[/h]
+
+[b]Bold text[/b]
+[i]Italic text[/i]
+[u]Underlined text[/u]
+[s]Strikethrough text[/s]
+[size=24]font size[/size]
+[style size=24]font size[/style]
+[color=#33e6ff]text color[/color]
+[style color=#33e6ff]text color[/style]
+[center]center text[/center]
+[left]left text[/left]
+[right]right text[/right]
+[quote]Quoted text[/quote]
+[quote=Author]Text[/quote]
+[spoiler]spoiler text[/spoiler]
+[spoiler=Summary Title Here]spoiler text[/spoiler]
+[url]https://example.com[/url]
+[url=https://example.com]Example[/url]
+[img]https://exampleImage.com[/img]
+[img width=400px height=200px]https://exampleImage.com[/img]
+[img=400x200]https://exampleImage.com[/img]
+[list]
+  [*]List item
+  [*]List item
+[/list]
+[code]code here[/code]
+[table]
+  [tr]
+    [th]Heading cell[/th]
+    [th]Heading cell[/th]
+  [/tr]
+  [tr]
+    [td]Content cell[/td]
+    [td]Content cell[/td]
+  [/tr]
+[/table]
+
+[h]Tag type checks[/h]
+
+[tag]simple tag[/tag]
+[tag=param]tag with param[/tag]
+[tag param=value]tag with complex param[/tag]
+[tag param=value param2=value2]tag with multiple params[/tag]
+
+[h]Tag params with quotes[/h]
+
+[tag="param value"]tag with quoted tag[/tag]
+[tag param="value"]tag with quoted param[/tag]
+[tag param='value']tag with quoted param[/tag]
+[tag param="value" param2='value2']tag with multiple quoted params[/tag]
+
+[h]Aggressive edge cases[/h]
+[tag="param with [tag]"]tag with quoted tag[/tag]
+[tag=new
+line
+param]tag with new line param[/tag]
+[tag="new
+line"]tag with new line[/tag]

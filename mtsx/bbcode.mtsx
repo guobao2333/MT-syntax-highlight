@@ -1,0 +1,142 @@
+// require MT >= 2.16.0
+{
+    name: ["BBCode", ".bb", ".ubb", ".bbcode"]
+    ignoreCase: true
+    styles: [
+        "B"           @B
+        "I"           @I
+        "S"           @S
+        "U"           @U
+        "bracket"     #999 #999
+        "tag"         #FF79C6 #FF79C6
+        "punct"       #6272A4 #6272A4
+        "attr"        #8BE9FD #8BE9FD
+        "attrPunct"   #6272A4 #6272A4
+        "string"      #F1FA8C #F1FA8C
+        "content"     #F8F8F2 #F8F8F2
+        "url"         #1750EB #6897BB
+        "colorSample" #000000 #FFFFFF
+    ]
+    bracketPairs: ["[]"]
+    defines: [
+
+        "styles": [
+            {start: {match: /(?<=\[b])/}
+                end: {match: "(?=\\[/b])"}
+                style: "B"
+                contains: [
+                    {include: "styles"}
+                    {include: "tag"}
+                ]
+            }
+            {start: {match: /(?<=\[i])/}
+                end: {match: "(?=\\[/i])"}
+                style: "I"
+                contains: [
+                    {include: "styles"}
+                    {include: "tag"}
+                ]
+            }
+            {start: {match: /(?<=\[s])/}
+                end: {match: "(?=\\[/s])"}
+                style: "S"
+                contains: [
+                    {include: "styles"}
+                    {include: "tag"}
+                ]
+            }
+            {start: {match: /(?<=\[u])/}
+                end: {match: "(?=\\[/u])"}
+                style: "U"
+                contains: [
+                    {include: "styles"}
+                    {include: "tag"}
+                ]
+            }
+        ]
+
+        "quotedString": {
+            start: {match: /"/}
+            end: {match: /"/}
+            style: "string"
+            contains: [{match: /\\./, 0: "strEscape"}]
+        }
+
+        "singleQuotedString": {
+            start: {match: /'/}
+            end: {match: /'/}
+            style: "string"
+            contains: [{match: /\\./, 0: "strEscape"}]
+        }
+
+        "urlContent": {match: /(https?|ftp):\/\/[^\[\s\]'"]+/ 0: "url"}
+        
+        // 标签匹配 [tag attr="value"] content [/tag]
+        "tag": {start: {match: /\[/}
+            end: {match: /\]/}
+            style: "bracket"
+            childrenStyle: "tag"
+            contains: [
+                // 闭合标签的斜杠
+                {match: /(?<=\[)\//, 0: "punct"}
+
+                // 标签名称
+                {match: keywordsToRegex(
+                    "b i u s size color style center left right quote spoiler"
+                    "media url img list code table tr th td h tag fly move *"
+                ) 0: "tag"}
+
+                // 属性名
+                {match: /\b[a-z][\w-]*\b(?=\s*=)/, 0: "attr"}
+
+                {match: /=/, 0: "attrPunct"}
+
+                // 带引号的属性值
+                {include: "quotedString"}
+                {include: "singleQuotedString"}
+
+                // 无引号属性值
+                {match: /([^=\s\]]+)(?=\s|\]|\/)/ 0: "string"}
+
+                // 自闭合标签的斜杠
+                {match: /\/(?=])/, 0: "punct"}
+            ]
+        }
+    ]
+
+    contains: [
+
+        // 颜色值解析
+        {match: /\[(?:style\s)?color=(#([0-9A-Fa-f]{3,8}|[A-Za-z0-9,_\s()-]+))\]/
+            0: {match: /[\[\]]/ 0: "bracket"}
+            0: {match: /color|style/ 0: "tag"}
+            1: "parseColor(2,auto,HEX,string)"
+        }
+
+        // 专门处理 url 标签
+        {start: {match: /(?i)(?<=\[url)/}
+            end: {match: /(?i)(?=\[\/url\])/}
+            contains: [
+                // URL 属性值
+                {match: /=(['"]?)([^\]'"]+)\1/ 2: "url"}
+                // URL 标签内容
+                {include: "urlContent"}
+            ]
+        }
+
+        // 专门处理 img 标签
+        {start: {match: /(?i)(?<=\[img\])/}
+            end: {match: /(?i)(?=\[\/img\])/}
+            style: "tag"
+            contains: [
+                {include: "urlContent"}
+            ]
+        }
+
+        // 匹配独立的 URL（不在标签内）
+        {include: "urlContent"}
+
+        {include: "tag"}
+        {include: "styles"}
+    ]
+}
