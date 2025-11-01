@@ -1,5 +1,5 @@
 // require MT >= 2.16.0
-// version: 1.1.0
+// version: 1.1.1
 // 此文件为同名内置语法的增强版本
 // 针对minecraft进行语法扩展
 // https://github.com/guobao2333/MT-syntax-highlight
@@ -9,8 +9,8 @@
     comment: {startsWith: "/*", endsWith: "*/"}
     defines: [
         "type_name": /\b[A-Za-z_$][A-Za-z0-9_$]*\b/
-        "keywords": keywordsToRegex("class enum interface record annotation")
-
+        "type_keywords": keywordsToRegex("class enum interface record annotation")
+        "method_keywords": keywordsToRegex("public new")
     ]
     contains: [
         {
@@ -23,9 +23,9 @@
         // 导入标识符
         {match: /\b(?<=import)\s+(?:static\s+)?\S+\.((\*)|[^;\s.]+);/ 1: "constant" 2: "meta"}
         // 类型声明或泛型中的常量名/类型名
-        {match: /(?<!/ + include("keywords") + /\s)([A-Z][A-Za-z0-9_]*)\s*(<[^>]*>|\[.*\])?(?=\s+/ + include("type_name") + /)/
+        {match: /(?<!/ + include("type_keywords") + /\s)\b([A-Z][A-Za-z0-9_]*)\b\s*(<[^>]*>|\[.*\])?(?=\s+/ + include("type_name") + /)/
             1: "constant"
-            2: {match: include("type_name") 0: "operator"}
+            2: {match: include("type_name") 0: "label"}
             2: {match: /[\[<\]>]/ 0: "type"}
         }
 
@@ -42,7 +42,7 @@
         }
 
         // 方法
-        {match: /\b\.?([^;\s.(]+)\(/ 1: "label"}
+        {match: /\b(?<!/ + include("method_keywords") + /\s)\.?([^;\s.(]+)\(/ 1: "operator"}
     ]
     codeFormatter: #BUILT_IN_JAVA_FORMATTER#
 }
