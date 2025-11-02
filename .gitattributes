@@ -1,1 +1,1 @@
-*.mtsx linguist-language=JavaScript
+*.mtsx linguist-language=JavaScript linguist-detectable=false
