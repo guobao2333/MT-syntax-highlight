@@ -8,7 +8,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        **标题示例：** 请求优化/添加 JavaScript 语法高亮
+        **标题示例：** `[Request]: 请求添加 JavaScript 语法高亮`
   - type: input
     id: name
     attributes:
@@ -17,20 +17,20 @@ body:
       placeholder: 例如：JavaScript
     validations:
       required: true
-  - type: input
+  - type: textarea
     id: alias
     attributes:
       label: 别名（不区分大小写）
-      description: 该语言的其他名字（可选，如果有多个，以空格分割）
+      description: 该语言的其他名字（可选）
       placeholder: 例如：JS
     validations:
       required: false
-  - type: input
+  - type: textarea
     id: suffix
     attributes:
       label: 后缀名
-      description: 使用该语言的文件后缀名（如果有多个，以空格分割）
-      placeholder: 例如：js cjs mjs
+      description: 使用该语言的文件后缀名
+      placeholder: 例如：js, cjs, mjs
     validations:
       required: true
   - type: textarea
@@ -40,7 +40,7 @@ body:
       description: 该语言的官方语法介绍和其他信息
       # value: ""
       placeholder: |
-        如果实在找不到请用wiki链接代替，但正确填写有助于维护者更快完成。
+        如果实在找不到请用wiki链接替代，但正确填写有助于维护者更快完成。
     validations:
       required: true
   - type: textarea
