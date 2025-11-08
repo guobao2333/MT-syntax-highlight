@@ -2,8 +2,8 @@ name: 语法高亮请求
 description: 请求仓库中不存在的新语言
 title: "[Request]: "
 labels: ["new"]
-assignees:
-  - guobao2333
+# assignees:
+  # - guobao2333
 body:
   - type: markdown
     attributes:
@@ -30,7 +30,7 @@ body:
     attributes:
       label: 后缀名
       description: 使用该语言的文件后缀名
-      placeholder: 例如：js, cjs, mjs
+      placeholder: 例如：`.js` `.cjs` `.mjs`
     validations:
       required: true
   - type: textarea
