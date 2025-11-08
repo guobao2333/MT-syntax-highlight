@@ -1,6 +1,7 @@
 # List | 所有语言
 > [!NOTE]
 > 预览效果请在[此处](../preview)查看。
+
 | 语言 | 贡献者 |
 | :---: | :---: |
 [BBCode](bbcode.mtsx) |
