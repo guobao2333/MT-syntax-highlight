@@ -33,6 +33,13 @@
 > 由于允许排列组合，所以此处不再列举。
 </details>
 
+## 2025-11-8
+### Makefile (NEW)
+
++ 新增语法高亮：[Makefile](mtsx/java.mtsx)  
+  有关Makefile的文档请看这里：[Makefile Tutorial By Example](https://makefiletutorial.com/)
+
+___
 ## 2025-11-1
 ### BBCode (NEW)
 

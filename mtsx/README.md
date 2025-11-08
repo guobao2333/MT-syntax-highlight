@@ -1,24 +1,26 @@
-# List | 所有语法
+# List | 所有语言
 > [!NOTE]
 > 预览效果请在[此处](../preview)查看。
+| 语言 | 贡献者 |
+| :---: | :---: |
+[BBCode](bbcode.mtsx) |
+| [Brainfuck](brainfuck.mtsx) (已内置)[^已内置] |  |
+| [Dockerfile](dockerfile.mtsx) (暂时需手动切换)[^1] |  |
+| [Environment Variable](dotenv.mtsx) |  |
+| [Git Ignore](gitignore.mtsx) |  |
+| [Golang Ice](golang.mtsx) | [**@Love-Kogasa**](https://github.com/Love-Kogasa) |
+| [Haskell](haskell.mtsx) | [**@ZQBCWG**](https://github.com/ZQBCWG) |
+| [Makefle](makefle.mtsx) |  |
+| [Markdown(GFM)](markdown_github.mtsx)[^GFM] |  |
+| [Minecraft Bedrock Localized Language](minecraft_lang.mtsx) | 感谢 [**@Love-Kogasa**](https://github.com/Love-Kogasa) 提供的[语法原型](https://github.com/guobao2333/MT-syntax-highlight/pull/4#issuecomment-2439806367) |
+| [Perl](perl.mtsx) | [**@UndefTaco**](https://github.com/UndefTaco) |
+| [Protobuf](protobuf.mtsx) |  |
+| [Ruby](ruby.mtsx) | [**@UndefTaco**](https://github.com/UndefTaco) |
+| [VimScript](vim.mtsx) | [**@danicaStarR**](https://github.com/danicaStarR) |
 
-- [BBCode](bbcode.mtsx)
-- [Brainfuck](brainfuck.mtsx) (已内置)[^已内置]
-- [Dockerfile](dockerfile.mtsx) (暂时需手动切换)[^1]
-- [Environment Variable](dotenv.mtsx)
-- [Git Ignore](gitignore.mtsx)
-- [Golang Ice](golang.mtsx) 贡献者 [**@Love-Kogasa**](https://github.com/Love-Kogasa)
-- [Haskell](haskell.mtsx) 贡献者 [**@ZQBCWG**](https://github.com/ZQBCWG)
-- [Markdown(GFM)](markdown_github.mtsx)[^GFM]
-- [Minecraft Bedrock Localized Language](minecraft_lang.mtsx) 感谢 [**@Love-Kogasa**](https://github.com/Love-Kogasa) 提供的语法原型 https://github.com/guobao2333/MT-syntax-highlight/pull/4#issuecomment-2439806367
-- [Perl](perl.mtsx) 贡献者 [**@UndefTaco**](https://github.com/UndefTaco)
-- [Protobuf](protobuf.mtsx)
-- [Ruby](ruby.mtsx) 贡献者 [**@UndefTaco**](https://github.com/UndefTaco)
-- [VimScript](vim.mtsx) 贡献者 [**@danicaStarR**](https://github.com/danicaStarR)
-
-## Builtin | 内置语法
+## Builtin | 内置语言
 > [!NOTE]
-> 内置语法是MT管理器中已有语法的增强版。  
+> 内置语言是MT管理器中已有语言的增强版。  
 > 在增强版中添加/修改了一些额外语法/配色。
 - [HTML EX (HTML+CSS+JS)](builtin/HTML.mtsx)
 - [Java EX](builtin/Java.mtsx)

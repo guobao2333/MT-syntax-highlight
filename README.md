@@ -1,7 +1,7 @@
-<h1 align="center"><b>MT Syntax HighLight</b></h1>
+<h1 align="center"><b>MT Syntax Highlight</b></h1>
 <p align="center">
   适用于<a href="https://mt2.cn">MT管理器</a>的语法高亮(<a href="https://mt2.cn/guide/file/mt-syntax.html">.mtsx</a>)<br>
-  Code HighLight (.mtsx) for <a href="https://mt2.cn">MT Manager</a> application
+  Code Highlight (.mtsx) for <a href="https://mt2.cn">MT Manager</a> application
 </p>
 
 <p align="center">
@@ -17,7 +17,7 @@
 </details>
 
 ## Introduction | 简介
-[MT Syntax HighLight](https://github.com/guobao2333/MT-syntax-highlight)是适用于[MT管理器](https://mt2.cn)的第三方扩展语法高亮(.mtsx)，MT的语法高亮使用JAVA***正则表达式***实现。仓库创建之初因官方内置的语法高亮非常少，所以写了一些语法高亮供自己使用，后来内置语法越来越多，就减缓更新频率作为个人兴趣维护了，希望大家也能够写出更多漂亮的mt语法高亮！
+[MT Syntax Highlight](https://github.com/guobao2333/MT-syntax-highlight)是适用于[MT管理器](https://mt2.cn)的第三方扩展语法高亮(.mtsx)，MT的语法高亮使用JAVA***正则表达式***实现。仓库创建之初因官方内置的语法高亮非常少，所以写了一些语法高亮供自己使用，后来内置语法越来越多，就减缓更新频率作为个人兴趣维护了，希望大家也能够写出更多漂亮的mt语法高亮！
 
 ### MT 2.16.0
 从`2.16.0`版本开始，MT增加了更多高级语法和文本样式，这使得我们可以在今后写出性能更好、复杂性更高、样式更好看的高亮了！
@@ -46,8 +46,10 @@
 
 - [x] 🚧 BBCode
 - [ ] 🚧 Diff
-- [x] 🚧 Dockerfile
-- [x] 🚧 Markdown(GFM)
+- [x] Dockerfile
+- [ ] 🚧 Graphviz DOT
+- [x] Markdown(GFM)
+- [x] 🚧 Makefile
 - [ ] 🚧 Raku(Perl 6)
 - [x] 🚧 Protobuf
 
@@ -59,6 +61,9 @@
   - [x] JSON
   - [ ] Markdown
   - [x] MT Syntax
+
+### MTSX Lint | MTSX语法检查
+目前仓库仅存储语法高亮，但不具备任何CI功能，只能手动安装语法高亮来查看报错信息。未来会实现该功能以提供语法检查，但此功能始终不是官方内部实现，不能替代手动安装的检查。
 
 ## Request new language | 请求新语法高亮
 如果现有语法高亮不足以满足您的需求，想要维护者提供特定语言的高亮，可以打开新的`issues`来提交请求。
@@ -85,14 +90,18 @@
 ### Contribution Guidelines | 贡献指南
 您好开发者！欢迎向社区贡献你的力量！由于维护者的精力有限，无法提供所有您需要的语言，如果您编写了一份语法高亮希望让更多人使用，您可以贡献至本项目与开源社区一起维护！
 
+> [!NOTE]
+> 如果您使用MT编写或检查语法高亮，那么**强烈建议您安装[优化版MT Syntax语法高亮](mtsx/builtin/MT-Syntax.mtsx)**之后再进行开发，因为它为`.mtsx`文件提供了更好的正则语法高亮。  
+> 我们正在持续优化此内置语法，待后续优化到一定程度后（或许是3.0版本时？）将会推送更新至官方内置语法中。
+
 **要为本项目做出贡献，建议您遵循以下贡献规则及步骤：**
 
-0. 第一次贡献请点击`fork`复刻（克隆）仓库，否则请点击`Sync fork`同步最新代码！（处理冲突很麻烦の）
+0. 第一次贡献请点击`fork`复刻（克隆）仓库，否则请点击`Sync fork`按钮同步最新代码！（处理冲突超麻烦）
 1. 复刻仓库后，修改已有语法或添加新语法
    1. 新语法必须添加预览文件，预览图可以选择性添加。如果您还有空闲，请顺手更新一下 `mtsx/README.md` `preview/README.md` 可以为维护者减轻负担。
    2. 添加预览图时，请打开`只读模式`并将预览文件保留在编辑器（上方图钉按钮）然后分别切换亮色和暗色模式截图，将图片以相同分辨率裁剪，并导出为`webp`格式。
    3. 修改已有语法时需遵守源文件的缩进样式。(禁止空格tab混用)
-2. 点击`Contribute`创建新的拉取请求
+2. 点击`Contribute`按钮创建新的拉取请求
    1. 请将开发时参考的资料贴出，以便他人进行后续维护工作，否则此语法的更新优先级将降低，最坏情况将无人维护。
    2. 修改已有语法时，需要以用户友好的方式具体描述更新内容，并以此决定如何撰写发布版本号。
 3. 接下来请等待代码审查，如果审查结束将会合并代码。
