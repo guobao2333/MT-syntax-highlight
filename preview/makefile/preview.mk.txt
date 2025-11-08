@@ -1,0 +1,81 @@
+# 定义编译器
+CC = gcc
+
+# 编译选项
+CFLAGS = -Wall -g -O2
+
+# 链接选项
+LDFLAGS = -lm
+
+# 目标可执行文件
+TARGET = myapp
+
+# 源文件
+SRCS = main.c utils.c helper.c
+
+# 对象文件
+OBJS = $(SRCS:.c=.o)
+
+# 头文件目录
+INCLUDES = -I./include
+
+# ================================
+# 主要规则
+# ================================
+
+# 默认目标
+all: $(TARGET)
+
+# 链接目标文件生成可执行文件
+$(TARGET): $(OBJS)
+	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
+
+# 编译源文件生成目标文件
+%.o: %.c
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
+# 清理生成的文件
+clean:
+	rm -f $(TARGET) $(OBJS)
+
+# 安装到系统目录
+install:
+	cp $(TARGET) /usr/local/bin/
+
+# 伪目标声明
+.PHONY: all clean install
+
+# ================================
+# 高级特性
+# ================================
+
+# 1. 自动依赖生成
+DEPS = $(OBJS:.o=.d)
+%.d: %.c
+	@$(CC) $(CFLAGS) $(INCLUDES) -MM $< -MT $(@:.d=.o) > $@
+
+# 包含依赖文件
+-include $(DEPS)
+
+# 2. 调试信息
+debug: CFLAGS += -DDEBUG -g
+debug: $(TARGET)
+
+# 3. 发布版本
+release: CFLAGS += -O3 -DNDEBUG
+release: $(TARGET)
+
+# 4. 多目标构建
+APPS = app1 app2
+$(APPS): %: %.o common.o
+	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
+
+# 5. 条件判断
+ifdef STATIC
+LDFLAGS += -static
+endif
+
+# 6. 函数使用
+SRC_DIR = src
+SOURCES = $(wildcard $(SRC_DIR)/*.c)
+OBJECTS = $(patsubst %.c,%.o,$(SOURCES))

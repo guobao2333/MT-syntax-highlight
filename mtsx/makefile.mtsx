@@ -1,0 +1,184 @@
+// require MT >= 2.16.0
+// Version: 1.0.0
+// Repo: https://github.com/guobao2333/MT-syntax-highlight
+// Copyright (c) 2025 shiguobaona
+{
+    name: ["Makefile", "makefile", "Makefile", ".mk", ".mak", ".make"]
+    styles: [
+        "target", #FF79C6, #FF79C6, @B // 目标名称
+        "variable", #24C0E1, #8BE9FD // 变量 $(VAR) 或 ${VAR}
+        "specialVar", #FFB86C, #FFB86C // 特殊变量 $@, $<, $^ 等
+        "function", #BD93F9, #BD93F9 // 函数调用 $(func args)
+        "string", #1997E3, #E5F256 // 字符串
+        "keyword", #18A23B, #1ECE4A // Makefile关键字
+        "builtin", #E03030 #E06C75 // 内置函数名
+        "operator" #508090 #6080B0 // 赋值操作符 = := ?= +=
+        "comment" #8C8C8C #808080
+        "meta", #1997E3, #AA5FBD // .PHONY, .SUFFIXES 等元目标
+        "assignment", #24C0E1, #8BE9FD // 变量名在赋值语句中
+    ]
+    comment: {startsWith: "#"}
+    defines: [
+        // Makefile 关键字
+        "keywords": {match: keywordsToRegex(
+            "define endef undefine ifdef ifndef ifeq ifneq else endif"
+            "include -include sinclude override export unexport private vpath"
+            "ifdef ifndef ifeq ifneq else endif"
+        ), 0: "keyword"}
+
+        // 赋值操作符
+        "operator": {match: /[:+?]?=/, 0: "operator"}
+
+        // 内置函数名
+        "builtinFunctions": {match: keywordsToRegex(
+            "subst patsubst strip findstring filter filter-out sort"
+            "word wordlist firstword lastword dir notdir suffix basename"
+            "addsuffix addprefix join wildcard realpath abspath error warning"
+            "shell origin flavor foreach if or and call eval file value"
+        ), 0: "builtin"}
+
+        // 特殊变量
+        "specialVariables": {match: /\$[@%<?\^\+\*D]/ 0: "specialVar"}
+
+        // 简单变量引用 $(var) ${var}
+        "simpleVariable": {match: /\$(?:\{[\w-]+\}|\([\w-]+\))/ 0: "variable"}
+
+        // 带转义的引号字符串
+        "quotedString": {
+            start: {match: /"/}
+            end: {match: /"/}
+            style: "string"
+            contains: [
+                {match: /\\./, 0: "string"}  // 转义字符
+                {include: "simpleVariable"}
+                {include: "specialVariables"}
+                {include: "functionCall"}
+            ]
+        }
+
+        // 函数调用 $(func args)
+        "functionCall": {
+            start: {match: /\$\(/}
+            end: {match: /\)/}
+            style: "function"
+            contains: [
+                {include: "builtinFunctions"}
+                {include: "simpleVariable"}
+                {include: "specialVariables"}
+                {include: "quotedString"}
+                {match: /[\s,]+/, 0: "operator"}  // 参数分隔符
+            ]
+        }
+
+        // 变量赋值
+        "variableAssignment": {
+            group: link
+            contains: [
+                // 变量名
+                {match: /(?m)^[A-Za-z_][\w-]*\s*/, 0: "assignment"}
+                // 赋值
+                {include: "operator"}
+                {
+                    group: select
+                    contains: [
+                        {include: "quotedString"}
+                        {include: "functionCall"}
+                        {include: "simpleVariable"}
+                        {include: "specialVariables"}
+                    ]
+                }
+            ]
+        }
+
+        // 元目标声明 (.PHONY .SUFFIXES 等)
+        "metaTarget": {
+            group: link
+            contains: [
+                {match: /(?m)^\.PHONY:/, 0: "meta"}
+                // 其他
+                {match: /(?m)^\.\w+:/, 0: "meta"}
+            ]
+        }
+
+        // 普通目标
+        "regularTarget": {
+            group: link
+            contains: [
+                // 目标名（直到冒号）
+                {match: /(?m)^[^\s#]+(?=:)/, 0: "target"}
+                {match: /:/, 0: "operator"}
+                // 依赖项
+                {
+                    group: select
+                    contains: [
+                        {include: "simpleVariable"}
+                        {include: "specialVariables"}
+                    ]
+                }
+            ]
+        }
+
+        // 规则命令（以Tab开头）
+        "ruleCommand": {match: /(?m)^\t.*$/
+            0: "default"
+            0: {include: "simpleVariable"}
+            0: {include: "specialVariables"}
+            0: {include: "functionCall"}
+            0: {include: "quotedString"}
+        }
+
+        // 条件语句
+        "conditional": {
+            group: select
+            contains: [
+                // ifeq, ifneq, ifdef, ifndef
+                {
+                    group: link
+                    contains: [
+                        {match: /(?m)^\s*(ifn?(?:eq|def))\b/, 0: "keyword"}
+                        {include: "quotedString"}
+                        {include: "simpleVariable"}
+                    ]
+                }
+                // else, endif
+                {match: /(?m)^\s*(e(?:lse|ndif))\b/ 0: "keyword"}
+            ]
+        }
+    ]
+
+    contains: [        
+        // 赋值操作符
+        {include: "operator"}
+
+        // 条件语句
+        {include: "conditional"}
+
+        // 变量赋值
+        {include: "variableAssignment"}
+
+        // 元目标
+        {include: "metaTarget"}
+
+        // 普通目标
+        {include: "regularTarget"}
+
+        // 规则命令
+        {include: "ruleCommand"}
+
+        // 单独的关键字（如独立的 include, export 等）
+        {include: "keywords"}
+
+        // 单独的函数调用
+        {include: "functionCall"}
+
+        // 单独的变量引用
+        {include: "simpleVariable"}
+        {include: "specialVariables"}
+
+        // 单独的字符串
+        {include: "quotedString"}
+
+        // 单独的内置函数名（在非函数调用上下文中）
+        {include: "builtinFunctions"}
+    ]
+}
