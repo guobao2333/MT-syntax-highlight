@@ -33,15 +33,45 @@
 > 由于允许排列组合，所以此处不再列举。
 </details>
 
-## 2025-11-8
-### Makefile (NEW)
+## 2025-12-1
+### DotEnv - [1.0.5](https://github.com/guobao2333/MT-syntax-highlight/commit/c5683dd)
+#### Changed | 变化
+
+* 将空格更换为通配空白符
+
+### Markdown(GFM) - [4.1.0](https://github.com/guobao2333/MT-syntax-highlight/commit/98a80f4)
+#### Fixed | 修复
+
+1. 代码块名称可以匹配更多符号
+
+#### Changed | 变化
+
+* 优化引用块
+* 调整配色
+
+#### Added | 新增
+
++ 新增脚注链接
++ 新增页头参数 (Front Matter)
+
+### Brainfuck - [2.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/4e48be7)
+#### Refactored | 重写
+
+> 上个版本渲染效率过低，因此重写了全部逻辑
+
+* 不再会卡顿
+* 更换为新配色
+* 符号颜色不会重复
+* 不匹配的括号高亮为错误
+
+___
+## 2025-11-8 - Makefile (NEW)
 
 + 新增语法高亮：[Makefile](mtsx/java.mtsx)  
   有关Makefile的文档请看这里：[Makefile Tutorial By Example](https://makefiletutorial.com/)
 
 ___
-## 2025-11-1
-### BBCode (NEW)
+## 2025-11-1 - BBCode (NEW)
 
 + 新增语法高亮：[Bulletin Board Code](mtsx/java.mtsx)  
   有关Bulletin Board Code的文档请看这里：[BBCode - Wikipedia](https://wikipedia.org/wiki/BBCode)

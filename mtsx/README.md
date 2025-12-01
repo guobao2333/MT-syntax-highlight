@@ -3,7 +3,7 @@
 > 预览效果请在[此处](../preview)查看。
 
 | 语言 | 贡献者 |
-| :---: | :---: |
+| :--- | :---: |
 [BBCode](bbcode.mtsx) |
 | [Brainfuck](brainfuck.mtsx) (已内置)[^已内置] |  |
 | [Dockerfile](dockerfile.mtsx) (暂时需手动切换)[^1] |  |
