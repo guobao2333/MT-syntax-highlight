@@ -34,6 +34,11 @@
 </details>
 
 ## 2025-12-1
+### Java EX - [1.2.0](https://github.com/guobao2333/MT-syntax-highlight/commit/f49f447)
+#### Changed | 变化
+
+1. 优化类型、常量、方法的高亮逻辑和配色
+
 ### DotEnv - [1.0.5](https://github.com/guobao2333/MT-syntax-highlight/commit/c5683dd)
 #### Changed | 变化
 
