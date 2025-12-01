@@ -76,7 +76,8 @@ ___
   有关Makefile的文档请看这里：[Makefile Tutorial By Example](https://makefiletutorial.com/)
 
 ___
-## 2025-11-1 - BBCode (NEW)
+## 2025-11-1
+### BBCode (NEW)
 
 + 新增语法高亮：[Bulletin Board Code](mtsx/java.mtsx)  
   有关Bulletin Board Code的文档请看这里：[BBCode - Wikipedia](https://wikipedia.org/wiki/BBCode)

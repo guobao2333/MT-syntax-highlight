@@ -109,8 +109,8 @@ style，但还是建议修改为最新的语法，MT
 首先介绍下 MT 语法文件的正则表达式写法，主要有两种：
 
 ``` js
-    "正则表达式\\s+"
-    /正则表达式\s+/
+"正则表达式\\s+"
+/正则表达式\s+/
 ```
 
 第一种是把正则表达式写在双引号之间，与 Java
@@ -368,7 +368,7 @@ match
 {match: /(#)([0-9A-Fa-f]{6})\b/, 0: "parseColor(_,2,HEX,default)"} 
 ```
 
-- 高亮结果：[#0000FF]{style="background-color:#0000FF;"}（文字显示不清）
+- 高亮结果：<span style="background-color:#0000FF;">#0000FF</span>（文字显示不清）
 
 **把前景色参数由 \_ 改为 auto**
 
@@ -376,7 +376,7 @@ match
 {match: /(#)([0-9A-Fa-f]{6})\b/, 0: "parseColor(auto,2,HEX,default)"} 
 ```
 
-- 高亮结果：[#0000FF]{style="background-color:#0000FF;color:#FFFF00;"}（这下显示清晰了）
+- 高亮结果：<span style="background-color:#0000FF;color:#FFFF00;">#0000FF</span>（这下显示清晰了）
 
 **parseColor 共有 4 个参数，分别是：**
 
@@ -1060,7 +1060,7 @@ comment: {startsWith: "//", insertSpace: false, addToContains: false}
 
 在文本编辑器中，当你把光标放在一个括号上时，与其对应的另一个括号将会自动高亮：
 
-![alt](https://cdn-bbs.mt2.cn/doc/guide/file/bracket-pairs.webp)
+![bracketPairs](https://cdn-bbs.mt2.cn/doc/guide/file/bracket-pairs.webp)
 
 默认情况下会自动高亮括号对 `{}` `[]` `<>`，你可以通过 bracketPairs
 属性来指定要高亮的括号对：
@@ -1299,7 +1299,7 @@ codeFormatter: #内置的代码格式化器#
 目前仅支持指定内置的代码格式化器，**不支持自定义**，具体包含
 CSS、HTML、JavaScript、JSON、XML、Smali 代码格式化器，分别对应：
 
-``` js
+``` java
 #BUILT_IN_CSS_FORMATTER#
 #BUILT_IN_HTML_FORMATTER#
 #BUILT_IN_JS_FORMATTER#
@@ -1319,7 +1319,7 @@ codeShrinker: #内置的代码压缩器#
 目前仅支持指定内置的代码压缩器，**不支持自定义**，具体包含
 CSS、HTML、JSON 代码格式化器，分别对应：
 
-``` js
+``` java
 #BUILT_IN_CSS_SHRINKER#
 #BUILT_IN_HTML_SHRINKER#
 #BUILT_IN_JSON_SHRINKER#
@@ -1366,7 +1366,7 @@ CSS、HTML、JSON 代码格式化器，分别对应：
 
 内置的风格可在`MT.apk/assets/syntax/init/styles.mtsx`文件中找到，请以安装包内文件为准。
 
-``` js
+``` xml
     "default"       #000000     #A9B7C6 
     "string"        #067D17     #6A8759 
     "strEscape"     #0037A6     #CC7832 
@@ -1392,7 +1392,7 @@ CSS、HTML、JSON 代码格式化器，分别对应：
 
 内置的匹配器及其具体规则可在`MT.apk/assets/syntax/init/builtins.mtsx`文件中找到，请以安装包内文件为准。
 
-``` js
+``` java
 //
 // 普通字符串
 //
