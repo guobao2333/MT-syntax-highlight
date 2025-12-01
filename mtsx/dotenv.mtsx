@@ -1,5 +1,5 @@
 // require MT >= 2.16.0
-// Version: 1.0.4
+// Version: 1.0.5
 // Get update at https://github.com/guobao2333/MT-syntax-highlight
 // Copyright (c) 2025 shiguobaona
 {
@@ -22,16 +22,16 @@
 		"escape": {match: /(?:(?:\\[#\\$])|(\\n))/, 0: "escape" 1: "line_break2"}
 
 		"rowVar": {
-			match: /(?m)^([^ ]+?) *?(=) *?(.*)/,
+			match: /(?m)^([^\s]+?)\s*?(=)\s*?(.*)/,
 			1: "key"
 			2: "equal"
 			3: "value"
 			3: {match: /(?:'[^']*?')|(?:"[^"]*?")/, 0: "str"}
 			0: {include: "contains"}
 		}
-		"lineBreak1": {match: /(?m)\\ *$/, 0: "line_break"}
+		"lineBreak1": {match: /(?m)\\\s*$/, 0: "line_break"}
 		"lineBreak": {
-			match: /(?m)(?:(?<=\\ ?$\n).*)*/,
+			match: /(?m)(?:(?<=\\\s?$\n).*)*/,
 			0: "value"
 			0: {include: "contains"}
 		}
