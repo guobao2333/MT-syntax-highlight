@@ -1,59 +1,59 @@
 // require MT >= 2.16.0
-// Version: 4.0.1
+// Version: 4.1.0
 // Repo: https://github.com/guobao2333/MT-syntax-highlight
 // Copyright (c) 2025 shiguobaona
 {
 	name: ["Markdown(GFM)", ".md"]
 	comment: {startsWith: "<!--", endsWith: "-->"}
 	styles: [
-		"comment"					#8C8C8C #808080 //@I
+		"comment"					#8C8C8C	#808080	//@I
 		// 取消上行注释将注释变为斜体
-		"heading"					#E03030 #E06C75 @B
-		"escape"					#866BD3 #CC7832
-		"list"						#4663CC #5A6DE4 @B
-		"list_heading" > "list"
-		"list_task"					#3FB950 #3FB950 @B
-		"footnote"					#4493F8 #4493F8 @B
-		"mathjax" > "meta"
+		"heading"					#E03030	#E06C75	@B
+		"escape"					#866BD3	#CC7832
+		"list"						#4663CC	#5A6DE4	@B
+		"list_heading"	>	"list"
+		"list_task"					#3FB950	#3FB950	@B
+		"footnote"					#4493F8	#4493F8	@B
+		"mathjax"	>	"meta"
 
 		// 这里有两个短代码的配色版本，可以根据喜好调整
-		"code"						#1F2328#EFF1F3 #929DA0#394050
-		//"code"						#EEE#ABB1BA #A9B7C6#343942
+		"code"						#1F2328#EFF1F3	#929DA0#394050
+		//"code"						#EEE#ABB1BA	#A9B7C6#343942
 
-		"code_block"				#7050E0 #7050E0
-		"code_content"				#1F2328$D8D8D8 #C7C7C7$1E1E1E
-		"code_syntax_name"			#FF51E2 #A64EAD
-		"quote_serif"				#NULL#D0D7DE #555#444 @B
-		"quote_note"				#2F81F7#2F81F7 #2F81F7#2F81F7
-		"quote_note_text"			#2F81F7 #2F81F7
-		"quote_tip"					#238636#238636 #238636#238636
-		"quote_tip_text"			#3FB950 #3FB950
-		"quote_important"			#8957E5#8957E5 #8957E5#8957E5
-		"quote_important_text"		#A371F7 #A371F7
-		"quote_warning"				#9E6A03#9E6A03 #9E6A03#9E6A03
-		"quote_warning_text"		#D29922 #D29922
-		"quote_caution"				#DA3633#DA3633 #DA3633#DA3633
-		"quote_caution_text"		#F85149 #F85149
-		"quote_text"				#777 #858F99
-		"exclamation_mark"			#FF7000 #D2B72D @B
-		"url_text"					#NULL#AFD2CE #NULL#333 @U
-		"url_title"					#009688 #639274
-		"url"						#508090 #508090 @UI
-		"bracket"					#999 #999
-		"split_line"				#30363D$D0D7DE #B59911$30363D @B
-		"line_break"				#NULL#D0DED3 #NULL#383B37 @B
-		"B" @B
-		"I" @I
-		"S" @S
-		"U" @U
+		"code_block"				#7050E0	#7050E0
+		"code_content"				#1F2328$D8D8D8	#C7C7C7$1E1E1E
+		"code_syntax_name"			#FF51E2	#A64EAD
+		"quote_serif"				#NULL#D0D7DE	#555#444	@B
+		"quote_note"				#2F81F7#2F81F7	#2F81F7#2F81F7
+		"quote_note_text"			#2F81F7	#2F81F7
+		"quote_tip"					#238636#238636	#238636#238636
+		"quote_tip_text"			#3FB950	#3FB950
+		"quote_important"			#8957E5#8957E5	#8957E5#8957E5
+		"quote_important_text"		#A371F7	#A371F7
+		"quote_warning"				#9E6A03#9E6A03	#9E6A03#9E6A03
+		"quote_warning_text"		#D29922	#D29922
+		"quote_caution"				#DA3633#DA3633	#DA3633#DA3633
+		"quote_caution_text"		#F85149	#F85149
+		"quote_text"				#777	#858F99
+		"exclamation_mark"			#FF7000	#D2B72D	@B
+		"url_text"					#NULL#AFD2CE	#NULL#333	@U
+		"url_title"					#009688	#639274
+		"url"						#508090	#508090	@UI
+		"bracket"					#999	#999
+		"split_line"				#30363D$D0D7DE	#B59911$30363D	@B
+		"line_break"				#NULL#D0DED3	#NULL#383B37	@B
+		"B"	@B
+		"I"	@I
+		"S"	@S
+		"U"	@U
 	]
 	// 括号对高亮
 	bracketPairs: ["()", "[]", "{}", "<>"]
 
 	defines: [
 		"prefix": /(?:(?m)(?:^|\n)[\t ]*)/
-		"url": /(?:\[(.*?)\]\((.+?)( "[^"]*")?\))/
-		"img": /\[(!)/ + include("url") + /\]\((.+?)( "[^"]*")?\)/
+		"quote_before": /(?m)(?:^(?: *(>))+ *)\[(!)/
+		"quote_after": /\](?:/ + include("prefix") + /(>)([^\n]*))+/
 		"submatcher": [
 			{include: "escape"}
 			{include: "shortCode"}
@@ -66,6 +66,7 @@
 		"submatcher2": [
 			{include: "escape"}
 			{include: "shortCode"}
+			{include: "footnote"}
 			{include: "link"}
 		]
 
@@ -102,7 +103,9 @@
 						end: {match: /\]/ 0: "!!bracket"}
 						mustMatchEnd: true
 						childrenStyle: "U"
-						contains: [ {include: "link"} ]
+						contains: [
+							{include: "submatcher2"}
+						]
 					}
 					{match: /\(([^ ]+?)( "[^"]*?")?\)/
 					0: "!!bracket"
@@ -118,7 +121,7 @@
 			// 缩进代码块
 			{match: /(?m)^( {4,}| *\t)\S.*\n/ + /(\s*(^( {4,}| *\t)\S.*(\n|$))+)*/ 0: "code_content"}
 
-			{match: /(?m)(?:^ {0,3})(`{3,}|~{3,})([- a-z]*?)(?:\n[\s\S]*?)*(?:^ {0,3})(\1)/
+			{match: /(?m)(?:^ {0,3})(`{3,}|~{3,})([-={} a-zA-Z]*?)(?:\n[\s\S]*?)*(?:^ {0,3})(\1)/
 			0: "code_content" 1: "code_block" 2: "code_syntax_name" 3: "code_block"}
 		]
 
@@ -150,9 +153,9 @@
 			}
 		]
 
-		"quote": [
+		"quotes": [
 			{
-				match: /(?m)(?:^(?: *(>))+ *)\[(!)NOTE\](?:/ + include("prefix") + /(>)([^\n]*))+/
+				match: include("quote_before") + /NOTE/ + include("quote_after")
 				recordAllGroups: true
 				0: "B"
 				0: "quote_note_text"
@@ -163,7 +166,7 @@
 				4: {include: "submatcher"}
 			}
 			{
-				match: /(?m)(?:^(?: *(>))+ *)\[(!)TIP\](?:/ + include("prefix") + /(>)([^\n]*))+/
+				match: include("quote_before") + /TIP/ + include("quote_after")
 				recordAllGroups: true
 				0: "B"
 				0: "quote_tip_text"
@@ -174,7 +177,7 @@
 				4: {include: "submatcher"}
 			}
 			{
-				match: /(?m)(?:^(?: *(>))+ *)\[(!)IMPORTANT\](?:/ + include("prefix") + /(>)([^\n]*))+/
+				match: include("quote_before") + /IMPORTANT/ + include("quote_after")
 				recordAllGroups: true
 				0: "B"
 				0: "quote_important_text"
@@ -185,7 +188,7 @@
 				4: {include: "submatcher"}
 			}
 			{
-				match: /(?m)(?:^(?: *(>))+ *)\[(!)WARNING\](?:/ + include("prefix") + /(>)([^\n]*))+/
+				match: include("quote_before") + /WARNING/ + include("quote_after")
 				recordAllGroups: true
 				0: "B"
 				0: "quote_warning_text"
@@ -196,7 +199,7 @@
 				4: {include: "submatcher"}
 			}
 			{
-				match: /(?m)(?:^(?: *(>))+ *)\[(!)CAUTION\](?:/ + include("prefix") + /(>)([^\n]*))+/
+				match: include("quote_before") + /CAUTION/ + include("quote_after")
 				recordAllGroups: true
 				0: "B"
 				0: "quote_caution_text"
@@ -222,6 +225,20 @@
 			}
 			{
 				match: /\[\^(?:\\]|[^\]\n])+?\]/
+				0: "footnote"
+				0: {match: /\\]/ 0: "escape"}
+			}
+		]
+
+		"footnote_link": [
+			{
+				match: /(?m)^\[(?:\\]|[^\]\n])+?\]: (https?:\/\/.*)/
+				0: "footnote"
+				0: {match: /\\]/ 0: "escape"}
+				1: "!!url"
+			}
+			{
+				match: /\[(?!\^)(?:\\]|[^\]\n])+?\]\[(?:\\]|[^\]\n])+?\]/
 				0: "footnote"
 				0: {match: /\\]/ 0: "escape"}
 			}
@@ -283,9 +300,21 @@
 	]
 
 	contains: [
+		// Front Matter
+		{
+			start: {match: /^---\n/, 0: "!!exclamation_mark"}
+			end: {match: /(?m)^---$/, 0: "!!exclamation_mark"}
+			mustMatchEnd: true
+			//style: "front_matter"
+			contains: [
+				{match: /(?m)^(.*?):/, 1: "heading"}
+				{match: keywordsToRegex("true false null void undefined infinity") 0: "list"}
+			]
+		}
 		// 这样写是为了后续方便调整顺序，以最佳顺序高亮语法，避免bug。
 		// 优先级：top to bottom
 		{include: "htmlMatchers"}
+		{include: "footnote_link"}
 		{include: "footnote"}
 		{include: "link"}
 		{include: "heading"}
@@ -293,7 +322,7 @@
 		{include: "mathjax"}
 		{include: "splitLine"}
 		{include: "list"}
-		{include: "quote"}
+		{include: "quotes"}
 		{include: "headingSetext"}
 		{include: "codeBlock"}
 		{include: "shortCode"}
