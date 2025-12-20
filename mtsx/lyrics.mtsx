@@ -1,0 +1,24 @@
+// require MT >= 2.19.4
+// Version: 1.0.0
+// Repo: https://github.com/guobao2333/MT-syntax-highlight
+// Copyright (c) 2025 cnbilinyj
+{
+    name: ["Lyrics", ".lrc"]
+    hide: false
+    ignoreCase: false
+    styles: [
+        "background", #FFFAE3, #2B2B2B
+    ]
+    lineBackground: {match: /\[\d*:\d\d.\d*\]\s*/, style: "meta"}
+    lineBackground: {match: /\[\d*:\d\d.\d*\][\S\s]*/, style: "background"}
+    lineBackground: {match: /\[.*:.*\]\s*?/, style: "background"}
+    lineBackground: {match: /(\s)*?/, style: "default"}
+    lineBackground: {match: /.*/, style: "error"}
+    contains: [
+        {match: /^(\[)(\d*)(:)(\d\d)(\.)(\d*)(\])/, 1: "type", 2: "number", 3: "type", 4:"number", 5: "type", 6: "number", 7: "type"}
+        {match: /(\n\[)(\d*)(:)(\d\d)(\.)(\d*)(\])/, 1: "type", 2: "number", 3: "type", 4:"number", 5: "type", 6: "number", 7: "type"}
+        {match: /^(\[)([\s\S]*?)(:)([\s\S]*?)(\])/, 1: "type", 2: "tagName", 3: "type", 4:"attrName", 5: "type"}
+        {match: /(\n\[)([\s\S]*?)(:)([\s\S]*?)(\])/, 1: "type", 2: "tagName", 3: "type", 4:"attrName", 5: "type"}
+        {match: /(^[\n]?\[\d*:\d\d\.\d*\])(.*)/, 0: "string"}
+    ]
+}

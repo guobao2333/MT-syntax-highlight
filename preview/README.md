@@ -81,6 +81,13 @@
 </details>
 
 <details>
+<summary>Lyrics</summary>
+
+![亮色](lyrics/light.webp)
+![暗色](lyrics/dark.webp)
+</details>
+
+<details>
 <summary>Makefile</summary>
 
 ![亮色](makefile/light.webp)
