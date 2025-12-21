@@ -1,24 +1,35 @@
-// require MT >= 2.19.4
-// Version: 1.0.0
+// require MT >= 2.16.0
+// Version: 2.0.0
 // Repo: https://github.com/guobao2333/MT-syntax-highlight
-// Copyright (c) 2025 cnbilinyj
+// Copyright (c) 2025 shiguobaona, cnbilinyj
 {
     name: ["Lyrics", ".lrc"]
-    hide: false
-    ignoreCase: false
+
     styles: [
-        "background", #FFFAE3, #2B2B2B
+        "interlude"  #FD9      #585920  
+        "bracket"    #9E880D   #808000  
+        "metaTag"    #C85      #E8BF6A  
+        "timeNumber" #6897BB   #6897BB  
+        "metaAttr"   #174AD4   #AE8ABE  
+        "errorText"  #NULL$F99 #NULL$611
     ]
-    lineBackground: {match: /\[\d*:\d\d.\d*\]\s*/, style: "meta"}
-    lineBackground: {match: /\[\d*:\d\d.\d*\][\S\s]*/, style: "background"}
-    lineBackground: {match: /\[.*:.*\]\s*?/, style: "background"}
-    lineBackground: {match: /(\s)*?/, style: "default"}
-    lineBackground: {match: /.*/, style: "error"}
+
+    // 间奏
+    lineBackground: {match: /\[\d*:\d{2}\.\d*\]\s*$/ style: "interlude"}
+
     contains: [
-        {match: /^(\[)(\d*)(:)(\d\d)(\.)(\d*)(\])/, 1: "type", 2: "number", 3: "type", 4:"number", 5: "type", 6: "number", 7: "type"}
-        {match: /(\n\[)(\d*)(:)(\d\d)(\.)(\d*)(\])/, 1: "type", 2: "number", 3: "type", 4:"number", 5: "type", 6: "number", 7: "type"}
-        {match: /^(\[)([\s\S]*?)(:)([\s\S]*?)(\])/, 1: "type", 2: "tagName", 3: "type", 4:"attrName", 5: "type"}
-        {match: /(\n\[)([\s\S]*?)(:)([\s\S]*?)(\])/, 1: "type", 2: "tagName", 3: "type", 4:"attrName", 5: "type"}
-        {match: /(^[\n]?\[\d*:\d\d\.\d*\])(.*)/, 0: "string"}
+        // 元数据
+        {match: /(?-m)(?<=^\n*)\[([^\n]*?):([^\n]*?)\]/
+          0: {match: /[:\[\].]/ 0: "bracket"}
+          1: "metaTag"
+          2: "metaAttr"}
+
+        // 歌词时间戳
+        {match: /(?:^|\n)\[\d*:\d{2}\.\d*\]/
+          0: {match: /\d/ 0: "timeNumber"}
+          0: {match: /[:\[\].]/ 0: "bracket"}}
+
+        // 错误提示
+        {match: /(?m)^(?!\[[^\n]*?:[^\n]*?\]|\[\d*:\d{2}\.\d*\]).?/ 0: "errorText"}
     ]
 }
