@@ -1,6 +1,6 @@
 name: Syntax Request
-description: Requesting new syntax that does't exist in the repository
-title: "[Request]: "
+description: Requesting new syntax-highlight that does't exist in the repository
+title: "[Request] "
 labels: ["new"]
 # assignees:
   # - guobao2333
@@ -8,46 +8,46 @@ body:
   - type: markdown
     attributes:
       value: |
-        **标题示例：** `[Request]: 请求添加 JavaScript 语法高亮`
+        **Title example:** `[Request] Add JavaScript mtsx`
   - type: input
     id: name
     attributes:
-      label: 语言正式名称
-      description: 该语言官方/常用/约定俗成的名称
-      placeholder: 例如：JavaScript
+      label: Language Official Name
+      description: Official/Common/Conventional name of the language
+      placeholder: e.g. `JavaScript`
     validations:
       required: true
   - type: textarea
     id: alias
     attributes:
-      label: 别名（不区分大小写）
-      description: 该语言的其他名字（可选）
-      placeholder: 例如：JS
+      label: Alias (case insensitive)
+      description: Another name for the language (optional)
+      placeholder: e.g. `JS`
     validations:
       required: false
   - type: textarea
     id: suffix
     attributes:
-      label: 后缀名
-      description: 使用该语言的文件后缀名
-      placeholder: 例如：`.js` `.cjs` `.mjs`
+      label: Suffix
+      description: File extension using this language
+      placeholder: e.g. `.js` `.cjs` `.mjs`
     validations:
       required: true
   - type: textarea
     id: reference
     attributes:
-      label: 相关资料
-      description: 该语言的官方语法介绍和其他信息
+      label: Related Info
+      description: Official grammar introduction and other information for the language
       # value: ""
       placeholder: |
-        如果实在找不到请用wiki链接替代，但正确填写有助于维护者更快完成。
+        If you really cant find it, please use a wiki link instead, but filling it out correctly will help the maintainer complete it faster.
     validations:
       required: true
   - type: textarea
     id: additional
     attributes:
-      label: 补充信息
-      description: 如果您发现该语言已有其他方式的高亮实现，可以附上相关链接以及效果截图
+      label: Supplementary Info
+      description: If you find that this language has been highlighted elsewhere, you can attach relevant links and screenshots of the effects.
     validations:
       required: false
   - type: checkboxes

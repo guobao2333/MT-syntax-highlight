@@ -1,6 +1,6 @@
 name: 语法高亮请求
 description: 请求仓库中不存在的新语言
-title: "[Request]: "
+title: "[Request] "
 labels: ["new"]
 # assignees:
   # - guobao2333
@@ -8,13 +8,13 @@ body:
   - type: markdown
     attributes:
       value: |
-        **标题示例：** `[Request]: 请求添加 JavaScript 语法高亮`
+        **标题示例：** `[Request] 添加 JavaScript 语法高亮`
   - type: input
     id: name
     attributes:
       label: 语言正式名称
       description: 该语言官方/常用/约定俗成的名称
-      placeholder: 例如：JavaScript
+      placeholder: 例如：`JavaScript`
     validations:
       required: true
   - type: textarea
@@ -22,7 +22,7 @@ body:
     attributes:
       label: 别名（不区分大小写）
       description: 该语言的其他名字（可选）
-      placeholder: 例如：JS
+      placeholder: 例如：`JS`
     validations:
       required: false
   - type: textarea
@@ -40,7 +40,7 @@ body:
       description: 该语言的官方语法介绍和其他信息
       # value: ""
       placeholder: |
-        如果实在找不到请用wiki链接替代，但正确填写有助于维护者更快完成。
+        实在找不到就用wiki链接替代，但正确填写有助于维护者更快完成。
     validations:
       required: true
   - type: textarea
