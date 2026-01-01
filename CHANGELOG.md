@@ -30,9 +30,15 @@
 > ### 语法2 - 版本3
 > ```
 >
-> 由于允许排列组合，所以此处不再列举。
+> 特殊规范允许排列组合，故此处不再列举。
 </details>
 
+## 2025-12-22 - Lyrics (NEW) - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/pull/14) & [2.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/6566493)
+
++ 新增语法高亮：[音乐歌词](mtsx/lyrics.mtsx)
+  > 由于1.0版本的规则过于不合理，可能会降低性能，因此将其重构后发布为2.0
+
+___
 ## 2025-12-1
 ### Java EX - [1.2.0](https://github.com/guobao2333/MT-syntax-highlight/commit/f49f447)
 #### Changed | 变化
@@ -67,7 +73,7 @@
 * 不再会卡顿
 * 更换为新配色
 * 符号颜色不会重复
-* 不匹配的括号高亮为错误
+* 不匹配的括号以红色高亮
 
 ___
 ## 2025-11-8 - Makefile (NEW)
@@ -356,7 +362,7 @@ ___
 * 优化了部分匹配逻辑，渲染速度提升
 
 ___
-## 2025-2-26
+## 2025-2-26 (Important updates)
 - 移除所有语法中的多余协议声明  
   由于甚至会比语法高亮本身都长，故仅保留作者版权信息
 ### JavaScript EX (内置) - [1.2.0](https://github.com/guobao2333/MT-syntax-highlight/commit/6d0375b)
