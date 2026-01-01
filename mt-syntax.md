@@ -1,9 +1,7 @@
 ---
-description: MT管理器官网
-image: "https://mt2.cn/logo.png"
-keywords: MT管理器,MT管理器教程
+description: MT管理器语法高亮开发文档
 lang: zh-CN
-title: 语法文件开发 \| MT管理器
+title: 语法文件开发 | MT管理器
 update: 2025-12-1
 ---
 
@@ -104,7 +102,7 @@ style，但还是建议修改为最新的语法，MT
 
 - 新增 [number 匹配器](#_4-number-%E5%8C%B9%E9%85%8D%E5%99%A8)，用于快速匹配编程语言数字
 
-## [\#](#★-正则表达式)
+## [\#](#★-正则表达式) ★ 正则表达式
 
 首先介绍下 MT 语法文件的正则表达式写法，主要有两种：
 

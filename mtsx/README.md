@@ -4,13 +4,15 @@
 
 | 语言 | 贡献者 |
 | :--- | :---: |
-[BBCode](bbcode.mtsx) |
+| [BBCode](bbcode.mtsx) |  |
 | [Brainfuck](brainfuck.mtsx) (已内置)[^已内置] |  |
 | [Dockerfile](dockerfile.mtsx) (暂时需手动切换)[^1] |  |
+| [DOT](dot.mtsx) |  |
 | [Environment Variable](dotenv.mtsx) |  |
 | [Git Ignore](gitignore.mtsx) |  |
 | [Golang Ice](golang.mtsx) | [**@Love-Kogasa**](https://github.com/Love-Kogasa) |
 | [Haskell](haskell.mtsx) | [**@ZQBCWG**](https://github.com/ZQBCWG) |
+| [Lyrics](lyrics.mtsx) | [**@cnbilinyj**](https://github.com/cnbilinyj) 贡献了原始的1.0版本 |
 | [Makefle](makefle.mtsx) |  |
 | [Markdown(GFM)](markdown_github.mtsx)[^GFM] |  |
 | [Minecraft Bedrock Localized Language](minecraft_lang.mtsx) | 感谢 [**@Love-Kogasa**](https://github.com/Love-Kogasa) 提供的[语法原型](https://github.com/guobao2333/MT-syntax-highlight/pull/4#issuecomment-2439806367) |

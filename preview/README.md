@@ -18,6 +18,13 @@
 </details>
 
 <details>
+<summary>DOT</summary>
+
+![亮色](dot/light.webp)
+![暗色](dot/dark.webp)
+</details>
+
+<details>
 <summary>Environment Variable</summary>
 
 ![亮色](dotenv/light.webp)

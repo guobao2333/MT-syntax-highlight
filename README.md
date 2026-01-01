@@ -53,7 +53,7 @@
 - [ ] 🚧 CUE
 - [ ] 🚧 Diff
 - [x] Dockerfile
-- [ ] 🚧 Graphviz DOT
+- [x] 🚧 Graphviz DOT
 - [ ] 🚧 LaTeX
 - [x] Markdown(GFM)
 - [x] 🚧 Makefile
@@ -118,11 +118,4 @@
     limitations under the License.
 
 ## References | 参考
-1. [mt语法高亮开发](https://mt2.cn/guide/file/mt-syntax.html)
-2. [GitHub Flavored Markdown Spec](https://github.github.com/gfm)
-3. [Markdown - Wikipedia](https://wikipedia.org/wiki/Markdown)
-4. [Git - gitignore Documentation](https://git-scm.com/docs/gitignore)
-5. [VimScript - VimDoc](https://vimdoc.sourceforge.net/htmldoc/usr_41.html)
-6. [Brainfuck - Wikipedia](https://wikipedia.org/wiki/Brainfuck)
-7. [Dockerfile reference | Docker Docs](https://docs.docker.com/reference/dockerfile/)
-8. [Protocol Buffers Docs](https://protobuf.dev/)
+- [mt语法高亮开发](https://mt2.cn/guide/file/mt-syntax.html)

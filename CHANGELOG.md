@@ -33,10 +33,19 @@
 > 特殊规范允许排列组合，故此处不再列举。
 </details>
 
+## 2026-1-1 - DOT (NEW) - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/67460b7)
+**2026新年快乐！**🎉
+
++ 新增语法高亮：[Graphviz DOT](dot.mtsx)  
+  有关Graphviz DOT的文档请看这里：[DOT Language | Graphviz](https://graphviz.org/doc/info/lang.html)
+
+___
 ## 2025-12-22 - Lyrics (NEW) - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/pull/14) & [2.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/6566493)
 
 + 新增语法高亮：[音乐歌词](mtsx/lyrics.mtsx)
   > 由于1.0版本的规则过于不合理，可能会降低性能，因此将其重构后发布为2.0
+
+感谢该语法1.0版本的贡献者：[**@cnbilinyj**](https://github.com/cnbilinyj)
 
 ___
 ## 2025-12-1
@@ -78,14 +87,14 @@ ___
 ___
 ## 2025-11-8 - Makefile (NEW)
 
-+ 新增语法高亮：[Makefile](mtsx/java.mtsx)  
++ 新增语法高亮：[Makefile](mtsx/makefile.mtsx)  
   有关Makefile的文档请看这里：[Makefile Tutorial By Example](https://makefiletutorial.com/)
 
 ___
 ## 2025-11-1
 ### BBCode (NEW)
 
-+ 新增语法高亮：[Bulletin Board Code](mtsx/java.mtsx)  
++ 新增语法高亮：[Bulletin Board Code](mtsx/bbcode.mtsx)  
   有关Bulletin Board Code的文档请看这里：[BBCode - Wikipedia](https://wikipedia.org/wiki/BBCode)
 
 ### Java EX (内置) - [1.1.1](https://github.com/guobao2333/MT-syntax-highlight/commit/1a06d9e)
