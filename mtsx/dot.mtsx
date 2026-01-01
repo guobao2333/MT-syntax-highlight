@@ -1,0 +1,135 @@
+// require MT >= 2.16.0
+// Version: 1.0.0
+// Repo: https://github.com/guobao2333/MT-syntax-highlight
+// Copyright (c) 2026 shiguobaona
+{
+    name: ["GraphvizDOT", ".dot", ".gv"]
+
+    comment: {startsWith: "//"}
+    comment: {startsWith: "/*", endsWith: "*/"}
+    comment: {startsWith: "#"}
+
+    bracketPairs: ["{}", "[]", "()", "<>"]
+
+    styles: [
+        "graphKeyword" > "keyword" @B
+        "graphName" > "variable"
+        "attrName" > "propKey"
+        "nodeId" > "type"
+        "edgeOp" #78267E #8582B0 @B
+    ]
+
+    defines: [
+        // 转义字符处理
+        "escaped": [
+            {match: /\\[lntr"\\]/, 0: "strEscape"}
+            {match: /\\./, 0: "error"}
+        ]
+
+        // 边操作符
+        "edgeOp": {match: /->|--/, 0: "edgeOp"}
+        
+        // HTML标签(用于节点标签)
+        "htmlTag": {
+            start: {match: /</}
+            end: {match: />/}
+            style: "tagName"
+            childrenStyle: "attrName"
+            contains: [
+                {match: /=/, 0: "operator"}
+                {
+                    start: {match: /"/}
+                    end: {match: /(?m)"|$/}
+                    style: "string"
+                }
+            ]
+        }
+
+        // 节点ID(标识符、数字、带引号的字符串)
+        "nodeId": [
+            // 带引号的ID
+            {
+                start: {match: /"/}
+                end: {match: /(?m)"|$/}
+                style: "nodeId"
+                contains: [{include: "escaped"}]
+            }
+            // TODO: 不高亮或仅保留并优化数字高亮
+            // 普通标识符
+            // {match: /[a-zA-Z_\x80-\xff][a-zA-Z0-9_\x80-\xff]*/ 0: "nodeId"}
+            // 数字ID
+            // {match: /-?(?:\.\d+|\d+(?:\.\d*)?)/ 0: "number"}
+        ]
+
+        // 属性列表 [key=value, key=value]
+        "attrList": {
+            start: {match: /(?:(.*?)\s*)?\[/ 1: {include: "edgeOp"} 1: "nodeId"}
+            end: {match: /\]/}
+            contains: [
+                // 属性名
+                {match: /[a-zA-Z_][a-zA-Z0-9_]*(?=\s*=)/, 0: "attrName"}
+
+                // 等号
+                {match: /=/, 0: "operator"}
+
+                // HTML标签值
+                {include: "htmlTag"}
+
+                // 字符串值
+                {
+                    start: {match: /"/}
+                    end: {match: /(?m)"|$/}
+                    style: "string"
+                    contains: [{include: "escaped"}]
+                }
+
+                // 普通值(标识符)
+                {match: /[a-zA-Z_][a-zA-Z0-9_]*/, 0: "propVal"}
+
+                // 数字值
+                {number: "10|F"}
+
+                // 语句
+                {match: /[,;]/, 0: "operator"}
+            ]
+        }
+    ]
+
+    contains: [
+        {builtin: #PROGRAM_NUMBER#}
+
+        // 图名称
+        {group: link
+        contains: [
+            {match: /(?i)\b(?<=(?:di|sub)?graph)\s+/}
+            {match: /[a-zA-Z_][a-zA-Z0-9_]*/, 0: "graphName"}
+        ]}
+        // 图类型关键字: strict digraph graph
+        {match: keywordsToRegex("strict graph digraph subgraph node edge"), 0: "graphKeyword"}
+
+        // 边操作符
+        {include: "edgeOp"}
+
+        // 属性列表
+        {include: "attrList"}
+
+        // 节点ID
+        // {include: "nodeId"}
+        {
+            start: {match: /"/}
+            end: {match: /(?m)"|$/}
+            style: "string"
+            contains: [{include: "escaped"}]
+        }
+
+        // 块
+        {match: /[{}]/, 0: "keyword"}
+
+        // 语句
+        {match: /[;,]/, 0: "operator"}
+
+        // 端口
+        // TODO: 扩展端口映射高亮
+        {match: /:/, 0: "operator"}
+    ]
+}

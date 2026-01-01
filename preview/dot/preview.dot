@@ -1,0 +1,137 @@
+// Graphviz DOT test file by AI
+/* 
+ * 块注释
+ * 多行块注释
+ */
+# 井号注释
+
+// 基本的有向图
+strict digraph MyGraph {
+    // 节点定义
+    A;
+    B;
+    "Node C";
+    123;
+    -456;
+    node_1;
+    
+    // 边定义
+    A -> B;
+    B -> "Node C";
+    A -> 123 -> -456;
+    
+    // 属性列表
+    A [label="节点A", shape=box, color=red];
+    B [label="节点B", shape=circle, style=filled, fillcolor=lightblue];
+    "Node C" [label="节点\nC", fontsize=14];
+    
+    // 边属性
+    A -> B [label="边1", color=blue, style=dashed];
+    B -> A [label="边2", weight=2.5, penwidth=2.0];
+}
+
+// 无向图
+graph UndirectedGraph {
+    // 无向边
+    X -- Y;
+    Y -- Z -- X;
+    
+    // 全局属性
+    node [shape=ellipse, style=filled];
+    edge [color=gray];
+    
+    X [fillcolor=yellow];
+    Y [fillcolor=green];
+    Z [fillcolor=orange];
+}
+
+// 子图
+digraph ClusterExample {
+    subgraph cluster_0 {
+        label="子图0";
+        a0 -> a1 -> a2;
+    }
+    
+    subgraph cluster_1 {
+        label="子图1";
+        b0 -> b1 -> b2;
+    }
+    
+    a2 -> b0;
+}
+
+// HTML标签
+digraph HTMLLabels {
+    node1 [label=
+        <table>
+            <tr><td>HTML</td></tr>
+            <tr><td>Table</td></tr>
+        </table>
+    >];
+    
+    node2 [label=
+        <b>Bold Text</b><br/>
+        <i>Italic Text</i>
+    >];
+}
+
+// 端口和复杂ID
+digraph Ports {
+    struct1 [shape=record, label="<f0> left|<f1> middle|<f2> right"];
+    struct2 [shape=record, label="<f0> one|<f1> two"];
+    
+    struct1:f0 -> struct2:f1;
+    struct1:f2 -> struct2:f0;
+}
+
+// 转义字符
+digraph Escapes {
+    A [label="第一行\n第二行"];
+    B [label="制表符:\t"];
+    C [label="引号:\"\""];
+    D [label="反斜杠:\\路径"];
+    E [label="回车:\r"];
+}
+
+// 数字和标识符
+digraph Numbers {
+    1 -> 2;
+    -1 -> -2;
+    3.14 -> 2.718;
+    -0.5 -> 0.0;
+    .5 -> -.5;
+    _underscore -> CamelCase;
+    中文节点 -> αβγ;
+}
+
+// 复杂属性组合
+digraph ComplexAttrs {
+    node [
+        shape=box,
+        style="rounded,filled",
+        fillcolor="#eeeeee",
+        fontname="Arial",
+        fontsize=12
+    ];
+    
+    edge [
+        color="#888888",
+        fontcolor="#666666",
+        arrowhead=open,
+        arrowsize=0.8
+    ];
+    
+    A -> B -> C;
+}
+
+// 空属性和多分隔符
+digraph Separators {
+    A [label="test1"; color=red, style=filled; fillcolor=yellow];
+    B [label="test2",, color=blue];
+    C [];
+}
+
+// 错误转义
+digraph ErrorEscapes {
+    A [label="错误转义:\x \z \q"];
+}
