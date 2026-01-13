@@ -1,6 +1,6 @@
 // require MT >= 2.16.0
 // 此语法为同名内置语法的增强版本
-// version: 2.2.0
+// version: 2.3.0
 // Repo: https://github.com/guobao2333/MT-syntax-highlight
 {
 	name: ["MT-Syntax", ".mtsx"]
@@ -27,15 +27,20 @@
 		"colorBaseLight" #000000#0000 #000000#FFFFFF @B
 		"colorBaseDark" #A9B7C6#2B2B2B #A9B7C6#0000 @B
 		"underline" #NULL #NULL @U
-		"require" > "comment" @B
+		"comment" #8C8C8C #808080 //@I
+		"directive" > "comment" @B
 
-		"escape" #86A4DD #B67332
+		"escape" #68C #B67332
 		"keyword" #E06B6B #CC7832
 		"keywords" #1750EB #6897BB
+		"keywords2" #B06ECC #C5A661
+		"?" #4AA #8BB
+		"*" #D96 #BA2
+		"+" #8B0 #6A2
 		"startEnd" #871094 #9876AA
 		"mode" > "startEnd"
 		"scope" > "require"
-		"class" #808000 #808000
+		"class" #BB0 #888000
 		// 如果不想要背景色，取消注释下行然后注释下下行
 		// "regex" > "default"
 		"regex" #0A415D#F4F9FF #NULL#353637
@@ -56,7 +61,7 @@
 			{match: /\\x\{[0-9A-Fa-f]+\}/ 0: "escape"}
 
 			// {match: /\\[1-9ABDGHRSVWZabdefhnrstvwz]/ 0: "escape"}
-			{match: /(?i)\\[0CEFIJKLMNOPQTUXY]/ 0: "error"}
+			{match: /\\[0CEFIJKLMNOPQUXY]/ 0: "error"}
 			{match: /\\./ 0: "escape"}
 		]
 
@@ -73,8 +78,8 @@
 			{match: /\\{2}x[0-9A-Fa-f]{2}/ 0: "escape"}
 			{match: /\\{2}x\{[0-9A-Fa-f]+\}/ 0: "escape"}
 
-			// {match: /\\{2}[1-9ABDGHRSVWZabdefhnrstvwz]/ 0: "escape"}
-			{match: /(?i)\\{2}[0CEFIJKLMNOPQTUXY]/ 0: "error"}
+			{match: /\\{2}[1-9ABDGHRSVWZabdefhnrstvwz]/ 0: "escape"}
+			{match: /\\{2}[0CEFIJKLMNOPQUXY]/ 0: "error"}
 			{match: /(?i)\\[a-z0-9]/ 0: "error"}
 			{match: /\\{2}./ 0: "escape"}
 		]
@@ -84,16 +89,23 @@
 			// {include: "escapes_1"}
 
 			// 元字符
-			{match: /[.*+?|]/ 0: "keywords"}
+			{match: /\+/ 0: "+"}
+			{match: /\*/ 0: "*"}
+			{match: /\?/ 0: "?"}
+			{match: /[.|]/ 0: "keywords"}
 			{match: /[$^]/ 0: "startEnd"}
 
 			// (?:pattern) (?=pattern) (?!pattern) (?<=pattern) (?<!pattern) (?>pattern)
 			{match: /\((?:\?[:=!>]|/
-			+ /\?(-)?(?![imus]*([imus])[imus]*\2)([imus]{1,4})(?=\))/
+			+ /\?(-)?(?![imsu]*([imsu])[imsu]*\2)([imsu]{1,4})(?:(-)([imsu]{1,4}))?(?=\))/
 			+ /|\?<[=!])/
+				0: {match: /\?(?:>|<?[:=!])/ 0: "keywords2"}
 				0: "keywords"
 				1: "keyword"
+				// 组2用于匹配重用
 				3: "mode"
+				4: "keyword"
+				5: "mode"
 			}
 			{match: /[()]/ 0: "keywords"}
 
@@ -149,7 +161,7 @@
 				}
 			}
 			{
-				start: {match: /(?<=match:\s?)"/}
+				start: {match: /(?<=(?:match:|\+)\s?)"/}
 				end: {match: /(?m)"|$/}
 				style: "meta"
 				childrenStyle: "regex"
@@ -166,7 +178,29 @@
 
 	]
 	contains: [
-		{match: /(?i)^[ \t]*\/\/[ \t]*require[ \t]+MT[ \t]*(>=?)[ \t]*(\d{8}|\d\.\d{1,3}\.\d{1,3}|(\S+))[ \t]*(?m)$/ 0: "require" 3: "error"}
+		{match: /(?mi)^[ \t]*\/\/[ \t]*require[ \t]+MT[ \t]*(>=?)[ \t]*(\d{8}|\d\.\d{13}\.\d{13}|(\S+))[ \t]*$/ 0: "directive" 3: "error"}
+		{
+			group: link
+			style: "directive"
+			contains: [
+				{match: /(?m)^[^\S\n]*#/}
+				{group: select, contains: [
+					{match: /e(?:lse|ndif)(?:\b|$)/}
+					{group: link, contains: [
+							{match: /(?:el)?if\b/}
+							{match: /[^\S\n]+/}
+							{match: /MT\b/ 0: "operator"}
+							{match: /[^\S\n]+/}
+							{match: /([<>]=?|[!=]=)/ 1: "operator"}
+							{match: /[^\S\n]+/}
+							{match: /(\d{8}|\d\.\d{1,3}\.\d{1,3})\b/ 1: "operator"}
+					]}
+					{match: /error(?:[^\S\n]+|$)(.*)/ 1: "string"}
+					{match: /[^\S\n]*(.+)/ 0: "error"} // 未知指令标记为error
+				]}
+				{match: /[^\S\n]*(.+)/ 0: "error"} // 后面多出来的代码标记为error
+			]
+		}
 		{match: "//.*" 0: "comment"}
 		{include: "regexs"}
 		{builtin: #JAVA_DOUBLE_QUOTED_STRING#}
@@ -194,11 +228,12 @@
 		{match: /@(?:IU|UI)\b/ 0: "flags_IU"}
 		{match: /@(?:IS|SI)\b/ 0: "flags_IS"}
 		{match: /@(?:US|SU)\b/ 0: "flags_US"}
-		{match: /@(?!.*(.).*\1)[BIU]{3}\b/ 0: "flags_BIU"}
-		{match: /@(?!.*(.).*\1)[BIS]{3}\b/ 0: "flags_BIS"}
-		{match: /@(?!.*(.).*\1)[BUS]{3}\b/ 0: "flags_BUS"}
-		{match: /@(?!.*(.).*\1)[IUS]{3}\b/ 0: "flags_IUS"}
-		{match: /@(?!.*(.).*\1)[BIUS]{4}\b/ 0: "flags_BIUS"}
+		{match: /@/ + keywordsToRegex("BIU BUI IBU IUB UBI UIB") 0: "flags_BIU"}
+		{match: /@/ + keywordsToRegex("BIS BSI IBS ISB SBI SIB") 0: "flags_BIS"}
+		{match: /@/ + keywordsToRegex("BUS BSU UBS USB SBU SUB") 0: "flags_BUS"}
+		{match: /@/ + keywordsToRegex("IUS ISU UIS USI SIU SUI") 0: "flags_IUS"}
+		{match: /@/ + keywordsToRegex("BIUS BISU BUIS BUSI BSIU BSUI IBUS IBSU IUBS IUSB ISBU ISUB UBIS UBSI UIBS UISB USBI USIB SBIU SBUI SIBU SIUB SUBI SUIB") 0: "flags_BIUS"}
+
 		{match: /@_\b/ 0: "flags_CLEAR"}
 		{match: /@\w+/ 0: "error"}
 
