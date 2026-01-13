@@ -2,6 +2,8 @@
 > [!IMPORTANT]
 > 此处预览图**可能**会过时，最新版本的效果应安装语法高亮文件后以 `preview.[语法后缀]` 文件的实际效果为准。
 > 由于部分文件后缀会污染存储库语言，故增加 `.txt` 后缀，预览时请手动切换语法或去除此后缀。
+>
+> 带有`EX`后缀的是**内置语法高亮的增强版**。
 
 <details>
 <summary>Brainfuck</summary>
@@ -60,28 +62,28 @@
 </details>
 
 <details>
-<summary>HTML EX (内置)</summary>
+<summary>HTML EX</summary>
 
 ![亮色](builtin/html/light.webp)
 ![暗色](builtin/html/dark.webp)
 </details>
 
 <details>
-<summary>Java EX (内置)</summary>
+<summary>Java EX</summary>
 
 ![亮色](builtin/java/light.webp)
 ![暗色](builtin/java/dark.webp)
 </details>
 
 <details>
-<summary>JavaScript EX (内置)</summary>
+<summary>JavaScript EX</summary>
 
 ![亮色](builtin/javascript/light.webp)
 ![暗色](builtin/javascript/dark.webp)
 </details>
 
 <details>
-<summary>JSON Minecraft EX (内置)</summary>
+<summary>JSON Minecraft EX</summary>
 
 ![亮色](builtin/json_minecraft/light.webp)
 ![暗色](builtin/json_minecraft/dark.webp)
@@ -109,7 +111,7 @@
 </details>
 
 <details>
-<summary>MT Syntax EX (内置)</summary>
+<summary>MT Syntax EX</summary>
 
 ![亮色](builtin/mt-syntax/light.webp)
 ![暗色](builtin/mt-syntax/dark.webp)

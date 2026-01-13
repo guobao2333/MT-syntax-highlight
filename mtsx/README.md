@@ -1,9 +1,11 @@
 # List | 所有语言
 > [!NOTE]
 > 预览效果请在[此处](../preview)查看。
+>
+> 贡献者一栏为空的语言提交者通常是**仓库维护者**。
 
 | 语言 | 贡献者 |
-| :--- | :---: |
+| :---: | :---: |
 | [BBCode](bbcode.mtsx) |  |
 | [Brainfuck](brainfuck.mtsx) (已内置)[^已内置] |  |
 | [Dockerfile](dockerfile.mtsx) (暂时需手动切换)[^1] |  |

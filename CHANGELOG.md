@@ -1,8 +1,9 @@
-# ChangeLog | 变更日志
+# Changelog | 更新日志
 
-这里是本项目文件的变更日志，与[通用变更日志][1]的规范有所不同，您可以阅读下文查看特殊规范。  
-[通用变更日志][1]旨在提供有温度的更新文档，让用户可以轻松理解开发者做了什么，同时也让开发者可以更方便的回溯以往更新，以确定何时引入了意外bug；与git相结合开发效率事半功倍，前提是您拥有且遵守自己的行为准则。  
-如果您对本项目的更新日志有任何意见或建议，随时欢迎您的帮助！
+这里是本项目文件的更新日志，与[通用变更日志][1]的规范有所不同，您可以阅读下文查看特殊规范。  
+[通用变更日志][1]旨在提供有温度的更新文档，让用户可以轻松理解开发者做了什么，同时也让开发者可以更方便的回溯以往更新，以确定何时引入了意外bug；与git相结合开发效率事半功倍，前提是您拥有且遵守自己的行为准则。
+
+如果您对本项目的更新日志有任何意见或建议，欢迎您随时协助！
 
 [1]: https://common-changelog.org
 
@@ -33,21 +34,49 @@
 > 特殊规范允许排列组合，故此处不再列举。
 </details>
 
+## 2026-1-13
+### MT-Syntax EX (内置) - [2.3.0](https://github.com/guobao2333/MT-syntax-highlight/commit/b26678d)
+
+* 合并上游更新
+* 修复n多个问题
+* 增加了n多个符号的高亮
+* 将样式修饰符回退为默认以提高性能
+* 样式和其他优化
+
+### Markdown(GFM) - [5.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/17eb6fe)
+**性能大优化！！🎉已达到内置版80%的速度！！**
+
+* 修复n多个问题
+* 使用占有量词提高性能
+* 改进列表匹配提高性能
+* 增加数学公式块
+* 分离标题高亮
+* 样式和其他优化
+
+### Makefile - [1.1.0](https://github.com/guobao2333/MT-syntax-highlight/commit/6a1d701)
+
+* 修复转义问题
+* 元目标声明不使用通配符匹配
+* 样式和其他小调整
+
+### Lyrics - [2.0.1](https://github.com/guobao2333/MT-syntax-highlight/commit/57f88c3)
+
+* 修复歌词可能会被高亮为元数据问题
+
 ## 2026-1-1 - DOT (NEW) - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/67460b7)
-**2026新年快乐！**🎉
+**2026新年快乐！🎉**
 
 + 新增语法高亮：[Graphviz DOT](dot.mtsx)  
   有关Graphviz DOT的文档请看这里：[DOT Language | Graphviz](https://graphviz.org/doc/info/lang.html)
 
-___
 ## 2025-12-22 - Lyrics (NEW) - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/pull/14) & [2.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/6566493)
-
+### Refactored | 重写
 + 新增语法高亮：[音乐歌词](mtsx/lyrics.mtsx)
-  > 由于1.0版本的规则过于不合理，可能会降低性能，因此将其重构后发布为2.0
+
+由于1.0版本的规则冗余过多且不合理，可能会降低性能，因此将其重构后发布为2.0
 
 感谢该语法1.0版本的贡献者：[**@cnbilinyj**](https://github.com/cnbilinyj)
 
-___
 ## 2025-12-1
 ### Java EX - [1.2.0](https://github.com/guobao2333/MT-syntax-highlight/commit/f49f447)
 #### Changed | 变化
@@ -84,13 +113,11 @@ ___
 * 符号颜色不会重复
 * 不匹配的括号以红色高亮
 
-___
 ## 2025-11-8 - Makefile (NEW)
 
 + 新增语法高亮：[Makefile](mtsx/makefile.mtsx)  
   有关Makefile的文档请看这里：[Makefile Tutorial By Example](https://makefiletutorial.com/)
 
-___
 ## 2025-11-1
 ### BBCode (NEW)
 
@@ -112,14 +139,12 @@ ___
 
 * 高亮`conf`后缀的文件
 
-___
 ## 2025-10-29 - MT-Syntax EX - [2.2.0](https://github.com/guobao2333/MT-syntax-highlight/commit/230887a)
 ### Fixed | 修复
 
 1. 正确高亮引号内的正则转义
 2. 修复某些情况下字符集合渲染错误
 
-___
 ## 2025-10-9
 ### Protobuf (NEW)
 
@@ -144,7 +169,6 @@ ___
 
 * 调整配色以区分类型
 
-___
 ## 2025-10-7
 ### Java EX (NEW)
 
@@ -172,7 +196,6 @@ ___
 1. 扩展非标准JSON语法的高亮，包括 `json5`、`hjson`、`jsonl`
 > 不过我发现他们中的部分语法存在缺失，这会在后续更新中完善。
 
-___
 ## Ruby
 ### 2025-8-31 - [1.2.0](https://github.com/guobao2333/MT-syntax-highlight/commit/0175f49)
 #### Fixed | 修复
@@ -198,7 +221,6 @@ ___
 
 + 新增%w和%i高亮
 
-___
 ## 2025-8-12
 ### Markdown(GFM) - [4.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/c74e2d1)
 性能大优化！
@@ -218,7 +240,6 @@ ___
 * 优化链接语法的匹配效率
 * 优化警告块的匹配效率和样式
 
-___
 ## 2025-8-9
 ### Brainfuck (NEW)
 
@@ -242,13 +263,11 @@ ___
 
 1. 修复某些情况下字符集合渲染错误
 
-___
 ## 2025-7-2 - HTML EX (内置) - [1.0.1](https://github.com/guobao2333/MT-syntax-highlight/commit/476d201)
 ### Fixed | 修复
 
 1. JS代码注释的结束标签错误 `style` → `script`
 
-___
 ## 2025-7-1
 ### HTML EX (NEW)
 
@@ -268,7 +287,6 @@ ___
 
 * 同步上游更新
 
-___
 ## 2025-6-23
 ### JSON Minecraft EX (NEW)
 
@@ -298,7 +316,6 @@ ___
 1. 为正则表达式添加高亮
 2. 使用更少的正则代替部分穷举 (实验) (ps: 可能会降低性能)
 
-___
 ## Minecraft Lang
 ### [1.2.0](https://github.com/guobao2333/MT-syntax-highlight/commit/1bc67f7) - 2025-6-12
 应该算是目前除性能之外最完美的版本了
@@ -315,7 +332,6 @@ ___
 
 + 高亮更多转义字符
 
-___
 ## 2025-5-24
 ### Minecraft Lang (NEW)
 
@@ -332,7 +348,6 @@ ___
 
 * 优化匹配逻辑
 
-___
 ## 2025-5-21
 ### DotEnv - [1.0.2](https://github.com/guobao2333/MT-syntax-highlight/commit/8877c73)
 #### Fixed | 修复
@@ -352,7 +367,6 @@ ___
 * 列表现在支持多行了！
 * 优化匹配逻辑，渲染速度大幅提升！
 
-___
 ## 2025-4-30
 ### JavaScript EX (内置) - [1.2.1](https://github.com/guobao2333/MT-syntax-highlight/commit/31cd6d9)
 
@@ -370,7 +384,6 @@ ___
 * 调整了代码块的配色
 * 优化了部分匹配逻辑，渲染速度提升
 
-___
 ## 2025-2-26 (Important updates)
 - 移除所有语法中的多余协议声明  
   由于甚至会比语法高亮本身都长，故仅保留作者版权信息
@@ -380,7 +393,6 @@ ___
 + 再次为部分符号添加高亮  
   由于高亮会使得连字符字体不再相连，故仅高亮部分极常用符号
 
-___
 ## 2024-11-8
 ### Haskell (NEW)
 
@@ -388,7 +400,6 @@ ___
 
 感谢该语法的贡献者：[**@ZQBCWG**](https://github.com/ZQBCWG)
 
-___
 ## 2024-10-28
 ### Golang Ice (NEW)
 
@@ -403,7 +414,6 @@ ___
 
 1. 修复了未正确高亮的注释
 
-___
 ## 2024-10-15 - Gitignore - [1.2.4](https://github.com/guobao2333/MT-syntax-highlight/commit/9ab909d)
 ### Fixed | 修复
 
@@ -413,14 +423,12 @@ ___
 
 + 为 `.dockerignore` 文件提供高亮
 
-___
 ## 2024-9-21 - JavaScript EX (内置) - [1.1.0](https://github.com/guobao2333/MT-syntax-highlight/commit/39b8409)
 ### Added | 新增
 
 + 为部分符号/关键字/方法增加高亮
   但是由于存在一些bug，所以仅添加小部分高亮
 
-___
 ## 2024-9-19
 ### Gitignore - [1.2.3](https://github.com/guobao2333/MT-syntax-highlight/commit/ecdac20) & DotEnv - [1.0.1](https://github.com/guobao2333/MT-syntax-highlight/commit/2f99ad9)
 #### Added | 新增
@@ -437,7 +445,6 @@ ___
 
 + 为语法添加了预览图
 
-___
 ## JavaScript EX (内置) - 2024-9-2
 
 + 新增内置语法高亮：[JavaScript](mtsx/builtin/JavaScript.mtsx)
@@ -446,13 +453,11 @@ ___
 1. 为error类型添加高亮
 2. 为部分全局属性添加高亮
 
-___
 ## 2024-8-31 - DotEnv (NEW)
 
 + 新增语法高亮：[环境变量配置](mtsx/dotenv.mtsx) - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/b6cdf7b)
   > 5个语法，写了3天😂
 
-___
 ## 2024-8-22 - Markdown(GFM) - [3.2.0](https://github.com/guobao2333/MT-syntax-highlight/commit/1888619)
 ### Added | 新增
 
@@ -466,7 +471,6 @@ ___
 * 调整了数学公式
 - 去掉了引用块的背景渲染
 
-___
 ## 2024-7-22
 ### Gitignore - [1.2.2](https://github.com/guobao2333/MT-syntax-highlight/commit/5f7ec22)
 #### Fixed | 修复
@@ -496,7 +500,6 @@ ___
 - 移除了所有`lineBackground`属性  
   改为使用性能更好的新语法代替原有实现
 
-___
 ## 2024-7-19 - Markdown(GFM) - [3.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/0ae9664)
 **使用`2.16.0`版本新增语法重构了代码！！**
 ### Fixed | 修复
@@ -517,7 +520,6 @@ ___
 + 为部分语法添加了非整行背景颜色
 + 添加了光标旁的括号对高亮
 
-___
 ## 2024-7-12 - vimscript - [1.0.1](https://github.com/guobao2333/MT-syntax-highlight/commit/ef4551a)
 ### Fixed | 修复
 
@@ -527,7 +529,6 @@ ___
 
 * 文件更名：`vim.mtsx` -> `vimscript.mtsx`
 
-___
 ## 2024-7-11
 ### Vimscript (NEW)
 
@@ -541,7 +542,6 @@ ___
 
 * 将`title`重命名为`heading`以遵守英文规范
 
-___
 ## 2024-7-3 - Gitignore - [1.2.0](https://github.com/guobao2333/MT-syntax-highlight/commit/d7ff1ec)
 ### Fixed | 修复
 
@@ -557,7 +557,6 @@ ___
 
 + 新增文件后缀渲染
 
-___
 ## 2024-6-25 - Gitignore (NEW)
 ### [1.1.1](https://github.com/guobao2333/MT-syntax-highlight/commit/ca80ab9)
 #### Changed | 变化
@@ -575,14 +574,12 @@ ___
 
 * 调整配色，观感提升~
 
-___
 ## 2024-6-24 - Gitignore (NEW)
 ### New | 新语法
 
 + 新增语法高亮：[git提交忽略](mtsx/gitignore.mtsx)  
   有关gitignore的文档请看这里：[Git - gitignore Documentation](https://git-scm.com/docs/gitignore)
 
-___
 ## 2024-6-8 - Markdown(GFM) - [2.1.1](https://github.com/guobao2333/MT-syntax-highlight/commit/156ec0c)
 > [!IMPORTANT]
 > 从此版本开始仅适用于MT管理器 `2.16.0` 及以上版本！
@@ -594,7 +591,6 @@ ___
 * _**调整语法名称**_
 `GitHub Flavored Markdown` -> ` Markdown(GFM)`
 
-___
 ## 2024-5-27 - Markdown(GFM) - [2.1.0](https://github.com/guobao2333/MT-syntax-highlight/commit/73d9f05)
 ### Added | 新增
 
@@ -603,8 +599,6 @@ ___
 ### Fixed | 修复
 
 1. 修改短代码逻辑，间接修复了它的所有bug……
-  > 现在感觉之前自己想的太复杂了，所以说接下来会吸取教训，先实现功能，而不是先想着优化，这是不对滴🤣
-
 2. 修复了链接先于脚注渲染时，导致的渲染错误
 
 ### Changed | 变化
@@ -622,7 +616,6 @@ _**调整了历史版本号，使其遵守版本控制规范**_
 * 调整了部分配色，观感提升~
 * 清除了部分无用冗(rǒng)余代码
 
-___
 ## 2024-5-16 - Markdown(GFM) - [2.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/792634d)
 **进行了重构。**
 
@@ -652,7 +645,6 @@ ___
 + 新增github的数学公式渲染
 + 新增`ASCII`字符转义渲染
 
-___
 ## 2024-5-7 - Markdown(GFM) - [1.1.0~1.2.0](https://github.com/guobao2333/MT-syntax-highlight/compare/39a1506...ddf18a0)
 ### Fixed | 修复
 
@@ -667,7 +659,6 @@ ___
 + 新增setext标题渲染
 + 新增github的提示引用块渲染
 
-___
 ## 2024-5-2 - Markdown(GFM)
 ### [1.0.1~1.0.3](https://github.com/guobao2333/MT-syntax-highlight/compare/4411307...76c1f9a)
 #### Fixed | 修复
