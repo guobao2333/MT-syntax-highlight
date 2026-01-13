@@ -1,21 +1,23 @@
 // require MT >= 2.16.0
-// Version: 1.0.0
+// Version: 1.1.0
 // Repo: https://github.com/guobao2333/MT-syntax-highlight
-// Copyright (c) 2025 shiguobaona
+// Copyright (c) 2026 shiguobaona
 {
     name: ["Makefile", "makefile", "Makefile", ".mk", ".mak", ".make"]
     styles: [
-        "target", #FF79C6, #FF79C6, @B // 目标名称
-        "variable", #24C0E1, #8BE9FD // 变量 $(VAR) 或 ${VAR}
-        "specialVar", #FFB86C, #FFB86C // 特殊变量 $@, $<, $^ 等
-        "function", #BD93F9, #BD93F9 // 函数调用 $(func args)
-        "string", #1997E3, #E5F256 // 字符串
-        "keyword", #18A23B, #1ECE4A // Makefile关键字
-        "builtin", #E03030 #E06C75 // 内置函数名
-        "operator" #508090 #6080B0 // 赋值操作符 = := ?= +=
-        "comment" #8C8C8C #808080
-        "meta", #1997E3, #AA5FBD // .PHONY, .SUFFIXES 等元目标
-        "assignment", #24C0E1, #8BE9FD // 变量名在赋值语句中
+        "target"     #FF79C6        #DE6FAF @B        // 目标名称
+        "variable"   #24C0E1        #61C9E0           // 变量 $(VAR) 或 ${VAR}
+        "specialVar" #FFA94D        #D08F49           // 特殊变量 $@, $<, $^ 等
+        "function"   #BD93F9        #BD93F9           // 函数调用 $(func args)
+        "string"     #1997E3        #C1C12C           // 字符串
+        "strEscape"  #0037A6        #CC7832           // 转义符
+        "keyword"    #18A23B        #30C555           // Makefile关键字
+        "builtin"    #E03030        #E06C75           // 内置函数名
+        "operator"   #508090        #7D9BC8           // 赋值操作符 = := ?= +=
+        "comment"    #8C8C8C        #808080           // 注释
+        "meta"       #1997E3        #AA5FBD           // .PHONY, .SUFFIXES 等元目标
+        "assignment" #24C0E1        #61C9E0           // 变量名在赋值语句中
+        "code"       #1F2328$E5E5E5 #AEAEAE$202020    // 命令代码（行背景）
     ]
     comment: {startsWith: "#"}
     defines: [
@@ -23,11 +25,10 @@
         "keywords": {match: keywordsToRegex(
             "define endef undefine ifdef ifndef ifeq ifneq else endif"
             "include -include sinclude override export unexport private vpath"
-            "ifdef ifndef ifeq ifneq else endif"
-        ), 0: "keyword"}
+        ) 0: "keyword"}
 
         // 赋值操作符
-        "operator": {match: /[:+?]?=/, 0: "operator"}
+        "operator": {match: /[:+?]?=/ 0: "operator"}
 
         // 内置函数名
         "builtinFunctions": {match: keywordsToRegex(
@@ -35,24 +36,37 @@
             "word wordlist firstword lastword dir notdir suffix basename"
             "addsuffix addprefix join wildcard realpath abspath error warning"
             "shell origin flavor foreach if or and call eval file value"
-        ), 0: "builtin"}
+        ) 0: "builtin"}
 
         // 特殊变量
         "specialVariables": {match: /\$[@%<?\^\+\*D]/ 0: "specialVar"}
+
+        // 转义字符定义
+        "escapeChars": {match: /\\(?:[\n\$\\"'#\s]|$)/ 0: "strEscape"}
 
         // 简单变量引用 $(var) ${var}
         "simpleVariable": {match: /\$(?:\{[\w-]+\}|\([\w-]+\))/ 0: "variable"}
 
         // 带转义的引号字符串
         "quotedString": {
-            start: {match: /"/}
-            end: {match: /"/}
+            start: {match: /(?<!\\)"/}
+            end: {match: /(?m)"|$/}
             style: "string"
             contains: [
-                {match: /\\./, 0: "string"}  // 转义字符
+                {include: "escapeChars"}
                 {include: "simpleVariable"}
                 {include: "specialVariables"}
                 {include: "functionCall"}
+            ]
+        }
+
+        // 单引号字符串（Makefile中不常用，但shell命令中会用）
+        "singleQuotedString": {
+            start: {match: /'/}
+            end: {match: /(?m)'|$/}
+            style: "string"
+            contains: [
+                {match: /\\'/ 0: "strEscape"} // 只转义单引号
             ]
         }
 
@@ -66,37 +80,43 @@
                 {include: "simpleVariable"}
                 {include: "specialVariables"}
                 {include: "quotedString"}
-                {match: /[\s,]+/, 0: "operator"}  // 参数分隔符
+                {include: "singleQuotedString"}
+                {include: "escapeChars"}
+                {match: /[\s,]+/ 0: "operator"} // 参数分隔符
             ]
         }
 
         // 变量赋值
         "variableAssignment": {
-            group: link
+            group: linkAll
             contains: [
                 // 变量名
-                {match: /(?m)^[A-Za-z_][\w-]*\s*/, 0: "assignment"}
+                {match: /(?m)^[A-Za-z_][\w-]*\s*/ 0: "assignment"}
                 // 赋值
                 {include: "operator"}
                 {
                     group: select
                     contains: [
                         {include: "quotedString"}
+                        {include: "singleQuotedString"}
                         {include: "functionCall"}
                         {include: "simpleVariable"}
                         {include: "specialVariables"}
+                        {include: "escapeChars"}
                     ]
                 }
             ]
         }
 
-        // 元目标声明 (.PHONY .SUFFIXES 等)
+        // 元目标声明
         "metaTarget": {
             group: link
             contains: [
-                {match: /(?m)^\.PHONY:/, 0: "meta"}
-                // 其他
-                {match: /(?m)^\.\w+:/, 0: "meta"}
+                {match: /(?m)^\./ + keywordsToRegex(
+                    "PHONY SUFFIXES DEFAULT PRECIOUS INTERMEDIATE SECONDARY"
+                    "SECONDEXPANSION DELETE_ON_ERROR IGNORE LOW_RESOLUTION_TIME"
+                    "SILENT EXPORT_ALL_VARIABLES NOTPARALLEL ONESHELL POSIX"
+                ) + /:/ 0: "meta"}
             ]
         }
 
@@ -105,14 +125,15 @@
             group: link
             contains: [
                 // 目标名（直到冒号）
-                {match: /(?m)^[^\s#]+(?=:)/, 0: "target"}
-                {match: /:/, 0: "operator"}
+                {match: /(?m)^[^\s#]+(?=:)/ 0: "target"}
+                {match: /:/ 0: "operator"}
                 // 依赖项
                 {
                     group: select
                     contains: [
                         {include: "simpleVariable"}
                         {include: "specialVariables"}
+                        {include: "escapeChars"}
                     ]
                 }
             ]
@@ -120,11 +141,14 @@
 
         // 规则命令（以Tab开头）
         "ruleCommand": {match: /(?m)^\t.*$/
-            0: "default"
             0: {include: "simpleVariable"}
             0: {include: "specialVariables"}
+            0: {include: "escapeChars"}
             0: {include: "functionCall"}
             0: {include: "quotedString"}
+            0: {include: "singleQuotedString"}
+            0: {match: /\$\$/ 0: "strEscape"}  // $$ 转义为单个 $
+            0: "code"
         }
 
         // 条件语句
@@ -135,20 +159,42 @@
                 {
                     group: link
                     contains: [
-                        {match: /(?m)^\s*(ifn?(?:eq|def))\b/, 0: "keyword"}
+                        {match: /(?m)^\s*(ifn?(?:eq|def))\b/ 1: "keyword"}
                         {include: "quotedString"}
+                        {include: "singleQuotedString"}
                         {include: "simpleVariable"}
+                        {include: "specialVariables"}
                     ]
                 }
                 // else, endif
                 {match: /(?m)^\s*(e(?:lse|ndif))\b/ 0: "keyword"}
             ]
         }
+        // define...endef 块
+        "defineBlock": {
+            start: {match: /(?m)^(define)\s+([A-Za-z_][\w-]*)/ 1: "keyword" 2: "assignment"}
+            end: {match: /(?m)^(endef)\b/ 1: "keyword"}
+            contains: [
+                {include: "ruleCommand"}
+                {include: "simpleVariable"}
+                {include: "specialVariables"}
+                {include: "functionCall"}
+                {include: "quotedString"}
+                {include: "singleQuotedString"}
+                {include: "escapeChars"}
+            ]
+        }
     ]
 
-    contains: [        
+    contains: [
         // 赋值操作符
         {include: "operator"}
+
+        // 转义
+        {include: "escapeChars"}
+
+        // define...endef 块
+        {include: "defineBlock"}
 
         // 条件语句
         {include: "conditional"}
@@ -165,7 +211,7 @@
         // 规则命令
         {include: "ruleCommand"}
 
-        // 单独的关键字（如独立的 include, export 等）
+        // 单独的关键字
         {include: "keywords"}
 
         // 单独的函数调用
@@ -177,8 +223,6 @@
 
         // 单独的字符串
         {include: "quotedString"}
-
-        // 单独的内置函数名（在非函数调用上下文中）
-        {include: "builtinFunctions"}
+        {include: "singleQuotedString"}
     ]
 }
