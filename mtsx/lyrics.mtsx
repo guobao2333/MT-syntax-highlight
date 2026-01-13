@@ -1,7 +1,7 @@
 // require MT >= 2.16.0
-// Version: 2.0.0
+// Version: 2.0.1
 // Repo: https://github.com/guobao2333/MT-syntax-highlight
-// Copyright (c) 2025 shiguobaona, cnbilinyj
+// Copyright (c) 2026 shiguobaona, cnbilinyj
 {
     name: ["Lyrics", ".lrc"]
 
@@ -18,16 +18,16 @@
     lineBackground: {match: /\[\d*:\d{2}\.\d*\]\s*$/ style: "interlude"}
 
     contains: [
+        // 歌词时间戳
+        {match: /(?:^|\n)\[\d*:\d{2}\.\d*\]/
+          0: {match: /\d/ 0: "timeNumber"}
+          0: {match: /[:\[\].]/ 0: "bracket"}}
+
         // 元数据
         {match: /(?-m)(?<=^\n*)\[([^\n]*?):([^\n]*?)\]/
           0: {match: /[:\[\].]/ 0: "bracket"}
           1: "metaTag"
           2: "metaAttr"}
-
-        // 歌词时间戳
-        {match: /(?:^|\n)\[\d*:\d{2}\.\d*\]/
-          0: {match: /\d/ 0: "timeNumber"}
-          0: {match: /[:\[\].]/ 0: "bracket"}}
 
         // 错误提示
         {match: /(?m)^(?!\[[^\n]*?:[^\n]*?\]|\[\d*:\d{2}\.\d*\]).?/ 0: "errorText"}
