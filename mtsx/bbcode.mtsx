@@ -1,142 +1,158 @@
 // require MT >= 2.16.0
+// Version: 0.2.0
+// Repo: https://github.com/guobao2333/MT-syntax-highlight
+// Copyright (c) 2026 shiguobaona
 {
-    name: ["BBCode", ".bb", ".ubb", ".bbcode"]
-    ignoreCase: true
-    styles: [
-        "B"           @B
-        "I"           @I
-        "S"           @S
-        "U"           @U
-        "bracket"     #999 #999
-        "tag"         #FF79C6 #FF79C6
-        "punct"       #6272A4 #6272A4
-        "attr"        #8BE9FD #8BE9FD
-        "attrPunct"   #6272A4 #6272A4
-        "string"      #F1FA8C #F1FA8C
-        "content"     #F8F8F2 #F8F8F2
-        "url"         #1750EB #6897BB
-        "colorSample" #000000 #FFFFFF
-    ]
-    bracketPairs: ["[]"]
-    defines: [
+	name: ["BBCode" ".bb" ".ubb" ".bbcode"]
+	ignoreCase: true
+	styles: [
+		"B"				@B
+		"I"				@I
+		"S"				@S
+		"U"				@U
+		"bracket"		#999	#999
+		"tag"			#FF79C6 #DE6FAF
+		"punct"			#6272A4 #6272A4
+		"attr"			#31ABC5 #1CADCC
+		"attr_punct"	#6272A4 #6272A4
+		"string"		#B09D1B #BE9A26
+		"url"			#1750EB #6897BB
+	]
+	bracketPairs: ["[]" "<>"]
+	defines: [
+		// https://mathiasbynens.be/demo/url-regex
+		"urlContent": {match: /(?i)\b((?:[a-z][\w-]+:(?:\/{1,3}|[a-z0-9%])|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'".,<>?«»“”‘’]))/ 0: "url"}
 
-        "styles": [
-            {start: {match: /(?<=\[b])/}
-                end: {match: "(?=\\[/b])"}
-                style: "B"
-                contains: [
-                    {include: "styles"}
-                    {include: "tag"}
-                ]
-            }
-            {start: {match: /(?<=\[i])/}
-                end: {match: "(?=\\[/i])"}
-                style: "I"
-                contains: [
-                    {include: "styles"}
-                    {include: "tag"}
-                ]
-            }
-            {start: {match: /(?<=\[s])/}
-                end: {match: "(?=\\[/s])"}
-                style: "S"
-                contains: [
-                    {include: "styles"}
-                    {include: "tag"}
-                ]
-            }
-            {start: {match: /(?<=\[u])/}
-                end: {match: "(?=\\[/u])"}
-                style: "U"
-                contains: [
-                    {include: "styles"}
-                    {include: "tag"}
-                ]
-            }
-        ]
+		"styles": [
+			{include: "img"}
+			{include: "bold"}
+			{include: "italics"}
+			{include: "strike"}
+			{include: "underline"}
+		]
+		"bold": {start: {match: /(?<=\[b])/}
+			end: {match: /(?=\[\/b])/}
+			style: "B"
+			contains: [
+				{include: "italics"}
+				{include: "strike"}
+				{include: "underline"}
+				{include: "tag"}
+			]
+		}
+		"italics": {start: {match: /(?<=\[i])/}
+			end: {match: /(?=\[\/i])/}
+			style: "I"
+			contains: [
+				{include: "bold"}
+				{include: "strike"}
+				{include: "underline"}
+				{include: "tag"}
+			]
+		}
+		"strike": {start: {match: /(?<=\[s])/}
+			end: {match: /(?=\[\/s])/}
+			style: "S"
+			contains: [
+				{include: "bold"}
+				{include: "italics"}
+				{include: "underline"}
+				{include: "tag"}
+			]
+		}
+		"underline": {start: {match: /(?<=\[u])/}
+			end: {match: /(?=\[\/u])/}
+			style: "U"
+			contains: [
+				{include: "bold"}
+				{include: "italics"}
+				{include: "strike"}
+				{include: "tag"}
+			]
+		}
 
-        "quotedString": {
-            start: {match: /"/}
-            end: {match: /"/}
-            style: "string"
-            contains: [{match: /\\./, 0: "strEscape"}]
-        }
+		// 专门处理 img 标签
+		"img": {start: {match: /(?<=\[img])/}
+			end: {match: /(?=\[\/img])/}
+			childrenStyle: "!!url"
+			mustMatchEnd: true
+		}
 
-        "singleQuotedString": {
-            start: {match: /'/}
-            end: {match: /'/}
-            style: "string"
-            contains: [{match: /\\./, 0: "strEscape"}]
-        }
+		// 颜色值解析
+		// TODO: 由于会导致覆盖标签的样式，暂时只高亮颜色，待寻找更好的办法优化标签匹配来修复这个问题
+		"tagColor": {match: /\[(?:style\s)?color=(#?(?:[0-9A-F]{3,8}|[A-Z0-9,_\s()-]++))\]/
+			0: {match: /[\[\]]/ 0: "bracket"}
+			0: {match: /color|style/ 0: "tag"}
+			0: {match: /[\/=]/ 0: "attr_punct"}
+			1: "parseColor(1,auto,HEX,string)"
+		}
+		// "tagColor": {match: /\[(?:style\s)?color=(#?(?:[0-9A-F]{3,8}|[A-Z0-9,_\s()-]++))\](?s)(.*?)\[\/(?:style|color)]/
+			// 0: {match: /[\[\]]/ 0: "bracket"}
+			// 0: {match: /color|style/ 0: "tag"}
+			// 0: {match: /[\/=]/ 0: "attr_punct"}
+			// 1: "parseColor(1,auto,HEX,string)"
+			// 2: {include: "styles"}
+			// 2: "parseColor(1,_,HEX,default)"
+		// }
 
-        "urlContent": {match: /(https?|ftp):\/\/[^\[\s\]'"]+/ 0: "url"}
-        
-        // 标签匹配 [tag attr="value"] content [/tag]
-        "tag": {start: {match: /\[/}
-            end: {match: /\]/}
-            style: "bracket"
-            childrenStyle: "tag"
-            contains: [
-                // 闭合标签的斜杠
-                {match: /(?<=\[)\//, 0: "punct"}
+		"quotedString": {
+			start: {match: /"/}
+			end: {match: /"/}
+			style: "string"
+			contains: [{match: /\\./, 0: "strEscape"}]
+		}
 
-                // 标签名称
-                {match: keywordsToRegex(
-                    "b i u s size color style center left right quote spoiler"
-                    "media url img list code table tr th td h tag fly move *"
-                ) 0: "tag"}
+		"singleQuotedString": {
+			start: {match: /'/}
+			end: {match: /'/}
+			style: "string"
+			contains: [{match: /\\./, 0: "strEscape"}]
+		}
 
-                // 属性名
-                {match: /\b[a-z][\w-]*\b(?=\s*=)/, 0: "attr"}
+		// 基础标签匹配
+		// TODO: 使用 group 匹配器优化准确性
+		"tag": {start: {match: /\[/}
+			end: {match: /\]/}
+			style: "!!bracket"
+			childrenStyle: "!!tag"
+			contains: [
+				// 闭合标签的斜杠
+				{match: /(?<=\[)\//, 0: "punct"}
 
-                {match: /=/, 0: "attrPunct"}
+				// 标签名称
+				{match: keywordsToRegex(
+					"b i u s size color style center left right quote strong"
+					"spoiler hide media url img list code table tr th td h"
+					"tag fly free move *"
+				) 0: "tag"}
 
-                // 带引号的属性值
-                {include: "quotedString"}
-                {include: "singleQuotedString"}
+				// 属性名
+				{match: /\b[a-z][\w-]*+\b(?=\s*+=)/ 0: "attr"}
 
-                // 无引号属性值
-                {match: /([^=\s\]]+)(?=\s|\]|\/)/ 0: "string"}
+				{match: /=/, 0: "attr_punct"}
 
-                // 自闭合标签的斜杠
-                {match: /\/(?=])/, 0: "punct"}
-            ]
-        }
-    ]
+				// 带引号的属性值
+				{include: "quotedString"}
+				{include: "singleQuotedString"}
 
-    contains: [
+				// 无引号属性值
+				{match: /([^=\[\s\]]+)(?=\s|\[|\]|\/)/ 0: "urlContent" 0: "string"}
 
-        // 颜色值解析
-        {match: /\[(?:style\s)?color=(#([0-9A-Fa-f]{3,8}|[A-Za-z0-9,_\s()-]+))\]/
-            0: {match: /[\[\]]/ 0: "bracket"}
-            0: {match: /color|style/ 0: "tag"}
-            1: "parseColor(2,auto,HEX,string)"
-        }
+				// 自闭合标签的斜杠
+				{match: /\/(?=\])/, 0: "punct"}
+			]
+		}
+	]
 
-        // 专门处理 url 标签
-        {start: {match: /(?i)(?<=\[url)/}
-            end: {match: /(?i)(?=\[\/url\])/}
-            contains: [
-                // URL 属性值
-                {match: /=(['"]?)([^\]'"]+)\1/ 2: "url"}
-                // URL 标签内容
-                {include: "urlContent"}
-            ]
-        }
+	contains: [
+		{include: "img"}
+		// 匹配独立的 URL
+		{include: "urlContent"}
 
-        // 专门处理 img 标签
-        {start: {match: /(?i)(?<=\[img\])/}
-            end: {match: /(?i)(?=\[\/img\])/}
-            style: "tag"
-            contains: [
-                {include: "urlContent"}
-            ]
-        }
+		{include: "styles"}
 
-        // 匹配独立的 URL（不在标签内）
-        {include: "urlContent"}
-
-        {include: "tag"}
-        {include: "styles"}
-    ]
+		// 文本颜色
+		{include: "tagColor"}
+		{include: "tag"}
+	]
 }
