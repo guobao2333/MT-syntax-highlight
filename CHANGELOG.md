@@ -34,6 +34,13 @@
 > 特殊规范允许排列组合，故此处不再列举。
 </details>
 
+## 2026-1-24 - BBCode - [0.2.0](https://github.com/guobao2333/MT-syntax-highlight/commit/4eb9603)
+
+* 优化性能
+* 修复n多个问题
+* 使字体样式正确高亮
+* 添加字体颜色高亮（由于会覆盖标签高亮，暂时简化）
+
 ## 2026-1-13
 ### MT-Syntax EX (内置) - [2.3.0](https://github.com/guobao2333/MT-syntax-highlight/commit/b26678d)
 
