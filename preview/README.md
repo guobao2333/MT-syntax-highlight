@@ -5,6 +5,9 @@
 >
 > 带有`EX`后缀的是**内置语法高亮的增强版**。
 
+> [!NOTE]
+> 如果您喜欢的话……预览图中的字体使用`FiraCode-Retina`
+
 <details>
 <summary>Brainfuck</summary>
 

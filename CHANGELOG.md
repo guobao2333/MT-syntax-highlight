@@ -34,6 +34,18 @@
 > 特殊规范允许排列组合，故此处不再列举。
 </details>
 
+## 2026-2-17
+### Luau - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/a77baed)
+
++ 新增语法高亮：[Luau](luau.mtsx)  
+  有关Luau的文档请看这里：[Roblox Luau](https://luau.org)
+
+### Minecraft Lang - [1.3.0](https://github.com/guobao2333/MT-syntax-highlight/commit/b889933)
+
+* 优化性能
+* 修复颜色代码异常截断
+* 调整样式
+
 ## 2026-1-24 - BBCode - [0.2.0](https://github.com/guobao2333/MT-syntax-highlight/commit/4eb9603)
 
 * 优化性能
