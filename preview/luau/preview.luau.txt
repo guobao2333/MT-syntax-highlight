@@ -1,0 +1,132 @@
+-- 1. 类型注解
+local name: string = "Luau"
+local age: number = 5
+local isActive: boolean = true
+local optional: string? = nil
+
+-- 2. 函数类型注解
+local function add(a: number, b: number): number
+    return a + b
+end
+
+local function greet(name: string): string
+    return "Hello, " .. name
+end
+
+-- 3. 泛型支持
+type Array<T> = {T}
+type KeyValuePair<K, V> = {key: K, value: V}
+
+local numbers: Array<number> = {1, 2, 3, 4, 5}
+local pair: KeyValuePair<string, number> = {key = "age", value = 25}
+
+-- 4. 类型别名
+type Point = {x: number, y: number}
+type Vector3 = {x: number, y: number, z: number}
+type Callback = (message: string) -> ()
+
+local point: Point = {x = 10, y = 20}
+
+-- 5. 类型断言
+local value = "123"
+local num = value :: any :: number
+
+-- 6. 复合赋值运算符 (Luau 新增)
+local counter = 0
+counter += 1
+counter -= 1
+counter *= 2
+counter /= 2
+counter //= 2
+counter %= 3
+counter ^= 2
+
+local text = "Hello"
+text ..= " World"
+
+-- 7. continue 语句 (Luau 新增)
+for i = 1, 10 do
+    if i % 2 == 0 then
+        continue
+    end
+    print(i)
+end
+
+-- 8. 内置类型
+local anyValue: any = 42
+local vec: vector = vector(1, 2, 3)
+local buf: buffer = buffer.create(100)
+
+-- 9. 可选类型
+local function findUser(id: number): string?
+    if id > 0 then
+        return "User" .. id
+    end
+    return nil
+end
+
+-- 10. 联合类型和交集类型
+type StringOrNumber = string | number
+type ReadonlyPoint = Point & {readonly: boolean}
+
+-- 11. 字符串
+local str1 = "双引号字符串"
+local str2 = '单引号字符串'
+local str3 = [[多行字符串
+可以换行]]
+local str4 = [=[含有 [[嵌套]] 的字符串]=]
+
+-- 12. 数字
+local dec = 123
+local hex = 0xFF
+local bin = 0b1010
+local float = 3.14
+local exp = 1.5e-10
+
+-- 13. 表构造
+local config = {
+    name = "Test",
+    version = 1.0,
+    enabled = true,
+}
+
+-- 14. 元方法
+local meta = {
+    __index = function(t, k) return 0 end,
+    __add = function(a, b) return a.value + b.value end,
+    __tostring = function(t) return "MyObject" end,
+}
+
+-- 15. 模块访问
+local result = math.sqrt(16)
+local text = string.upper("hello")
+table.insert(numbers, 6)
+
+-- 16. 方法调用
+local obj = {
+    value = 10,
+    getValue = function(self)
+        return self.value
+    end
+}
+print(obj:getValue())
+
+-- 17. 标签和 goto
+::start::
+print("Label test")
+if true then
+    goto finish
+end
+::finish::
+
+-- 18. 所有关键字
+local and break do else elseif end false for function goto if in
+local not or repeat return then true until while
+
+-- 19. 类型关键字
+type continue
+
+-- 20. 常量
+local t = true
+local f = false
+local n = nil

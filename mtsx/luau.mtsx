@@ -1,0 +1,70 @@
+// require MT >= 2.16.0
+// Version: 1.0.0
+// Repo: https://github.com/guobao2333/MT-syntax-highlight
+// Copyright (c) 2026 shiguobaona
+{
+    name: ["Luau", ".lua", ".luau"]
+    comment: {startsWith: "--" addToContains: false}
+    styles: [
+        "string"    #067D17 #6A8759
+        "comment"   #8C8C8C #808080
+        "keyword"   #0033B3 #CC7832
+        "keyword2"  #800000 #AE8ABE
+        "constant"  #871094 #9876AA
+        "type"      #808000 #808000
+        "label"     #7050E0 #6080B0
+        "variable"  #1750EB #58908A
+        "operator"  #205060 #508090
+        "attrName"  #174AD4 #BABABA
+        "namespace" #871094 #9876AA
+    ]
+    defines: [
+        // 目前类型的逻辑有点问题没啥好的思路，等之后一并重构
+        "type": /\s*+([_a-zA-Z]\w*(?:<[^>]++>)?(?:\?)?)/
+        "types": [
+            // type 别名
+            {match: /\b(type)\s++([_a-zA-Z]\w*)/ 1: "keyword", 2: "type"}
+            // 函数参数和返回值的类型注解
+            {match: /:/ + include("type") + /\s*+(?=[,\)]|\s*+->)/ 1: "type"}
+            // 类型断言
+            {match: /::/ + include("type") 1: "type"}
+            // 泛型类型参数
+            {match: /<([_a-zA-Z]\w*(?:\s*+,\s*+[_a-zA-Z]\w*)*)>/ 1: "type"}
+        ]
+    ]
+    contains: [
+        // Shebang 注释
+        {match: /^#!.*+/ 0: "comment"}
+        // 多行注释
+        {match: /--\[(=*+)\[(?:(?!\]\1\])[\s\S])*+\]\1\]/ 0: "comment"}
+        // 单行注释
+        {match: /--.*+/ 0: "comment"}
+
+        // 标签
+        {match: /::[_a-zA-Z][_a-zA-Z\d]*::/ 0: "label"}
+        // 元方法
+        {match: /\b__[_a-zA-Z\d]+\b/ 0: "keyword2"}
+        // 字符串
+        {builtin: #C_QUOTED_STRING#}
+        {match: /\[(=*)\[(?:(?!\]\1\])[\s\S])*\]\1\]/ 0: "string"}
+        // 数字
+        {number: "10|16|F|E|P"}
+        // 各种类型
+        {include: "types"}
+        // 内置类型和 Luau 特定类型
+        {match: keywordsToRegex("any nil boolean number string thread table userdata vector buffer") 0: "type"}
+        // 常量
+        {match: keywordsToRegex("true false nil") 0: "constant"}
+
+        // 关键字和符号
+        {match: keywordsToRegex("return then while and break goto do else elseif end for function if in not or repeat until local continue type") 0: "keyword"}
+        {match: keywordsToRegex("+ - * < > = / // % ^ ..") + /=?/ 0: "operator"}
+        {match: keywordsToRegex("~= :: # . : , ; ( ) { } [ ]") 0: "operator"}
+
+        // 命名空间/模块访问
+        {match: /(?<!\.)\.(?=[_a-zA-Z])/ 0: "namespace"}
+
+        // 属性访问（冒号方法调用）
+        {match: /(?<!:):[_a-zA-Z]\w*\b/ 0: "variable"}
+    ]
+}
