@@ -152,13 +152,13 @@
 				childrenStyle: "regex"
 				// matchEndFirst: true
 				mustMatchEnd: true
-				contains: {
+				contains: [
 					{match: "\\/" 0: "strEscape"}
 					{include: "escapes_1"}
 					{include: "charset_1"}
 					{include: "regex"}
 					// {match: /(?<!\\)\//} => FAIL
-				}
+				]
 			}
 			{
 				start: {match: /(?<=(?:match:|\+)\s?)"/}
