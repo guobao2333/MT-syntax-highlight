@@ -5,8 +5,8 @@
 </p>
 
 <p align="center">
-<a href="https://github.com/guobao2333/MT-syntax-highlight"><img alt="Repository" src="https://img.shields.io/badge/Github-%230A0A0A.svg?&style=flat-square&logo=Github&logoColor=white"/></a>
-<a href="https://github.com/guobao2333/MT-syntax-highlight/LICENSE"><img alt="License" src="https://img.shields.io/github/license/guobao2333/MT-syntax-highlight?style=flat&logo=apache&label=Licence&color=blue"></a>
+<a href="https://github.com/guobao2333/MT-syntax-highlight"><img alt="Github" src="https://img.shields.io/badge/Github-Repo-blue?labelColor=black&logo=Github&logoColor=white"></a>
+<a href="https://github.com/guobao2333/MT-syntax-highlight/tree/main/LICENSE"><img alt="License" src="https://img.shields.io/github/license/guobao2333/MT-syntax-highlight?logo=apache&label=License&labelColor=black&color=blue"></a>
 <a href="https://common-changelog.org"><img alt="Common Changelog" src="https://common-changelog.org/badge.svg"/></a>
 </p>
 
@@ -52,7 +52,7 @@
 ## Update Plan | 更新计划
 ### Language List | 语言列表
 > [!NOTE]
-> 以下列表仅包含计划中或正在进行的语言，而非全部。勾选表示已发布可用版本，但“可用”不等同于“稳定”。
+> 以下列表仅包含**计划中或进行中**的语言。勾选表示已发布可用版本，但“可用”不等同于“稳定”。
 > 通常，若某语言已发布 1.0 及以上版本，且数周未更新，可视为相对稳定版本。
 - [x] BBCode
 - [ ] CUE
@@ -70,7 +70,6 @@
   - [x] Java
   - [x] JavaScript
     - [ ] TypeScript
-  - [x] JSON
   - [ ] Markdown
   - [x] MT Syntax
 
@@ -90,12 +89,12 @@
 
 > [!WARNING]
 > 如果请求的语言不常见或不在计划中，这对维护者而言无异于重新学习一门新语言，因此可能**因各种原因推迟或拒绝支持**。  
-> ⚠️注意：新的语法高亮**不会兼容**`MT < 2.16.0`
+> ⚠️注意：新的语法高亮**不会主动兼容**`MT < 2.16.0`
 
 建议您在打开新的`issue`时使用模板，正确填写请求格式有助于维护者快速获取该语言的相关信息，并避免因非官方来源的*低质量资料*引起歧义。
 
 ## Contribute | 贡献
-欢迎为 MT Syntax Highlight 项目做出贡献！我们接受所有形式的贡献，包括增加语或改进语法高亮，翻译、更新和修复文档错误等。
+欢迎为 MT Syntax Highlight 做出贡献！我们接受所有形式的贡献，包括增加或改进语法高亮，翻译、更新和修复文档错误等。
 
 请查看详细的[贡献指南](./CONTRIBUTING.md)以了解：
 - 完整贡献流程和步骤
@@ -109,7 +108,7 @@
 ## License | 许可证
 若无特殊说明，所有语法高亮文件均采用[Apache-2.0](http://www.apache.org/licenses/LICENSE-2.0)协议发布，详情请查看[LICENSE](./LICENSE)文件。
 
-    Copyright (c) 2024-2026 shiguobaona
+    Copyright (c) 2024–2026 shiguobaona
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use any mtsx file except in compliance with the License.

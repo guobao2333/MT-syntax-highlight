@@ -1,7 +1,7 @@
 # Changelog | 更新日志
 
-这里是本项目文件的更新日志，与[通用变更日志][1]的规范有所不同，您可以阅读下文查看特殊规范。  
-[通用变更日志][1]旨在提供有温度的更新文档，让用户可以轻松理解开发者做了什么，同时也让开发者可以更方便的回溯以往更新，以确定何时引入了意外bug；与git相结合开发效率事半功倍，前提是您拥有且遵守自己的行为准则。
+这里是本项目文件的更新日志，与[Common Changelog][1]的规范有所不同，您可以阅读下文查看特殊规范。  
+[Common Changelog][1]旨在提供有温度的更新文档，让用户可以轻松理解开发者做了什么，同时也让开发者可以更方便的回溯以往更新，以确定何时引入了意外bug；与git相结合开发效率事半功倍，前提是您拥有或遵守一份行为准则。
 
 如果您对本项目的更新日志有任何意见或建议，欢迎您随时协助！
 
@@ -33,6 +33,17 @@
 >
 > 特殊规范允许排列组合，故此处不再列举。
 </details>
+
+## 2026-4-6
+### JavaScript EX - [1.2.3](https://github.com/guobao2333/MT-syntax-highlight/commit/ac81973)
+
+* 合并上游更新
+
+### Java EX - [1.3.0](https://github.com/guobao2333/MT-syntax-highlight/commit/3406dc4)
+
+* 合并上游更新
+* 优化性能
+* 修复泛型高亮逻辑
 
 ## 2026-2-17
 ### Luau - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/a77baed)
@@ -80,7 +91,7 @@
 
 ### Lyrics - [2.0.1](https://github.com/guobao2333/MT-syntax-highlight/commit/57f88c3)
 
-* 修复歌词可能会被高亮为元数据问题
+* 修复歌词可能会被高亮为元数据
 
 ## 2026-1-1 - DOT (NEW) - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/67460b7)
 **2026新年快乐！🎉**
