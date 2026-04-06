@@ -1,5 +1,5 @@
 // require MT >= 2.16.0
-// version: 1.2.2
+// version: 1.2.3
 // 此文件为同名内置语法的增强版本
 // 针对minecraft进行语法扩展
 // https://github.com/guobao2333/MT-syntax-highlight
@@ -8,13 +8,17 @@
     comment: {startsWith: "//"}
     comment: {startsWith: "/*", endsWith: "*/"}
     defines: [
+        "escapedChar": [
+            {match: /\\([btnfr"'\/\\]|([0-3]?[0-7])?[0-7]|[uU][0-9a-fA-F]{4}|[xX][0-9a-fA-F]{2})/, 0: "strEscape"}
+            {match: /\\./, 0: "error"}
+        ]
         "single-quoted-string": {
             style: "string"
             start: {match: /'/}
             end: {match: /(?m)'|$/}
             contains: [
                 {match: /\\\n/, 0: "strEscape"}
-                {builtin: #JAVA_ESCAPED_CHAR#}
+                {include: "escapedChar"}
             ]
         }
         "double-quoted-string": {
@@ -23,7 +27,7 @@
             end: {match: /(?m)"|$/}
             contains: [
                 {match: /\\\n/, 0: "strEscape"}
-                {builtin: #JAVA_ESCAPED_CHAR#}
+                {include: "escapedChar"}
             ]
         }
         "backtick-string": {
@@ -32,7 +36,7 @@
             end: {match: /`/}
             contains: [
                 {match: /\\`/, 0: "strEscape"}
-                {builtin: #JAVA_ESCAPED_CHAR#}
+                {include: "escapedChar"}
                 {include: "dollarExp"}
             ]
         }
@@ -70,8 +74,8 @@
         {include: "regex"}
         {include: "backtick-string"}
         {builtin: #JAVA_NUMBER#}
-        {match: /\basync(?=\s+(?:function\b|\S*\s*\())/, 0: "keyword"}
-        {match: /\bget(?=:?\s+(?:function\b|\S+\s*\())/, 0: "keyword"}
+        {match: /\basync(?=\s++(?:function\b|\S*\s*+\())/, 0: "keyword"}
+        {match: /\bget(?=:?\s++(?:function\b|\S+\s*+\())/, 0: "keyword"}
         {match: keywordsToRegex(
                 "break case catch class const continue debugger default delete do else enum export await"
                 "extends false finally for function if implements import instanceof interface let debugger"
