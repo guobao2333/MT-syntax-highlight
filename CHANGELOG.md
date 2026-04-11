@@ -34,6 +34,16 @@
 > 特殊规范允许排列组合，故此处不再列举。
 </details>
 
+## 2026-4-11
+### Markdown(GFM) - [6.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/8cfa13f)
+**迈向完美的跨时代一步！！**
+
++ 新增字体样式高亮 ~~(这么基础的语法高亮怎么现在才端上来！！)~~
++ 新增表格基础高亮 (WIP, 低准确意味着高性能……相反同样……)
++ 新增浏览器实体
+* 修复n个问题
+* 样式和其他优化
+
 ## 2026-4-6
 ### JavaScript EX - [1.2.3](https://github.com/guobao2333/MT-syntax-highlight/commit/ac81973)
 
@@ -91,7 +101,7 @@
 
 ### Lyrics - [2.0.1](https://github.com/guobao2333/MT-syntax-highlight/commit/57f88c3)
 
-* 修复歌词可能会被高亮为元数据
+* 歌词不再会被错误高亮为元数据
 
 ## 2026-1-1 - DOT (NEW) - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/67460b7)
 **2026新年快乐！🎉**

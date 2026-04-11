@@ -93,6 +93,13 @@
 </details>
 
 <details>
+<summary>Luau</summary>
+
+![亮色](luau/light.webp)
+![暗色](luau/dark.webp)
+</details>
+
+<details>
 <summary>Lyrics</summary>
 
 ![亮色](lyrics/light.webp)

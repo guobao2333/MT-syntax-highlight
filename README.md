@@ -68,6 +68,7 @@
 - [ ] **优化MT内置**
   - [x] HTML<sub>+CSS+JS</sub> (实验性，可能会影响性能)
   - [x] Java
+    - [ ] Kotlin
   - [x] JavaScript
     - [ ] TypeScript
   - [ ] Markdown
