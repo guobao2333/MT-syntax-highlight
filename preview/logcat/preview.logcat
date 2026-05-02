@@ -1,0 +1,5 @@
+05-02 12:54:20.314  1644  1865 W WindowManager: Changing focus from Window{1f9db61 u0 NotificationShade} to Window{88a6723 u0 bin.mt.plus.canary/l.ۡۢ֨} displayId=0 Callers=com.android.server.wm.RootWindowContainer.updateFocusedWindowLocked:492 com.android.server.wm.WindowManagerService.updateFocusedWindowLocked:6016 com.android.server.wm.WindowManagerService.relayoutWindow:2606 com.android.server.wm.Session.relayout:247 
+05-02 12:54:20.314  1644  1865 D CompactWindowManagerService: notifyCompactWindowState task: Task{f669e89 #1772 type=standard A=10250:bin.mt.plus.canary U=0 visible=true mode=fullscreen translucent=false sz=2}; hasFocus: true
+05-02 12:54:21.147  1644  1767 V OplusZoomWindowManagerService: onAnimationFinished:  r = ActivityRecord{3229625 u0 bin.mt.plus.canary/l.ۡۢ֨ t1772}
+05-02 12:54:41.769  1644  1791 E OplusThermalStats: Error getting package info: bin.mt.plus.canary
+05-02 12:54:42.047  1644  1767 I WindowStateExtImpl: onSurfaceShowChange show = false mPackageName = bin.mt.plus.canary parentPkgName = bin.mt.plus.canary

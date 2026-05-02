@@ -1,0 +1,32 @@
+// require MT >= 2.16.0
+// Version: 1.0.0
+// Repo: https://github.com/guobao2333/MT-syntax-highlight
+// Copyright (c) 2026 shiguobaona
+{
+    name: ["Logcat", ".log",".logcat"]
+    styles: [
+        "info"       #4874A0     #4874A0
+        "debug"      #6A8759     #6A8759
+        "warn"       #BBB52A     #BBB52A
+        "error"      #CF5B56     #CF5B56
+        "verbose"    #000#D6D6D6 #333#D6D6D6
+        "info_flag"  #BBB#315D77 #BBB#315D77
+        "debug_flag" #DDD#6A8759 #DDD#6A8759
+        "warn_flag"  #000#BBB52A #000#BBB52A
+        "error_flag" #000#CF5B56 #000#CF5B56
+                
+        // 高饱和度配色 (当心眼睛！)
+        // "verbose"    #000#CCC    #333#CCC
+        // "info_flag"  #EEE#08F    #EEE#08F
+        // "debug_flag" #EEE#3D0    #EEE#0A0
+        // "warn_flag"  #FFF#FC0    #FFF#C90
+        // "error_flag" #CCC#F00    #CCC#A23
+    ]
+    contains: [
+        {match: /( V )/ 0: "verbose"}
+        {match: /( I ).*+/ 0: "info" 1: "info_flag"}
+        {match: /( D ).*+/ 0: "debug" 1: "debug_flag"}
+        {match: /( W ).*+/ 0: "warn" 1: "warn_flag"}
+        {match: /( (?:E|F) ).*+/ 0: "error" 1: "error_flag"}
+     ]
+}
