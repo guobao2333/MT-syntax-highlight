@@ -14,6 +14,8 @@
 | [Git Ignore](gitignore.mtsx) |  |
 | [Golang Ice](golang.mtsx) | [**@Love-Kogasa**](https://github.com/Love-Kogasa) |
 | [Haskell](haskell.mtsx) | [**@ZQBCWG**](https://github.com/ZQBCWG) |
+| [Logcat](logcat.mtsx) |  |
+| [Luau](luau.mtsx) |  |
 | [Lyrics](lyrics.mtsx) | [**@cnbilinyj**](https://github.com/cnbilinyj) 贡献了原始的1.0版本 |
 | [Makefle](makefle.mtsx) |  |
 | [Markdown(GFM)](markdown_github.mtsx)[^GFM] |  |

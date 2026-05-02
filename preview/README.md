@@ -93,6 +93,13 @@
 </details>
 
 <details>
+<summary>Logcat</summary>
+
+![亮色](logcat/light.webp)
+![暗色](logcat/dark.webp)
+</details>
+
+<details>
 <summary>Luau</summary>
 
 ![亮色](luau/light.webp)

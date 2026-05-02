@@ -21,10 +21,17 @@
 </details>
 
 ## Introduction | 简介
-[MT Syntax Highlight](https://github.com/guobao2333/MT-syntax-highlight)是适用于[MT管理器](https://mt2.cn)的第三方语法高亮(.mtsx)的存储仓库，MT的语法高亮功能基于**JAVA正则表达式**实现。本仓库最初因官方内置的高亮方案较少而创建，所以写了一些语法高亮供自己和需要的人使用，后来内置语法越来越多，就减缓更新频率作为个人兴趣维护了，希望大家也能够写出更多漂亮的mt语法高亮！
+[MT Syntax Highlight](https://github.com/guobao2333/MT-syntax-highlight)是适用于[MT管理器](https://mt2.cn)的第三方语法高亮(.mtsx)的存储仓库，MT的语法高亮功能基于**JAVA正则表达式**实现。最初由于官方内置的高亮方案很少，因此写了一些语法高亮供自己和需要的人使用，后来内置语法越来越多，就减缓更新频率作为个人兴趣维护了，希望大家也能够写出更多漂亮的语法高亮！
+
+## Follow NEW | 及时更新
+本仓库不会考虑发布Releases，因此您可能无法及时收到更新。*但我不建议您`Fork`本仓库*，为了避免三天两头查看仓库浪费您的宝贵时间，**请点击仓库右上角的 `Watch` 按钮，并选择 `All Activity`** 以便接收有关仓库的所有更新动态。
+
+不过请放心，仓库的更新频率不算高，一般不会为您带来过多*噪音*，**是否Watch完全取决于*您的意愿*。**
+
+![Watch repository](preview/watch_repo.webp)
 
 ## Changelog | 更新日志
-由于同时更新README与CHANGELOG会耗费更多精力，且会增加git体积，所以请您移步`CHANGELOG.md`文件[查看更新日志](CHANGELOG.md)。
+由于同时更新README与CHANGELOG会耗费更多精力，且会增加git体积，所以请您移步[`CHANGELOG.md`](CHANGELOG.md)文件查看更新日志。
 
 ## Preview | 预览
 你可以在[此处](preview/)查看所有语言的效果预览图索引。

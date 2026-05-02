@@ -34,8 +34,12 @@
 > 特殊规范允许排列组合，故此处不再列举。
 </details>
 
-## 2026-4-11
-### Markdown(GFM) - [6.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/8cfa13f)
+## 2026-5-2 - Logcat (NEW) - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/35373bc)
+
++ 新增语法高亮：[Logcat](logcat.mtsx)  
+  有关Logcat的文档请看这里：[Logcat command-line tool | Android Studio | Android Developers](https://developer.android.com/tools/logcat)
+
+## 2026-4-11 - Markdown(GFM) - [6.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/8cfa13f)
 **迈向完美的跨时代一步！！**
 
 + 新增字体样式高亮 ~~(这么基础的语法高亮怎么现在才端上来！！)~~
@@ -56,7 +60,7 @@
 * 修复泛型高亮逻辑
 
 ## 2026-2-17
-### Luau - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/a77baed)
+### Luau (NEW) - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/a77baed)
 
 + 新增语法高亮：[Luau](luau.mtsx)  
   有关Luau的文档请看这里：[Roblox Luau](https://luau.org)
