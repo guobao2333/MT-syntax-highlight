@@ -34,6 +34,11 @@
 > 特殊规范允许排列组合，故此处不再列举。
 </details>
 
+## Java EX - [1.4.0](https://github.com/guobao2333/MT-syntax-highlight/commit/97ad988)
+
+* 优化泛型类型性能
+* 重写泛型类型高亮
+
 ## 2026-5-2 - Logcat (NEW) - [1.0.0](https://github.com/guobao2333/MT-syntax-highlight/commit/35373bc)
 
 + 新增语法高亮：[Logcat](logcat.mtsx)  
