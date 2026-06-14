@@ -1,0 +1,183 @@
+//本语法高亮器使用人工智能辅助开发
+//@author：mengwa113
+//https://github.com/laomengwa/GDScript-SyntaxHighLight-For-MT-Manager
+{
+    name: ["GDScript", ".gd"],
+    ignoreCase: false,
+
+    defines: [
+        "identifier": /[_\p{L}][\p{L}\p{Nd}_]*/,
+        "escapeChar": {match: /\\[\\'"]|\\[nrtb]/, 0: "strEscape"},
+        "longString": [
+            {
+                start: {match: /"""/},
+                end: {match: /"""/},
+                style: "string",
+                contains: [{include: "escapeChar"}]
+            },
+            {
+                start: {match: /'''/},
+                end: {match: /'''/},
+                style: "string",
+                contains: [{include: "escapeChar"}]
+            }
+        ]
+    ],
+
+    styles: [
+        "funcName" #009999 #66e6ff,
+        "operator" #00009c #abc9ff,
+        "member" #0066ad #bce0ff,
+        "method" #0039e6 #57b3ff,
+        "annotation" #cc5e00 #ffb373,
+        "nodeReference" #2e8c00 #63c259,
+        //MT管理器HEX的alpha参数处理解析有缺陷，解析出不符合预期的颜色
+        //#14141480 #ffffff80
+        "comment" #141414 #dddddd,
+        //#282666b3 #99b3cccc
+        "docComment" #282666 #99b3cc,
+        //#000000bf,#ffffffbf
+        "identifier" #000000 #ffffff,
+        "string" #996b00 #ffeda1,
+        "keyword" #e62282 #ff7085,
+        "contorKeyword" #bd1fcc #ff8ccc,
+        "number" #008c47 #a1ffe0,
+        "type" #009933 #42ffc2
+        "critical" #cc2424 #c45959,
+        "warning" #bf6308 #b89c7a
+        "notice" #3d8a17 #8fab82,
+        "placeholder" #ed9954 #ffbf66
+    ],
+
+    comment: {startsWith: "#", addToContains: false},
+    comment: {startsWith: "##", addToContains: false},
+
+    bracketPairs: ["{}", "[]", "()", "<>"],
+
+    contains: [
+        // 文档注释 ##
+        {
+            start: {match: /##/}
+            end: {match: /(?m)$/}
+            style: "docComment"
+            contains: [
+                {match: /\b(ALERT|AT|CRITICALDANGER|SECURITY)\b/, 0: "critical"},
+                {match: /\b(BUG|DEPRECATED|FIXME|HACK|TASK|TBD|TODO|WARNING)\b/, 0: "warning"},
+                {match: /\b(INFO|NOTE|NOTICE|TEST|TESTING)\b/, 0: "notice"},
+            ]
+        },
+        // 普通注释
+        {
+            start: {match: /#(?!##)/}
+            end: {match: /(?m)$/}
+            style: "comment"
+            contains: [
+                {match: /\b(ALERT|AT|CRITICALDANGER|SECURITY)\b/, 0: "critical"},
+                {match: /\b(BUG|DEPRECATED|FIXME|HACK|TASK|TBD|TODO|WARNING)\b/, 0: "warning"},
+                {match: /\b(INFO|NOTE|NOTICE|TEST|TESTING)\b/, 0: "notice"},
+            ]
+        },
+
+        // 多行字符串 """ '''
+        {include: "longString"},
+
+        // 双引号普通字符串
+        {
+            start: {match: /"/},
+            end: {match: /(?m)"|$/},
+            style: "string",
+            contains: [
+            {match: /%(\d+\$)?([-#+ 0(]*\d*\.?\d*)[diouxXeEfFgGcrs]/, 0: "placeholder"},
+            {match: /\{\w*\}?/, 0: "placeholder"},
+            {include: "escapeChar"}
+            ]
+        },
+
+        // 单引号普通字符串
+        {
+            start: {match: /'/},
+            end: {match: /(?m)'|$/},
+            style: "string",
+            contains: [
+            {match: /%(\d+\$)?([-#+ 0(]*\d*\.?\d*)[diouxXeEfFgGcrs]/, 0: "placeholder"},
+            {match: /\{\w*\}?/, 0: "placeholder"},
+            {include: "escapeChar"}
+            ]
+        },
+
+        // 数字
+        {number: "2|8|10|16|F|E|_"},
+
+        // @ 注解
+        {match: /@\w+/, 0: "annotation"},
+
+        // 节点引用 $
+        {
+            match: /[\$](?:"[^"\\]*(?:\\.[^"\\]*)*"|'[^'\\]*(?:\\.[^'\\]*)*'|[\p{L}_][\p{L}\p{N}_]*(?:\/[\p{L}_][\p{L}\p{N}_]*)*)/,
+            0: "nodeReference"
+        },
+
+        // 节点引用 %
+        {
+            match: /(?<![_\p{L}\p{N}\"\'])\%(?:"[^"\\]*(?:\\.[^"\\]*)*"|'[^'\\]*(?:\\.[^'\\]*)*'|[\p{L}_][\p{L}\p{N}_]*(?:\/[\p{L}_][\p{L}\p{N}_]*)*)/, 
+            0: "nodeReference"
+        },
+
+        // 函数定义 func name()
+        {match: /\b(func)\s+([_\p{L}][\p{L}\p{N}_]*)\s*\(/, 1: "keyword", 2: "funcName"},
+        // 类定义 class Name
+        {match: /\b(class)\s+([_\p{L}][\p{L}\p{N}_]*)/, 1: "keyword", 2: "type"},
+        // 类名 class_name
+        {match: /\b(class_name)\s+([_\p{L}][\p{L}\p{N}_]*)/, 1: "keyword", 2: "type"},
+        // 枚举 enum Name
+        {match: /\b(enum)\s+([_\p{L}][\p{L}\p{N}_]*)/, 1: "keyword", 2: "member"},
+        // 继承 extends Type
+        {match: /\b(extends)\s+([_\p{L}][\p{L}\p{N}_]*)/, 1: "keyword", 2: "type"},
+        // ==========================================================================
+
+        // 普通关键字
+        {
+            match: keywordsToRegex("var const static signal is as in and or not self super await yield"),
+            0: "keyword"
+        },
+
+        // get / set 访问器 → method
+        {match: keywordsToRegex("get set"), 0: "method"},
+
+        // 控制流关键字 → 单独样式 contorKeyword
+        {
+            match: keywordsToRegex("if elif else for while match break continue return pass when"),
+            0: "contorKeyword"
+        },
+
+        // 内置类型 / 原生类 → type
+        {
+            match: keywordsToRegex(
+                "void bool int float String NodePath RID Vector2 Vector2i Rect2 Rect2i Transform2D Vector3 Vector3i Vector4 Vector4i Basis Quaternion Plane AABB Transform3D Projection Color Image Array Dictionary PackedByteArray PackedInt32Array PackedInt64Array PackedFloat32Array PackedFloat64Array PackedStringArray PackedVector2Array PackedVector3Array PackedVector4Array PackedColorArray Object RefCounted Signal Node Node2D Node3D Control StringName Callable Variant"
+            ),
+            0: "type"
+        },
+
+        // 类型标注 : Type
+        {match: /(?<=:\t*)([_\p{L}][\p{L}\p{N}_]*(?:\[[^\]]*\])?)\b/, 0: "type"},
+        // 函数返回类型 -> Type
+        {match: /(?<=->\s*)([_\p{L}][\p{L}\p{N}_]*(?:\[[^\]]*\])?)\b/, 0: "type"},
+
+        // 布尔/数学常量
+        {match: keywordsToRegex("true false null INF NAN PI TAU"), 0: "keyword"},
+
+        // 独立函数调用 func_name()
+        {match: /\b/ + include("identifier") + /[ \t]*(?=\()/, 0: "method"},
+
+        // 普通标识符（变量、参数）
+        {match: /\b/ + include("identifier") + /\b/, 0: "identifier"},
+
+        // 对象.方法调用 .func()
+        {match: /\.([_\p{L}][\p{L}\p{N}_]*)[ \t]*(?=\()/, 1: "method"},
+        // 对象.成员变量 .var （后面无括号）
+        {match: /\.([_\p{L}][\p{L}\p{N}_]*)\b(?!\s*\()/, 1: "member"},
+
+        // 运算符
+        {match: /[+\-*\/%=!&|^<>~?:,.;]/, 0: "operator"}
+    ]
+}
