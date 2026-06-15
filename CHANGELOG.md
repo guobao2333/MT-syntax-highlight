@@ -34,6 +34,11 @@
 > 特殊规范允许排列组合，故此处不再列举。
 </details>
 
+## 2026-6-15 - Nim - [0.1.0](?)
+
++ 新增语法高亮：[Nim](mtsx/nim.mtsx)  
+  有关 Nim 的文档请看这里：[Nim Official Site](https://nim-lang.org)
+
 ## Java EX - [1.4.0](https://github.com/guobao2333/MT-syntax-highlight/commit/97ad988)
 
 * 优化泛型类型性能

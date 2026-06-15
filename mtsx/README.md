@@ -20,6 +20,7 @@
 | [Makefle](makefle.mtsx) |  |
 | [Markdown(GFM)](markdown_github.mtsx)[^GFM] |  |
 | [Minecraft Bedrock Localized Language](minecraft_lang.mtsx) | 感谢 [**@Love-Kogasa**](https://github.com/Love-Kogasa) 提供的[语法原型](https://github.com/guobao2333/MT-syntax-highlight/pull/4#issuecomment-2439806367) |
+| [Nim](makefle.mtsx) | [**@niooh**](https://github.com/niooh) |
 | [Perl](perl.mtsx) | [**@UndefTaco**](https://github.com/UndefTaco) |
 | [Protobuf](protobuf.mtsx) |  |
 | [Ruby](ruby.mtsx) | [**@UndefTaco**](https://github.com/UndefTaco) |

@@ -135,6 +135,13 @@
 </details>
 
 <details>
+<summary>Nim</summary>
+
+![亮色](nim/light.webp)
+![暗色](nim/dark.webp)
+</details>
+
+<details>
 <summary>Perl</summary>
 
 ![亮色](perl/light.webp)
