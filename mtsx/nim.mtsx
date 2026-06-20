@@ -1,0 +1,217 @@
+// require MT >= 2.16.0
+// Version: 0.1.0
+// Repo: https://github.com/guobao2333/MT-syntax-highlight
+// Copyright (c) 2026 niooh
+{
+    name: ["Nim", ".nim", ".nims"]
+    comment: {
+        startsWith: "#"
+        addToContains: false
+    }
+
+    styles: [
+        "codetag"     #FF0000    #A8C023    @_
+        "comment"     #9C938A    #808080    @_
+        "default"     #282828    #A9B7C6    @_
+        "function"    #1E6F94    #FFCB6B    @_
+        "keyword"     #C70808    #CC7832    @_
+        "type"        #3165C5    #9876AA    @_
+        "builtin"     #05A7B0    #8888C6    @_
+        "number"      #267F99    #6897BB    @_
+        "string"      #499708    #6A8759    @_
+        "char"        #499708    #6A8759    @_
+        "operator"    #830000    #CA5936    @_
+        "pragma"      #05A7B0    #BBB529    @_
+    ]
+
+    defines: [
+        "alpha": /\b[a-zA-Z_][a-zA-Z0-9_]*\b/
+
+        "escape": /\\(x[0-9A-Fa-f]{2}|[0-7]{1,3}|[\\'"abfnrtv]|u[0-9A-Fa-f]{4})/
+
+        "escaped": [
+            {match: include("escape") 0: "keyword"}
+            {match: /\\./ 0: "operator"}
+        ]
+
+        "#constant.numeric.nim": [
+            {
+                // floats: 1.0, .5, 1e10, 1.2'f32
+                match: /(?<!\w)(?:[0-9](?:_?[0-9])*\.[0-9](?:_?[0-9])*|\.[0-9](?:_?[0-9])*|[0-9](?:_?[0-9])*(?:[eE][+-]?[0-9](?:_?[0-9])*))(?:'[a-zA-Z0-9_]+)?\b/
+                0: "number"
+            }
+            {
+                // hex, bin, oct
+                match: /(?<!\w)0[xX][0-9a-fA-F](?:_?[0-9a-fA-F])*(?:'[a-zA-Z0-9_]+)?\b/
+                0: "number"
+            }
+            {
+                match: /(?<!\w)0[bB][01](?:_?[01])*(?:'[a-zA-Z0-9_]+)?\b/
+                0: "number"
+            }
+            {
+                match: /(?<!\w)0[oO][0-7](?:_?[0-7])*(?:'[a-zA-Z0-9_]+)?\b/
+                0: "number"
+            }
+            {
+                // integers: 123, 1_000, 10'i32
+                match: /(?<!\w)[0-9](?:_?[0-9])*(?:'[a-zA-Z0-9_]+)?\b/
+                0: "number"
+            }
+        ]
+
+        "#definition.comments.nim": {
+            style: "comment"
+            start: {match: "#"}
+            end: {match: "(?m)\n|$"}
+            contains: [
+                {
+                    match: /\b(NOTE|XXX|HACK|FIXME|BUG|TODO)\b/
+                    0: "codetag"
+                }
+            ]
+        }
+
+        "#definition.multiline.comments.nim": {
+            style: "comment"
+            start: {match: /#\[/}
+            end: {match: /\]#|$/}
+            contains: [
+                {
+                    match: /\b(NOTE|XXX|HACK|FIXME|BUG|TODO)\b/
+                    0: "codetag"
+                }
+            ]
+        }
+
+        "#definition.strings.nim": [
+            {
+                // triple-quoted strings
+                style: "string"
+                start: {match: /"""/}
+                end: {match: /"""|$/}
+            }
+            {
+                // normal double-quoted strings
+                style: "string"
+                start: {match: /"/}
+                end: {match: /(?<!\\)(?m)"|$/}
+                contains: [
+                    {include: "escaped"}
+                ]
+            }
+            {
+                // raw strings: r"..."
+                style: "string"
+                start: {match: /\br"/}
+                end: {match: /(?<!\\)(?m)"|$/}
+            }
+        ]
+
+        "#definition.chars.nim": {
+            style: "char"
+            start: {match: /'/}
+            end: {match: /(?<!\\)'|$/}
+            contains: [
+                {include: "escaped"}
+            ]
+        }
+
+        "#definition.keywords.nim": {
+            match: keywordsToRegex(
+                "addr and as asm bind block break case cast concept const continue converter" +
+                " defer discard distinct div do elif else end enum except export finally for" +
+                " from func if import in include interface is isnot iterator let macro method" +
+                " mixin mod nil not notin object of or out proc ptr raise ref return shl shr" +
+                " static template try tuple type using var when while xor yield"
+            )
+            0: "keyword"
+        }
+
+        "#definition.types.nim": {
+            match: keywordsToRegex(
+                "int int8 int16 int32 int64 uint uint8 uint16 uint32 uint64" +
+                " float float32 float64 bool char string cstring pointer" +
+                " seq array openArray varargs set range lent sink typedesc" +
+                " auto void byte Natural Positive SomeInteger SomeFloat"
+            )
+            0: "type"
+        }
+
+        "#definition.builtins.nim": {
+            match: keywordsToRegex(
+                "echo len high low inc dec new newSeq add del insert delete contains" +
+                " repr astToStr defined declared sizeof alignof typeof result" +
+                " default assert quit ord chr abs min max clamp parseInt parseFloat" +
+                " intToStr floatToStr join split startsWith endsWith substr find replace"
+            )
+            0: "builtin"
+        }
+
+        "#definition.constants.nim": {
+            match: keywordsToRegex(
+                "true false nil result"
+            )
+            0: "keyword"
+        }
+
+        "#definition.proc.names.nim": {
+            // proc foo, func foo, method foo, iterator foo, template foo, macro foo
+            match: /(?<=\b(proc|func|method|iterator|template|macro|converter)\s+)[a-zA-Z_][a-zA-Z0-9_]*/
+            0: "function"
+        }
+
+        "#definition.call.names.nim": {
+            // simple function calls: echo(), foo(), parseInt()
+            match: /\b[a-zA-Z_][a-zA-Z0-9_]*(?=\s*\()/
+            0: "function"
+        }
+
+        "#definition.pragmas.nim": {
+            // Nim pragmas: {.inline.}, {.deprecated.}
+            style: "pragma"
+            start: {match: /\{\./}
+            end: {match: /\.\}|$/}
+            contains: [
+                {include: "#definition.keywords.nim"}
+                {include: "#definition.strings.nim"}
+                {include: "#constant.numeric.nim"}
+            ]
+        }
+
+        "#definition.operators.nim": {
+            match: /(\+|-|\*|\/|=|==|!=|<=|>=|<|>|\.\.|\.\.|\.|:|::|,|;|\||&|\^|%|@|\$|!|\?)/
+            0: "operator"
+        }
+
+        "#definition.brackets.nim": {
+            style: "default"
+            start: {match: /(\(|\[|\{)/}
+            end: {match: /(\)|\]|\})/}
+            contains: [
+                {include: "#definition.mtsx.nim"}
+            ]
+        }
+
+        "#definition.mtsx.nim": [
+            {include: "#definition.multiline.comments.nim"}
+            {include: "#definition.comments.nim"}
+            {include: "#definition.strings.nim"}
+            {include: "#definition.chars.nim"}
+            {include: "#definition.pragmas.nim"}
+            {include: "#constant.numeric.nim"}
+            {include: "#definition.proc.names.nim"}
+            {include: "#definition.keywords.nim"}
+            {include: "#definition.types.nim"}
+            {include: "#definition.constants.nim"}
+            {include: "#definition.builtins.nim"}
+            {include: "#definition.call.names.nim"}
+            {include: "#definition.operators.nim"}
+            {include: "#definition.brackets.nim"}
+        ]
+    ]
+
+    contains: [
+        {include: "#definition.mtsx.nim"}
+    ]
+}

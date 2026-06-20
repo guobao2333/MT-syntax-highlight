@@ -1,0 +1,65 @@
+## 函数语法
+proc fibonacciIter(n: int): int =
+  var a, b = 0
+  if n == 0: return 0
+  a = 0
+  b = 1
+  for _ in 2..n:
+    let c = a + b
+    a = b
+    b = c
+  return b
+
+echo fibonacciIter(10)  # 输出 55
+
+
+## 重载运算符语法
+type MyInt = distinct int
+
+# 二元运算符测试
+proc `=copy`(a: var MyInt, b: MyInt) {.inline.} =
+  echo "调用 = "
+  a = MyInt(b.int)
+
+proc `+`(a, b: MyInt): MyInt =
+  result = MyInt(a.int + b.int)
+
+proc `-`(a, b: MyInt): MyInt =
+  result = MyInt(a.int - b.int)
+
+proc `*`(a, b: MyInt): MyInt =
+  result = MyInt(a.int * b.int)
+
+proc `/`(a, b: MyInt): MyInt =
+  result = MyInt(a.int div b.int)  # 整数除法
+
+proc `<`(a, b: MyInt): bool = a.int < b.int
+proc `>`(a, b: MyInt): bool = a.int > b.int
+
+# 一元运算符测试
+proc `+`(a: MyInt): MyInt = a
+proc `-`(a: MyInt): MyInt = MyInt(-a.int)
+proc `not`(a: MyInt): MyInt = MyInt(not a.int)
+proc `@`(a: MyInt): seq[MyInt] = @[a]
+proc `$`(a: MyInt): string = "MyInt:" & $a.int
+
+# 主程序
+when isMainModule:
+  var x: MyInt = MyInt(10)
+  var y: MyInt = MyInt(3)
+
+  echo "- 二元运算符"
+  echo "x = ", x, "y = ", y
+  echo "x + y = ", x + y, "x - y = ", x - y
+  echo "x * y = ", x * y, "x / y = ", x / y
+  echo "x < y = ", x < y, "x > y = ", x > y
+
+  echo "\n- 一元运算符"
+  echo "+x = ", +x, "-x = ", -x
+  echo "not x = ", not x
+  echo "@x = ", @x, "$x = ", $x
+
+  echo "\n- 赋值运算符"
+  var z: MyInt
+  z = MyInt(99)
+  echo "z = ", z
