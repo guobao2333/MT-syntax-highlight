@@ -34,7 +34,7 @@
 > 特殊规范允许排列组合，故此处不再列举。
 </details>
 
-## 2026-6-15 - Nim - [0.1.0](?)
+## 2026-6-20 - Nim - [0.1.0](https://github.com/guobao2333/MT-syntax-highlight/commit/f32342e)
 
 + 新增语法高亮：[Nim](mtsx/nim.mtsx)  
   有关 Nim 的文档请看这里：[Nim Official Site](https://nim-lang.org)
