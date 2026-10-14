@@ -9,7 +9,7 @@
 
 > [!IMPORTANT]
 > **变更日志特殊规范：**  
-> 我们在之后的版本发布中将会使用新的版本规范：`y.m.d.p - 语法高亮名称`  
+> 我们在之后的版本发布中将会使用新的版本规范：`日期 - 语法高亮名称`  
 > 您可以前往[CONTRIBUTING.md](./CONTRIBUTING.md#版本号规范)查看详细说明。
 >
 > 当前日志中还包含使用旧规范的更新，您可以阅读下文查看特殊规范。
@@ -37,6 +37,14 @@
 >
 > 特殊规范允许排列组合，故此处不再列举。
 </details>
+
+## 2026-10-14 - [Markdown(GFM)](https://github.com/guobao2333/MT-syntax-highlight/commit/bef15a8)
+> [!IMPORTANT]
+> 从此版本开始仅适用于MT管理器 `2.26.10` 及以上版本！
+
+* 大幅优化性能
+* 重写代码块规则
+* 改进脚注链接
 
 ## 2026-6-20 - Nim - [0.1.0](https://github.com/guobao2333/MT-syntax-highlight/commit/f32342e)
 
